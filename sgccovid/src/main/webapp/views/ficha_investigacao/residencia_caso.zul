@@ -1,0 +1,219 @@
+<?page title="Informações da residência do caso" contentType="text/html;charset=UTF-8"?>
+<zk xmlns:h="xhtml" xmlns:zk="zk">
+	<window id="win" apply="uem.mz.sgccovid19.controller.ResidenciaCasoController">
+
+		<div zclass="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+			<div zclass="box box-success">
+				<div zclass="box-header">
+					<!-- <x:h3 class="box-title">Modulos Registados</x:h3> -->
+					<separator />
+				</div>
+
+
+				<div zclass="box-body">
+
+					<div class="row">
+						<div zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div zclass="box box-default">
+								<div zclass="box-header" align="center" style="background-color: white">
+									<!-- <h:hr/> -->
+									<h:label class="box-title"
+										style="font-family:Georgia,serif;color:black;text-align:center; font-variant: small-caps; text-transform: none; font-weight: 50 margin-bottom: 0;">
+										FICHA DE INVESTIGAÇÃO/NOTIFICAÇÃO DE CASO DE COVID-19
+									</h:label>
+
+								</div>
+
+
+								<div zclass="box-header" align="center" style="background-color:rgb(51, 153, 122)">
+									<!-- <h:hr/> -->
+									<h:label class="box-title"
+										style="font-family:Georgia,serif;color:white;text-align:center; font-variant: small-caps; text-transform: none; font-weight: 50 margin-bottom: 0;">
+										Instrumento adaptado com base na Ficha respectiva do MISAU e simplificado
+										para uso na UEM
+									</h:label>
+
+								</div>
+								<separator />
+								
+								<div zclass="box-header" align="center">
+									<!-- <h:hr/> -->
+									<h:label class="box-title"
+										style="font-family:Georgia,serif;color:green;text-align:center; font-variant: small-caps; text-transform: none; font-weight: 50 margin-bottom: 0;">
+										INFORMAÇÃO DA RESIDÊNCIA DO CASO
+									</h:label>
+
+								</div>
+								<separator />
+								
+								<div>
+									<div zclass="box-body">
+										<div class="row">
+										
+										<div zclass="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+												
+												<div class="row">
+		              	    
+								              	    <div class="col-md-4 col-lg-4">
+									              	     <div sclass="form-group">
+														   <label class="form-label">Em isolamento?</label>
+														 </div>
+								              	    
+								              	    </div>
+								              	    
+													
+												       <div >
+															<radiogroup>
+															 <radio label="Sim" id="rdb_sim_isolamento" selected="true"></radio>
+															 <radio label="Não" id="rdb_nao_isolamento" ></radio>
+															</radiogroup>
+														</div>
+												    
+								              	
+								                </div>
+												
+												<div class="form-group">
+												
+													<div class="form-group">
+														<label class="form-label">
+															Local de Isolamento:
+														</label>
+
+														<div>
+															<combobox id="cbxLocalIsolamento" readonly="true"
+																placeholder="Selecione o local de isolamento" width="90%"
+																autocomplete="true">
+																
+																	<comboitem label="Casa" value="Casa"></comboitem>
+																	<comboitem label="Hospital" value="Hospital"></comboitem>
+																	<comboitem label="Outro" value="Outro"></comboitem>
+																
+															</combobox>
+														</div>
+
+													</div>
+													<div class="form-group">
+														<label class=" form-label">
+															Província de isolamento:
+														</label>
+
+														<div>
+															<combobox id="cbxProvIsolamento" readonly="true"
+																placeholder="Selecione a província de isolamento" width="90%"
+																autocomplete="true">
+																<template name="model">
+																	<comboitem label="${each.designacao}">
+																	</comboitem>
+																</template>
+															</combobox>
+														</div>
+
+													</div>
+													
+													<div class="form-group">
+														<label class=" form-label">
+															Distrito de isolamento:
+														</label>
+
+														<div>
+															<combobox id="cbxDistrIsolamento" readonly="true"
+																placeholder="Selecione o Distrito de isolamento" width="90%"
+																autocomplete="true">
+																<template name="model">
+																	<comboitem label="${each.designacao}">
+																	</comboitem>
+																</template>
+															</combobox>
+														</div>
+
+													</div>
+													
+												
+
+
+													
+
+												</div>
+											</div>
+
+											<div zclass="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+												<div class="form-group">
+												
+													<div class="form-group">
+												       <label class="form-label"> Data em que informou à Unidade:  </label>
+												
+														<div >
+															<datebox id="dtb_dataInformou"  format="dd/MM/yyyy" width="90%"/>
+														</div>
+												
+												    </div>
+													
+													<div class="form-group">
+												       <label class="form-label"> Última vez que esteve na Unidade:  </label>
+												
+														<div >
+															<datebox id="dtb_dataUltima"  format="dd/MM/yyyy" width="90%"/>
+														</div>
+												
+												    </div>
+													
+												</div>
+											</div>
+											
+								
+									</div>
+
+									</div>
+								</div>
+
+							</div>
+
+                            <div style="background-color: #bbb;text-align:center">
+									<h:label class="box-title"
+										style="font-family:Georgia,serif;color:green;text-align:center; font-variant: small-caps; text-transform: none; font-weight: 50 margin-bottom: 0;">
+										Outras Informacoes uteis
+									</h:label>
+				 		    </div>
+				 		    <separator/>
+				 						
+				 			<div>
+								<textbox id="txt_outras" zclass="form-control" width="100%" height="100px"
+									placeholder="Digite outras informacoes uteis">
+								</textbox>
+							</div>
+
+						</div>
+					</div>
+					<separator />
+					
+					<div class="row">
+										
+						<div class="col-md-12 col-lg-12">
+					        <div align="right" >
+					           <button zclass="btn btn-danger" width="110px" id="btn_voltar3" >Voltar</button>
+					           <button zclass="btn btn-success" width="110px" id="btn_proximo4">Próximo</button>
+					         </div>
+					    </div>
+										
+				    </div>
+
+                    <separator />
+
+
+					<div zclass="box-header" align="center" style="background-color:rgb(51, 153, 122)">
+						<!-- <h:hr/> -->
+						<h:label class="box-tistle"
+							style="font-family:Georgia,serif;color:white;text-align:center; font-variant: small-caps; text-transform: none; font-weight: 50 margin-bottom: 0;">
+
+						</h:label>
+
+					</div>
+					<div zclass="box-footer"></div>
+
+
+					<separator />
+				</div>
+			</div>
+		</div>
+	</window>
+</zk>

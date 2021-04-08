@@ -1,0 +1,65 @@
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+<x:script>
+    require(['datatables', 'jquery'], function(datatable, $) {
+          $('.datatable').DataTable();
+            });
+ </x:script>
+
+<div apply="org.zkoss.bind.BindComposer" id="paramet"
+	  			viewModel="@id('vm')@init('uem.mz.mint.vm.OrganogramaVM')">
+	     <div class="my-3 my-md-5">
+	     <div class="container">
+          <x:div class="row row-cards">
+             <x:div class="col-6 col-sm-4 col-lg-2">
+               <x:div class="card">
+                  <x:a href="#" onClick="@command('openRegInst')" class="button btn-secondary">
+              	      <div class="text-muted mb-4">Instituição</div>
+                  </x:a>
+                </x:div>
+              </x:div> 
+              
+              <x:div class="col-6 col-sm-4 col-lg-2">
+               <x:div class="card">
+               	<x:a href="#" onClick="@command('openRegUniOrg')" class="button btn-secondary">
+              	      <div class="text-muted mb-4">Unidade Orgânica</div>
+                  </x:a>
+                </x:div>
+              </x:div>  
+              
+              <x:div class="col-6 col-sm-4 col-lg-2">
+               <x:div class="card">
+                  <x:a href="#" onClick="@command('openRegDep')" class="button btn-secondary">
+              	<div class="text-muted mb-4">Departamento</div>
+              </x:a>
+                </x:div>
+              </x:div> 
+              
+              <x:div class="col-6 col-sm-4 col-lg-2">
+               <x:div class="card">
+                  <x:a href="#" onClick="@command('openRegSet')" class="button btn-secondary">
+              	<div class="text-muted mb-4">Sector</div>
+              </x:a>
+                </x:div>
+              </x:div> 
+              
+              <x:div class="col-6 col-sm-4 col-lg-2">
+               <x:div class="card">
+                  <x:a href="#" onClick="@command('openRegProv')" class="button btn-secondary">
+              	<div class="text-muted mb-4">Província</div>
+              </x:a>
+                </x:div>
+              </x:div> 
+              
+              <x:div class="col-6 col-sm-4 col-lg-2">
+               <x:div class="card">
+                  <x:a href="#" onClick="@command('openRegistarDistrito')" class="button btn-secondary">
+              	<div class="text-muted mb-4">Distrito</div>
+              </x:a>
+                </x:div>
+              </x:div>
+                                 
+           </x:div>
+           </div>						
+          </div>
+        </div>
+</zk>

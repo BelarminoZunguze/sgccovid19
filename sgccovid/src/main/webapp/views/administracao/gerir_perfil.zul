@@ -1,0 +1,166 @@
+<?page title="Supervisor" contentType="text/html;charset=UTF-8"?>
+<zk xmlns:p="xhtml">
+	<window id="win" title="" border="none"
+		contentStyle="overflow:auto" width="100%" 
+		apply="uem.mz.mint.controller.administracao.PerfilController">
+		
+		
+		<p:div class="col-lg-12">
+                    <!-- <p:div class="ibox float-e-margins"> -->
+                        <div style="padding-top:13px; pargin-left:4px">
+                            <p:h4> GERIR PERMISSÕES
+                            </p:h4>
+                            <p:hr  height="2px"></p:hr>
+                        </div>
+                        <p:div class="ibox-content">
+                            
+                            
+                               <p:div class="form-group">
+                               <p:div class="row">
+                               <p:div class="col-lg-12">
+                                 <p:label >
+                                 Perfil: 
+								</p:label>
+                                <div >
+										<combobox id="cbxPerfil" readonly="true"
+									placeholder="Selecione o Perfil" width="100%"
+									
+									autocomplete="true">
+									<template name="model">
+										<comboitem
+											label="${each.rolename}" value="${each}">
+										</comboitem>
+									</template>
+								</combobox>
+								
+								<textbox id="txtDesignacao" zclass="form-control" visible="false"
+											width="100%" placeholder="Digite o perfil">
+										</textbox>
+								
+								</div>
+								</p:div>
+                                </p:div>
+                                
+                                
+                               
+                               
+                               
+                                </p:div>
+                              
+                              		<p:div class="form-group">
+                              		
+                              		 
+                              		 
+                              		 
+                              <hlayout  style="padding-buttom:2px">
+                              <div hflex="1" vflex="true">
+   								<listbox id="lbxPermissoes"   checkmark="true" multiple="true"   rows="8" >
+   									 <listhead>
+   									 <listheader label="" width="5%"></listheader>
+   									 <listheader label="" width=""></listheader>
+   									 </listhead>
+   									  	<template name="model">
+           									 <listitem>
+           									 <listcell  />
+                								<listcell label="${each.permissionname}"/>
+                							</listitem>
+                						</template>
+   								</listbox>
+                              		 </div>
+                              		 <vbox spacing="20px" width="24px" >
+        								<p:a style="cursor:pointer; padding-left:25%" id="chooseAll"  ><p:span class="fa fa-arrow-circle-o-right"/></p:a>
+        								<p:a style="cursor:pointer; padding-left:25%" id="chooseBtn"  ><p:span class="fe fe-arrow-right-circle"/></p:a>
+        								<p:a style="cursor:pointer; padding-left:25%" id="removeBtn"  ><p:span class="fe fe-arrow-left-circle"/></p:a>
+       									<p:a style="cursor:pointer; padding-left:25%" id="removeAll" disabled="true" ><p:span class="fa fa-arrow-circle-o-left"/></p:a>
+    								</vbox>
+    								<div hflex="1" vflex="true" >
+    							<listbox id="lbxPermissoesPerfil" emptyMessage="Sem dados registados" checkmark="true" multiple="true"   rows="8">
+    								 <listhead>
+   									 <listheader label="" width="5%"></listheader>
+   									 <listheader label="" width=""></listheader>
+   									  <listheader id="lhrRemove" label="" width="10%" align="center" ></listheader>
+   									 </listhead>
+    								<template name="model">
+           									 <listitem>
+           									 <listcell/>
+                								<listcell label="${each.permissionname}"/>
+                								<listcell ><image src="/images/img/apagar.gif" forward="onClick=onClickRemoverPermissoes(${each})" /></listcell>
+                							</listitem>
+                						</template>
+   								</listbox>
+   								</div>
+                              </hlayout>
+                              		 
+                              		
+                              		
+                              		
+                              		</p:div>
+
+				 <p:div class="form-group">
+					<div align="right">
+							<button label="Novo Perfil" id="btnNovoPerfil" zclass="btn btn-w-m btn-primary"
+								style="margin:0px" />
+							<!-- <button label="Gravar" id="btnGravar" zclass="btn btn-w-m btn-success"
+								style="margin:0px" /> -->
+							<button id="btnActualizar" visible="false" zclass="btn btn-w-m btn-warning"
+								label="Actualizar" style="margin:0px">
+							</button>
+							<button label="Cancelar" id="btnCancelar" zclass="btn btn-w-m btn-info"
+								style="margin:0px" />
+								
+						</div>
+				 </p:div>		 
+						 </p:div>
+			
+			<!-- /.col-lg-4 -->
+		</p:div>
+
+
+
+
+		<p:div class="col-md-12">
+			<!-- <p:hr height="1%"></p:hr>
+			<div zclass="box box-success">
+				<div zclass="box-header">
+					<p:h4 class="ibox-title" >
+					Lista de Disciplinas
+				</p:h4>
+				</div>
+				</div>  -->
+				<p:div class="box-body">
+				<listbox id="lbxPerfil" mold="paging" rows="10" checkmark="true"
+					pageSize="10" multiple="false">
+					<listhead>
+						<listheader width="30px"></listheader>
+						<listheader align="left" width="25%">Perfil</listheader>
+						<listheader align="left" width="">Lista de Permissões</listheader>
+
+					</listhead>
+
+					<template name="model">
+						<listitem>
+							<listcell/>
+							<listcell>
+								<label
+									value="${each.rolename}">
+								</label>
+							</listcell>
+							<listcell>	
+								<label
+									value="${each.permissions}">
+								</label>
+							</listcell>
+							
+							
+						</listitem>
+					</template>
+				</listbox>
+
+			</p:div>
+			<separator></separator>
+			<!-- /.col-lg-4 -->
+		</p:div>
+		
+		
+	</window>
+</zk>			

@@ -1,0 +1,532 @@
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+<x:script src="plugins/datatables/plugin.js"></x:script>
+
+ 	<window  border="none" id="win" zclass="page" apply="uem.mz.sgccovid19.controller.ConfirmacaoController">
+ 	
+ 	  <div id ="dadosFicha" visible="true" class="row">
+       <div class="col-12">
+        <div class="card">
+			              					                	
+				<div class="card-header" style="background-color: #bbb">
+			     <x:h3 class="card-title">DADOS DA NOTIFICAÇÃO</x:h3>
+			    </div>            
+				                
+			 <div class="card-body">    
+                 
+			     <div class="row">
+                    				
+                    				<div class="col-md-3 col-lg-3">
+					                   <label class="form-label">Nome da Unidade:  </label>
+					                </div>
+					                
+					                <div class="col-md-3 col-lg-3">
+					                       <label id = "label_nomeUnidade"></label>
+					                </div>	
+					                
+					                	                
+					                    					                     
+			     </div>
+			     
+			     <div class="row">
+                    				
+                    				<div class="col-md-3 col-lg-3">
+					                   <label class="form-label">Classificação:</label>
+					                </div>
+					                
+					                <div class="col-md-3 col-lg-3">
+					                       <label id = "label_classificacao"></label>
+					                </div>	
+					                
+					                                
+					                    					                     
+			     </div>
+			     
+			     <div class="row">
+                    				
+                    				<div class="col-md-3 col-lg-3">
+					                   <label class="form-label">Data do teste: </label>
+					                </div>
+					                
+					                <div class="col-md-3 col-lg-3">
+					                       <label id = "label_dataTeste"></label>
+					                </div>	
+					                
+					                	                
+					                    					                     
+			     </div>
+			     
+			     <div class="row">
+                    				
+                    				<div class="col-md-3 col-lg-3">
+					                   <label class="form-label">Data da Notificação: </label>
+					                </div>
+					                
+					                <div class="col-md-3 col-lg-3">
+					                       <label id = "label_dataNotificacao"></label>
+					                </div>	
+					                
+					                	                
+					                    					                     
+			     </div>
+			     
+          </div>
+    			                
+	</div>
+			                
+			                
+			                
+			                
+			                
+			                
+			                
+    <div class="card">
+			              					                	
+		<div class="card-header" style="background-color: #bbb">
+		   <x:h3 class="card-title">INFORMAÇÕES SOBRE O CASO</x:h3>
+		</div>            
+			
+			     <div class="card-body">
+					               
+					               
+					                <div class="row">				                  
+					                                       
+					                    				
+					                    				<div class="col-md-3 col-lg-3">
+										                   <label class="form-label">Caso: </label>
+										                </div>
+										                
+										                <div class="col-md-3 col-lg-3">
+										                       <label id="label_caso"></label>
+										                </div>	
+										                
+										                <div class="col-md-3 col-lg-3">
+										                   <label class="form-label">Viajou:</label>
+										                </div>
+										                
+										                <div class="col-md-3 col-lg-3">
+										                       <label id="label_viajou"></label>
+										                </div>	                
+										                    					                     
+								     </div>
+								     
+								     <div class="row">
+					                    				
+					                    				<div class="col-md-3 col-lg-3">
+										                   <label class="form-label">Nacionalidade:  </label>
+										                </div>
+										                
+										                <div class="col-md-3 col-lg-3">
+										                       <label id="label_Nacionalidade"></label>
+										                </div>	
+										                
+										                <div id="div_proveniencia" class="col-md-3 col-lg-3">
+										                   <label class="form-label">Proveniência:</label>
+										                </div>
+										                
+										                <div class="col-md-3 col-lg-3">
+										                       <label id="label_Proveniencia"></label>
+										                </div>	                
+										                    					                     
+								     </div>
+								     
+								     <div class="row">
+					                    				
+					                    				<div class="col-md-3 col-lg-3">
+										                   <label class="form-label">Sexo:</label>
+										                </div>
+										                
+										                <div class="col-md-3 col-lg-3">
+										                       <label id="label_Sexo"></label>
+										                </div>	
+										                
+										                <div id="div_data_entrada" class="col-md-3 col-lg-3">
+										                   <label class="form-label">Data de entrada no país:</label>
+										                </div>
+										                
+										                <div class="col-md-3 col-lg-3">
+										                       <label id="label_data_entrada"></label>
+										                </div>	                
+										                    					                     
+								     </div>
+								     
+								     <div class="row">
+					                    				
+					                    				<div class="col-md-3 col-lg-3">
+										                   <label class="form-label">Idade: </label>
+										                </div>
+										                
+										                <div class="col-md-3 col-lg-3">
+										                       <label id="label_idade"></label>
+										                </div>	
+										                
+										                <div id="div_ponto_entrada" class="col-md-3 col-lg-3">
+										                   <label class="form-label">Ponto de entrada: </label>
+										                </div>
+										                
+										                <div class="col-md-3 col-lg-3">
+										                       <label id="label_ponto_entrada"></label>
+										                </div>	                
+										                    					                     
+								</div>
+								
+								<div class="row">
+					                    				
+					                    				<div class="col-md-3 col-lg-3">
+										                   <label class="form-label">Nome: </label>
+										                </div>
+										                
+										                <div class="col-md-3 col-lg-3">
+										                       <label id="label_nome"></label>
+										                </div>
+										                
+										                <div id="div_meio_transporte" class="col-md-3 col-lg-3">
+										                   <label class="form-label">Meio de transporte: </label>
+										                </div>
+										                
+										                <div class="col-md-3 col-lg-3">
+										                       <label id="label_meio_transporte"></label>
+										                </div>	
+										                
+										                	                
+										                    					                     
+								</div>
+								
+								<div class="row">
+					                    				
+					                    				<div class="col-md-3 col-lg-3">
+										                   <label class="form-label">Contacto: </label>
+										                </div>
+										                
+										                <div class="col-md-3 col-lg-3">
+										                       <label id="label_contacto"></label>
+										                </div>
+										                
+										                <div id="div_detectado" class="col-md-3 col-lg-3">
+										                   <label class="form-label">Detectado no ponto de entrada: </label>
+										                </div>
+										                
+										                <div class="col-md-3 col-lg-3">
+										                       <label id="label_Detectado"></label>
+										                </div>	
+										                
+										                	                
+										                    					                     
+								</div>
+								
+								<div class="row">
+					                    				
+					                    				<div class="col-md-3 col-lg-3">
+										                   <label class="form-label">E-mail: </label>
+										                </div>
+										                
+										                <div class="col-md-3 col-lg-3">
+										                       <label id="label_email"></label>
+										                </div>
+										                
+										                	
+										                
+										                	                
+										                    					                     
+								</div>
+								
+					          </div>  
+			                </div>
+			                
+			                
+			                
+			                
+	 <div class="card">
+			              					                	
+		<div class="card-header" style="background-color: #bbb">
+		   <x:h3 class="card-title">INFORMAÇÃO DA RESIDÊNCIA DO CASO</x:h3>
+		</div>            
+			
+			     <div class="card-body">
+            		                
+            		                <div class="row">
+					                    				
+					                    				<div class="col-md-3 col-lg-3">
+										                   <label class="form-label">Província de residência: </label>
+										                </div>
+										                
+										                <div class="col-md-3 col-lg-3">
+										                     <label id="label_provincia_residencia"></label>
+										                </div>	
+										                
+										                	                
+										                    					                     
+								     </div>
+								     
+								     <div class="row">
+					                    				
+					                    				<div class="col-md-3 col-lg-3">
+										                   <label class="form-label">Distrito de residência:  </label>
+										                </div>
+										                
+										                <div class="col-md-3 col-lg-3">
+										                       <label id="label_distrito_residencia"></label>
+										                </div>	
+										                
+										                	                
+										                    					                     
+								     </div>
+								     
+								     <div class="row">
+					                    				
+					                    				<div class="col-md-3 col-lg-3">
+										                   <label class="form-label">Endereço/ local de residência: </label>
+										                </div>
+										                
+										                <div class="col-md-3 col-lg-3">
+										                       <label id="label_endereco"> </label>
+										                </div>	
+										                
+										                	                
+										                    					                     
+								     </div>
+								     
+								     <div class="row">
+					                    				
+					                    				<div class="col-md-3 col-lg-3">
+										                   <label class="form-label">Em isolamento:</label>
+										                </div>
+										                
+										                <div class="col-md-3 col-lg-3">
+										                       <label id="label_emIsolamento"></label>
+										                </div>	
+										                	                
+										                    					                     
+								     </div>
+								     
+								     <div class="row">
+					                    				
+					                    				<div class="col-md-3 col-lg-3">
+										                   <label class="form-label">Provícnia de isolamento:</label>
+										                </div>
+										                
+										                <div class="col-md-3 col-lg-3">
+										                       <label id="label_provincia_Isolamento"></label>
+										                </div>	
+										                	                
+										                    					                     
+								     </div>
+								     
+								     <div class="row">
+					                    				
+					                    				<div class="col-md-3 col-lg-3">
+										                   <label class="form-label">Distrito de isolamento:</label>
+										                </div>
+										                
+										                <div class="col-md-3 col-lg-3">
+										                       <label id="label_distrito_Isolamento"></label>
+										                </div>	
+										                	                
+										                    					                     
+								     </div>
+								     
+								     
+					          </div>  
+			                </div>
+			                
+			      <div class="card">
+			              					                	
+		<div class="card-header" style="background-color: #bbb">
+		   <x:h3 class="card-title">SEGUIMENTO DE CONTACTOS NA UNIDADE</x:h3>
+		</div>            
+			
+			     <div class="card-body">
+            		                
+            		                <div class="row">
+					                    				
+					                    				<div class="col-md-3 col-lg-3">
+										                   <label class="form-label">Última vez que esteve na unidade: </label>
+										                </div>
+										                
+										                <div class="col-md-3 col-lg-3">
+										                     <label id="label_data_ultima"></label>
+										                </div>	
+										                
+										                <div class="col-md-3 col-lg-3">
+										                   <label class="form-label">Data em que informou à unidade:</label>
+										                </div>
+										                
+										                <div class="col-md-3 col-lg-3">
+										                       <label id="label_data_informou"></label>
+										                </div>	                
+										                    					                     
+								     </div>
+								     
+								     <separator/>
+								     <separator/>
+								     
+								 <div id="div_Contactodentro">    
+								     <div class="row" style="background-color: #bbb">
+								      
+								           <div class="col-md-3 col-lg-3">
+										       <label class="form-label">Dentro da Unidade  </label>
+										    </div>
+									   
+								     </div>
+								     
+								     
+								     
+								     <div class="row">
+					                    				
+					                    				<div class="col-md-3 col-lg-3">
+										                   <label class="form-label">Departamento:  </label>
+										                </div>
+										                
+										                <div class="col-md-3 col-lg-3">
+										                       <label id="label_deparamento"></label>
+										                </div>
+										                
+										                <div class="col-md-3 col-lg-3">
+										                       <label id="label_departamento_dentro"></label>
+										                </div>	                
+										                    					                     
+								     </div>
+								     
+								     <div class="row">
+					                    				
+					                    				<div class="col-md-3 col-lg-3">
+										                   <label class="form-label">Sector:  </label>
+										                </div>
+										                
+										                <div class="col-md-3 col-lg-3">
+										                       <label id="label_sector"></label>
+										                </div>
+										                
+										                <div class="col-md-3 col-lg-3">
+										                       <label id="label_sector_dentro"></label>
+										                </div>	                
+										                    					                     
+								     </div>
+								     
+								     <div class="row">
+					                    				
+					                    				<div class="col-md-3 col-lg-3">
+										                   <label class="form-label">Outros espaços: </label>
+										                </div>
+										                
+										                
+										                <div class="col-md-3 col-lg-3">
+										                       <label id="label_outros"></label>
+										                </div>	
+										                
+										                <div class="col-md-3 col-lg-3">
+										                       <label id="label_outros_espacos"></label>
+										                </div>	                
+										                    					                     
+								     </div>
+								 </div>
+								     
+								     <separator/>
+								     <separator/>
+							<div id="div_ContactoFora">
+								     <div class="row" style="background-color: #bbb">
+								       
+								           <div class="col-md-3 col-lg-3">
+										       <label class="form-label">Fora da Unidade  </label>
+										    </div>
+										
+								     </div>
+								     
+								     <div class="row">
+					                    				
+					                    				<div class="col-md-3 col-lg-3">
+										                   <label class="form-label">Unidade Orgância:  </label>
+										                </div>
+										                
+										                <div class="col-md-3 col-lg-3">
+										                       <label id="label_unidade_contacto"></label>
+										                </div>
+										                
+										                <div class="col-md-3 col-lg-3">
+										                       <label id="label_unidade_fora"></label>
+										                </div>	                
+										                    					                     
+								     </div>
+								     
+								     <div class="row">
+					                    				
+					                    				<div class="col-md-3 col-lg-3">
+										                   <label class="form-label">Departamento:  </label>
+										                </div>
+										                
+										                <div class="col-md-3 col-lg-3">
+										                       <label id="label_deparamento2"></label>
+										                </div>
+										                
+										                <div class="col-md-3 col-lg-3">
+										                       <label id="label_departamento_fora"></label>
+										                </div>	                
+										                    					                     
+								     </div>
+								     
+								     <div class="row">
+					                    				
+					                    				<div class="col-md-3 col-lg-3">
+										                   <label class="form-label">Sector:  </label>
+										                </div>
+										                
+										                <div class="col-md-3 col-lg-3">
+										                       <label id="label_sector2"></label>
+										                </div>
+										                
+										                <div class="col-md-3 col-lg-3">
+										                       <label id="label_sector_fora"></label>
+										                </div>	                
+										                    					                     
+								     </div>
+								     
+								     <div class="row">
+					                    				
+					                    				<div class="col-md-3 col-lg-3">
+										                   <label class="form-label">Outros espaços: </label>
+										                </div>
+										                
+										                
+										                <div class="col-md-3 col-lg-3">
+										                       <label id="label_outros2"></label>
+										                </div>	
+										                
+										                <div class="col-md-3 col-lg-3">
+										                       <label id="label_outros_espacos2"></label>
+										                </div>	                
+										                    					                     
+								     </div>
+								     
+						</div>     
+								     
+					          </div>  
+			                </div>
+			                
+			                
+			                
+			                
+			                
+		                
+			                
+			                              
+			                 
+			            </div>    
+	            	</div>
+	          
+	            	
+	         
+         
+				                   <div class="row">
+										<div class="col-md-12 col-lg-12">
+					                     	<div align="right" >
+					                     	    
+								               <button zclass="btn btn-danger" width="110px" id="btn_Editar" >Editar</button>
+					                     		<button iconSclass="fe fe-save" zclass="btn btn-success" width="110px" id="btn_confirmar_ficha" >Confirmar</button>
+					                     	</div>
+					                     </div>
+										
+		                         </div>	          
+	            	
+	            	
+	
+	</window>  
+</zk>

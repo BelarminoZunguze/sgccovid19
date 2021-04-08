@@ -1,0 +1,49 @@
+@CHARSET "ISO-8859-1";
+.button {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: 2.375rem 0.75rem;
+  font-size: 0.9375rem;
+  line-height: 1.84615385;
+  border-radius: 3px;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+@media screen and (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+}
+
+.button:hover, .buttonR:focus {
+  text-decoration: none;
+}
+
+.button:focus, .buttonR.focus {
+  outline: 0;
+  box-shadow: 0 0 0 2px rgba(70, 127, 207, 0.25);
+}
+
+.button.disabled, .buttonR:disabled {
+  opacity: 0.65;
+}
+
+.button:not(:disabled):not(.disabled) {
+  cursor: pointer;
+}
+
+.button:not(:disabled):not(.disabled):active, .buttonR:not(:disabled):not(.disabled).active {
+  background-image: none;
+}
+
+a.button.disabled,
+fieldset:disabled a.buttonR {
+  pointer-events: none;
+}

@@ -1,0 +1,102 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk xmlns:x="xhtml" xmlns:zk="zk" >
+<!-- <window title="new page title" border="normal"> -->
+
+<x:script src="js/require.min.js"></x:script>
+ <x:script src="js/dashboard.js"></x:script>
+  
+<?meta content="text/html; charset=UTF-8" pageEncoding="UTF-8"?>
+<?meta charset="UTF-8"?>
+<?meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"?>
+<?meta http-equiv="X-UA-Compatible" content="ie=edge"?>
+<?meta http-equiv="Content-Language" content="en" ?>
+<?meta name="msapplication-TileColor" content="#2d89ef"?>
+<?meta name="theme-color" content="#4188c9"?>
+<?meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"?>
+<?meta name="apple-mobile-web-app-capable" content="yes"?>
+<?meta name="mobile-web-app-capable" content="yes"?>
+<?meta name="HandheldFriendly" content="True"?>
+<?meta name="MobileOptimized" content="320"?>
+<?link rel="icon" href="images/favicon.ico" type="image/x-icon"?>
+<?link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" ?>
+<?link href="css/dashboard.css" rel="stylesheet" ?>
+<?link href="css/google-font_awesome.css" rel="stylesheet" ?>
+<?link href="css/google_fonts.css" rel="stylesheet" ?>
+<?link href="css/login.css" rel="stylesheet"?>
+
+
+
+<!-- <?variable-resolver class="org.zkoss.spring.DelegatingVariableResolver"?> -->
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<?page title="${c:l('title')} - Login"?>
+
+
+ <div class="">
+    <div class="page">
+      <div class="page-single">
+        <div class="container">
+          <div class="row">
+            <div class="col col-login mx-auto">
+              <div class="text-center mb-6">
+                <x:img src="images/tabler.svg" class="h-6" alt=""></x:img>
+              </div>
+              <x:form class="card" id="f" name="f" action="j_spring_security_check" method="POST">
+                <div class="card-body p-6">
+                 
+                  <div sclass="form-signin-heading text-center">
+                  	<image src="images/moz.png" width="100px" /> 	
+                  	<separator/>
+                  	<x:h4>Plataforma de Monitoria e Notificações de Casos de  COVID-19</x:h4>
+                  	
+                  	<x:div class="alert alert-warning"  if="${empty param.login_error and empty param.loggedout}">
+                        <label value="Autentique com seu utilizador e senha!"></label>
+                    </x:div>
+                    <x:div class="alert alert-danger"   if="${not empty param.login_error}">
+                        <label value="Utilizador ou Senha errada. Tente de novo."></label>
+                    </x:div>
+                                    
+                    <x:div class="alert alert-primary"  if="${not empty param.loggedout}">
+                        <label value="Você foi desconectado com êxito."></label>
+                    </x:div>
+                  </div>
+                  
+                  
+                  <div class="form-group">
+                  <x:hr></x:hr>
+                    <textbox name="j_username" sclass="form-control" placeholder="Utilizador"/>
+                  </div>
+                  <div class="form-group">  
+                    <x:label class="form-label">
+                     <!-- <x:a href="#" class="float-right small">Esqueceu a Senha, click aqui!</x:a>  --> 
+                    </x:label>
+                    
+                    <textbox name="j_password" type="password" sclass="form-control" placeholder="Senha"/>
+                  </div>
+                  <div class="form-group">
+                    <x:label class="custom-control custom-checkbox">
+                      <x:input type="checkbox" class="custom-control-input"></x:input>
+                      <x:span class="custom-control-label">Lembre-me</x:span>
+                    </x:label>
+                  </div>
+                  <div class="form-footer">
+                    <button zclass="btn btn-primary btn-block"  iconSclass="fa fa-check" type="submit" label="Sign in">Entrar</button>
+                  </div>
+                </div>
+              </x:form>
+              <div class="text-center text-muted" visible="false">
+                Não tem uma conta? <x:a href="./register.html">Entrar</x:a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+</div>
+
+
+
+
+
+<!-- </window> -->
+</zk>

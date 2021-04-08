@@ -1,0 +1,12 @@
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+	<x:script src="js/jquery.dataTables.js" type="text/javascript"></x:script>
+	<x:script src="js/data-tables/DT_bootstrap.js" type="text/javascript"></x:script>
+	<x:script src="js/dataTables.tableTools.js"></x:script>
+	<x:script src="js/dynamic_table_init.js" type="text/javascript"></x:script>
+</zk>
+
+
+// Perfil
+// Nerio   Agente da DRH Central 
+// Victor  Director da Unidade
+// Belarminio  Agente da DRH da Unidade

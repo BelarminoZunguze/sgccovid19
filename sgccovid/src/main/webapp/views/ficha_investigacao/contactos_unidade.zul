@@ -1,0 +1,342 @@
+<?page title="Seguimentos de contactos na unidade" contentType="text/html;charset=UTF-8"?>
+<zk xmlns:h="xhtml" xmlns:zk="zk">
+
+	<window id="win" apply="uem.mz.sgccovid19.controller.ContactosUnidadeController">
+
+		<div zclass="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+			<div zclass="box box-success">
+				<div zclass="box-header">
+					<!-- <x:h3 class="box-title">Modulos Registados</x:h3> -->
+					<separator />
+				</div>
+
+
+				<div zclass="box-body">
+
+		<div class="row">
+			<div zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div zclass="box box-default">
+					<div zclass="box-header" align="center" style="background-color: white">
+						<!-- 	<h:hr/> -->
+						<h:label class="box-title" 
+							style="font-family:Georgia,serif;color:black;text-align:center; font-variant: small-caps; text-transform: none; font-weight: 50 margin-bottom: 0;">
+							FICHA DE INVESTIGAÇÃO/NOTIFICAÇÃO DE CASO DE COVID-19
+						</h:label>
+								
+					</div>
+			
+			
+					<div zclass="box-header" align="center" style="background-color:rgb(51, 153, 122)">
+						<!-- 	<h:hr/> -->
+						<h:label class="box-title" 
+							style="font-family:Georgia,serif;color:white;text-align:center; font-variant: small-caps; text-transform: none; font-weight: 50 margin-bottom: 0;">
+							Instrumento adaptado com base na Ficha respectiva do MISAU e simplificado para uso na UEM
+						</h:label>
+								
+					</div>
+					<separator />
+					
+					<div zclass="box-header" align="center">
+						<!-- 	<h:hr/> -->
+						<h:label class="box-title" 
+							style="font-family:Georgia,serif;color:green;text-align:center; font-variant: small-caps; text-transform: none; font-weight: 50 margin-bottom: 0;">
+							SEGUIMENTO DE CONTACTOS NA UNIDADE
+						</h:label>
+								
+					</div>
+					
+							
+					</div>
+					
+				
+				
+			</div>
+		</div>		
+		<separator />
+				</div>
+			</div>
+		</div>
+		
+		
+		<!-- Alteracoes -->
+		
+		<div class="col-12">
+	              			
+	              			
+	              			    
+			              		
+				                
+				                <div>
+                    			  <div class="row" >
+                    				
+                    				<div class="col-md-6 col-lg-6">
+                    				
+                    				<div class="row" >
+                    				 
+                    				 <div class="col-md-6 col-lg-6">
+	                    				 <div >
+	                    				   <label class="form-label">
+											Teve Contacto Dentro da Unidade?
+										   </label>
+	                    				 </div>
+                    				  </div>
+                    				 
+                    				 <div class="col-md-6 col-lg-6">
+	                    				 	   <div >								
+											  <div class="custom-controls-stacked">
+											    <radiogroup>
+												  <radio label="Sim" id="rdb_sim_dentro"></radio>
+												  <radio label="Não" id="rdb_nao"></radio>
+												</radiogroup>  
+											  </div>									
+									       </div>
+                    				 </div>
+                    				
+                    				
+                    				</div>
+                    				
+                    				  
+					                     
+					                </div>
+					                
+					                <div class="col-md-6 col-lg-6">
+                    				
+                    				<div class="row" >
+                    				 
+                    				 <div class="col-md-6 col-lg-6">
+	                    				 <div class="form-group">
+	                    				   <label class="form-label">
+											Teve Contacto Fora da Unidade?
+										   </label>
+	                    				 </div>
+                    				  </div>
+                    				 
+                    				 <div class="col-md-6 col-lg-6">
+	                    				 	   <div >								
+											  <div class="custom-controls-stacked">
+											    <radiogroup>
+												  <radio label="Sim" id="rdb_sim_fora"></radio>
+												  <radio label="Não" id="rdb_nao2"></radio>
+												</radiogroup>  
+											  </div>									
+									       </div>
+                    				 </div>
+                    				
+                    				
+                    				</div>
+                    				
+                    				  
+					                     
+					                </div>
+					                     					                     
+					               </div>
+					               <separator/>
+					               
+		                        
+					               
+					               
+					            <div class="row">
+					            
+					            <div class="col-md-6 col-lg-6">
+					            
+					                 <div class="row">
+								                
+								                   <div class="col-md-4 col-lg-4">
+														<label class="form-label">Departamento:</label>
+												   </div>
+		              	    
+								              	    <div >
+									              	     <div class="form-group">
+					                    				  <combobox id="cbxDepartamentoDentro" readonly="true"
+															placeholder="Selecione o Departamento" width="100%"
+															autocomplete="true">
+															<template name="model">
+																<comboitem label="${each.designacao}">
+																</comboitem>
+															</template>
+														  </combobox>
+														</div>
+								              	    
+								              	    </div>
+								              	    
+													
+												       <div class="col-md-4 col-lg-4">
+															<button iconSclass="fe fe-plus" width="30%"></button>
+														</div>
+												    
+								              	
+								             </div>
+								             
+								    <div class="row">
+								                
+								                   <div class="col-md-4 col-lg-4">
+														<label class="form-label">Sector:</label>
+												   </div>
+		              	    
+								              	    <div class="form-group">
+				                    				  <combobox id="cbxSectorDentro" readonly="true"
+														placeholder="Selecione o Sector" width="100%"
+														autocomplete="true">
+														<template name="model">
+															<comboitem label="${each.designacao}">
+															</comboitem>
+														</template>
+													  </combobox>
+													</div>
+								              	    
+													
+												       <div class="col-md-4 col-lg-4">
+															<button iconSclass="fe fe-plus" width="30%"></button>
+														</div>
+												    
+								              	
+								             </div>
+                    				
+                    				<div class="row">
+                    				 
+                    				 <div class="col-md-6 col-lg-6">
+	                    				 
+										<div class="form-group">
+	                    				   <label class="form-label">
+											Outros Espaços:
+										   </label>
+	                    				 </div>
+	                    				 
+	                    				 <div class="form-group">
+									        <textbox id="txtOutrosDentro" zclass="form-control" width="100%" placeholder="Indique outros"> </textbox>
+							             </div> 
+                    				  </div>
+                    				 
+                    				 </div>     
+					                </div>
+					                
+					                <div class="col-md-6 col-lg-6">
+					                
+					                <div class="row">
+								                
+								                   <div class="col-md-4 col-lg-4">
+														<label class="form-label">Unidade Orgânica:</label>
+												   </div>
+		              	    
+								              	    <div class="form-group">
+				                    				  <combobox id="cbxUnidadeFora" readonly="true"
+														placeholder="Selecione a Unidade Orgânica" width="100%"
+														autocomplete="true">
+														<template name="model">
+															<comboitem label="${each.designacao}">
+															</comboitem>
+														</template>
+													  </combobox>
+													</div>
+								              	    
+													
+												       <div class="col-md-4 col-lg-4">
+															<button iconSclass="fe fe-plus" width="30%"></button>
+														</div>
+												    
+								              	
+								             </div>
+								             
+								     <div class="row">
+								                
+								                   <div class="col-md-4 col-lg-4">
+														<label class="form-label">Departamento:</label>
+												   </div>
+		              	    
+								              	    <div class="form-group">
+				                    				  <combobox id="cbxDepartamentoFora" readonly="true"
+														placeholder="Selecione o Departamento" width="100%"
+														autocomplete="true">
+														<template name="model">
+															<comboitem label="${each.designacao}">
+															</comboitem>
+														</template>
+													  </combobox>
+													</div>
+								              	    
+													
+												       <div class="col-md-4 col-lg-4">
+															<button iconSclass="fe fe-plus" width="30%"></button>
+														</div>
+												    
+								              	
+								             </div>
+								             
+								      <div class="row">
+								                
+								                   <div class="col-md-4 col-lg-4">
+														<label class="form-label">Sector:</label>
+												   </div>
+		              	    
+								              	    <div class="form-group">
+				                    				  <combobox id="cbxSectorFora" readonly="true"
+														placeholder="Selecione o Sector" width="100%"
+														autocomplete="true">
+														<template name="model">
+															<comboitem label="${each.designacao}">
+															</comboitem>
+														</template>
+													  </combobox>
+													</div>
+								              	    
+													
+												       <div class="col-md-4 col-lg-4">
+															<button iconSclass="fe fe-plus" width="30%"></button>
+														</div>
+												    
+								              	
+								             </div>
+								             
+								             
+								    <div class="row">
+                    				 
+                    				 <div class="col-md-6 col-lg-6">
+	                    				 
+										<div class="form-group">
+	                    				   <label class="form-label">
+											Outros Espaços:
+										   </label>
+	                    				 </div>
+	                    				 
+	                    				 <div class="form-group">
+									        <textbox id="txtoutrosFora" zclass="form-control" width="100%" placeholder="Indique outros"> </textbox>
+							             </div> 
+                    				  </div>
+                    				 
+                    				 </div> 
+                    				
+                    				    
+					                </div>
+                    				
+					                    
+						               
+					                  					                     
+					            </div>
+					               
+					               
+					               
+					            
+					               
+					               
+					               
+					               
+				                </div>
+			              
+			                <div class="row">
+				                
+										<div class="col-md-12 col-lg-12">
+					                     	<div align="right" >
+					                     		
+					                     		<button zclass="btn btn-danger" width="110px" id="btn_voltar4" >Voltar</button>
+					                     		<button iconSclass="fe fe-save" zclass="btn btn-success" width="110px" id="btn_gravar_ficha" >Gravar</button>
+					                     	</div>
+					                     </div>
+										
+				            </div>
+			                
+			            </div> 
+		
+		
+		
+	</window>
+</zk>

@@ -1,0 +1,51 @@
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+
+	<div sclass="col-md-12">
+		<x:section class="panel">
+          <x:header class="panel-heading">
+             Registo de Classes
+              <x:span class="tools pull-right">
+                  <a class="fa fa-chevron-down" href="javascript:;"></a>
+                  <a class="fa fa-times" href="javascript:;"></a>
+              </x:span>
+          </x:header>
+        	<div sclass="panel-body">
+	        	<div sclass="form-horizontal" >
+					 <div class="col-sm-6 col-md-6">
+                      <div class="form-group">
+                        <label class="form-label">Codigo</label>
+                        <x:input type="text" class="form-control" placeholder="Codigo" value="MI-01"></x:input>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-md-6">
+                      <div class="form-group">
+                        <x:label class="form-label">Designação</x:label>
+                        <x:input type="text" class="form-control" placeholder="Designação" value="PCA"></x:input>
+                      </div>
+                    </div>
+	                
+	                  	                                    
+	                  <div sclass="form-group">
+	                  	<div sclass="col-lg-2 col-lg-2"></div>
+	                      <div sclass="col-lg-2 col-lg-2">
+	                          <button zclass="btn btn-success btn-sm" iconSclass="fa fa-check" id="btnSave" label="Registar" onClick="@command('save')"></button>
+	                      </div>
+	                      <div sclass="col-lg-1 col-lg-2">
+	                          <button zclass="btn btn-default btn-sm" iconSclass="fa fa-clear" disabled="true" id="btnCancel" label="Cancel" onClick="@command('cancelButton')"></button>
+	                      </div>
+	                      <div sclass="col-lg-2 col-lg-2">
+		                      <button zclass="btn btn-warning btn-sm" iconSclass="fa fa-edit" disabled="true" id="btnEdit" label="Actualizar" onClick="@command('update')"></button>
+		                  </div>
+	                  </div>
+	             </div>
+	             
+			      <div align="center" sclass="form-group">
+
+                       		<button zclass="btn btn-warning btn-sm" iconSclass="fa fa-print" id="btnPrint" onClick="@command('print')" label="Imprimir"></button>
+                    
+                       		<button zclass="btn btn-info btn-sm" iconSclass="fa fa-step-backward" id="" label="Voltar" onClick="@command('voltar')"></button>
+                  </div>
+			</div>
+        </x:section>
+	</div>
+</zk>

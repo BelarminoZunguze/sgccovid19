@@ -1,0 +1,1374 @@
+<zk xmlns:x="xhtml" xmlns:zk="zk" >
+ 
+    <?meta charset="UTF-8"?>
+    <?meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"?>
+    <?meta http-equiv="X-UA-Compatible" content="ie=edge"?>
+    <?meta http-equiv="Content-Language" content="en" ?>
+    <?meta name="msapplication-TileColor" content="#2d89ef"?>
+    <?meta name="theme-color" content="#4188c9"?>
+    <?meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"?>
+    <?meta name="apple-mobile-web-app-capable" content="yes"?>
+    <?meta name="mobile-web-app-capable" content="yes"?>
+    <?meta name="HandheldFriendly" content="True"?>
+    <?meta name="MobileOptimized" content="320"?>
+    <?link rel="icon" href="favicon.ico" type="image/x-icon"?>
+    <?link rel="shortcut icon" type="image/x-icon" href="favicon.ico"?>
+    <!-- Generated: 2018-04-16 09:29:05 +0200 -->
+    <!-- <title>Empty page - tabler.github.io - a responsive, flat and full featured admin template</title> -->
+    <?link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"?>
+    <?link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext"?>
+    <script src="js/require.min.js"></script>
+    <script>
+      requirejs.config({
+          baseUrl: '.'
+      });
+    </script>
+    <!-- Dashboard Core -->
+    <?link href="css/dashboard.css" rel="stylesheet"?>
+    <script src="js/dashboard.js"></script>
+    <!-- c3.js Charts Plugin -->
+    <?link href="plugins/charts-c3/plugin.css" rel="stylesheet"?>
+    <script src="plugins/charts-c3/plugin.js"></script>
+    <!-- Google Maps Plugin -->
+    <?link href="plugins/maps-google/plugin.css" rel="stylesheet"?>
+    
+    <?link href="css/tabs_style.css" rel="stylesheet"?>
+    <script src="plugins/maps-google/plugin.js"></script>
+    <!-- Input Mask Plugin -->
+    <script src="plugins/input-mask/plugin.js"></script>
+    
+    <script src="puretabs.js"></script>
+	
+  	
+  	
+  <div class="">
+    <div class="page">
+      <div class="page-main">
+        <div class="header py-4">
+          <div class="container">
+            <div class="d-flex">
+              <x:a class="header-brand" href="index.html">
+                <x:img src="demo/brand/tabler.svg" class="header-brand-img" alt="tabler logo"></x:img>
+              </x:a>
+              <div class="d-flex order-lg-2 ml-auto">
+                <div class="nav-item d-none d-md-flex">
+                  <x:a href="https://github.com/tabler/tabler" class="btn btn-sm btn-outline-primary" target="_blank">Source code</x:a>
+                </div>
+                <div class="dropdown d-none d-md-flex">
+                  <x:a class="nav-link icon" data-toggle="dropdown">
+                    <x:i class="fe fe-bell"></x:i>
+                    <x:span class="nav-unread"></x:span>
+                  </x:a>
+                  <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                    <x:a href="#" class="dropdown-item d-flex">
+                      <x:span class="avatar mr-3 align-self-center" style="background-image: url(demo/faces/male/41.jpg)"></x:span>
+                      <div>
+                        <x:strong>Nathan</x:strong> pushed new commit: Fix page load performance issue.
+                        <div class="small text-muted">10 minutes ago</div>
+                      </div>
+                    </x:a>
+                    <x:a href="#" class="dropdown-item d-flex">
+                      <x:span class="avatar mr-3 align-self-center" style="background-image: url(demo/faces/female/1.jpg)"></x:span>
+                      <div>
+                        <x:strong>Alice</x:strong> started new task: Tabler UI design.
+                        <div class="small text-muted">1 hour ago</div>
+                      </div>
+                    </x:a>
+                    <x:a href="#" class="dropdown-item d-flex">
+                      <x:span class="avatar mr-3 align-self-center" style="background-image: url(demo/faces/female/18.jpg)"></x:span>
+                      <div>
+                        <x:strong>Rose</x:strong> deployed new version of NodeJS REST Api V3
+                        <div class="small text-muted">2 hours ago</div>
+                      </div>
+                    </x:a>
+                    <div class="dropdown-divider"></div>
+                    <x:a href="#" class="dropdown-item text-center text-muted-dark">Mark all as read</x:a>
+                  </div>
+                </div>
+                <div class="dropdown">
+                  <x:a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
+                    <x:span class="avatar" style="background-image: url(./demo/faces/female/25.jpg)"></x:span>
+                    <x:span class="ml-2 d-none d-lg-block">
+                      <x:span class="text-default">Jane Pearson</x:span>
+                      <x:small class="text-muted d-block mt-1">Administrator</x:small>
+                    </x:span>
+                  </x:a>
+                  <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                    <x:a class="dropdown-item" href="#">
+                      <x:i class="dropdown-icon fe fe-user"></x:i> Profile
+                    </x:a>
+                    <x:a class="dropdown-item" href="#">
+                      <x:i class="dropdown-icon fe fe-settings"></x:i> Settings
+                    </x:a>
+                    <x:a class="dropdown-item" href="#">
+                      <x:span class="float-right"><x:span class="badge badge-primary">6</x:span></x:span>
+                      <x:i class="dropdown-icon fe fe-mail"></x:i> Inbox
+                    </x:a>
+                    <x:a class="dropdown-item" href="#">
+                      <x:i class="dropdown-icon fe fe-send"></x:i> Message
+                    </x:a>
+                    <div class="dropdown-divider"></div>
+                    <x:a class="dropdown-item" href="#">
+                      <x:i class="dropdown-icon fe fe-help-circle"></x:i> Need help?
+                    </x:a>
+                    <x:a class="dropdown-item" href="#">
+                      <x:i class="dropdown-icon fe fe-log-out"></x:i> Sign out
+                    </x:a>
+                  </div>
+                </div>
+              </div>
+              <x:a href="#" class="header-toggler d-lg-none ml-3 ml-lg-0" data-toggle="collapse" data-target="#headerMenuCollapse">
+                <x:span class="header-toggler-icon"></x:span>
+              </x:a>
+            </div>
+          </div>
+        </div>
+        
+        
+        <div class="header collapse d-lg-flex p-0" id="headerMenuCollapse">
+          <div class="container">
+            <div class="row align-items-center">
+              <div class="col-lg-3 ml-auto">
+                <x:form class="input-icon my-3 my-lg-0">
+                  <x:input type="search" class="form-control header-search" placeholder="Search hellip;" tabindex="1"></x:input>
+                  <div class="input-icon-addon">
+                    <x:i class="fe fe-search"></x:i>
+                  </div>
+                </x:form>
+              </div>
+              <div class="col-lg order-lg-first">
+                <x:ul class="nav nav-tabs border-0 flex-column flex-lg-row">
+                  <x:li class="nav-item">
+                    <x:a href="index.html" class="nav-link"><x:i class="fe fe-home"></x:i> Home</x:a>
+                  </x:li>
+                  <x:li class="nav-item">
+                    <x:a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><x:i class="fe fe-box"></x:i> Interface</x:a>
+                    <div class="dropdown-menu dropdown-menu-arrow">
+                      <x:a href="cards.html" class="dropdown-item ">Cards design</x:a>
+                      <x:a href="charts.html" class="dropdown-item ">Charts</x:a>
+                      <x:a href="pricing-cards.html" class="dropdown-item ">Pricing cards</x:a>
+                    </div>
+                  </x:li>
+                  <x:li class="nav-item dropdown">
+                    <x:a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><x:i class="fe fe-calendar"></x:i> Components</x:a>
+                    <div class="dropdown-menu dropdown-menu-arrow">
+                      <x:a href="maps.html" class="dropdown-item ">Maps</x:a>
+                      <x:a href="icons.html" class="dropdown-item ">Icons</x:a>
+                      <x:a href="store.html" class="dropdown-item ">Store</x:a>
+                      <x:a href="blog.html" class="dropdown-item ">Blog</x:a>
+                      <x:a href="carousel.html" class="dropdown-item ">Carousel</x:a>
+                    </div>
+                  </x:li>
+                  <x:li class="nav-item dropdown">
+                    <x:a href="javascript:void(0)" class="nav-link active" data-toggle="dropdown"><x:i class="fe fe-file"></x:i> Pages</x:a>
+                    <div class="dropdown-menu dropdown-menu-arrow">
+                      <x:a href="profile.html" class="dropdown-item ">Profile</x:a>
+                      <x:a href="login.html" class="dropdown-item ">Login</x:a>
+                      <x:a href="register.html" class="dropdown-item ">Register</x:a>
+                      <x:a href="forgot-password.html" class="dropdown-item ">Forgot password</x:a>
+                      <x:a href="400.html" class="dropdown-item ">400 error</x:a>
+                      <x:a href="401.html" class="dropdown-item ">401 error</x:a>
+                      <x:a href="403.html" class="dropdown-item ">403 error</x:a>
+                      <x:a href="404.html" class="dropdown-item ">404 error</x:a>
+                      <x:a href="500.html" class="dropdown-item ">500 error</x:a>
+                      <x:a href="503.html" class="dropdown-item ">503 error</x:a>
+                      <x:a href="email.html" class="dropdown-item ">Email</x:a>
+                      <x:a href="empty.html" class="dropdown-item active">Empty page</x:a>
+                      <x:a href="rtl.html" class="dropdown-item ">RTL mode</x:a>
+                    </div>
+                  </x:li>
+                  <x:li class="nav-item dropdown">
+                    <x:a href="form-elements.html" class="nav-link"><x:i class="fe fe-check-square"></x:i> Forms</x:a>
+                  </x:li>
+                  <x:li class="nav-item">
+                    <x:a href="gallery.html" class="nav-link"><x:i class="fe fe-image"></x:i> Gallery</x:a>
+                  </x:li>
+                  <x:li class="nav-item">
+                    <x:a href="docs/index.html" class="nav-link"><x:i class="fe fe-file-text"></x:i> Documentation</x:a>
+                  </x:li>
+                </x:ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="my-3 my-md-5">
+        	<div class="container">
+	            <!-- <div class="page-header">
+	              <x:h1 class="page-title">
+	                Dashboard
+	              </x:h1>
+	            </div> -->
+	            
+	            
+	           <!--  <div class="row row-cards row-deck"> -->
+	            
+		            <div class="row">
+	              		<div class="col-12">
+	              			<div class="card">
+			              		<div class="card-header">
+				                    <x:h3 class="card-title">Form elements</x:h3>
+				                </div>
+				                
+				                <div class="card-body">
+                    				<div class="row">
+				                		<div class="col-md-6 col-lg-4">
+					                        <div class="form-group">
+					                          <label class="form-label">Static</label>
+					                          <div class="form-control-plaintext">Username</div>
+					                        </div>
+					                        <div class="form-group">
+					                          <label class="form-label">Text</label>
+					                          <textbox class="form-control" name="example-text-input" placeholder="Text.." />
+					                        </div>
+					                     </div>  
+					                     
+					                     <div class="col-md-6 col-lg-4">
+					                        <div class="form-group">
+					                          <label class="form-label">Text</label>
+					                          <textbox class="form-control" name="example-text-input" placeholder="Text.." />
+					                        </div>
+					                        <div class="form-group">
+					                          <label class="form-label">Text</label>
+					                          <textbox class="form-control" name="example-text-input" placeholder="Text.." />
+					                        </div>
+					                     </div> 
+					                     
+					                     <div class="col-md-6 col-lg-4">
+					                        <div class="form-group">
+					                          <label class="form-label">Text</label>
+					                          <textbox class="form-control" name="example-text-input" placeholder="Text.." />
+					                        </div>
+					                        <div class="form-group">
+					                          <label class="form-label">Text</label>
+					                          <textbox class="form-control" name="example-text-input" placeholder="Text.." />
+					                        </div>
+					                     </div>  
+					                     
+					                     <div class="col-md-12 col-lg-12">
+					                     	<div align="right" >
+					                     		<button sclass="btn btn-success" width="110px" >Gravar</button>
+					                     		<button sclass="btn btn-warning" width="110px" >Actualizar</button>
+					                     		<button sclass="btn btn-info" width="110px" >Cancelar</button>
+					                     	</div>
+					                     </div>
+					                     
+				                	</div>
+				                </div>
+			                </div>
+			            </div>    
+	            	</div>
+	            
+	            <!-- </div> -->
+	            
+	            
+	            
+	            
+	            
+	            
+	            
+	            
+	            
+	            <!-- <div class="col-md-6 col-lg-4">
+                <div class="card">
+                  <div class="card-header">
+                    <h3 class="card-title">Members</h3>
+                  </div>
+                  <div class="card-body o-auto" style="height: 15rem">
+                    <x:ul class="list-unstyled list-separated">
+                      <x:li class="list-separated-item">
+                        <div class="row align-items-center">
+                          <div class="col-auto">
+                            <span class="avatar avatar-md d-block" style="background-image: url(demo/faces/female/12.jpg)"></span>
+                          </div>
+                          <div class="col">
+                            <div>
+                              <x:a href="javascript:void(0)" class="text-inherit">Amanda Hunt</a>
+                            </div>
+                            <small class="d-block item-except text-sm text-muted h-1x">amanda_hunt@example.com</small>
+                          </div>
+                          <div class="col-auto">
+                            <div class="item-action dropdown">
+                              <x:a href="javascript:void(0)" data-toggle="dropdown" class="icon"><i class="fe fe-more-vertical"></i></a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <x:a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fe fe-tag"></i> Action </a>
+                                <x:a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fe fe-edit-2"></i> Another action </a>
+                                <x:a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fe fe-message-square"></i> Something else here</a>
+                                <div class="dropdown-divider"></div>
+                                <x:a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fe fe-link"></i> Separated link</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </x:li>
+                      <x:li class="list-separated-item">
+                        <div class="row align-items-center">
+                          <div class="col-auto">
+                            <span class="avatar avatar-md d-block" style="background-image: url(demo/faces/female/21.jpg)"></span>
+                          </div>
+                          <div class="col">
+                            <div>
+                              <x:a href="javascript:void(0)" class="text-inherit">Laura Weaver</a>
+                            </div>
+                            <small class="d-block item-except text-sm text-muted h-1x">lauraweaver@example.com</small>
+                          </div>
+                          <div class="col-auto">
+                            <div class="item-action dropdown">
+                              <x:a href="javascript:void(0)" data-toggle="dropdown" class="icon"><i class="fe fe-more-vertical"></i></a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <x:a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fe fe-tag"></i> Action </a>
+                                <x:a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fe fe-edit-2"></i> Another action </a>
+                                <x:a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fe fe-message-square"></i> Something else here</a>
+                                <div class="dropdown-divider"></div>
+                                <x:a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fe fe-link"></i> Separated link</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </x:li>
+                      <x:li class="list-separated-item">
+                        <div class="row align-items-center">
+                          <div class="col-auto">
+                            <span class="avatar avatar-md d-block" style="background-image: url(demo/faces/female/29.jpg)"></span>
+                          </div>
+                          <div class="col">
+                            <div>
+                              <x:a href="javascript:void(0)" class="text-inherit">Margaret Berry</a>
+                            </div>
+                            <small class="d-block item-except text-sm text-muted h-1x">margaret88@example.com</small>
+                          </div>
+                          <div class="col-auto">
+                            <div class="item-action dropdown">
+                              <x:a href="javascript:void(0)" data-toggle="dropdown" class="icon"><i class="fe fe-more-vertical"></i></a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <x:a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fe fe-tag"></i> Action </a>
+                                <x:a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fe fe-edit-2"></i> Another action </a>
+                                <x:a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fe fe-message-square"></i> Something else here</a>
+                                <div class="dropdown-divider"></div>
+                                <x:a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fe fe-link"></i> Separated link</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </x:li>
+                      <x:li class="list-separated-item">
+                        <div class="row align-items-center">
+                          <div class="col-auto">
+                            <span class="avatar avatar-md d-block" style="background-image: url(demo/faces/female/2.jpg)"></span>
+                          </div>
+                          <div class="col">
+                            <div>
+                              <x:a href="javascript:void(0)" class="text-inherit">Nancy Herrera</a>
+                            </div>
+                            <small class="d-block item-except text-sm text-muted h-1x">nancy_83@example.com</small>
+                          </div>
+                          <div class="col-auto">
+                            <div class="item-action dropdown">
+                              <x:a href="javascript:void(0)" data-toggle="dropdown" class="icon"><i class="fe fe-more-vertical"></i></a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <x:a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fe fe-tag"></i> Action </a>
+                                <x:a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fe fe-edit-2"></i> Another action </a>
+                                <x:a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fe fe-message-square"></i> Something else here</a>
+                                <div class="dropdown-divider"></div>
+                                <x:a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fe fe-link"></i> Separated link</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </x:li>
+                      <x:li class="list-separated-item">
+                        <div class="row align-items-center">
+                          <div class="col-auto">
+                            <span class="avatar avatar-md d-block" style="background-image: url(demo/faces/male/34.jpg)"></span>
+                          </div>
+                          <div class="col">
+                            <div>
+                              <x:a href="javascript:void(0)" class="text-inherit">Edward Larson</a>
+                            </div>
+                            <small class="d-block item-except text-sm text-muted h-1x">edward90@example.com</small>
+                          </div>
+                          <div class="col-auto">
+                            <div class="item-action dropdown">
+                              <x:a href="javascript:void(0)" data-toggle="dropdown" class="icon"><i class="fe fe-more-vertical"></i></a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <x:a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fe fe-tag"></i> Action </a>
+                                <x:a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fe fe-edit-2"></i> Another action </a>
+                                <x:a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fe fe-message-square"></i> Something else here</a>
+                                <div class="dropdown-divider"></div>
+                                <x:a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fe fe-link"></i> Separated link</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </x:li>
+                      <x:li class="list-separated-item">
+                        <div class="row align-items-center">
+                          <div class="col-auto">
+                            <span class="avatar avatar-md d-block" style="background-image: url(demo/faces/female/11.jpg)"></span>
+                          </div>
+                          <div class="col">
+                            <div>
+                              <x:a href="javascript:void(0)" class="text-inherit">Joan Hanson</a>
+                            </div>
+                            <small class="d-block item-except text-sm text-muted h-1x">joan.hanson@example.com</small>
+                          </div>
+                          <div class="col-auto">
+                            <div class="item-action dropdown">
+                              <x:a href="javascript:void(0)" data-toggle="dropdown" class="icon"><i class="fe fe-more-vertical"></i></a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <x:a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fe fe-tag"></i> Action </a>
+                                <x:a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fe fe-edit-2"></i> Another action </a>
+                                <x:a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fe fe-message-square"></i> Something else here</a>
+                                <div class="dropdown-divider"></div>
+                                <x:a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fe fe-link"></i> Separated link</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </x:li>
+                    </x:ul>
+                  </div>
+                </div>
+              </div> -->
+	            
+	            
+	            
+	            
+	            
+	            
+	            
+	            
+	            
+	            
+	            
+	            
+	            
+	            
+	            
+	            
+	            
+	            
+	            
+	            
+	            
+	            
+	            
+	            
+	            <div class="row row-cards row-deck">
+	        
+	        
+	        
+	        <div class="col-12">
+                <div class="card ">
+                  
+                  <div class="card-body o-auto" style="height: 500px">
+                  <div class="table-responsive">
+                    <x:table class="table card-table table-vcenter text-nowrap">
+                      <x:thead>
+                        <x:tr>
+                          <x:th class="w-1">No.</x:th>
+                          <x:th>Invoice Subject</x:th>
+                          <x:th>Client</x:th>
+                          <x:th>VAT No.</x:th>
+                          <x:th>Created</x:th>
+                          <x:th>Status</x:th>
+                          <x:th>Price</x:th>
+                          <x:th></x:th>
+                          <x:th></x:th>
+                        </x:tr>
+                      </x:thead>
+                      <x:tbody>
+                        <x:tr>
+                          <x:td><x:span class="text-muted">001401</x:span></x:td>
+                          <x:td><x:a href="invoice.html" class="text-inherit">Design Works</x:a></x:td>
+                          <x:td>
+                            Carlson Limited
+                          </x:td>
+                          <x:td>
+                            87956621
+                          </x:td>
+                          <x:td>
+                            15 Dec 2017
+                          </x:td>
+                          <x:td>
+                            <x:span class="status-icon bg-success"></x:span> Paid
+                          </x:td>
+                          <x:td>$887</x:td>
+                          <x:td class="text-right">
+                            <x:a href="javascript:void(0)" class="btn btn-secondary btn-sm">Manage</x:a>
+                            <div class="dropdown">
+                              <button class="btn btn-secondary btn-sm dropdown-toggle" >Actions</button>
+                            </div>
+                          </x:td>
+                          <x:td>
+                            <x:a class="icon" href="javascript:void(0)">
+                              <x:i class="fe fe-edit"></x:i>
+                            </x:a>
+                          </x:td>
+                        </x:tr>
+                        <x:tr>
+                          <x:td><x:span class="text-muted">001402</x:span></x:td>
+                          <x:td><x:a href="invoice.html" class="text-inherit">UX Wireframes</x:a></x:td>
+                          <x:td>
+                            Adobe
+                          </x:td>
+                          <x:td>
+                            87956421
+                          </x:td>
+                          <x:td>
+                            12 Apr 2017
+                          </x:td>
+                          <x:td>
+                            <x:span class="status-icon bg-warning"></x:span> Pending
+                          </x:td>
+                          <x:td>$1200</x:td>
+                          <x:td class="text-right">
+                            <x:a href="javascript:void(0)" class="btn btn-secondary btn-sm">Manage</x:a>
+                            <div class="dropdown">
+                              <button class="btn btn-secondary btn-sm dropdown-toggle" >Actions</button>
+                            </div>
+                          </x:td>
+                          <x:td>
+                            <x:a class="icon" href="javascript:void(0)">
+                              <x:i class="fe fe-edit"></x:i>
+                            </x:a>
+                          </x:td>
+                        </x:tr>
+                        
+                        <x:tr>
+                          <x:td><x:span class="text-muted">001402</x:span></x:td>
+                          <x:td><x:a href="invoice.html" class="text-inherit">UX Wireframes</x:a></x:td>
+                          <x:td>
+                            Adobe
+                          </x:td>
+                          <x:td>
+                            87956421
+                          </x:td>
+                          <x:td>
+                            12 Apr 2017
+                          </x:td>
+                          <x:td>
+                            <x:span class="status-icon bg-warning"></x:span> Pending
+                          </x:td>
+                          <x:td>$1200</x:td>
+                          <x:td class="text-right">
+                            <x:a href="javascript:void(0)" class="btn btn-secondary btn-sm">Manage</x:a>
+                            <div class="dropdown">
+                              <button class="btn btn-secondary btn-sm dropdown-toggle" >Actions</button>
+                            </div>
+                          </x:td>
+                          <x:td>
+                            <x:a class="icon" href="javascript:void(0)">
+                              <x:i class="fe fe-edit"></x:i>
+                            </x:a>
+                          </x:td>
+                        </x:tr>
+                        
+                        <x:tr>
+                          <x:td><x:span class="text-muted">001402</x:span></x:td>
+                          <x:td><x:a href="invoice.html" class="text-inherit">UX Wireframes</x:a></x:td>
+                          <x:td>
+                            Adobe
+                          </x:td>
+                          <x:td>
+                            87956421
+                          </x:td>
+                          <x:td>
+                            12 Apr 2017
+                          </x:td>
+                          <x:td>
+                            <x:span class="status-icon bg-warning"></x:span> Pending
+                          </x:td>
+                          <x:td>$1200</x:td>
+                          <x:td class="text-right">
+                            <x:a href="javascript:void(0)" class="btn btn-secondary btn-sm">Manage</x:a>
+                            <div class="dropdown">
+                              <button class="btn btn-secondary btn-sm dropdown-toggle" >Actions</button>
+                            </div>
+                          </x:td>
+                          <x:td>
+                            <x:a class="icon" href="javascript:void(0)">
+                              <x:i class="fe fe-edit"></x:i>
+                            </x:a>
+                          </x:td>
+                        </x:tr>
+                        
+                        <x:tr>
+                          <x:td><x:span class="text-muted">001402</x:span></x:td>
+                          <x:td><x:a href="invoice.html" class="text-inherit">UX Wireframes</x:a></x:td>
+                          <x:td>
+                            Adobe
+                          </x:td>
+                          <x:td>
+                            87956421
+                          </x:td>
+                          <x:td>
+                            12 Apr 2017
+                          </x:td>
+                          <x:td>
+                            <x:span class="status-icon bg-warning"></x:span> Pending
+                          </x:td>
+                          <x:td>$1200</x:td>
+                          <x:td class="text-right">
+                            <x:a href="javascript:void(0)" class="btn btn-secondary btn-sm">Manage</x:a>
+                            <div class="dropdown">
+                              <button class="btn btn-secondary btn-sm dropdown-toggle" >Actions</button>
+                            </div>
+                          </x:td>
+                          <x:td>
+                            <x:a class="icon" href="javascript:void(0)">
+                              <x:i class="fe fe-edit"></x:i>
+                            </x:a>
+                          </x:td>
+                        </x:tr>
+                        
+                        <x:tr>
+                          <x:td><x:span class="text-muted">001402</x:span></x:td>
+                          <x:td><x:a href="invoice.html" class="text-inherit">UX Wireframes</x:a></x:td>
+                          <x:td>
+                            Adobe
+                          </x:td>
+                          <x:td>
+                            87956421
+                          </x:td>
+                          <x:td>
+                            12 Apr 2017
+                          </x:td>
+                          <x:td>
+                            <x:span class="status-icon bg-warning"></x:span> Pending
+                          </x:td>
+                          <x:td>$1200</x:td>
+                          <x:td class="text-right">
+                            <x:a href="javascript:void(0)" class="btn btn-secondary btn-sm">Manage</x:a>
+                            <div class="dropdown">
+                              <button class="btn btn-secondary btn-sm dropdown-toggle" >Actions</button>
+                            </div>
+                          </x:td>
+                          <x:td>
+                            <x:a class="icon" href="javascript:void(0)">
+                              <x:i class="fe fe-edit"></x:i>
+                            </x:a>
+                          </x:td>
+                        </x:tr>
+                        
+                        <x:tr>
+                          <x:td><x:span class="text-muted">001402</x:span></x:td>
+                          <x:td><x:a href="invoice.html" class="text-inherit">UX Wireframes</x:a></x:td>
+                          <x:td>
+                            Adobe
+                          </x:td>
+                          <x:td>
+                            87956421
+                          </x:td>
+                          <x:td>
+                            12 Apr 2017
+                          </x:td>
+                          <x:td>
+                            <x:span class="status-icon bg-warning"></x:span> Pending
+                          </x:td>
+                          <x:td>$1200</x:td>
+                          <x:td class="text-right">
+                            <x:a href="javascript:void(0)" class="btn btn-secondary btn-sm">Manage</x:a>
+                            <div class="dropdown">
+                              <button class="btn btn-secondary btn-sm dropdown-toggle" >Actions</button>
+                            </div>
+                          </x:td>
+                          <x:td>
+                            <x:a class="icon" href="javascript:void(0)">
+                              <x:i class="fe fe-edit"></x:i>
+                            </x:a>
+                          </x:td>
+                        </x:tr>
+                        
+                        <x:tr>
+                          <x:td><x:span class="text-muted">001402</x:span></x:td>
+                          <x:td><x:a href="invoice.html" class="text-inherit">UX Wireframes</x:a></x:td>
+                          <x:td>
+                            Adobe
+                          </x:td>
+                          <x:td>
+                            87956421
+                          </x:td>
+                          <x:td>
+                            12 Apr 2017
+                          </x:td>
+                          <x:td>
+                            <x:span class="status-icon bg-warning"></x:span> Pending
+                          </x:td>
+                          <x:td>$1200</x:td>
+                          <x:td class="text-right">
+                            <x:a href="javascript:void(0)" class="btn btn-secondary btn-sm">Manage</x:a>
+                            <div class="dropdown">
+                              <button class="btn btn-secondary btn-sm dropdown-toggle" >Actions</button>
+                            </div>
+                          </x:td>
+                          <x:td>
+                            <x:a class="icon" href="javascript:void(0)">
+                              <x:i class="fe fe-edit"></x:i>
+                            </x:a>
+                          </x:td>
+                        </x:tr>
+                        
+                        <x:tr>
+                          <x:td><x:span class="text-muted">001402</x:span></x:td>
+                          <x:td><x:a href="invoice.html" class="text-inherit">UX Wireframes</x:a></x:td>
+                          <x:td>
+                            Adobe
+                          </x:td>
+                          <x:td>
+                            87956421
+                          </x:td>
+                          <x:td>
+                            12 Apr 2017
+                          </x:td>
+                          <x:td>
+                            <x:span class="status-icon bg-warning"></x:span> Pending
+                          </x:td>
+                          <x:td>$1200</x:td>
+                          <x:td class="text-right">
+                            <x:a href="javascript:void(0)" class="btn btn-secondary btn-sm">Manage</x:a>
+                            <div class="dropdown">
+                              <button class="btn btn-secondary btn-sm dropdown-toggle" >Actions</button>
+                            </div>
+                          </x:td>
+                          <x:td>
+                            <x:a class="icon" href="javascript:void(0)">
+                              <x:i class="fe fe-edit"></x:i>
+                            </x:a>
+                          </x:td>
+                        </x:tr>
+                        
+                        <x:tr>
+                          <x:td><x:span class="text-muted">001402</x:span></x:td>
+                          <x:td><x:a href="invoice.html" class="text-inherit">UX Wireframes</x:a></x:td>
+                          <x:td>
+                            Adobe
+                          </x:td>
+                          <x:td>
+                            87956421
+                          </x:td>
+                          <x:td>
+                            12 Apr 2017
+                          </x:td>
+                          <x:td>
+                            <x:span class="status-icon bg-warning"></x:span> Pending
+                          </x:td>
+                          <x:td>$1200</x:td>
+                          <x:td class="text-right">
+                            <x:a href="javascript:void(0)" class="btn btn-secondary btn-sm">Manage</x:a>
+                            <div class="dropdown">
+                              <button class="btn btn-secondary btn-sm dropdown-toggle" >Actions</button>
+                            </div>
+                          </x:td>
+                          <x:td>
+                            <x:a class="icon" href="javascript:void(0)">
+                              <x:i class="fe fe-edit"></x:i>
+                            </x:a>
+                          </x:td>
+                        </x:tr>
+                                                
+                        <x:tr>
+                          <x:td><x:span class="text-muted">001402</x:span></x:td>
+                          <x:td><x:a href="invoice.html" class="text-inherit">UX Wireframes</x:a></x:td>
+                          <x:td>
+                            Adobe
+                          </x:td>
+                          <x:td>
+                            87956421
+                          </x:td>
+                          <x:td>
+                            12 Apr 2017
+                          </x:td>
+                          <x:td>
+                            <x:span class="status-icon bg-warning"></x:span> Pending
+                          </x:td>
+                          <x:td>$1200</x:td>
+                          <x:td class="text-right">
+                            <x:a href="javascript:void(0)" class="btn btn-secondary btn-sm">Manage</x:a>
+                            <div class="dropdown">
+                              <button class="btn btn-secondary btn-sm dropdown-toggle" >Actions</button>
+                            </div>
+                          </x:td>
+                          <x:td>
+                            <x:a class="icon" href="javascript:void(0)">
+                              <x:i class="fe fe-edit"></x:i>
+                            </x:a>
+                          </x:td>
+                        </x:tr>
+                        
+                        <x:tr>
+                          <x:td><x:span class="text-muted">001402</x:span></x:td>
+                          <x:td><x:a href="invoice.html" class="text-inherit">UX Wireframes</x:a></x:td>
+                          <x:td>
+                            Adobe
+                          </x:td>
+                          <x:td>
+                            87956421
+                          </x:td>
+                          <x:td>
+                            12 Apr 2017
+                          </x:td>
+                          <x:td>
+                            <x:span class="status-icon bg-warning"></x:span> Pending
+                          </x:td>
+                          <x:td>$1200</x:td>
+                          <x:td class="text-right">
+                            <x:a href="javascript:void(0)" class="btn btn-secondary btn-sm">Manage</x:a>
+                            <div class="dropdown">
+                              <button class="btn btn-secondary btn-sm dropdown-toggle" >Actions</button>
+                            </div>
+                          </x:td>
+                          <x:td>
+                            <x:a class="icon" href="javascript:void(0)">
+                              <x:i class="fe fe-edit"></x:i>
+                            </x:a>
+                          </x:td>
+                        </x:tr>
+                        
+                        
+                      </x:tbody>
+                    </x:table>
+                  </div>
+                  </div>
+                  
+                </div>
+              </div>
+	        
+	        
+	        </div>
+	            
+	            
+	            
+	            
+	            
+	            
+	            
+	           <div class="row row-cards row-deck">
+              <div class="col-lg-6">
+                <div class="card card-aside">
+                  <x:a href="#" class="card-aside-column" style="background-image: url(./demo/photos/david-klaasen-54203-500.jpg)"></x:a>
+                  <div class="card-body d-flex flex-column">
+                    <x:h4><x:a href="#">And this isn't my nose. This is a false one.</x:a></x:h4>
+                    <div class="text-muted">Look, my liege! The Knights Who Say Ni demand a sacrifice! …Are you suggesting that coconuts migr...</div>
+                    <div class="d-flex align-items-center pt-5 mt-auto">
+                      <div class="avatar avatar-md mr-3" style="background-image: url(./demo/faces/female/18.jpg)"></div>
+                      <div>
+                        <x:a href="./profile.html" class="text-default">Rose Bradley</x:a>
+                        <x:small class="d-block text-muted">3 days ago</x:small>
+                      </div>
+                      <div class="ml-auto text-muted">
+                        <x:a href="javascript:void(0)" class="icon d-none d-md-inline-block ml-3"><x:i class="fe fe-heart mr-1"></x:i></x:a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="card card-aside">
+                  <x:a href="#" class="card-aside-column" style="background-image: url(./demo/photos/david-marcu-114194-500.jpg)"></x:a>
+                  <div class="card-body d-flex flex-column">
+                    <x:h4><x:a href="#">Well, I didn't vote for you.</x:a></x:h4>
+                    <div class="text-muted">Well, we did do the nose. Why? Shut up! Will you shut up?! You don't frighten us, English pig-dog...</div>
+                    <div class="d-flex align-items-center pt-5 mt-auto">
+                      <div class="avatar avatar-md mr-3" style="background-image: url(./demo/faces/male/16.jpg)"></div>
+                      <div>
+                        <x:a href="./profile.html" class="text-default">Peter Richards</x:a>
+                        <x:small class="d-block text-muted">3 days ago</x:small>
+                      </div>
+                      <div class="ml-auto text-muted">
+                        <x:a href="javascript:void(0)" class="icon d-none d-md-inline-block ml-3"><x:i class="fe fe-heart mr-1"></x:i></x:a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+	            
+	            
+	       <div class="row row-cards row-deck">     
+	            
+	            
+	            
+	            
+	            
+	            <div class="col-12">
+                <div class="card">
+                  <div class="table-responsive">
+                    <x:table class="table table-hover table-outline table-vcenter text-nowrap card-table">
+                      <x:thead>
+                        <x:tr>
+                          <x:th class="text-center w-1"><x:i class="icon-people"></x:i></x:th>
+                          <x:th>User</x:th>
+                          <x:th>Usage</x:th>
+                          <x:th class="text-center">Payment</x:th>
+                          <x:th>Activity</x:th>
+                          <x:th class="text-center">Satisfaction</x:th>
+                          <x:th class="text-center"><x:i class="icon-settings"></x:i></x:th>
+                        </x:tr>
+                      </x:thead>
+                      <x:tbody>
+                        <x:tr>
+                          <x:td class="text-center">
+                            <div class="avatar d-block" style="background-image: url(demo/faces/female/26.jpg)">
+                              <x:span class="avatar-status bg-green"></x:span>
+                            </div>
+                          </x:td>
+                          <x:td>
+                            <div>Elizabeth Martin</div>
+                            <div class="small text-muted">
+                              Registered: Mar 19, 2018
+                            </div>
+                          </x:td>
+                          <x:td>
+                            <div class="clearfix">
+                              <div class="float-left">
+                                <x:Strong>42%</x:Strong>
+                              </div>
+                              <div class="float-right">
+                                <x:small class="text-muted">Jun 11, 2015 - Jul 10, 2015</x:small>
+                              </div>
+                            </div>
+                            <div class="progress progress-xs">
+                              <div class="progress-bar bg-yellow" style="width: 42%" ></div>
+                            </div>
+                          </x:td>
+                          <x:td class="text-center">
+                            <x:i class="payment payment-visa"></x:i>
+                          </x:td>
+                          <x:td>
+                            <div class="small text-muted">Last login</div>
+                            <div>4 minutes ago</div>
+                          </x:td>
+                          <x:td class="text-center">
+                            <div class="mx-auto chart-circle chart-circle-xs"  >
+                              <div class="chart-circle-value">42%</div>
+                            </div>
+                          </x:td>
+                          <x:td class="text-center">
+                            <div class="item-action dropdown">
+                              <x:a href="javascript:void(0)" data-toggle="dropdown" class="icon"><x:i class="fe fe-more-vertical"></x:i></x:a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <x:a href="javascript:void(0)" class="dropdown-item"><x:i class="dropdown-icon fe fe-tag"></x:i> Action </x:a>
+                                <x:a href="javascript:void(0)" class="dropdown-item"><x:i class="dropdown-icon fe fe-edit-2"></x:i> Another action </x:a>
+                                <x:a href="javascript:void(0)" class="dropdown-item"><x:i class="dropdown-icon fe fe-message-square"></x:i> Something else here</x:a>
+                                <div class="dropdown-divider"></div>
+                                <x:a href="javascript:void(0)" class="dropdown-item"><x:i class="dropdown-icon fe fe-link"></x:i> Separated link</x:a>
+                              </div>
+                            </div>
+                          </x:td>
+                        </x:tr>
+                        <x:tr>
+                          <x:td class="text-center">
+                            <div class="avatar d-block" style="background-image: url(demo/faces/female/17.jpg)">
+                              <x:span class="avatar-status bg-green"></x:span>
+                            </div>
+                          </x:td>
+                          <x:td>
+                            <div>Michelle Schultz</div>
+                            <div class="small text-muted">
+                              Registered: Mar 2, 2018
+                            </div>
+                          </x:td>
+                          <x:td>
+                            <div class="clearfix">
+                              <div class="float-left">
+                                <x:Strong>0%</x:Strong>
+                              </div>
+                              <div class="float-right">
+                                <x:small class="text-muted">Jun 11, 2015 - Jul 10, 2015</x:small>
+                              </div>
+                            </div>
+                            <div class="progress progress-xs">
+                              <div class="progress-bar bg-red" style="width: 0%" ></div>
+                            </div>
+                          </x:td>
+                          <x:td class="text-center">
+                            <x:i class="payment payment-googlewallet"></x:i>
+                          </x:td>
+                          <x:td>
+                            <div class="small text-muted">Last login</div>
+                            <div>5 minutes ago</div>
+                          </x:td>
+                          <x:td class="text-center">
+                            <div class="mx-auto chart-circle chart-circle-xs" >
+                              <div class="chart-circle-value">0%</div>
+                            </div>
+                          </x:td>
+                          <x:td class="text-center">
+                            <div class="item-action dropdown">
+                              <x:a href="javascript:void(0)" data-toggle="dropdown" class="icon"><x:i class="fe fe-more-vertical"></x:i></x:a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <x:a href="javascript:void(0)" class="dropdown-item"><x:i class="dropdown-icon fe fe-tag"></x:i> Action </x:a>
+                                <x:a href="javascript:void(0)" class="dropdown-item"><x:i class="dropdown-icon fe fe-edit-2"></x:i> Another action </x:a>
+                                <x:a href="javascript:void(0)" class="dropdown-item"><x:i class="dropdown-icon fe fe-message-square"></x:i> Something else here</x:a>
+                                <div class="dropdown-divider"></div>
+                                <x:a href="javascript:void(0)" class="dropdown-item"><x:i class="dropdown-icon fe fe-link"></x:i> Separated link</x:a>
+                              </div>
+                            </div>
+                          </x:td>
+                        </x:tr>
+                        <x:tr>
+                          <x:td class="text-center">
+                            <div class="avatar d-block" style="background-image: url(demo/faces/female/21.jpg)">
+                              <x:span class="avatar-status bg-green"></x:span>
+                            </div>
+                          </x:td>
+                          <x:td>
+                            <div>Crystal Austin</div>
+                            <div class="small text-muted">
+                              Registered: Apr 7, 2018
+                            </div>
+                          </x:td>
+                          <x:td>
+                            <div class="clearfix">
+                              <div class="float-left">
+                                <x:Strong>96%</x:Strong>
+                              </div>
+                              <div class="float-right">
+                                <x:small class="text-muted">Jun 11, 2015 - Jul 10, 2015</x:small>
+                              </div>
+                            </div>
+                            <div class="progress progress-xs">
+                              <div class="progress-bar bg-green" style="width: 96%" ></div>
+                            </div>
+                          </x:td>
+                          <x:td class="text-center">
+                            <x:i class="payment payment-mastercard"></x:i>
+                          </x:td>
+                          <x:td>
+                            <div class="small text-muted">Last login</div>
+                            <div>a minute ago</div>
+                          </x:td>
+                          <x:td class="text-center">
+                            <div class="mx-auto chart-circle chart-circle-xs" >
+                              <div class="chart-circle-value">96%</div>
+                            </div>
+                          </x:td>
+                          <x:td class="text-center">
+                            <div class="item-action dropdown">
+                              <x:a href="javascript:void(0)" data-toggle="dropdown" class="icon"><x:i class="fe fe-more-vertical"></x:i></x:a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <x:a href="javascript:void(0)" class="dropdown-item"><x:i class="dropdown-icon fe fe-tag"></x:i> Action </x:a>
+                                <x:a href="javascript:void(0)" class="dropdown-item"><x:i class="dropdown-icon fe fe-edit-2"></x:i> Another action </x:a>
+                                <x:a href="javascript:void(0)" class="dropdown-item"><x:i class="dropdown-icon fe fe-message-square"></x:i> Something else here</x:a>
+                                <div class="dropdown-divider"></div>
+                                <x:a href="javascript:void(0)" class="dropdown-item"><x:i class="dropdown-icon fe fe-link"></x:i> Separated link</x:a>
+                              </div>
+                            </div>
+                          </x:td>
+                        </x:tr>
+                                               
+                        
+                      </x:tbody>
+                    </x:table>
+                  </div>
+                </div>
+              </div>
+	            
+	            
+	            
+	            
+	        </div>    
+	        
+	        
+	        
+	        <div class="row row-cards row-deck">     
+	            
+	            
+	            
+	            
+	            
+	            <div class="col-12">
+                <div class="card">
+                  <div class="table-responsive">
+                    <x:table class="table table-hover table-outline table-vcenter text-nowrap card-table">
+                      <x:thead>
+                        <x:tr>
+                          <x:th class="text-center w-1"><x:i class="icon-people"></x:i></x:th>
+                          <x:th>User</x:th>
+                          <x:th>Usage</x:th>
+                          <x:th class="text-center">Payment</x:th>
+                          <x:th>Activity</x:th>
+                          <x:th class="text-center">Satisfaction</x:th>
+                          <x:th class="text-center"><x:i class="icon-settings"></x:i></x:th>
+                        </x:tr>
+                      </x:thead>
+                      <x:tbody>
+                        <x:tr>
+                          <x:td class="text-center">
+                            <div class="avatar d-block" style="background-image: url(demo/faces/female/26.jpg)">
+                              <x:span class="avatar-status bg-green"></x:span>
+                            </div>
+                          </x:td>
+                          <x:td>
+                            <div>Elizabeth Martin</div>
+                          </x:td>
+                          <x:td>
+                            <div class="clearfix">
+                              <div class="float-left">
+                                <x:Strong>42%</x:Strong>
+                              </div>
+                              <div class="float-right">
+                                <x:small class="text-muted">Jun 11, 2015 - Jul 10, 2015</x:small>
+                              </div>
+                            </div>
+                          </x:td>
+                          <x:td class="text-center">
+                            <x:i class="payment payment-visa"></x:i>
+                          </x:td>
+                          <x:td>
+                            <div class="small text-muted">Last login</div>
+                          </x:td>
+                          <x:td class="text-center">
+                              <div >42%</div>
+                          </x:td>
+                          <x:td class="text-center">
+                            <div class="item-action dropdown">
+                              <x:a href="javascript:void(0)" data-toggle="dropdown" class="icon"><x:i class="fe fe-more-vertical"></x:i></x:a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <x:a href="javascript:void(0)" class="dropdown-item"><x:i class="dropdown-icon fe fe-tag"></x:i> Action </x:a>
+                                <x:a href="javascript:void(0)" class="dropdown-item"><x:i class="dropdown-icon fe fe-edit-2"></x:i> Another action </x:a>
+                                <x:a href="javascript:void(0)" class="dropdown-item"><x:i class="dropdown-icon fe fe-message-square"></x:i> Something else here</x:a>
+                                <div class="dropdown-divider"></div>
+                                <x:a href="javascript:void(0)" class="dropdown-item"><x:i class="dropdown-icon fe fe-link"></x:i> Separated link</x:a>
+                              </div>
+                            </div>
+                          </x:td>
+                        </x:tr>
+                        <x:tr>
+                          <x:td class="text-center">
+                            <div class="avatar d-block" style="background-image: url(demo/faces/female/17.jpg)">
+                              <x:span class="avatar-status bg-green"></x:span>
+                            </div>
+                          </x:td>
+                          <x:td>
+                            <div>Michelle Schultz</div>
+                          </x:td>
+                          <x:td>
+                            <div class="clearfix">
+                              <div class="float-left">
+                                <x:Strong>0%</x:Strong>
+                              </div>
+                              <div class="float-right">
+                                <x:small class="text-muted">Jun 11, 2015 - Jul 10, 2015</x:small>
+                              </div>
+                            </div>
+                          </x:td>
+                          <x:td class="text-center">
+                            <x:i class="payment payment-googlewallet"></x:i>
+                          </x:td>
+                          <x:td>
+                            <div class="small text-muted">Last login</div>
+                          </x:td>
+                          <x:td class="text-center">
+                              <div>0%</div>
+                          </x:td>
+                          <x:td class="text-center">
+                            <div class="item-action dropdown">
+                              <x:a href="javascript:void(0)" data-toggle="dropdown" class="icon"><x:i class="fe fe-more-vertical"></x:i></x:a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <x:a href="javascript:void(0)" class="dropdown-item"><x:i class="dropdown-icon fe fe-tag"></x:i> Action </x:a>
+                                <x:a href="javascript:void(0)" class="dropdown-item"><x:i class="dropdown-icon fe fe-edit-2"></x:i> Another action </x:a>
+                                <x:a href="javascript:void(0)" class="dropdown-item"><x:i class="dropdown-icon fe fe-message-square"></x:i> Something else here</x:a>
+                                <div class="dropdown-divider"></div>
+                                <x:a href="javascript:void(0)" class="dropdown-item"><x:i class="dropdown-icon fe fe-link"></x:i> Separated link</x:a>
+                              </div>
+                            </div>
+                          </x:td>
+                        </x:tr>
+                        <x:tr>
+                          <x:td class="text-center">
+                            <div class="avatar d-block" style="background-image: url(demo/faces/female/21.jpg)">
+                              <x:span class="avatar-status bg-green"></x:span>
+                            </div>
+                          </x:td>
+                          <x:td>
+                            <div>Crystal Austin</div> 
+                          </x:td>
+                          <x:td>
+                            <div class="clearfix">
+                              <div class="float-left">
+                                <x:Strong>96%</x:Strong>
+                              </div>
+                              <div class="float-right">
+                                <x:small class="text-muted">Jun 11, 2015 - Jul 10, 2015</x:small>
+                              </div>
+                            </div>
+                          </x:td>
+                          <x:td class="text-center">
+                            <x:i class="payment payment-mastercard"></x:i>
+                          </x:td>
+                          <x:td>
+                            <div class="small text-muted">Last login</div>
+                          </x:td>
+                          <x:td class="text-center">
+                              <div >96%</div>
+                          </x:td>
+                          <x:td class="text-center">
+                            <div class="item-action dropdown">
+                              <x:a href="javascript:void(0)" data-toggle="dropdown" class="icon"><x:i class="fe fe-more-vertical"></x:i></x:a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <x:a href="javascript:void(0)" class="dropdown-item"><x:i class="dropdown-icon fe fe-tag"></x:i> Action </x:a>
+                                <x:a href="javascript:void(0)" class="dropdown-item"><x:i class="dropdown-icon fe fe-edit-2"></x:i> Another action </x:a>
+                                <x:a href="javascript:void(0)" class="dropdown-item"><x:i class="dropdown-icon fe fe-message-square"></x:i> Something else here</x:a>
+                                <div class="dropdown-divider"></div>
+                                <x:a href="javascript:void(0)" class="dropdown-item"><x:i class="dropdown-icon fe fe-link"></x:i> Separated link</x:a>
+                              </div>
+                            </div>
+                          </x:td>
+                        </x:tr>
+                                               
+                        
+                      </x:tbody>
+                    </x:table>
+                  </div>
+                </div>
+              </div>
+	            
+	            
+	            
+	            
+	        </div>  
+	        
+	        
+	        
+	        
+	        
+	        
+	        
+	        
+	        <div class="row row-cards row-deck">     
+	            
+	            
+	            
+	            
+	            
+	            <div class="col-12">
+	        
+	        
+		        	<div class="card">
+
+
+
+
+						<!-- //Tab -->
+
+
+
+ <div class="tabs">
+    <x:nav class="tabs__navigation">
+      <x:a class="tabs__link tabs__link--active" href="#first">Tab 1</x:a>
+      <x:a class="tabs__link" href="#second">Tab 2</x:a>
+      <x:a class="tabs__link" href="#third">Tab 3</x:a>
+      <x:a class="tabs__link" href="#fourth">Tab 4</x:a>
+    </x:nav>
+	
+	<div >
+	
+	    <x:p class="tabs__section" id="first">Умножение двух векторов (скалярное), конечно, непосредственно обуславливает 
+	    интеграл по поверхности. Пустое подмножество, конечно, определяет абстрактный интеграл по бесконечной области.</x:p>
+	    
+	    <x:p class="tabs__section" id="second">Нормаль к поверхности, общеизвестно, концентрирует анормальный криволинейный интеграл. 
+	    Неопределенный интеграл, в первом приближении, основан на тщательном анализе. Ортогональный определитель порождает косвенный график функции.</x:p>
+	
+	    <x:p class="tabs__section" id="third">Математическое моделирование однозначно показывает, что подмножество оправдывает 
+	    невероятный интеграл от функции, имеющий конечный разрыв. Согласно предыдущему.</x:p>
+	
+	    <x:p class="tabs__section" id="fourth">Подынтегральное выражение, очевидно, тривиально. Система координат в принципе масштабирует 
+	    функциональный анализ, что несомненно приведет нас к истине.</x:p>
+	
+       <include id="_inc_conteudo"  />
+   </div>
+	
+	    
+  </div>
+
+
+
+
+</div>
+
+																	
+		        
+		        	</div>
+		        
+		        </div>
+	        
+	        
+	        
+	        
+	        
+	        
+	        
+	            
+	            
+	        </div>    
+        </div>
+      </div>
+      
+      
+      
+      
+      
+      <div class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8">
+              <div class="row">
+                <div class="col-6 col-md-3">
+                  <x:ul class="list-unstyled mb-0">
+                    <x:li><x:a href="#">First link</x:a></x:li>
+                    <x:li><x:a href="#">Second link</x:a></x:li>
+                  </x:ul>
+                </div>
+                <div class="col-6 col-md-3">
+                  <x:ul class="list-unstyled mb-0">
+                    <x:li><x:a href="#">Third link</x:a></x:li>
+                    <x:li><x:a href="#">Fourth link</x:a></x:li>
+                  </x:ul>
+                </div>
+                <div class="col-6 col-md-3">
+                  <x:ul class="list-unstyled mb-0">
+                    <x:li><x:a href="#">Fifth link</x:a></x:li>
+                    <x:li><x:a href="#">Sixth link</x:a></x:li>
+                  </x:ul>
+                </div>
+                <div class="col-6 col-md-3">
+                  <x:ul class="list-unstyled mb-0">
+                    <x:li><x:a href="#">Other link</x:a></x:li>
+                    <x:li><x:a href="#">Last link</x:a></x:li>
+                  </x:ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 mt-4 mt-lg-0">
+              Premium and Open Source dashboard template with responsive and high quality UI. For Free!
+            </div>
+          </div>
+        </div>
+      </div>
+      <x:footer class="footer">
+        <div class="container">
+          <div class="row align-items-center flex-row-reverse">
+            <div class="col-auto ml-lg-auto">
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  <x:ul class="list-inline list-inline-dots mb-0">
+                    <x:li class="list-inline-item"><x:a href="docs/index.html">Documentation</x:a></x:li>
+                    <x:li class="list-inline-item"><x:a href="faq.html">FAQ</x:a></x:li>
+                  </x:ul>
+                </div>
+                <div class="col-auto">
+                  <x:a href="https://github.com/tabler/tabler" class="btn btn-outline-primary btn-sm">Source code</x:a>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-lg-auto mt-3 mt-lg-0 text-center">
+              Copyright © 2018 <x:a href=".">Tabler</x:a>. Theme by <x:a href="https://codecalm.net" target="_blank">codecalm.net</x:a> All rights reserved.
+            </div>
+          </div>
+        </div>
+      </x:footer>
+    </div>
+  </div>
+
+</zk>

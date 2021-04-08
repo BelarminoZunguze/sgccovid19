@@ -1,0 +1,64 @@
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+
+	     <div class="my-3 my-md-5">
+          <div class="container">
+            <div class="row row-cards">
+              
+              <x:a href="#" class="button btn-secondary col-6 col-sm-4 col-lg-2">
+              	<div class="text-muted mb-4">Classe</div>
+              </x:a>
+              
+              
+              <x:a href="#" class="button btn-secondary col-6 col-sm-4 col-lg-2">
+              	<div class="text-muted mb-4">Escalão</div>
+              </x:a>
+              
+              <x:a href="#" class="button btn-secondary col-6 col-sm-4 col-lg-2">
+              	<div class="text-muted mb-4">Grupo Salarial</div>
+              </x:a>
+              
+              <x:a href="#" class="button btn-secondary col-6 col-sm-4 col-lg-2">
+              	<div class="text-muted mb-4">Nível Académico</div>
+              </x:a>
+              
+              <x:a href="#" class="button btn-secondary col-6 col-sm-4 col-lg-2">
+              	<div class="text-muted mb-4">Grau Académico</div>
+              </x:a>
+              
+              <x:a href="#" class="button btn-secondary col-6 col-sm-4 col-lg-2">
+              	<div class="text-muted mb-4">Carreiras</div>
+              </x:a>
+              
+              <x:a href="#" class="button btn-secondary col-6 col-sm-4 col-lg-2">
+              	<div class="text-muted mb-4">Categoria</div>
+              </x:a>
+              
+              <x:a href="#" class="button btn-secondary col-6 col-sm-4 col-lg-2">
+              	<div class="text-muted mb-4">Tabela salarial</div>
+              </x:a>
+              
+              <x:a href="#" class="button btn-secondary col-6 col-sm-4 col-lg-2">
+              	<div class="text-muted mb-4">Tabela de Função</div>
+              </x:a>
+              
+              <x:a href="#" class="button btn-secondary col-6 col-sm-4 col-lg-2">
+              	<div class="text-muted mb-4">Grupo de Funçã</div>
+              </x:a>
+              
+              <x:a href="#" class="button btn-secondary col-6 col-sm-4 col-lg-2">
+              	<div class="text-muted mb-4">Função de Chefia</div>
+              </x:a>
+              
+              
+               <x:a href="#" class="button btn-secondary col-6 col-sm-4 col-lg-2">
+              	<div class="text-muted mb-4">Suplemento</div>
+              </x:a>
+              
+              <x:a href="#" class="button btn-secondary col-6 col-sm-4 col-lg-2">
+              	<div class="text-muted mb-4">Decretos</div>
+              </x:a>
+                          
+              </div>                          
+            </div>						
+          </div>
+</zk>

@@ -1,0 +1,108 @@
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+<x:script src="plugins/datatables/plugin.js"></x:script>
+<x:script>
+    require(['datatables', 'jquery'], function(datatable, $) {
+          $('.datatable').DataTable();
+            });
+ </x:script>
+ 	<window  apply="uem.mz.mint.controller.DistritoController" border="none" id="win" zclass="page">
+ 				<div class="row">	
+	            	<x:div class="col-12">
+	            		<div align="left"> 	            		 
+						 <button id="btn_visualiza"  visible="true"  zclass="btn btn-info">Novo Distrito</button>
+						 </div>
+	            		 <separator orient="horizontal" spacing="8px" />
+	            	</x:div>
+	            </div>
+	            	
+				<div id="registar" visible="false" class="row">
+	              		<div class="col-12">
+	              			<div class="card">
+			              		<div class="card-header">
+				                    <x:h3 class="card-title">Registar novo Distrito</x:h3>
+				                </div>
+				                
+				                <div class="card-body">
+                    				<div class="row">
+					                     
+					                     <div class="col-md-6 col-lg-6">
+							              <div class="form-group">
+												<label class="form-label">Província</label>
+												<combobox id="cbx_provincia" constraint="no empty" width="100%"
+														placeholder="Selecione a Província" readonly="true">
+							                 	<template name="model">
+							                 		<comboitem label="${each.designacao}"></comboitem>
+							                 	</template>
+							                 </combobox>		
+											</div>
+										</div>
+					                     
+					                     <div class="col-md-6 col-lg-6">
+					                        <div class="form-group">
+					                          <label class="form-label">Designação</label>
+					                          <textbox constraint="no empty" class="form-control" name="example-text-input" placeholder="Degite a Designação..." id="txt_designacao"/>
+					                        </div>
+					                     </div> 
+					                   
+					                </div>
+				                	
+				                	<div class="row">
+										
+										<div class="col-md-12 col-lg-12">
+					                     	<div align="right" >
+					                     		<button iconSclass="fe fe-save" zclass="btn btn-success" width="110px" id="btn_gravar" >Gravar</button>
+					                     		<button iconSclass="fe fe-edit" zclass="btn btn-warning" width="110px" id="btn_actualizar" visible="false">Actualizar</button>
+					                     		<button iconSclass="fe fe-file" zclass="btn btn-info" width="110px" id="btn_cancelar">Cancelar</button>
+					                     	</div>
+					                     </div>
+										
+				                	</div>
+				                </div>
+			                </div>
+			            </div>    
+	            	</div>
+	            	
+	            	
+	            <div class="row">	
+	            	<x:div class="col-12">
+                <x:div class="card">
+                                
+                <listbox id="lbxDistrito" mold="paging" rows="10" checkmark="true"
+					pageSize="10" multiple="false">
+					<listhead>
+						<listheader width="30px"></listheader>						
+						<listheader align="left" width="" sort="auto(designacao)" >Designação</listheader>
+						<listheader align="center" width="15%" sort="auto(provincia.designacao)" >Província</listheader>
+						<listheader align="center" width="6%" ></listheader>
+
+					</listhead>
+
+					<template name="model">
+						<listitem>
+							<listcell/>
+								
+								<listcell label="${each.designacao}" ></listcell> 
+								<listcell label="${each.provincia.designacao}" ></listcell> 
+								<listcell label="" > 
+									<x:a class="icon"  forward="onClick=onClickEditar(${each})">
+                              			<x:i class="fe fe-edit"></x:i>
+                            		</x:a>
+                            	</listcell>  
+								
+						</listitem>
+					</template>
+				</listbox>
+								
+                  
+                </x:div>
+              </x:div>
+              <div class="col-md-12 col-lg-12">
+				<div align="right" >
+					<button iconSclass="fe fe-printer" zclass="btn btn-secondary" width="110px" id="btn_imprimir" >Imprimir</button>
+				</div>
+			</div> 
+	     </div>       	
+	            	
+	
+	</window>  
+</zk>

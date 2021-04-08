@@ -1,0 +1,268 @@
+<?page title="Dados da Notificação" contentType="text/html;charset=UTF-8"?>
+<zk xmlns:h="xhtml" xmlns:zk="zk">
+	<window id="win" apply="uem.mz.sgccovid19.controller.UtenteController">
+
+		<div zclass="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+			<div zclass="box box-success">
+				<div zclass="box-header">
+					<!-- <x:h3 class="box-title">Modulos Registados</x:h3> -->
+					<separator />
+				</div>
+
+
+				<div zclass="box-body">
+
+		<div class="row">
+			<div zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div zclass="box box-default">
+					<div zclass="box-header" align="center" style="background-color: white">
+						<!-- 	<h:hr/> -->
+						<h:label class="box-title" 
+							style="font-family:Georgia,serif;color:black;text-align:center; font-variant: small-caps; text-transform: none; font-weight: 50 margin-bottom: 0;">
+							FICHA DE INVESTIGAÇÃO/NOTIFICAÇÃO DE CASO DE COVID-19
+						</h:label>
+								
+					</div>
+			
+			
+						<div zclass="box-header" align="center" style="background-color:rgb(51, 153, 122)">
+						<!-- 	<h:hr/> -->
+						<h:label class="box-title" 
+							style="font-family:Georgia,serif;color:white;text-align:center; font-variant: small-caps; text-transform: none; font-weight: 50 margin-bottom: 0;">
+							Instrumento adaptado com base na Ficha respectiva do MISAU e simplificado para uso na UEM
+						</h:label>
+								
+					</div>
+					<div zclass="box-header" align="center">
+						<!-- 	<h:hr/> -->
+						<h:label class="box-title" 
+							style="font-family:Georgia,serif;color:green;text-align:center; font-variant: small-caps; text-transform: none; font-weight: 50 margin-bottom: 0;">
+							DADOS DA NOTIFICACAO
+						</h:label>
+								
+					</div>
+					<separator/>
+					
+					<div>
+						<div zclass="box-body">
+						<div class="row">
+								
+						<div zclass="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+						<div class="form-group">    	
+							
+							<div class="form-group">
+						       <label class="form-label"> Tipo de Utente:  </label>
+						
+								<div >
+									<combobox id="cbxTipoUtente"
+										readonly="true" placeholder="Selecione o tipo de Utente" width="90%"
+										autocomplete="true">
+										
+										<template name="model">
+											<comboitem
+												label="${each.designacao}">
+											</comboitem>
+										</template>
+										
+									</combobox>
+								</div>
+						
+						    </div>
+						    
+						    <div class="form-group">
+						       <label class="form-label">Nacionalidade:  </label>
+						
+								<div >
+									<combobox id="cbxNacionalidade"
+										readonly="true" placeholder="Selecione a Nacionalidade" width="90%"
+										autocomplete="true">
+										    <comboitem label="Moçambicana" value="Moçambicana"></comboitem>
+											<comboitem label="Outra"></comboitem>
+									</combobox>
+								</div>
+						
+						    </div>
+						    
+						    <div class="form-group">
+						       <label class="form-label">Nome:  </label>
+						
+								<div >
+									<div>
+									  <textbox id="txtNome" zclass="form-control" width="90%" > </textbox>
+							        </div>
+								</div>
+						
+						    </div>
+						    
+						    <div class="form-group">
+						       <label class="form-label">E-mail:  </label>
+						
+								<div >
+									<div>
+									  <textbox id="txtEmail" zclass="form-control" width="90%" > </textbox>
+							        </div>
+								</div>
+						
+						    </div>
+						    
+						    <div class="form-group">
+						       <label class="form-label">Contacto:  </label>
+						
+								<div >
+									<div>
+									  <textbox id="txtContacto" zclass="form-control" width="90%" > </textbox>
+							        </div>
+								</div>
+						
+						    </div>
+						    
+							
+							<div class="form-group">
+						       <label class="form-label"> Gênero:  </label>
+						
+								<div >
+									<combobox id="cbxGenero"
+										readonly="true" placeholder="Selecione o Gênero" width="90%"
+										autocomplete="true">
+										
+											<comboitem label="Masculino" value="Masculino"></comboitem>
+											<comboitem label="Feminino" value="Feminino"></comboitem>
+										
+									</combobox>
+								</div>
+						
+						    </div>
+						    
+						    <div class="form-group">
+						       <label class="form-label"> Data de Nascimento:  </label>
+						
+								<div >
+									<datebox id="dtb_dataNascimento"  format="dd/MM/yyyy" width="90%"/>
+								</div>
+						
+						    </div>
+							
+						</div>
+					 </div>
+						
+					<div zclass="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+						<div class="form-group">
+						
+						<div class="form-group">
+						       <label class="form-label"> Unidade Orgânica:  </label>
+						
+								<div >
+									<combobox id="cbxUnidade"
+										readonly="true" placeholder="Selecione a Unidade Orgânica" width="90%"
+										autocomplete="true">
+										<template name="model">
+											<comboitem
+												label="${each.designacao}">
+											</comboitem>
+										</template>
+									</combobox>
+								</div>
+						
+						    </div>
+						    
+						    <div class="form-group">
+						       <label class="form-label"> Província de Residência:  </label>
+						
+								<div >
+									<combobox id="cbxProvincia"
+										readonly="true" placeholder="Selecione a Província" width="90%"
+										autocomplete="true">
+										<template name="model">
+											<comboitem
+												label="${each.designacao}">
+											</comboitem>
+										</template>
+									</combobox>
+								</div>
+						
+						    </div>
+						    
+						    <div class="form-group">
+						       <label class="form-label"> Distrito de Residência:  </label>
+						
+								<div >
+									<combobox id="cbxDistrito"
+										readonly="true" placeholder="Selecione a Província" width="90%"
+										autocomplete="true">
+										<template name="model">
+											<comboitem
+												label="${each.designacao}">
+											</comboitem>
+										</template>
+									</combobox>
+								</div>
+						
+						    </div>
+						    
+						    <div class="form-group">
+						       <label class="form-label">Endereço/ Local de Residência:  </label>
+						
+								<div >
+									<div>
+									  <textbox id="txtEndereco" zclass="form-control" width="90%" > </textbox>
+							        </div>
+								</div>
+						
+						    </div>
+						
+						    
+						       	
+							
+							
+							
+							
+						
+							
+						</div>
+					</div>
+					
+					</div>					
+
+							</div>
+						</div>
+						
+					</div>
+					
+				
+				
+			</div>
+		</div>
+		
+		
+		
+					<div class="row">
+										
+						<div class="col-md-12 col-lg-12">
+					        <div align="right" >
+					           <button zclass="btn btn-danger" width="110px" id="btn_voltar1" >Voltar</button>
+					           <button zclass="btn btn-success" width="110px" id="btn_proximo2">Próximo</button>
+					         </div>
+					    </div>
+										
+				    </div>
+
+                    <separator />
+
+
+                  <div zclass="box-header" align="center" style="background-color:rgb(51, 153, 122)">
+						<!-- 	<h:hr/> -->
+						<h:label class="box-title" 
+							style="font-family:Georgia,serif;color:white;text-align:center; font-variant: small-caps; text-transform: none; font-weight: 50 margin-bottom: 0;">
+							
+						</h:label>
+								
+					</div>
+					<div zclass="box-footer"></div>
+
+
+					<separator />
+				</div>
+			</div>
+		</div>
+	</window>
+</zk>

@@ -1,0 +1,153 @@
+<?page title="REgistar Permissoes" contentType="text/html;charset=UTF-8"?>
+<zk xmlns:h="xhtml" xmlns:zk="zk">
+	<window >
+
+		<div zclass="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+			<div zclass="box box-success">
+				<div zclass="box-header">
+					<!-- <x:h3 class="box-title">Modulos Registados</x:h3> -->
+					<separator />
+				</div>
+
+
+				<div zclass="box-body">
+
+		<div class="row">
+			<div zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div zclass="box box-default">
+					<div zclass="box-header" align="center" style="background-color: white">
+						<!-- 	<h:hr/> -->
+						<h:label class="box-title" 
+							style="font-family:Georgia,serif;color:green;text-align:center; font-variant: small-caps; text-transform: none; font-weight: 50 margin-bottom: 0;">
+							FICHA DE INVESTIGAÇÃO/NOTIFICAÇÃO DE CASO DE COVID-19
+						</h:label>
+								
+					</div>
+			
+			
+						<div zclass="box-header" align="center" style="background-color: green">
+						<!-- 	<h:hr/> -->
+						<h:label class="box-title" 
+							style="font-family:Georgia,serif;color:white;text-align:center; font-variant: small-caps; text-transform: none; font-weight: 50 margin-bottom: 0;">
+							Instrumento adaptado com base na Ficha respectiva do MISAU e simplificado para uso na UEM
+						</h:label>
+								
+					</div>
+					<div zclass="box-header" align="center">
+						<!-- 	<h:hr/> -->
+						<h:label class="box-title" 
+							style="font-family:Georgia,serif;color:green;text-align:center; font-variant: small-caps; text-transform: none; font-weight: 50 margin-bottom: 0;">
+							INFORMACAO SOBRE A NOTIFICACAO
+						</h:label>
+								
+					</div>
+					<div>
+						<div zclass="box-body">
+						<div class="row">
+								
+									<div zclass="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+						<div class="form-group">    	
+							
+							<div class="form-group">
+						<label zclass=" control-label"> Classificacao:  </label>
+						
+								<div >
+									<combobox id="cbxPerfil"
+										readonly="true" placeholder="Selecione o Caso" width="100%"
+										autocomplete="true">
+										<template name="model">
+											<comboitem
+												label="${each}">
+											</comboitem>
+										</template>
+									</combobox>
+								</div>
+						
+						</div>
+							<label zclass=" control-label"> Data do teste:  </label>
+							<div>
+									<textbox id="txtUt" zclass="form-control" width="50%" placeholder="Digite o email"> </textbox>
+							</div>
+						
+							<label zclass=" control-label"> Data da notificacao:  </label>
+							<div>
+									<textbox id="txtUtil" zclass="form-control" width="50%" placeholder="Digite o nome"> </textbox>
+							</div>
+							
+							
+						
+						
+						</div>
+						</div>
+									<div zclass="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+						<div class="form-group">    	
+							
+							<label class="form-label">Viajou?</label>
+							<div sclass="form-group">
+						                  	<h:div class="custom-controls-stacked">
+														<radiogroup>
+															<radio label="Sim" id="rdb_sim" selected="true"></radio>
+															<radio label="Não" id="rdb_nao" ></radio>
+														</radiogroup>
+											</h:div>
+						                   </div>
+						     <label zclass=" control-label">Proveniencia:  </label>
+							<div>
+									<textbox id="w" zclass="form-control" width="100%" placeholder="Digite a proveniencia"> </textbox>
+							</div>
+							<label zclass=" control-label">Ponto de Entrada:  </label>
+							<div>
+									<textbox id="wf" zclass="form-control" width="100%" placeholder="Digite o ponto de entrada"> </textbox>
+							</div>
+							
+							<label class="form-label">Detectado no ponto de entrada?</label>
+							<div sclass="form-group">
+						                  	<h:div class="custom-controls-stacked">
+														<radiogroup>
+															<radio label="Sim" id="rdb1_sim" selected="true"></radio>
+															<radio label="Não" id="rdb2_nao" ></radio>
+														</radiogroup>
+								</h:div>
+				           </div>
+						
+							<label zclass=" control-label">Data de Entrada no Pais:  </label>
+							<div>
+									<textbox id="wff" zclass="form-control" width="100%" placeholder="Digite a data de entrada"> </textbox>
+							</div>
+							<label zclass=" control-label">Meio de transporte	:  </label>
+							<div>
+									<textbox id="wfff" zclass="form-control" width="100%" placeholder="Digite a data de entrada"> </textbox>
+							</div>
+							
+						</div>
+						</div>
+					</div>					
+
+							</div>
+						</div>
+						
+					</div>
+					
+				
+				
+			</div>
+		</div>
+
+
+<div zclass="box-header" align="center" style="background-color: green">
+						<!-- 	<h:hr/> -->
+						<h:label class="box-title" 
+							style="font-family:Georgia,serif;color:white;text-align:center; font-variant: small-caps; text-transform: none; font-weight: 50 margin-bottom: 0;">
+							
+						</h:label>
+								
+					</div>
+					<div zclass="box-footer"></div>
+
+
+					<separator />
+				</div>
+			</div>
+		</div>
+	</window>
+</zk>

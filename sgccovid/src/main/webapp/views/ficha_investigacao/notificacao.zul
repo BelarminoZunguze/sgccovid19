@@ -1,0 +1,110 @@
+<?page title="Notificação" contentType="text/html;charset=UTF-8"?>
+<zk xmlns:h="xhtml" xmlns:zk="zk">
+	<window id="win" apply="uem.mz.sgccovid19.controller.NotificacaoController">
+
+		<div zclass="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+			<div zclass="box box-success">
+				<div zclass="box-header">
+					<!-- <x:h3 class="box-title">Modulos Registados</x:h3> -->
+					<separator />
+				</div>
+
+
+				<div zclass="box-body">
+
+		<div class="row">
+			<div zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div zclass="box box-default">
+					<div zclass="box-header" align="center" style="background-color:rgb(242, 242, 242)">
+						<!-- 	<h:hr/> -->
+						<h:img src="images/img/home-icon.png" class="header-brand-img" alt="tabler logo"></h:img>
+						<h:label class="box-title" 
+							style="font-family:Arial;color:rgb(51, 153, 122);text-align:center; font-weight:bold;">
+							FICHA DE INVESTIGAÇÃO/NOTIFICAÇÃO DE CASO DE COVID-19
+						</h:label>
+								
+					 </div>
+					 <separator/>
+					
+					<!--  
+					<h:div style=" text-align:rigth">
+					<h:label style="background-color: green">PARTE</h:label>
+							<h:a href="#" onClick="@command('openDadosNotificacao')" >0</h:a>
+							<h:a href="#" onClick="@command('openDadosNotificacao')" >1</h:a>
+							<h:a href="#" onClick="@command('openDadosNotificacao')">2</h:a>
+							<h:a href="#" onClick="@command('openDadosNotificacao')" >3</h:a>
+							<h:a href="#" onClick="@command('openDadosNotificacao')" >4</h:a>
+							<h:a href="#" onClick="@command('openDadosNotificacao')" >5</h:a>
+					
+					</h:div>
+			        -->
+			
+			
+						<div zclass="box-header" align="center" style="background-color:rgb(51, 153, 122)">
+						<!-- 	<h:hr/> -->
+						<h:label class="box-title" 
+							style="font-family:Arial;color:white;text-align:center; font-weight:bold;">
+							Instrumento adaptado com base na Ficha respectiva do MISAU e simplificado para uso na UEM
+						</h:label>
+								
+					</div>
+					<div zclass="box-header" align="center">
+						<!-- 	<h:hr/> -->
+						<h:label class="box-title" 
+							style="font-family:Arial;color:rgb(51, 153, 122);text-align:center; font-weight:bold;">
+							DEFINIÇÃO DE CASOS SUSPEITOS
+						</h:label>
+								
+					</div>
+					<div>
+						<h:ul>CASO SUSPEITO DE COVID-19 é uma pessoa que cumpre os critérios clínicos (A ou B) e epidemiológicos (C):
+							<h:li>A. Um individuo com início agudo de febre E de tosse; OU</h:li>
+							<h:li>B. Um individuo com início agudo febre E de tosse e MAIS UM dos seguintes sinais ou sintomas: fraqueza/fadiga geral, dor de cabeça, mialgia, dor de garganta, coriza, dispneia, alteração do estado mental.</h:li>
+							<h:li>C. Critérios epidemiológicos:</h:li>
+							<h:li>Residir ou trabalhar em uma área com alto risco de transmissão do vírus: por exemplo, ambientes residenciais fechados e ambientes humanitários, como campos e ambientes semelhantes a campos para pessoas deslocadas, a qualquer momento nos 14 dias anteriores ao início dos sintomas. (Exemplos: Centros de acolhimento de idosos; quarteis; serviços penitenciários; instituições de caridade; acampamentos de refugiados de guerra, calamidades naturais e de trabalho; lares e internatos; profissionais afectos a enfermarias de internamento prolongado; creches e infantários; Cidades, Bairros, Aldeais e Povoados de grandes aglomerados populacionais)</h:li>
+							<h:li>Residir ou viajar para uma área com transmissão comunitária a qualquer momento nos 14 dias anteriores ao início dos sintomas;</h:li>
+							<h:li>Trabalhar em locais de risco de transmissão (unidades sanitárias; mercados incluindo informais; residências particulares; estabelecimentos comerciais; instituições bancárias e de atendimento directo ao público, etc) a qualquer momento nos 14 dias anteriores ao início dos sintomas.</h:li>
+
+						</h:ul >
+						
+					</div>
+					</div>
+				
+				
+			</div>
+			
+			
+			       
+			
+		</div>
+		
+		          <div class="row">
+										
+						<div class="col-md-12 col-lg-12">
+					        <div align="right" >
+					           <button zclass="btn btn-success" width="110px" id="btn_proximo1">Próximo</button>
+					         </div>
+					    </div>
+										
+				    </div>
+
+                    <separator />
+
+					<div zclass="box-footer" style="background-color: rgb(51, 153, 122)">
+					<div zclass="box-header" align="center" style="background-color: rgb(51, 153, 122)">
+						<!-- 	<h:hr/> -->
+						<h:label class="box-title" 
+							style="font-family:Georgia,serif;color:white;text-align:center; font-variant: small-caps; text-transform: none; font-weight: 50 margin-bottom: 0;">
+							
+						</h:label>
+								
+					</div>
+					</div>
+
+
+					<separator />
+				</div>
+			</div>
+		</div>
+	</window>
+</zk>

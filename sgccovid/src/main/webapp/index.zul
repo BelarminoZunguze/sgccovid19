@@ -1,0 +1,280 @@
+
+ <zk xmlns:x="xhtml" xmlns:zk="zk" sclass="row">	
+ <x:script src="js/require.min.js"></x:script>
+ <x:script src="js/dashboard.js"></x:script>
+ <x:script src="plugins/charts-c3/plugin.js"></x:script>
+ <x:script src="plugins/maps-google/plugin.js"></x:script>
+ <x:script src="plugins/input-mask/plugin.js"></x:script>
+ <x:script src="plugins/datatables/plugin.js"></x:script>
+ 
+ 
+ 
+ <x:script>
+      requirejs.config({
+          baseUrl: '.'
+      });
+    </x:script>
+<?meta content="text/html; charset=UTF-8" pageEncoding="UTF-8"?>
+
+<?meta charset="UTF-8"?>
+<?meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"?>
+<?meta http-equiv="X-UA-Compatible" content="ie=edge"?>
+<?meta http-equiv="Content-Language" content="en" ?>
+<?meta name="msapplication-TileColor" content="#2d89ef"?>
+<?meta name="theme-color" content="#4188c9"?>
+<?meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"?>
+<?meta name="apple-mobile-web-app-capable" content="yes"?>
+<?meta name="mobile-web-app-capable" content="yes"?>
+<?meta name="HandheldFriendly" content="True"?>
+<?meta name="MobileOptimized" content="320"?>
+<?link rel="icon" href="images/favicon.ico" type="image/x-icon"?>
+<?link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" ?>
+<?link href="css/google-font_awesome.css" rel="stylesheet" ?>
+<?link href="css/google_fonts.css" rel="stylesheet" ?>
+<?link href="css/dashboard.css" rel="stylesheet" ?>
+<?link href="plugins/charts-c3/plugin.css" rel="stylesheet" ?>
+<?link href="plugins/maps-google/plugin.css" rel="stylesheet" ?>
+<?link href="js/advanced-datatable/css/demo_page.css" rel="stylesheet" ?>
+<?link href="js/advanced-datatable/css/demo_table.css" rel="stylesheet" ?>
+<?link href="js/data-tables/DT_bootstrap.css" rel="stylesheet" ?>
+<?link href="js/iCheck/skins/flat/red.css" rel="stylesheet"?>
+<?link href="css/dataTables.tableTools.css" rel="stylesheet"?>
+<?link href="css/tabs_style.css" rel="stylesheet"?>
+
+<?meta content="text/html; charset=UTF-8" pageEncoding="UTF-8"?>
+
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<?taglib uri="http://www.zkoss.org/zkspring/security" prefix="sec"?>
+<?variable-resolver class="org.zkoss.spring.DelegatingVariableResolver"?>
+<?page title="${c:l('title')}"?>
+
+
+ 
+<div apply="org.zkoss.bind.BindComposer" id="main" height="100%" width="100%" 
+	  			viewModel="@id('vm')@init('uem.mz.mint.vm.MainVM')">	  			
+    <x:div>
+    <x:div class="page">
+      <x:div class="page-main">
+        <x:div class="header py-4">
+          <x:div class="container">
+            <x:div class="d-flex">
+              <x:a class="header-brand" href="#" onClick="@command('openHome')">
+                <x:img src="images/logo.svg" class="header-brand-img" alt="tabler logo"></x:img>
+              </x:a>
+              <x:div class="d-flex order-lg-2 ml-auto">
+                
+                <x:div class="dropdown d-none d-md-flex">
+                  <x:a class="nav-link icon" data-toggle="dropdown">
+                    <x:i class="fe fe-bell"></x:i>
+                    <x:span class="nav-unread"></x:span>
+                  </x:a>
+                  <x:div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                    <x:a href="#" class="dropdown-item d-flex">
+                      <x:span class="avatar mr-3 align-self-center" style="background-image: url(demo/faces/male/41.jpg)"></x:span>
+                      <x:div>
+                        <x:strong>Nathan</x:strong> pushed new commit: Fix page load performance issue.
+                        <div class="small text-muted">10 minutes ago</div>
+                      </x:div>
+                    </x:a>
+                    <x:a href="#" class="dropdown-item d-flex">
+                      <x:span class="avatar mr-3 align-self-center" style="background-image: url(demo/faces/female/1.jpg)"></x:span>
+                      <x:div>
+                        <x:strong>Alice</x:strong> started new task: Tabler UI design.
+                        <div class="small text-muted">1 hour ago</div>
+                      </x:div>
+                    </x:a>
+                    <x:a href="#" class="dropdown-item d-flex">
+                      <x:span class="avatar mr-3 align-self-center" style="background-image: url(demo/faces/female/18.jpg)"></x:span>
+                      <x:div>
+                        <x:strong>Rose</x:strong> deployed new version of NodeJS REST Api V3
+                        <div class="small text-muted">2 hours ago</div>
+                      </x:div>
+                    </x:a>
+                    <x:div class="dropdown-divider"></x:div>
+                    <x:a href="#" class="dropdown-item text-center text-muted-dark">Mark all as read</x:a>
+                  </x:div>
+                </x:div>
+                <x:div class="dropdown">
+                  <x:a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
+                    <x:span class="avatar" style="background-image: url(./demo/faces/female/25.jpg)"></x:span>
+                    <x:span class="ml-2 d-none d-lg-block">
+                      <x:span class="text-default">${vm.loggeduser.username }</x:span>
+                      <x:small class="text-muted d-block mt-1">${vm.loggeduser.roles }</x:small>
+                    </x:span>
+                  </x:a>
+                  <x:div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                    <x:a class="dropdown-item" href="#">
+                      <x:i class="dropdown-icon fe fe-user"></x:i> Profile
+                    </x:a>
+                    <x:a class="dropdown-item" href="#">
+                      <x:i class="dropdown-icon fe fe-settings"></x:i> Settings
+                    </x:a>
+                    <x:a class="dropdown-item" href="#">
+                      <x:span class="float-right"><x:span class="badge badge-primary">6</x:span></x:span>
+                      <x:i class="dropdown-icon fe fe-mail"></x:i> Inbox
+                    </x:a>
+                    <x:a class="dropdown-item" href="#">
+                      <x:i class="dropdown-icon fe fe-send"></x:i> Message
+                    </x:a>
+                    <x:div class="dropdown-divider"></x:div>
+                    <x:a class="dropdown-item" href="#">
+                      <x:i class="dropdown-icon fe fe-help-circle"></x:i> Need help?
+                    </x:a>
+                    <x:a class="dropdown-item"  href="j_spring_security_logout"><!-- href="#" -->
+                      <x:i class="dropdown-icon fe fe-log-out"></x:i> Sign out
+                    </x:a>
+                  </x:div>
+                </x:div>
+              </x:div>
+              <x:a href="#" class="header-toggler d-lg-none ml-3 ml-lg-0" data-toggle="collapse" data-target="#headerMenuCollapse">
+                <x:span class="header-toggler-icon"></x:span>
+              </x:a>
+            </x:div>
+          </x:div>
+        </x:div>
+        
+        
+        <x:div class="header collapse d-lg-flex p-0" id="headerMenuCollapse">
+          <x:div class="container">
+            <x:div class="row align-items-center">
+              <x:div class="col-lg-3 ml-auto" visible="false">
+                <x:form class="input-icon my-3 my-lg-0" visible="false">
+                  <x:input type="search" class="form-control header-search" placeholder="Search..." tabindex="1"></x:input>
+                  <x:div class="input-icon-addon">
+                    <x:i class="fe fe-search"></x:i>
+                  </x:div>
+                </x:form>
+              </x:div>
+              <x:div sclass="col-lg order-lg-first">
+                <x:ul sclass="nav nav-tabs border-0 flex-column flex-lg-row">
+                  <x:li sclass="nav-item">
+                    <x:a href="#" onClick="@command('openHome')" sclass="nav-link active"><x:i sclass="fe fe-home"></x:i> Home</x:a>
+                  </x:li>
+                  
+                  <x:li class="nav-item" >
+                    <x:a href="#" onClick="@command('openAdministracao')" if="${sec:isAnyGranted('GESTÃO_DE_UTILIZADORES,GESTÃO_DE_PERFIS,GESTÃO_DE_PERMISSÕES,GESTÃO_DE_MODULOS')}" class="nav-link"><x:i class="fe fe-home"></x:i>Administração</x:a>
+                  </x:li>
+                  
+                  <x:li sclass="nav-item">
+                    <x:a href="#" onClick="@command('openHomeUnidade')" if="${sec:isAnyGranted('GESTÃO_DE_ADMIN')}" sclass="nav-link active"><x:i sclass="fe fe-home"></x:i> Home Unidade</x:a>
+                  </x:li>
+                  
+                  <x:li class="nav-item" >
+                    <x:a href="#" onClick="@command('openParametrizetion')" if="${sec:isAnyGranted('GESTÃO_DE_ADMIN')}" class="nav-link"><x:i class="fe fe-home"></x:i>Parametrização</x:a>
+                  </x:li>
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  <x:li class="nav-item dropdown" if="${sec:isAnyGranted('')}">
+                    <x:a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><x:i class="fe fe-file"></x:i> Pages</x:a>
+                    <x:div class="dropdown-menu dropdown-menu-arrow">
+                      <x:a href="./profile.html" if="${sec:isAnyGranted('')}" class="dropdown-item ">Profile</x:a>
+                      <x:a href="./login.html" if="${sec:isAnyGranted('')}" class="dropdown-item ">Login</x:a>
+                      <x:a href="./register.html" if="${sec:isAnyGranted('')}" class="dropdown-item ">Register</x:a>
+                      <x:a href="./forgot-password.html" if="${sec:isAnyGranted('')}" class="dropdown-item ">Forgot password</x:a>
+                      <x:a href="./400.html" if="${sec:isAnyGranted('')}" class="dropdown-item ">400 error</x:a>
+                      <x:a href="./401.html" if="${sec:isAnyGranted('')}" class="dropdown-item ">401 error</x:a>
+                      <x:a href="./403.html" if="${sec:isAnyGranted('')}" class="dropdown-item ">403 error</x:a>
+                      <x:a href="./404.html" if="${sec:isAnyGranted('')}" class="dropdown-item ">404 error</x:a>
+                      <x:a href="./500.html" if="${sec:isAnyGranted('')}" class="dropdown-item ">500 error</x:a>
+                      <x:a href="./503.html" if="${sec:isAnyGranted('')}" class="dropdown-item ">503 error</x:a>
+                      <x:a href="./email.html" if="${sec:isAnyGranted('')}" class="dropdown-item ">Email</x:a>
+                      <x:a href="./empty.html" if="${sec:isAnyGranted('')}" class="dropdown-item ">Empty page</x:a>
+                      <x:a href="./rtl.html" if="${sec:isAnyGranted('')}" class="dropdown-item ">RTL mode</x:a>
+                    </x:div>
+                  </x:li>
+                  <x:li class="nav-item dropdown" if="${sec:isAnyGranted('')}" >
+                    <x:a href="" if="${sec:isAnyGranted('')}" class="nav-link"><x:i class="fe fe-check-square"></x:i> Forms</x:a>
+                  </x:li>
+                  <x:li class="nav-item" if="${sec:isAnyGranted('')}" >
+                    <x:a href="" if="${sec:isAnyGranted('')}"  class="nav-link"><x:i class="fe fe-image"></x:i> Gallery</x:a>
+                  </x:li>
+                  <x:li class="nav-item" if="${sec:isAnyGranted('')}"  >
+                    <x:a href="" if="${sec:isAnyGranted('')}"  class="nav-link"><x:i class="fe fe-file-text"></x:i> Documentation</x:a>
+                  </x:li>
+                </x:ul>
+              </x:div>
+            </x:div>
+          </x:div>
+        </x:div>
+        
+        
+        <div class="my-3 my-md-5">
+        	<div class="container">
+        	
+        	
+        	<div sclass="col-md-12" id="breadcrumb"></div>
+	  		<div sclass="wrapper" id="mainlayout"></div>
+        	
+        	</div>
+        </div>	
+   
+        </x:div>
+      </x:div>
+      
+      
+	  
+      <div class="footer" visible="false">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8">
+              <div class="row">
+                <div class="col-6 col-md-3">
+                  <x:ul class="list-unstyled mb-0">
+                    <x:li><x:a href="#"></x:a></x:li>
+                    <x:li><x:a href="#"></x:a></x:li>
+                  </x:ul>
+                </div>
+                <div class="col-6 col-md-3">
+                  <x:ul class="list-unstyled mb-0">
+                    <x:li><x:a href="#"></x:a></x:li>
+                    <x:li><x:a href="#"></x:a></x:li>
+                  </x:ul>
+                </div>
+                <div class="col-6 col-md-3">
+                  <x:ul class="list-unstyled mb-0">
+                    <x:li><x:a href="#"></x:a></x:li>
+                    <x:li><x:a href="#"></x:a></x:li>
+                  </x:ul>
+                </div>
+                <div class="col-6 col-md-3">
+                  <x:ul class="list-unstyled mb-0">
+                    <x:li><x:a href="#"></x:a></x:li>
+                    <x:li><x:a href="#"></x:a></x:li>
+                  </x:ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 mt-4 mt-lg-0">
+              	
+            </div>
+          </div>
+        </div>
+      </div>
+      <x:footer class="footer">
+        <div class="container">
+          <div class="row align-items-center flex-row-reverse">
+            <div class="col-auto ml-lg-auto">
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  <x:a href="j_spring_security_logout" class="btn btn-outline-primary btn-sm">Log Out</x:a>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-lg-auto mt-3 mt-lg-0 text-center">
+              Copyright © 2021 <x:a href=".">SGC-Covid19</x:a>. Developed by <x:a href="https://ciuem.mz" target="_blank">ciuem.mz</x:a> Part of rights reserved.
+            </div>
+          </div>
+        </div>
+      </x:footer>
+      </x:div> 			
+    </div>
+</zk>

@@ -1,0 +1,70 @@
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+<x:script>
+    require(['datatables', 'jquery'], function(datatable, $) {
+          $('.datatable').DataTable();
+            });
+ </x:script>
+	
+		
+		
+		<div apply="org.zkoss.bind.BindComposer" id="paramet"
+	  			viewModel="@id('vm')@init('uem.mz.mint.vm.ParametrizacaoVM')">
+	     <div class="my-3 my-md-5">
+	     <div class="container">
+          <x:div class="row row-cards">
+              
+              
+               <!-- Admin  -->
+               
+              
+              <x:div class="col-6 col-sm-4 col-lg-2" if="${sec:isAnyGranted('Admin')}">
+               <x:div class="card">
+                  <x:a style="background:rgb(51, 153, 122); color:white; font-weight:bold;" href="#" onClick="@command('openFicha')" class="button btn-secondary">
+              	      <div >Ficha de Investigação</div>
+                  </x:a>
+                </x:div>
+              </x:div>
+              
+              <x:div class="col-6 col-sm-4 col-lg-2" if="${sec:isAnyGranted('Admin')}">
+               <x:div class="card">
+                  <x:a style="background:rgb(51, 153, 122); color:white; font-weight:bold;" href="#" class="button btn-secondary">
+              	      <div >Monitoria das Acções</div>
+                  </x:a>
+                </x:div>
+              </x:div>
+              
+              <x:div class="col-6 col-sm-4 col-lg-2" if="${sec:isAnyGranted('Admin')}">
+               <x:div class="card">
+               	<x:a style="background:rgb(51, 153, 122); color:white; font-weight:bold;" href="#" onClick="@command('openAdministracao')" class="button btn-secondary">
+              	      <div >Administração</div>
+                  </x:a>
+                </x:div>
+              </x:div>  
+              
+              
+              
+              <!-- Perfil Focal point Unidade  -->
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+               
+              
+              
+            
+                                
+           </x:div>
+           </div>						
+          </div>
+        </div>
+		
+</zk>

@@ -1,0 +1,64 @@
+<?page title="REgistar Permissoes" contentType="text/html;charset=UTF-8"?>
+<zk xmlns:h="xhtml" xmlns:zk="zk">
+	<window apply="uem.mz.mint.controller.administracao.PermissaoController">
+
+		<div zclass="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+			<div zclass="box box-success">
+				<div zclass="box-header">
+					<!-- <x:h3 class="box-title">Permissões Registadas</x:h3> -->
+					<separator />
+				</div>
+
+
+				<div zclass="box-body">
+					<hlayout width="100%" visible="false">
+						<textbox id="tbxPermissao"
+							placeholder="Permissão" zclass="form-control" width="100%" />
+						<textbox id="tbxDescricao"
+							placeholder="descrição" zclass="form-control" width="100%" />
+						<h:button id="btnGravar" label="Gravar"
+							sclass="btn btn-w-m btn-primary fa fa-save" width="100%">
+						</h:button>
+					</hlayout>
+
+
+					<h:table class="table table-fixed" id="table">
+						<h:thead>
+							<h:tr>
+								<h:th>#</h:th>
+								<h:th>Permissões</h:th>
+								<h:th>Descrição</h:th>
+								<h:th></h:th>
+							</h:tr>
+						</h:thead>
+						<h:tbody>
+							<zk forEach="${$composer.perfilList}" 
+								var="it">
+								<h:tr>
+									<h:th scope="row">
+										<checkbox />
+									</h:th>
+									<h:td>${each.permissionname}</h:td>
+									<h:td>${each.description}</h:td>
+									<h:td>
+										<h:i
+											class="menu-icon glyphicon glyphicon-edit">
+										</h:i>
+									</h:td>
+
+								</h:tr>
+							</zk>
+
+						</h:tbody>
+					</h:table>
+
+
+					<div zclass="box-footer"></div>
+
+
+					<separator />
+				</div>
+			</div>
+		</div>
+	</window>
+</zk>

@@ -1,0 +1,155 @@
+<?page title="Supervisor" contentType="text/html;charset=UTF-8"?>
+<zk xmlns:p="xhtml">
+
+	<window id="winRegistoSupervisor" title="" border="none"
+		contentStyle="overflow:auto" width="100%"
+		apply="uem.mz.mint.controller.administracao.UtilizadorController">
+		
+		
+		
+		
+		
+		
+		<p:div class="col-lg-12">
+			<!-- <p:div class="ibox float-e-margins"> -->
+			<div style="padding-top:13px; pargin-left:4px">
+				<p:h4>DADOS DO UTILIZADOR</p:h4>
+				<p:hr height="2px"></p:hr>
+			</div>
+			<p:div class="ibox-content">
+				<p:div class="form-horizontal">
+								
+				
+				
+				<p:div class="col-lg-12">
+		 <p:div class="row">
+					<p:div class="col-md-1 col-lg-6">
+	                        	
+	                    <div class="form-group">    	
+							<label zclass=" control-label"> Utilizador:  </label>
+							<div>
+									<textbox id="txtUtilizador" zclass="form-control" width="100%" placeholder="Digite o apelido"> </textbox>
+							</div>
+						</div>
+						<div class="form-group">
+						
+						<label class=" control-label">
+									Perfil:
+								</label>
+								<div style="border:2px; margin:2px">
+									<combobox id="cbxPerfil"
+										readonly="true" placeholder="Selecione o Perfil" width="100%"
+										autocomplete="true">
+										<template name="model">
+											<comboitem
+												label="${each.rolename}" value="${each}">
+											</comboitem>
+										</template>
+									</combobox>
+								</div>
+						
+						</div>
+						
+						<p:div class="form-group" id="divSenha" visible="false">
+								<label class=" control-label">
+									Senha:
+								</label>
+								<div>
+									<textbox id="txtSenha" type="password"
+										zclass=" form-control" readonly="false" width="100%"
+										placeholder="Digite a senha" style="margin:0px">
+									</textbox>
+								</div>
+						</p:div>
+						
+						
+						<p:div class="form-group" id="divConfirmarSenha" visible="false">
+								<label class=" control-label">
+									Confirmar Senha:
+								</label>
+								<div>
+									<textbox id="txtConfirmarSenha" type="password"
+										zclass=" form-control" width="100%"
+										placeholder="Confirme a senha" style="margin:0px">
+									</textbox>
+								</div>
+						</p:div>
+
+						<p:div class="form-group row ">
+							<p:div class="col-lg-12">
+								<checkbox label="Activo" id="chx_activo"
+									checked="true" visible="true">
+								</checkbox>
+								<separator orient="vertical"
+									spacing="12" />
+								<checkbox label="Alterar Senha"
+									id="chx_alterarSenha" visible="true">
+								</checkbox>
+							</p:div>
+						</p:div>
+						
+						<div align="right">
+							<button label="Procurar" id="btnProcurar"
+								zclass="btn btn-w-m btn-success" style="margin:2px" />
+							<button label="Novo" id="btnGravar"
+								zclass="btn btn-w-m btn-info" style="margin:2px" />
+							<button id="btnActualizar" visible="false"
+								zclass="btn btn-w-m btn-warning" label="Actualizar"
+								style="margin:2px">
+							</button>
+							<button label="Cancelar" id="btnCancelar"
+								zclass="btn btn-w-m btn-primary" style="margin:2px" />
+						</div>
+
+
+	                 </p:div>
+	                        
+	                 <p:div class="col-md-6 col-lg-6">
+	                        	
+
+						<div style="padding-top:3%">
+							<listbox id="lbxUtilizador" rows="8"
+								multiple="false" checkmark="true" sizedByContent="false">
+								<listhead>
+									<listheader width="30px"></listheader>
+									<listheader align="left" label=""></listheader>
+									<listheader align="center"
+										label="">
+									</listheader>
+								</listhead>
+								<template name="model">
+									<listitem>
+										<listcell></listcell>
+										<listcell>
+											<label
+												value="${each.username}">
+											</label>
+										</listcell>
+										<listcell>
+											<label
+												value="${each.enabled==true?'activo':'nao activo'}">
+											</label>
+										</listcell>
+									</listitem>
+								</template>
+							</listbox>
+						</div>
+
+
+	                </p:div>
+       </p:div> 
+		</p:div>
+				
+				
+				
+				
+				
+				
+				
+					
+					
+				</p:div>
+			</p:div>
+		</p:div>
+	</window>
+</zk>

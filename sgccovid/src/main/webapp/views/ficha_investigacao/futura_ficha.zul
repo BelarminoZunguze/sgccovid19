@@ -1,0 +1,56 @@
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+<x:script>
+    require(['datatables', 'jquery'], function(datatable, $) {
+          $('.datatable').DataTable();
+            });
+ </x:script>
+
+<div apply="org.zkoss.bind.BindComposer" id="paramet"
+	  			viewModel="@id('vm')@init('uem.mz.mint.vm.AdministracaoVM')">
+	     <div class="my-3 my-md-5">
+	     <div class="container">
+          <x:div class="row row-cards">
+           <x:div class="col-6 col-sm-4 col-lg-2">
+               <x:div class="card">
+                  <x:a href="#" onClick="@command('openNotificacao')" class="button btn-secondary">
+              	<div class="text-muted mb-4">Notificacao</div>
+              </x:a>
+                </x:div>
+              </x:div> 
+             
+                <x:div class="col-6 col-sm-4 col-lg-2">
+               <x:div class="card">
+                  <x:a href="#" onClick="@command('openDadosNotificacao')" class="button btn-secondary">
+              	<div class="text-muted mb-4">Dados Notificacao</div>
+              </x:a>
+                </x:div>
+              </x:div> 
+              <x:div class="col-6 col-sm-4 col-lg-2">
+               <x:div class="card">
+                  <x:a href="#" onClick="@command('openDadosCaso')" class="button btn-secondary">
+              	<div class="text-muted mb-4">Dados do Caso</div>
+              </x:a>
+                </x:div>
+              </x:div> 
+
+              <x:div class="col-6 col-sm-4 col-lg-2">
+               <x:div class="card">
+                  <x:a href="#" onClick="@command('openResidenciaDoCaso')" class="button btn-secondary">
+              	<div class="text-muted mb-4">Residência do caso</div>
+              </x:a>
+                </x:div>
+              </x:div> 
+              
+               <x:div class="col-6 col-sm-4 col-lg-2">
+               <x:div class="card">
+                  <x:a href="#" onClick="@command('openContactosUnidade')" class="button btn-secondary">
+              	<div class="text-muted mb-4" >Contactos na Unidade</div>
+              </x:a>
+                </x:div>
+              </x:div> 
+                                
+           </x:div>
+           </div>						
+          </div>
+        </div>
+</zk>

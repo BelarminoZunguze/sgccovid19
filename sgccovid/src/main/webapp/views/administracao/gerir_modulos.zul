@@ -1,0 +1,55 @@
+<?page title="REgistar Permissoes" contentType="text/html;charset=UTF-8"?>
+<zk xmlns:h="xhtml" xmlns:zk="zk">
+	<window apply="uem.mz.mint.controller.administracao.ModuloController">
+
+		<div zclass="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+			<div zclass="box box-success">
+				<div zclass="box-header">
+					<!-- <x:h3 class="box-title">Modulos Registados</x:h3> -->
+					<separator />
+				</div>
+
+
+				<div zclass="box-body">
+
+
+					<h:table class="table table-fixed" id="table">
+						<h:thead>
+							<h:tr>
+								<h:th>#</h:th>
+								<h:th>Designação</h:th>
+								<h:th>Descrição</h:th>
+								<h:th></h:th>
+							</h:tr>
+						</h:thead>
+						<h:tbody>
+							<zk forEach="${$composer.moduloList}" 
+								var="it">
+								<h:tr>
+									<h:th scope="row">
+										<checkbox />
+									</h:th>
+									<h:td>${each.designation}</h:td>
+									<h:td>${each.description}</h:td>
+									<h:td>
+										<h:i
+											class="menu-icon glyphicon glyphicon-edit">
+										</h:i>
+									</h:td>
+
+								</h:tr>
+							</zk>
+
+						</h:tbody>
+					</h:table>
+
+
+					<div zclass="box-footer"></div>
+
+
+					<separator />
+				</div>
+			</div>
+		</div>
+	</window>
+</zk>
