@@ -1,11 +1,12 @@
 <zk xmlns:x="xhtml" xmlns:zk="zk">
+<x:script src="plugins/datatables/plugin.js"></x:script>
 <x:script>
     require(['datatables', 'jquery'], function(datatable, $) {
           $('.datatable').DataTable();
             });
  </x:script>
 
-<div  id="win" apply="uem.mz.sgccovid19.controller.FichaController">
+<window  id="win" apply="uem.mz.sgccovid19.controller.FichaController">
 	      
           <div id="pesquisar" visible="true" class="row">
 	              		<div class="col-12">
@@ -96,7 +97,7 @@
 						<listheader width="7%">Semana</listheader>
 						<listheader >Hora de Submissão</listheader>
 						<listheader >Estado</listheader>
-						<listheader width="7%">Detalhes</listheader>
+						<listheader>Detalhes</listheader>
 						<listheader width="7%">Observações</listheader>
 						
 						
@@ -113,14 +114,18 @@
 								<listcell label="10:30" ></listcell>
 								<listcell label="${each.estado}"></listcell>
 								<listcell>
-								   <x:a class="icon"  >
-                              			<x:i class="fe fe fe-eye"></x:i>
-                            		</x:a>
+								  
+                            		<button class="fe fe fe-eye" forward="onClick=onClickVerFicha(${each})"></button>
+                            		
+                            		<button class="fe fe fe-edit" forward="onClick=onClickVerFicha(${each})"></button>
+                            		
+                            		<button class="fe fe fe-trash" forward="onClick=onClickApagar(${each})"></button>
+                            		
+								   
 								</listcell> 
                             	<listcell  > 
-									<x:a class="icon"  forward="onClick=onClickImprimirContrato(${each})">
-                              			<x:i class="fe fe fe-eye"></x:i>
-                            		</x:a>
+									<button class="fe fe fe-eye" ></button>
+                            		
                             	</listcell>
                             	
                       </listitem>
@@ -137,5 +142,5 @@
           
           
           
-        </div>
+        </window>
 </zk>

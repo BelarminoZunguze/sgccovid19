@@ -5,7 +5,7 @@
           $('.datatable').DataTable();
             });
  </x:script>
- 	<window  apply="uem.mz.mint.controller.SectorController" border="none" id="win" zclass="page">
+ 	<window  apply="uem.mz.sgccovid19.controller.organograma.SectorController" border="none" id="win" zclass="page">
  				<div class="row">	
 	            	<x:div class="col-12">
 	            		<div align="left"> 	            		 

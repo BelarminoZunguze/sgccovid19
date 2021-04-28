@@ -3,7 +3,7 @@
 
 	<window id="winRegistoSupervisor" title="" border="none"
 		contentStyle="overflow:auto" width="100%"
-		apply="uem.mz.mint.controller.administracao.UtilizadorController">
+		apply="uem.mz.sgccovid19.controller.administracao.UtilizadorController">
 		
 		
 		

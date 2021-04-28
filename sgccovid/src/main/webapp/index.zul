@@ -51,7 +51,7 @@
 
  
 <div apply="org.zkoss.bind.BindComposer" id="main" height="100%" width="100%" 
-	  			viewModel="@id('vm')@init('uem.mz.mint.vm.MainVM')">	  			
+	  			viewModel="@id('vm')@init('uem.mz.sgccovid19.vm.MainVM')">	  			
     <x:div>
     <x:div class="page">
       <x:div class="page-main">

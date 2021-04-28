@@ -1,0 +1,135 @@
+<?page title="Comunicação" contentType="text/html;charset=UTF-8"?>
+  
+<zk xmlns:h="xhtml" xmlns:zk="zk">
+	<window id="win" apply="uem.mz.sgccovid19.controller.monitoria.ComunicacaoController">
+
+		<div zclass="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+			<div zclass="box box-success">
+				<div zclass="box-header">
+					<!-- <x:h3 class="box-title">Modulos Registados</x:h3> -->
+					<separator />
+				</div>
+
+
+				<div zclass="box-body">
+
+		<div class="row">
+			<div zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div zclass="box box-default">
+					<div zclass="box-header" align="center" style="background-color:rgb(242, 242, 242)">
+						<!-- 	<h:hr/> -->
+						<h:img src="images/img/home-icon.png" class="header-brand-img" alt="tabler logo"></h:img>
+						<h:label class="box-title" 
+							style="font-family:Arial;color:rgb(51, 153, 122);text-align:center; font-weight:bold;">
+							Monitoria das Acções de Prevenção contra a COVID-19  nas Instituições de Ensino Superior 
+						</h:label>
+								
+					 </div>
+					 <separator/>
+					
+					<!--  
+					<h:div style=" text-align:rigth">
+					<h:label style="background-color: green">PARTE</h:label>
+							<h:a href="#" onClick="@command('openDadosNotificacao')" >0</h:a>
+							<h:a href="#" onClick="@command('openDadosNotificacao')" >1</h:a>
+							<h:a href="#" onClick="@command('openDadosNotificacao')">2</h:a>
+							<h:a href="#" onClick="@command('openDadosNotificacao')" >3</h:a>
+							<h:a href="#" onClick="@command('openDadosNotificacao')" >4</h:a>
+							<h:a href="#" onClick="@command('openDadosNotificacao')" >5</h:a>
+					
+					</h:div>
+			        -->
+			
+			
+						<div zclass="box-header" align="center" style="background-color:rgb(51, 153, 122)">
+						<!-- 	<h:hr/> -->
+						<h:label class="box-title" 
+							style="font-family:Arial;color:white;text-align:center; font-weight:bold;">
+							Comunicação para mudança de comportamentos de risco de infecção pela COVID-19
+						</h:label>
+								
+					</div>
+					<separator/>
+					
+					
+			<div zclass="box-body">
+				
+				<listbox id="lbxFichas" mold="paging">
+					
+					<listhead >
+					   
+						<listheader >Actividades/Acções</listheader>						
+						<listheader>Indicador</listheader>
+						<listheader >Ponto de Situação</listheader>
+						<listheader >Observações</listheader>
+						
+					</listhead>
+					      
+					  	<template name="model">    
+					     <listitem>
+								<listcell label="${each.actividade.designacao}"></listcell>
+								 <listcell label="${each.designacao}">
+								 </listcell>
+								<listcell>
+								    <radiogroup forward="onCheck=onCheckTestar">
+									  <radio label="Sim" />
+									  <radio label="Não" />
+									</radiogroup>  
+							     </listcell>
+                            	<listcell> 
+									<textbox width="100%" rows="2" forward="onChanging=onChangingTestar"></textbox>
+                            	</listcell>
+                            	
+                      </listitem>
+                    </template>
+                 
+				
+				</listbox>								
+
+			 </div>
+						
+					
+					  
+					  
+					</div>
+				
+				
+			</div>
+			
+			
+			       
+			
+		</div>
+		
+		<separator/>
+		
+		          <div class="row">
+										
+						<div class="col-md-12 col-lg-12">
+					        <div align="right" >
+					           <button zclass="btn btn-primary" width="110px" id="btn_proximo1">Próximo</button>
+					         </div>
+					    </div>
+										
+				    </div>
+
+                    <separator />
+
+					<div zclass="box-footer" style="background-color: rgb(51, 153, 122)">
+					<div zclass="box-header" align="center" style="background-color: rgb(51, 153, 122)">
+						<!-- 	<h:hr/> -->
+						<h:label class="box-title" 
+							style="font-family:Georgia,serif;color:white;text-align:center; font-variant: small-caps; text-transform: none; font-weight: 50 margin-bottom: 0;">
+							
+						</h:label>
+								
+					</div>
+					</div>
+
+
+					<separator />
+				</div>
+			</div>
+		</div>
+	</window>
+</zk>

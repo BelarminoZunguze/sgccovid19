@@ -21,13 +21,13 @@ import org.zkoss.zul.Label;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Window;
 
-import uem.mz.mint.entity.Ficha;
-import uem.mz.mint.entity.Utente;
-import uem.mz.mint.entity.administracao.User;
-import uem.mz.mint.service.FichaService;
-import uem.mz.mint.service.UtenteService;
-import uem.mz.mint.util.Breadcrumb;
-import uem.mz.mint.util.showClientNotification;
+import uem.mz.sgccovid19.entity.Ficha;
+import uem.mz.sgccovid19.entity.Utente;
+import uem.mz.sgccovid19.entity.administracao.User;
+import uem.mz.sgccovid19.service.FichaService;
+import uem.mz.sgccovid19.service.UtenteService;
+import uem.mz.sgccovid19.util.Breadcrumb;
+import uem.mz.sgccovid19.util.showClientNotification;
 
 public class ConfirmacaoController extends GenericForwardComposer{
 	

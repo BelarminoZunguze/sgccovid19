@@ -1,6 +1,6 @@
 <?page title="REgistar Permissoes" contentType="text/html;charset=UTF-8"?>
 <zk xmlns:h="xhtml" xmlns:zk="zk">
-	<window apply="uem.mz.mint.controller.administracao.PermissaoController">
+	<window apply="uem.mz.sgccovid19.controller.administracao.PermissaoController">
 
 		<div zclass="col-md-12 col-lg-12 col-xs-12 col-sm-12">
 			<div zclass="box box-success">

@@ -19,7 +19,7 @@
 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>uem.mz.mint.config</param-value>
+		<param-value>uem.mz.sgccovid19.config</param-value>
 	</context-param>
 	
 	<listener>
@@ -46,7 +46,7 @@
 	
 	<servlet>
 		<servlet-name>Receptor de Imagens</servlet-name>
-		<servlet-class>uem.mz.mint.util.ImageServlet</servlet-class>
+		<servlet-class>uem.mz.sgccovid19.util.ImageServlet</servlet-class>
 		<load-on-startup>0</load-on-startup>
 	</servlet>
 	

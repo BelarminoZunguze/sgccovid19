@@ -17,21 +17,21 @@ import org.zkoss.zul.Radio;
 import org.zkoss.zul.Textbox;
 import org.zkoss.zul.Window;
 
-import uem.mz.mint.entity.Departamento;
-import uem.mz.mint.entity.Ficha;
-import uem.mz.mint.entity.FichaContactoDirecto;
-import uem.mz.mint.entity.Sector;
-import uem.mz.mint.entity.UnidadeOrganica;
-import uem.mz.mint.entity.Utente;
-import uem.mz.mint.entity.administracao.User;
-import uem.mz.mint.service.DepartamentoService;
-import uem.mz.mint.service.FichaContactoService;
-import uem.mz.mint.service.FichaService;
-import uem.mz.mint.service.SectorService;
-import uem.mz.mint.service.UnidadeOrganicaService;
-import uem.mz.mint.service.UtenteService;
-import uem.mz.mint.util.Breadcrumb;
-import uem.mz.mint.util.showClientNotification;
+import uem.mz.sgccovid19.entity.Departamento;
+import uem.mz.sgccovid19.entity.Ficha;
+import uem.mz.sgccovid19.entity.FichaContactoDirecto;
+import uem.mz.sgccovid19.entity.Sector;
+import uem.mz.sgccovid19.entity.UnidadeOrganica;
+import uem.mz.sgccovid19.entity.Utente;
+import uem.mz.sgccovid19.entity.administracao.User;
+import uem.mz.sgccovid19.service.DepartamentoService;
+import uem.mz.sgccovid19.service.FichaContactoService;
+import uem.mz.sgccovid19.service.FichaService;
+import uem.mz.sgccovid19.service.SectorService;
+import uem.mz.sgccovid19.service.UnidadeOrganicaService;
+import uem.mz.sgccovid19.service.UtenteService;
+import uem.mz.sgccovid19.util.Breadcrumb;
+import uem.mz.sgccovid19.util.showClientNotification;
 
 public class ContactosUnidadeController extends GenericForwardComposer{
 	

@@ -12,10 +12,10 @@ import org.zkoss.zk.ui.util.GenericForwardComposer;
 import org.zkoss.zul.Div;
 import org.zkoss.zul.Window;
 
-import uem.mz.mint.entity.administracao.User;
-import uem.mz.mint.service.FichaService;
-import uem.mz.mint.util.Breadcrumb;
-import uem.mz.mint.util.showClientNotification;
+import uem.mz.sgccovid19.entity.administracao.User;
+import uem.mz.sgccovid19.service.FichaService;
+import uem.mz.sgccovid19.util.Breadcrumb;
+import uem.mz.sgccovid19.util.showClientNotification;
 
 public class NotificacaoController extends GenericForwardComposer{
 	

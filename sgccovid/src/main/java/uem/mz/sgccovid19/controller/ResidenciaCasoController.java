@@ -17,16 +17,16 @@ import org.zkoss.zul.Radio;
 import org.zkoss.zul.Textbox;
 import org.zkoss.zul.Window;
 
-import uem.mz.mint.entity.Distrito;
-import uem.mz.mint.entity.Ficha;
-import uem.mz.mint.entity.Provincia;
-import uem.mz.mint.entity.Utente;
-import uem.mz.mint.entity.administracao.User;
-import uem.mz.mint.service.DistritoService;
-import uem.mz.mint.service.FichaService;
-import uem.mz.mint.service.ProvinciaService;
-import uem.mz.mint.util.Breadcrumb;
-import uem.mz.mint.util.showClientNotification;
+import uem.mz.sgccovid19.entity.Distrito;
+import uem.mz.sgccovid19.entity.Ficha;
+import uem.mz.sgccovid19.entity.Provincia;
+import uem.mz.sgccovid19.entity.Utente;
+import uem.mz.sgccovid19.entity.administracao.User;
+import uem.mz.sgccovid19.service.DistritoService;
+import uem.mz.sgccovid19.service.FichaService;
+import uem.mz.sgccovid19.service.ProvinciaService;
+import uem.mz.sgccovid19.util.Breadcrumb;
+import uem.mz.sgccovid19.util.showClientNotification;
 
 public class ResidenciaCasoController extends GenericForwardComposer{
 	

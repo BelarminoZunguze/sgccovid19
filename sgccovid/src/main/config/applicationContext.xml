@@ -22,7 +22,7 @@
 	
 	
 	<context:component-scan
-		base-package="uem.mz.mint.dao, uem.mz.mint.dao.impl, uem.mz.mint.service, uem.mz.mint.service.impl" />
+		base-package="uem.mz.sgccovid19.dao, uem.mz.sgccovid19.dao.impl, uem.mz.sgccovid19.service, uem.mz.sgccovid19.service.impl" />
 
 	<!-- enable @Transactional Annotation -->
 	<tx:annotation-driven transaction-manager="transactionManager" />
@@ -55,7 +55,7 @@
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="packagesToScan" value="uem.mz.mint.entity" />
+		<property name="packagesToScan" value="uem.mz.sgccovid19.entity" />
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
@@ -68,7 +68,7 @@
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="packagesToScan" value="uem.mz.mint.entity" />
+		<property name="packagesToScan" value="uem.mz.sgccovid19.entity" />
 		<property name="jpaVendorAdapter" ref="jpaAdapter"></property>
 		<property name="jpaProperties">
 			<props>

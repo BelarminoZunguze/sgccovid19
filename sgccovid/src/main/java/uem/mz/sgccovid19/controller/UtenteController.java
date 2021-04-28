@@ -16,20 +16,20 @@ import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Textbox;
 import org.zkoss.zul.Window;
 
-import uem.mz.mint.entity.Departamento;
-import uem.mz.mint.entity.Distrito;
-import uem.mz.mint.entity.Provincia;
-import uem.mz.mint.entity.TipoUtente;
-import uem.mz.mint.entity.UnidadeOrganica;
-import uem.mz.mint.entity.Utente;
-import uem.mz.mint.entity.administracao.User;
-import uem.mz.mint.service.DistritoService;
-import uem.mz.mint.service.ProvinciaService;
-import uem.mz.mint.service.TipoUtenteService;
-import uem.mz.mint.service.UnidadeOrganicaService;
-import uem.mz.mint.service.UtenteService;
-import uem.mz.mint.util.Breadcrumb;
-import uem.mz.mint.util.showClientNotification;
+import uem.mz.sgccovid19.entity.Departamento;
+import uem.mz.sgccovid19.entity.Distrito;
+import uem.mz.sgccovid19.entity.Provincia;
+import uem.mz.sgccovid19.entity.TipoUtente;
+import uem.mz.sgccovid19.entity.UnidadeOrganica;
+import uem.mz.sgccovid19.entity.Utente;
+import uem.mz.sgccovid19.entity.administracao.User;
+import uem.mz.sgccovid19.service.DistritoService;
+import uem.mz.sgccovid19.service.ProvinciaService;
+import uem.mz.sgccovid19.service.TipoUtenteService;
+import uem.mz.sgccovid19.service.UnidadeOrganicaService;
+import uem.mz.sgccovid19.service.UtenteService;
+import uem.mz.sgccovid19.util.Breadcrumb;
+import uem.mz.sgccovid19.util.showClientNotification;
 
 public class UtenteController extends GenericForwardComposer{
 	

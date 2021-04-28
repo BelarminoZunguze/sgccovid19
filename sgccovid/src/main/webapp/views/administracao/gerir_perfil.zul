@@ -2,7 +2,7 @@
 <zk xmlns:p="xhtml">
 	<window id="win" title="" border="none"
 		contentStyle="overflow:auto" width="100%" 
-		apply="uem.mz.mint.controller.administracao.PerfilController">
+		apply="uem.mz.sgccovid19.controller.administracao.PerfilController">
 		
 		
 		<p:div class="col-lg-12">

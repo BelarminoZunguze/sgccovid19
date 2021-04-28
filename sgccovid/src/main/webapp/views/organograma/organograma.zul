@@ -6,7 +6,7 @@
  </x:script>
 
 <div apply="org.zkoss.bind.BindComposer" id="paramet"
-	  			viewModel="@id('vm')@init('uem.mz.mint.vm.OrganogramaVM')">
+	  			viewModel="@id('vm')@init('uem.mz.sgccovid19.vm.OrganogramaVM')">
 	     <div class="my-3 my-md-5">
 	     <div class="container">
           <x:div class="row row-cards">
