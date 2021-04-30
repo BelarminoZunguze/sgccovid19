@@ -93,7 +93,7 @@ public class OrganogramaVM extends AbstractVM{
 		final HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("target", target);
 		target.getChildren().clear();
-		Executions.createComponents("views/organograma/registar_instituicao.zul", target, map);
+		Executions.createComponents("views/parametrizacao/registar_instituicao.zul", target, map);
 
 		links = new ArrayList<String>();
 		links.add("Registar Institui��o ");
@@ -106,7 +106,7 @@ public class OrganogramaVM extends AbstractVM{
 		final HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("target", target);
 		target.getChildren().clear();
-		Executions.createComponents("views/organograma/registar_unidade_organica.zul", target, map);
+		Executions.createComponents("views/parametrizacao/registar_unidade_organica.zul", target, map);
 
 		links = new ArrayList<String>();
 		links.add("Registar Unidade Org�nica");
@@ -119,7 +119,7 @@ public class OrganogramaVM extends AbstractVM{
 		final HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("target", target);
 		target.getChildren().clear();
-		Executions.createComponents("views/organograma/registar_provincia.zul", target, map);
+		Executions.createComponents("views/parametrizacao/registar_provincia.zul", target, map);
 
 		links = new ArrayList<String>();
 		links.add("Registar Prov�ncia");
@@ -132,7 +132,7 @@ public class OrganogramaVM extends AbstractVM{
 		final HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("target", target);
 		target.getChildren().clear();
-		Executions.createComponents("views/organograma/registar_distrito.zul", target, map);
+		Executions.createComponents("views/parametrizacao/registar_distrito.zul", target, map);
 
 		links = new ArrayList<String>();
 		links.add("Registar Distrito");
@@ -145,7 +145,7 @@ public class OrganogramaVM extends AbstractVM{
 		final HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("target", target);
 		target.getChildren().clear();
-		Executions.createComponents("views/organograma/registar_departamento.zul", target, map);
+		Executions.createComponents("views/parametrizacao/registar_departamento.zul", target, map);
 
 		links = new ArrayList<String>();
 		links.add("Registar Departamento");
@@ -158,7 +158,7 @@ public class OrganogramaVM extends AbstractVM{
 		final HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("target", target);
 		target.getChildren().clear();
-		Executions.createComponents("views/organograma/registar_sector.zul", target, map);
+		Executions.createComponents("views/parametrizacao/registar_sector.zul", target, map);
 
 		links = new ArrayList<String>();
 		links.add("Registar Sector");

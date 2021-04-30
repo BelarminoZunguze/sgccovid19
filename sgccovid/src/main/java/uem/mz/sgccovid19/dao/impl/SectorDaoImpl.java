@@ -18,7 +18,7 @@ public class SectorDaoImpl extends GenericDaoImpl<Sector> implements SectorDao{
 
 	@Override
 	public List<Sector> buscarSector() {
-		Query query = getCurrentSession().createQuery("select sect from Sector sect");
+		Query query = getCurrentSession().createQuery("select sect from Sector sect join fetch sect.departamento dep");
 		return query.list();
 	}
 
