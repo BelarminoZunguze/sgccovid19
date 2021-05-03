@@ -152,7 +152,7 @@
                   </x:li>
                   
                   <x:li class="nav-item" >
-                    <x:a href="#" onClick="@command('openAdministracao')" if="${sec:isAnyGranted('GESTÃO_DE_UTILIZADORES,GESTÃO_DE_PERFIS,GESTÃO_DE_PERMISSÕES,GESTÃO_DE_MODULOS')}" class="nav-link"><x:i class="fe fe-home"></x:i>Administração</x:a>
+                    <x:a href="#" onClick="@command('openAdministracao')" if="${sec:isAnyGranted('GESTÃO_ADMINISTRAÇÃO')}" class="nav-link"><x:i class="fe fe-home"></x:i>Administração</x:a>
                   </x:li>
                   
                   <x:li sclass="nav-item">
@@ -160,7 +160,7 @@
                   </x:li>
                   
                   <x:li class="nav-item" >
-                    <x:a href="#" onClick="@command('openParametrizetion')" if="${sec:isAnyGranted('GESTÃO_DE_ADMIN')}" class="nav-link"><x:i class="fe fe-home"></x:i>Parametrização</x:a>
+                    <x:a href="#" onClick="@command('openParametrizetion')" if="${sec:isAnyGranted('GESTÃO_PARAMETRIZAÇÃO')}" class="nav-link"><x:i class="fe fe-home"></x:i>Parametrização</x:a>
                   </x:li>
                   
                   

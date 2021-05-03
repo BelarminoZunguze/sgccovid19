@@ -17,7 +17,7 @@
                <!-- Admin  -->
                
               
-              <x:div class="col-6 col-sm-4 col-lg-2" if="${sec:isAnyGranted('Admin')}">
+              <x:div class="col-6 col-sm-4 col-lg-2" if="${sec:isAnyGranted('GESTÃO_FICHA_DE_INVESTIGAÇÃO')}">
                <x:div class="card">
                   <x:a style="background:rgb(51, 153, 122); color:white; font-weight:bold;" href="#" onClick="@command('openFicha')" class="button btn-secondary">
               	      <div class="fe fe fe-file"></div>
@@ -26,7 +26,7 @@
                 </x:div>
               </x:div>
               
-              <x:div class="col-6 col-sm-4 col-lg-2" if="${sec:isAnyGranted('Admin')}">
+              <x:div class="col-6 col-sm-4 col-lg-2" if="${sec:isAnyGranted('GESTÃO_MONITORIA')}">
                <x:div class="card">
                   <x:a style="background:rgb(51, 153, 122); color:white; font-weight:bold;" href="#" onClick="@command('openMonitoria')" class="button btn-secondary">
               	      <div class="fe fe fe-eye"></div>
@@ -35,7 +35,7 @@
                 </x:div>
               </x:div>
               
-              <x:div class="col-6 col-sm-4 col-lg-2" if="${sec:isAnyGranted('Admin')}">
+              <x:div class="col-6 col-sm-4 col-lg-2" if="${sec:isAnyGranted('GESTÃO_ADMINISTRAÇÃO')}">
                <x:div class="card">
                
                	<x:a style="background:rgb(51, 153, 122); color:white; font-weight:bold;"  href="#" onClick="@command('openAdministracao')" class="button btn-secondary">
@@ -45,7 +45,7 @@
                 </x:div>
               </x:div> 
               
-              <x:div class="col-6 col-sm-4 col-lg-2" if="${sec:isAnyGranted('Admin')}">
+              <x:div class="col-6 col-sm-4 col-lg-2" if="${sec:isAnyGranted('GESTÃO_PARAMETRIZAÇÃO')}">
                <x:div class="card">
                   <x:a style="background:rgb(51, 153, 122); color:white; font-weight:bold;" href="#" onClick="@command('openParametrizetion')" class="button btn-secondary">
               	       <div class="fe fe fe-users"></div>
@@ -54,11 +54,11 @@
                 </x:div>
               </x:div>
               
-              <x:div class="col-6 col-sm-4 col-lg-2" if="${sec:isAnyGranted('Admin')}">
+              <x:div class="col-6 col-sm-4 col-lg-2" if="${sec:isAnyGranted('GESTÃO_RELATÓRIOS')}">
                <x:div class="card">
                
                	<x:a style="background:rgb(51, 153, 122); color:white; font-weight:bold;"  href="#" onClick="@command('openAdministracao')" class="button btn-secondary">
-              	      <div class="fe fe fe-bar-chart"></div>
+              	      <div class="fe fe fe-pie-chart"></div>
               	      <div >Relatórios</div>
                   </x:a>
                 </x:div>
