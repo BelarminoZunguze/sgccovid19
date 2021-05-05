@@ -10,7 +10,7 @@
 	     <div class="my-3 my-md-5">
 	     <div class="container">
           <x:div class="row row-cards">
-             <x:div class="col-6 col-sm-4 col-lg-2">
+             <x:div class="col-6 col-sm-4 col-lg-2" if="${sec:isAnyGranted('GESTÃO_DE_UTILIZADORES')}">
                <x:div class="card">
                   <x:a href="#" onClick="@command('openUtilizador')" class="button btn-secondary">
               	      <div class="text-muted mb-4">Utilizador</div>
@@ -18,7 +18,7 @@
                 </x:div>
               </x:div> 
               
-              <x:div class="col-6 col-sm-4 col-lg-2">
+              <x:div class="col-6 col-sm-4 col-lg-2" if="${sec:isAnyGranted('GESTÃO_DE_UTILIZADORES')}">
                <x:div class="card">
                	<x:a href="#" onClick="@command('openPerfil')" class="button btn-secondary">
               	      <div class="text-muted mb-4">Perfil</div>
@@ -26,7 +26,7 @@
                 </x:div>
               </x:div> 
               
-              <x:div class="col-6 col-sm-4 col-lg-2">
+              <x:div class="col-6 col-sm-4 col-lg-2" if="${sec:isAnyGranted('GESTÃO_DE_PERMISSÕES')}">
                <x:div class="card">
                   <x:a href="#" onClick="@command('openPermissoes')" class="button btn-secondary">
               	<div class="text-muted mb-4">Permissões</div>
@@ -34,7 +34,7 @@
                 </x:div>
               </x:div> 
               
-              <x:div class="col-6 col-sm-4 col-lg-2">
+              <x:div class="col-6 col-sm-4 col-lg-2" if="${sec:isAnyGranted('GESTÃO_DE_MODULOS')}">
                <x:div class="card">
                   <x:a href="#" onClick="@command('openModulos')" class="button btn-secondary">
               	<div class="text-muted mb-4">Modulos</div>

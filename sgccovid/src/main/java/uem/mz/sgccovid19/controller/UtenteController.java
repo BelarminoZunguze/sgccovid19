@@ -188,11 +188,11 @@ public class UtenteController extends GenericForwardComposer{
 		map.put("utente", utente);
 		target.getChildren().clear();
 		Executions.createComponents("views/ficha_investigacao/dados_notificacao.zul", target, map);
-
+		
 		links = new ArrayList<String>();
 		links.add("Dados do caso");
 		Breadcrumb.drawn(breadcrumb, "", links);
-
+		
 		
 	}
    

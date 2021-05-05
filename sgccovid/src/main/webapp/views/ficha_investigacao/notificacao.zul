@@ -2,6 +2,10 @@
 <zk xmlns:h="xhtml" xmlns:zk="zk">
 	<window id="win" apply="uem.mz.sgccovid19.controller.NotificacaoController">
 
+			 
+			
+			
+		
 		<div zclass="col-md-12 col-lg-12 col-xs-12 col-sm-12">
 			<div zclass="box box-success">
 				<div zclass="box-header">
@@ -12,7 +16,10 @@
 
 				<div zclass="box-body">
 
+		
+			
 		<div class="row">
+			
 			<div zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				<div zclass="box box-default">
 					<div zclass="box-header" align="center" style="background-color:rgb(242, 242, 242)">
@@ -40,7 +47,7 @@
 			        -->
 			
 			
-						<div zclass="box-header" align="center" style="background-color:rgb(51, 153, 122)">
+					<div zclass="box-header" align="center" style="background-color:rgb(51, 153, 122)">
 						<!-- 	<h:hr/> -->
 						<h:label class="box-title" 
 							style="font-family:Arial;color:white;text-align:center; font-weight:bold;">
@@ -48,6 +55,7 @@
 						</h:label>
 								
 					</div>
+					<separator/>
 					<div zclass="box-header" align="center">
 						<!-- 	<h:hr/> -->
 						<h:label class="box-title" 
@@ -56,6 +64,7 @@
 						</h:label>
 								
 					</div>
+					<separator/>
 					<div>
 						<h:ul>CASO SUSPEITO DE COVID-19 é uma pessoa que cumpre os critérios clínicos (A ou B) e epidemiológicos (C):
 							<h:li>A. Um individuo com início agudo de febre E de tosse; OU</h:li>
@@ -82,7 +91,7 @@
 										
 						<div class="col-md-12 col-lg-12">
 					        <div align="right" >
-					           <button zclass="btn btn-success" width="110px" id="btn_proximo1">Próximo</button>
+					           <button label="Próximo" style="background:rgb(51, 153, 122); color:white" iconSclass="fe fe-arrow-right" zclass="btn btn-secondary" id="btn_proximo1"></button>
 					         </div>
 					    </div>
 										

@@ -155,12 +155,12 @@
                     <x:a href="#" onClick="@command('openAdministracao')" if="${sec:isAnyGranted('GESTÃO_ADMINISTRAÇÃO')}" class="nav-link"><x:i class="fe fe-home"></x:i>Administração</x:a>
                   </x:li>
                   
-                  <x:li sclass="nav-item">
-                    <x:a href="#" onClick="@command('openHomeUnidade')" if="${sec:isAnyGranted('GESTÃO_DE_ADMIN')}" sclass="nav-link active"><x:i sclass="fe fe-home"></x:i> Home Unidade</x:a>
-                  </x:li>
-                  
                   <x:li class="nav-item" >
                     <x:a href="#" onClick="@command('openParametrizetion')" if="${sec:isAnyGranted('GESTÃO_PARAMETRIZAÇÃO')}" class="nav-link"><x:i class="fe fe-home"></x:i>Parametrização</x:a>
+                  </x:li>
+                  
+                  <x:li sclass="nav-item">
+                    <x:a href="#" onClick="@command('openHomeUnidade')" if="${sec:isAnyGranted('GESTÃO_DE_ADMIN')}" sclass="nav-link active"><x:i sclass="fe fe-home"></x:i> Home Unidade</x:a>
                   </x:li>
                   
                   

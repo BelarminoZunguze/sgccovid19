@@ -225,10 +225,10 @@ public class ContactosUnidadeController extends GenericForwardComposer{
  		map.put("utente", utente);
  		target.getChildren().clear();
  		Executions.createComponents("views/ficha_investigacao/confirmacao_ficha.zul", target, map);
-
+ 		
  		links = new ArrayList<String>();
  		Breadcrumb.drawn(breadcrumb, "", links);
-
+		
    		
    	}
      

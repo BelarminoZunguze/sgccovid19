@@ -127,10 +127,10 @@ public class ResidenciaCasoController extends GenericForwardComposer{
  		final HashMap<String, Object> map = new HashMap<String, Object>();
  		map.put("target", target);
  		target.getChildren().clear();
- 		Executions.createComponents("views/ficha_investigacao/dados_caso.zul", target, map);
+ 		Executions.createComponents("views/ficha_investigacao/dados_notificacao.zul", target, map);
 
  		links = new ArrayList<String>();
- 		links.add("Dados do caso");
+ 		links.add("Dados da Notificação");
  		Breadcrumb.drawn(breadcrumb, "", links);
 
  		
@@ -162,11 +162,11 @@ public class ResidenciaCasoController extends GenericForwardComposer{
   		map.put("ficha", ficha);
   		target.getChildren().clear();
   		Executions.createComponents("views/ficha_investigacao/contactos_unidade.zul", target, map);
-
+  		
   		links = new ArrayList<String>();
   		links.add("Seguimento de Contactos na Unidade");
   		Breadcrumb.drawn(breadcrumb, "", links);
-
+		
   		
   	}
      

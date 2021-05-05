@@ -1,15 +1,35 @@
-<zk xmlns:x="xhtml" xmlns:zk="zk">
-<x:script src="plugins/datatables/plugin.js"></x:script>
+<?page title="Confirmar" contentType="text/html;charset=UTF-8"?>
+<zk xmlns:h="xhtml" xmlns:zk="zk">
 
  	<window  border="none" id="win" zclass="page" apply="uem.mz.sgccovid19.controller.ConfirmacaoController">
  	
- 	  <div id ="dadosFicha" visible="true" class="row">
+ 	<div zclass="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+	  <div zclass="box box-success">
+	    <div zclass="box-body">
+	    
+	      <div id ="dadosFicha" visible="true" class="row">
        <div class="col-12">
         <div class="card">
 			              					                	
-				<div class="card-header" style="background-color: #bbb">
-			     <x:h3 class="card-title">DADOS DA NOTIFICAÇÃO</x:h3>
-			    </div>            
+			<div class="row">
+				<div class="col-md-11">
+				  <div zclass="box-header" style="background-color:#bbb; ">
+						<separator orient="vertical" spacing="8px" />
+						<h:label class="box-title" 
+							style="font-family:Arial;color:black;text-align:left; font-weight:bold;">
+							DADOS DA NOTIFICAÇÃO
+						</h:label>
+								
+					 </div>
+			    </div>
+			    
+			    <div class="col-md-1" >
+			      <div>
+			     	<button style="background:rgb(51, 153, 122);color:white" iconSclass="fe fe fe-edit" zclass="btn btn-secondary" height="34px" >Editar</button>
+				  </div>  
+			    </div>
+			
+			</div>           
 				                
 			 <div class="card-body">    
                  
@@ -19,7 +39,7 @@
 					                   <label class="form-label">Nome da Unidade:  </label>
 					                </div>
 					                
-					                <div class="col-md-3 col-lg-3">
+					                <div class="col-md-9 col-lg-9">
 					                       <label id = "label_nomeUnidade"></label>
 					                </div>	
 					                
@@ -80,10 +100,28 @@
 			                
 			                
     <div class="card">
+     
+       <div class="row">
+				<div class="col-md-11">
+				  <div zclass="box-header" style="background-color:#bbb; ">
+						<separator orient="vertical" spacing="8px" />
+						<h:label class="box-title" 
+							style="font-family:Arial;color:black;text-align:left; font-weight:bold;">
+							INFORMAÇÕES SOBRE O CASO
+						</h:label>
+								
+					 </div>
+			    </div>
+			    
+			    <div class="col-md-1" >
+			      <div>
+			     	<button style="background:rgb(51, 153, 122);color:white" iconSclass="fe fe fe-edit" zclass="btn btn-secondary" height="34px" >Editar</button>
+				  </div>  
+			    </div>
+			
+			</div>  
 			              					                	
-		<div class="card-header" style="background-color: #bbb">
-		   <x:h3 class="card-title">INFORMAÇÕES SOBRE O CASO</x:h3>
-		</div>            
+		         
 			
 			     <div class="card-body">
 					               
@@ -236,10 +274,28 @@
 			                
 			                
 	 <div class="card">
+	 
+	 <div class="row">
+				<div class="col-md-11">
+				  <div zclass="box-header" style="background-color:#bbb; ">
+						<separator orient="vertical" spacing="8px" />
+						<h:label class="box-title" 
+							style="font-family:Arial;color:black;text-align:left; font-weight:bold;">
+							INFORMAÇÃO DA RESIDÊNCIA DO CASO
+						</h:label>
+								
+					 </div>
+			    </div>
+			    
+			    <div class="col-md-1" >
+			      <div>
+			     	<button style="background:rgb(51, 153, 122);color:white" iconSclass="fe fe fe-edit" zclass="btn btn-secondary" height="34px" >Editar</button>
+				  </div>  
+			    </div>
+			
+			</div>  
 			              					                	
-		<div class="card-header" style="background-color: #bbb">
-		   <x:h3 class="card-title">INFORMAÇÃO DA RESIDÊNCIA DO CASO</x:h3>
-		</div>            
+		          
 			
 			     <div class="card-body">
             		                
@@ -329,10 +385,28 @@
 			                </div>
 			                
 			      <div class="card">
+			      
+	   <div class="row">
+				<div class="col-md-11">
+				  <div zclass="box-header" style="background-color:#bbb; ">
+						<separator orient="vertical" spacing="8px" />
+						<h:label class="box-title" 
+							style="font-family:Arial;color:black;text-align:left; font-weight:bold;">
+							SEGUIMENTO DE CONTACTOS NA UNIDADE
+						</h:label>
+								
+					 </div>
+			    </div>
+			    
+			    <div class="col-md-1" >
+			      <div>
+			     	<button style="background:rgb(51, 153, 122);color:white" iconSclass="fe fe fe-edit" zclass="btn btn-secondary" height="34px" >Editar</button>
+				  </div>  
+			    </div>
+			
+			</div>  
 			              					                	
-		<div class="card-header" style="background-color: #bbb">
-		   <x:h3 class="card-title">SEGUIMENTO DE CONTACTOS NA UNIDADE</x:h3>
-		</div>            
+		           
 			
 			     <div class="card-body">
             		                
@@ -511,6 +585,13 @@
 			                 
 			            </div>    
 	            	</div>
+	    
+		</div>	
+	  </div>	
+    </div>	
+ 	
+ 	
+ 	  
 	          
 	            	
 	         

@@ -16,37 +16,38 @@
 		<div class="row">
 			<div zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				<div zclass="box box-default">
-					<div zclass="box-header" align="center" style="background-color: white">
-						<!-- 	<h:hr/> -->
-						<h:label class="box-title" 
-							style="font-family:Georgia,serif;color:black;text-align:center; font-variant: small-caps; text-transform: none; font-weight: 50 margin-bottom: 0;">
-							FICHA DE INVESTIGAÇÃO/NOTIFICAÇÃO DE CASO DE COVID-19
-						</h:label>
+								<div zclass="box-header" align="center" style="background-color:rgb(242, 242, 242)">
+									<!-- 	<h:hr/> -->
+									<h:img src="images/img/home-icon.png" class="header-brand-img" alt="tabler logo"></h:img>
+									<h:label class="box-title" 
+										style="font-family:Arial;color:rgb(51, 153, 122);text-align:center; font-weight:bold;">
+										FICHA DE INVESTIGAÇÃO/NOTIFICAÇÃO DE CASO DE COVID-19
+									</h:label>
+											
+								 </div>
+								 <separator/>
+								 <div zclass="box-header" align="center" style="background-color:rgb(51, 153, 122)">
+									<!-- 	<h:hr/> -->
+									<h:label class="box-title" 
+										style="font-family:Arial;color:white;text-align:center; font-weight:bold;">
+										Instrumento adaptado com base na Ficha respectiva do MISAU e simplificado para uso na UEM
+									</h:label>
+											
+								</div>
+								<separator/>
+								<div zclass="box-header" align="center">
+									<!-- 	<h:hr/> -->
+									<h:label class="box-title" 
+										style="font-family:Arial;color:rgb(51, 153, 122);text-align:center; font-weight:bold;">
+										SEGUIMENTO DE CONTACTOS NA UNIDADE
+									</h:label>
+											
+								</div>
 								
-					</div>
-			
-			
-					<div zclass="box-header" align="center" style="background-color:rgb(51, 153, 122)">
-						<!-- 	<h:hr/> -->
-						<h:label class="box-title" 
-							style="font-family:Georgia,serif;color:white;text-align:center; font-variant: small-caps; text-transform: none; font-weight: 50 margin-bottom: 0;">
-							Instrumento adaptado com base na Ficha respectiva do MISAU e simplificado para uso na UEM
-						</h:label>
-								
-					</div>
-					<separator />
-					
-					<div zclass="box-header" align="center">
-						<!-- 	<h:hr/> -->
-						<h:label class="box-title" 
-							style="font-family:Georgia,serif;color:green;text-align:center; font-variant: small-caps; text-transform: none; font-weight: 50 margin-bottom: 0;">
-							SEGUIMENTO DE CONTACTOS NA UNIDADE
-						</h:label>
-								
-					</div>
+								<separator/>
 					
 							
-					</div>
+				</div>
 					
 				
 				
@@ -327,12 +328,21 @@
 										<div class="col-md-12 col-lg-12">
 					                     	<div align="right" >
 					                     		
-					                     		<button zclass="btn btn-danger" width="110px" id="btn_voltar4" >Voltar</button>
-					                     		<button iconSclass="fe fe-save" zclass="btn btn-success" width="110px" id="btn_gravar_ficha" >Gravar</button>
+					                     		<button style="background:rgb(51, 153, 122); color:white" iconSclass="fe fe-arrow-left" zclass="btn btn-secondary" width="10%" id="btn_voltar4" >Voltar</button>
+					                     		<button style="background:rgb(51, 153, 122); color:white" iconSclass="fe fe-arrow-right" zclass="btn btn-secondary" width="10%" id="btn_gravar_ficha" >Próximo</button>
 					                     	</div>
 					                     </div>
 										
 				            </div>
+				            <separator />
+				            <div zclass="box-header" align="center" style="background-color:rgb(51, 153, 122)">
+								<!-- <h:hr/> -->
+								<h:label class="box-tistle"
+									style="font-family:Georgia,serif;color:white;text-align:center; font-variant: small-caps; text-transform: none; font-weight: 50 margin-bottom: 0;">
+		
+								</h:label>
+		
+							</div>
 			                
 			            </div> 
 		

@@ -10,14 +10,20 @@ import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.ContextParam;
 import org.zkoss.bind.annotation.ContextType;
 import org.zkoss.bind.annotation.Init;
+import org.zkoss.spring.SpringUtil;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.select.Selectors;
 import org.zkoss.zk.ui.select.annotation.VariableResolver;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Div;
+import org.zkoss.zul.ListModelList;
 
 import uem.mz.sgccovid19.util.Breadcrumb;
+import uem.mz.sgccovid19.entity.Ficha;
+import uem.mz.sgccovid19.entity.monitoria.FichaMonitoria;
+import uem.mz.sgccovid19.service.FichaMonitoriaService;
+import uem.mz.sgccovid19.service.FichaService;
 
 @VariableResolver(org.zkoss.zkplus.spring.DelegatingVariableResolver.class)
 public class ParametrizacaoVM extends AbstractVM{
@@ -32,6 +38,12 @@ public class ParametrizacaoVM extends AbstractVM{
 	private Div breadcrumb;
 
 	private List<String> links;
+	
+	private FichaService fichaService;
+	private List<Ficha> fichaList;
+	
+	private FichaMonitoriaService fichaMonitoriaService;
+	private List<FichaMonitoria> fichMonList;
 	
 	@AfterCompose
 	public void initSetup(@ContextParam(ContextType.VIEW) Component view) throws IOException {
@@ -60,6 +72,41 @@ public class ParametrizacaoVM extends AbstractVM{
 		Breadcrumb.drawn(breadcrumb, "", links);
 	}
 	
+	
+	 
+	private int numero = buscarFichas();
+	private int numeroMonitoria = buscarFichasMonitoria();
+	
+	public int getNumero() {
+		return numero;
+	}
+
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+	
+	
+	public int getNumeroMonitoria() {
+		return numeroMonitoria;
+	}
+
+	public void setNumeroMonitoria(int numeroMonitoria) {
+		this.numeroMonitoria = numeroMonitoria;
+	}
+
+	public int buscarFichas() {
+		fichaService = (FichaService) SpringUtil.getBean("fichaService");
+		fichaList = fichaService.buscarFicha();
+		return fichaList.size();
+	}
+	
+	public int buscarFichasMonitoria() {
+		fichaMonitoriaService = (FichaMonitoriaService) SpringUtil.getBean("fichaMonitoriaService");
+		fichMonList = fichaMonitoriaService.buscarFichaMonitoria();
+		return fichMonList.size();
+	}
+	
+	
 	@Command
 	public void openFicha() {
 
@@ -67,10 +114,13 @@ public class ParametrizacaoVM extends AbstractVM{
 		map.put("target", target);
 		target.getChildren().clear();
 		Executions.createComponents("views/ficha_investigacao/ficha_investigacao.zul", target, map);
-
+	
+		/*
 		links = new ArrayList<String>();
 		links.add("Ficha de Investigação");
 		Breadcrumb.drawn(breadcrumb, "", links);
+		*/
+		
 	}
 	
 	@Command
