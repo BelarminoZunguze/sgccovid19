@@ -10,7 +10,7 @@
 	     <div class="my-3 my-md-5">
 	     <div class="container">
           <x:div class="row row-cards">
-             <x:div class="col-6 col-sm-4 col-lg-2">
+             <x:div class="col-6 col-sm-4 col-lg-2" if="${sec:isAnyGranted('GESTÃO_DE_INSTITUIÇÃO')}">
                <x:div class="card">
                   <x:a href="#" onClick="@command('openRegInst')" class="button btn-secondary">
               	      <div class="text-muted mb-4">Instituição</div>
@@ -18,7 +18,7 @@
                 </x:div>
               </x:div> 
               
-              <x:div class="col-6 col-sm-4 col-lg-2">
+              <x:div class="col-6 col-sm-4 col-lg-2" if="${sec:isAnyGranted('GESTÃO_DE_UNIDADES_ORGÂNICAS')}">
                <x:div class="card">
                	<x:a href="#" onClick="@command('openRegUniOrg')" class="button btn-secondary">
               	      <div class="text-muted mb-4">Unidade Orgânica</div>
@@ -26,7 +26,7 @@
                 </x:div>
               </x:div>  
               
-              <x:div class="col-6 col-sm-4 col-lg-2">
+              <x:div class="col-6 col-sm-4 col-lg-2" if="${sec:isAnyGranted('GESTÃO_DE_DEPARTAMENTOS')}">
                <x:div class="card">
                   <x:a href="#" onClick="@command('openRegDep')" class="button btn-secondary">
               	<div class="text-muted mb-4">Departamento</div>
@@ -34,7 +34,7 @@
                 </x:div>
               </x:div> 
               
-              <x:div class="col-6 col-sm-4 col-lg-2">
+              <x:div class="col-6 col-sm-4 col-lg-2" if="${sec:isAnyGranted('GESTÃO_DE_SECTORES')}">
                <x:div class="card">
                   <x:a href="#" onClick="@command('openRegSet')" class="button btn-secondary">
               	<div class="text-muted mb-4">Sector</div>
@@ -42,7 +42,7 @@
                 </x:div>
               </x:div> 
               
-              <x:div class="col-6 col-sm-4 col-lg-2">
+              <x:div class="col-6 col-sm-4 col-lg-2" if="${sec:isAnyGranted('GESTÃO_DE_PROVÍNCIAS')}">
                <x:div class="card">
                   <x:a href="#" onClick="@command('openRegProv')" class="button btn-secondary">
               	<div class="text-muted mb-4">Província</div>
@@ -50,7 +50,7 @@
                 </x:div>
               </x:div> 
               
-              <x:div class="col-6 col-sm-4 col-lg-2">
+              <x:div class="col-6 col-sm-4 col-lg-2" if="${sec:isAnyGranted('GESTÃO_DE_DISTRITOS')}">
                <x:div class="card">
                   <x:a href="#" onClick="@command('openRegistarDistrito')" class="button btn-secondary">
               	<div class="text-muted mb-4">Distrito</div>

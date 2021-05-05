@@ -58,7 +58,7 @@
               <x:div class="col-6 col-sm-4 col-lg-2" if="${sec:isAnyGranted('GESTÃO_RELATÓRIOS')}">
                <x:div class="card">
                
-               	<x:a style="background:rgb(51, 153, 122); color:white; font-weight:bold;"  href="#" onClick="@command('openAdministracao')" class="button btn-secondary">
+               	<x:a style="background:rgb(51, 153, 122); color:white; font-weight:bold;"  href="#" class="button btn-secondary">
               	      <div class="fe fe fe-pie-chart"></div>
               	      <div >Relatórios</div>
                   </x:a>

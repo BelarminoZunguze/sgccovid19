@@ -18,7 +18,7 @@
                 </x:div>
               </x:div> 
               
-              <x:div class="col-6 col-sm-4 col-lg-2" if="${sec:isAnyGranted('GESTÃO_DE_UTILIZADORES')}">
+              <x:div class="col-6 col-sm-4 col-lg-2" if="${sec:isAnyGranted('GESTÃO_DE_PERFIS')}">
                <x:div class="card">
                	<x:a href="#" onClick="@command('openPerfil')" class="button btn-secondary">
               	      <div class="text-muted mb-4">Perfil</div>
