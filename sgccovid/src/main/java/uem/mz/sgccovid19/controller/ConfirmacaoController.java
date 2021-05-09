@@ -283,6 +283,7 @@ public class ConfirmacaoController extends GenericForwardComposer{
  		Executions.createComponents("views/ficha_investigacao/ficha_investigacao.zul", target, map);
 
  		links = new ArrayList<String>();
+ 		links.add("Ficha");
  		Breadcrumb.drawn(breadcrumb, "", links);
 
    		

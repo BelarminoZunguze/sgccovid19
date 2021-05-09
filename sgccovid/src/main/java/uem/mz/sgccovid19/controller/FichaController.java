@@ -145,6 +145,22 @@ public class FichaController extends GenericForwardComposer{
 		
 	}
 	
+	public void onClickEditarFicha(ForwardEvent evt){
+    	
+		ficha = (Ficha) evt.getData();
+		
+		final HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("target", target);
+		map.put("ficha", ficha);
+		target.getChildren().clear();
+		Executions.createComponents("views/ficha_investigacao/confirmacao_ficha.zul", target, map);
+ 		
+		links = new ArrayList<String>();
+		links.add("Detalhes da Ficha");
+		Breadcrumb.drawn(breadcrumb, "", links);
+		
+	}
+	
 	public void onClickApagar(ForwardEvent evt){
 		ficha = (Ficha) evt.getData();
 		

@@ -21,8 +21,6 @@ implements FichaDao{
 		
 		Query query = getCurrentSession().createQuery("select fich from Ficha fich JOIN FETCH fich.utente ute "
 				+ "LEFT JOIN FETCH fich.classificacao class"
-				+ "LEFT JOIN FETCH fich.fichaContacto fichcontac"
-				+ "LEFT JOIN FETCH fich.distrito_isolamento disIso LEFT JOIN FETCH disIso.provincia proIso"
 				+ "LEFT JOIN FETCH ute.distrito dis LEFT JOIN FETCH dis.provincia pro"
 				+ "LEFT JOIN FETCH ute.tipo_utente tput");
 		

@@ -32,12 +32,21 @@
 				                    
                     				<div class="row">
                     				
-                    				
+                    					<div class="col-md-6 col-lg-4">
+							              <div class="form-group">
+												<label class="form-label">Unidade Orgânica</label>
+												<combobox id="cbx_unidade"  placeholder="Seleccione a Unidade" readonly="true" width="100%">
+							                 	    <template name="model">
+							                 		   <comboitem label="${each.designacao}"></comboitem>
+							                 	     </template>
+							                 </combobox>		
+											</div>
+										</div>
 				                		 
 										 <div class="col-md-6 col-lg-4">
 					                        <div class="form-group">
-					                          <label class="form-label">Ano</label>
-					                          <combobox id="cbx_ano" placeholder="Seleccione o ano" readonly="true" width="100%">
+					                          <label class="form-label">Classificação</label>
+					                          <combobox id="cbx_classificacao" placeholder="Seleccione a classificação" readonly="true" width="100%">
 												    <template name="model">
 							                 		   <comboitem label="${each}"></comboitem>
 							                 	     </template>
@@ -49,8 +58,8 @@
 										
 										 <div class="col-md-6 col-lg-4">
 							              <div class="form-group">
-												<label class="form-label">Mês</label>
-												<combobox id="cbx_mes" placeholder="Seleccione o Mês" readonly="true" width="100%">
+												<label class="form-label">Tipo de Utente</label>
+												<combobox id="cbx_tipo_utente" placeholder="Seleccione o Tipo de Utente" readonly="true" width="100%">
 							                 								               
 							                 		<comboitem label="Janeiro" />
 							                 		<comboitem label="Fevereiro"/>
@@ -62,6 +71,36 @@
 					                     					                     
 					                </div>
 					                
+					                <div class="row">
+                    				
+                    					<div class="col-md-6 col-lg-4">
+							              <div class="form-group">
+												<label class="form-label">Gênero</label>
+												<combobox id="cbx_genero"  placeholder="Seleccione o Gênero" readonly="true" width="100%">
+							                 	    <comboitem label="Masculino" />
+							                 		<comboitem label="Feminino"/>
+							                 </combobox>		
+											</div>
+										</div>
+				                		 
+										 <div class="col-md-6 col-lg-4">
+					                        <div class="form-group">
+					                          <label class="form-label">Data de Submissão</label>
+					                          <datebox id="dtb_dataSubmissao"  format="dd/MM/yyyy" width="100%"/>
+					                        </div>
+					                     </div> 
+					                     
+					                     
+										
+										 <div class="col-md-6 col-lg-4">
+							              <div class="form-group">
+												<label class="form-label">Número da ficha</label>
+												<textbox class="form-control" name="example-text-input" placeholder="Pesquisar pelo nr. da ficha" id="txt_nrFicha"/>		
+											</div>
+										</div>
+										
+					                     					                     
+					                </div>
 					                
 				                	
 				                	<div class="row">
@@ -85,20 +124,18 @@
 	            	<x:div class="col-12">
                 <x:div class="card">
                                 
-                <listbox id="lbxFichas" mold="paging" rows="10" checkmark="true"
-					pageSize="10" multiple="true">
+                <listbox id="lbxFichas" mold="paging" rows="10" 
+					pageSize="10" >
 					
 					<listhead >
 					   
-						<listheader width="3%" ></listheader>						
-						<listheader width="7%" sort="auto(each.numeroFicha)" >Nr. Ficha</listheader>
-						<listheader >Descrição</listheader>
-						<listheader >Data</listheader>
-						<listheader width="7%">Semana</listheader>
-						<listheader >Hora de Submissão</listheader>
-						<listheader >Estado</listheader>
-						<listheader>Detalhes</listheader>
-						<listheader width="7%">Observações</listheader>
+												
+						<listheader width="7%" >Nr. Ficha</listheader>
+						<listheader width="13%">Data de Submissão</listheader>
+						<listheader width="13%">Classificação</listheader>
+						<listheader width="13%">Tipo de Utente</listheader>
+						<listheader >Unidade Orgânica</listheader>
+						<listheader width="13%">Detalhes</listheader>
 						
 						
 					</listhead>
@@ -106,27 +143,24 @@
 				<template name="model">
 					<listitem>
 
-								<listcell></listcell>
+								
 								<listcell label="${each.numeroFicha}"></listcell>
-								<listcell label="Ficha de Investigação - ${each.id}"></listcell>
 								<listcell label="${each.created}"></listcell>
-								<listcell label="S1" ></listcell>
-								<listcell label="10:30" ></listcell>
-								<listcell label="${each.estado}"></listcell>
+								<listcell label="${each.classificacao.nome}"></listcell>
+								<listcell label="${each.utente.tipo_utente.designacao}"></listcell>
+								<listcell label="${each.utente.unidade.designacao}"></listcell>
+								
 								<listcell>
 								  
                             		<button class="fe fe fe-eye" forward="onClick=onClickVerFicha(${each})"></button>
                             		
-                            		<button class="fe fe fe-edit" forward="onClick=onClickVerFicha(${each})"></button>
+                            		<button class="fe fe fe-edit" forward="onClick=onClickEditarFicha(${each})"></button>
                             		
                             		<button class="fe fe fe-trash" forward="onClick=onClickApagar(${each})"></button>
                             		
 								   
 								</listcell> 
-                            	<listcell  > 
-									<button class="fe fe fe-eye" ></button>
-                            		
-                            	</listcell>
+                            	
                             	
                       </listitem>
                   </template>
