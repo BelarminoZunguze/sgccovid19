@@ -14,6 +14,7 @@ import java.util.List;
 import org.zkoss.spring.SpringUtil;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
+import org.zkoss.zk.ui.event.ForwardEvent;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zk.ui.util.GenericForwardComposer;
 import org.zkoss.zul.Div;
@@ -288,6 +289,26 @@ public class ConfirmacaoController extends GenericForwardComposer{
 
    		
    	}
+        
+     public void onClickEditarDados(ForwardEvent evt) {
+  	   	
+   		final HashMap<String, Object> map = new HashMap<String, Object>();
+   		map.put("target", target);
+   		target.getChildren().clear();
+   		Executions.createComponents("views/ficha_investigacao/edicao_dados.zul", target, map);
+		
+		links = new ArrayList<String>();
+		links.add("Actualizar dados");
+		Breadcrumb.drawn(breadcrumb, "", links);
+
+   		
+   	}
+      
+      
+      
+      
+      
+      
      
      
    

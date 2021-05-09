@@ -1,0 +1,845 @@
+<?page title="Dados da Notificação" contentType="text/html;charset=UTF-8"?>
+<zk xmlns:h="xhtml" xmlns:zk="zk">
+	<window id="win">
+
+		<div zclass="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+			<div zclass="box box-success">
+				
+
+
+			<div zclass="box-body">
+			
+				<div zclass="box-header" style="background-color:#bbb; ">
+					<separator orient="vertical" spacing="8px" />
+					<h:label class="box-title" 
+						style="font-family:Arial;color:black;text-align:left; font-weight:bold;">
+						DADOS DO UTENTE
+					</h:label>
+							
+				 </div>
+				 <separator/>
+		
+				<div class="row">
+					<div zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<div zclass="box box-default">
+					
+							
+							<div>
+								<div zclass="box-body">
+								<div class="row">
+										
+								<div zclass="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+								<div class="form-group">    	
+									
+									<div class="form-group">
+								       <label class="form-label">Nome:  </label>
+								
+										<div >
+											<div>
+											  <textbox id="txtNome" zclass="form-control" width="90%" > </textbox>
+									        </div>
+										</div>
+								
+								    </div>
+								    
+								    <div class="form-group">
+								       <label class="form-label">Nacionalidade:  </label>
+								
+										<div >
+											<combobox id="cbxNacionalidade"
+												readonly="true" placeholder="Selecione a Nacionalidade" width="90%"
+												autocomplete="true">
+												    <comboitem label="Moçambicana" value="Moçambicana"></comboitem>
+													<comboitem label="Outra"></comboitem>
+											</combobox>
+										</div>
+								
+								    </div>
+								    
+								    
+								    
+								    <div class="form-group">
+								       <label class="form-label">E-mail:  </label>
+								
+										<div >
+											<div>
+											  <textbox id="txtEmail" zclass="form-control" width="90%" > </textbox>
+									        </div>
+										</div>
+								
+								    </div>
+								    
+								    <div class="form-group">
+								       <label class="form-label">Contacto:  </label>
+								
+										<div >
+											<div>
+											  <textbox id="txtContacto" zclass="form-control" width="90%" > </textbox>
+									        </div>
+										</div>
+								
+								    </div>
+								    
+									
+									<div class="form-group">
+								       <label class="form-label"> Gênero:  </label>
+								
+										<div >
+											<combobox id="cbxGenero"
+												readonly="true" placeholder="Selecione o Gênero" width="90%"
+												autocomplete="true">
+												
+													<comboitem label="Masculino" value="Masculino"></comboitem>
+													<comboitem label="Feminino" value="Feminino"></comboitem>
+												
+											</combobox>
+										</div>
+								
+								    </div>
+								    
+								    <div class="form-group">
+								       <label class="form-label"> Data de Nascimento:  </label>
+								
+										<div >
+											<datebox id="dtb_dataNascimento"  format="dd/MM/yyyy" width="90%"/>
+										</div>
+								
+								    </div>
+									
+								</div>
+							 </div>
+								
+							<div zclass="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+								<div class="form-group">
+								
+								<div class="form-group">
+								       <label class="form-label"> Tipo de Utente:  </label>
+								
+										<div >
+											<combobox id="cbxTipoUtente"
+												readonly="true" placeholder="Selecione o tipo de Utente" width="90%"
+												autocomplete="true">
+												
+												<template name="model">
+													<comboitem
+														label="${each.designacao}">
+													</comboitem>
+												</template>
+												
+											</combobox>
+										</div>
+								
+								    </div>
+								
+								<div class="form-group">
+								       <label class="form-label"> Unidade Orgânica:  </label>
+								
+										<div >
+											<combobox id="cbxUnidade"
+												readonly="true" placeholder="Selecione a Unidade Orgânica" width="90%"
+												autocomplete="true">
+												<template name="model">
+													<comboitem
+														label="${each.designacao}">
+													</comboitem>
+												</template>
+											</combobox>
+										</div>
+								
+								    </div>
+								    
+								    <div class="form-group">
+								       <label class="form-label"> Província de Residência:  </label>
+								
+										<div >
+											<combobox id="cbxProvincia"
+												readonly="true" placeholder="Selecione a Província" width="90%"
+												autocomplete="true">
+												<template name="model">
+													<comboitem
+														label="${each.designacao}">
+													</comboitem>
+												</template>
+											</combobox>
+										</div>
+								
+								    </div>
+								    
+								    <div class="form-group">
+								       <label class="form-label"> Distrito de Residência:  </label>
+								
+										<div >
+											<combobox id="cbxDistrito"
+												readonly="true" placeholder="Selecione a Província" width="90%"
+												autocomplete="true">
+												<template name="model">
+													<comboitem
+														label="${each.designacao}">
+													</comboitem>
+												</template>
+											</combobox>
+										</div>
+								
+								    </div>
+								    
+								    <div class="form-group">
+								       <label class="form-label">Endereço/ Local de Residência:  </label>
+								
+										<div >
+											<div>
+											  <textbox id="txtEndereco" zclass="form-control" width="90%" > </textbox>
+									        </div>
+										</div>
+								
+								    </div>
+								
+								    
+								       	
+									
+									
+									
+									
+								
+									
+								</div>
+							</div>
+							
+							</div>					
+		
+									</div>
+								</div>
+								
+							</div>
+							
+						
+						
+					</div>
+				</div>
+				
+				
+				
+							
+		
+		                   
+		                  
+							
+						</div>
+			</div>
+			
+			<div zclass="box box-success">
+				
+				<div zclass="box-header" style="background-color:#bbb; ">
+					<separator orient="vertical" spacing="8px" />
+					<h:label class="box-title" 
+						style="font-family:Arial;color:black;text-align:left; font-weight:bold;">
+						INFORMAÇÕES SOBRE O CASO
+					</h:label>
+							
+				 </div>
+				 <separator/>
+				 
+				<div zclass="box-body">
+
+				<div class="row">
+					<div zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<div zclass="box box-default">
+							
+							 
+							
+							
+							<div >
+								<div zclass="box-body">
+								<div class="row">
+										
+								<div zclass="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+								  
+								  <div class="form-group">    	
+									
+									
+								       
+								   
+								       
+									<div class="form-group">
+								       <label class="form-label">Classificação:  </label>
+								
+										<div >
+											<combobox id="cbxClassificacao"
+												readonly="true" placeholder="Selecione a classificação" width="90%"
+												autocomplete="true">
+												
+												<template name="model">
+													<comboitem
+														label="${each.nome}">
+													</comboitem>
+												</template>
+												
+													
+											</combobox>
+										</div>
+								
+								    </div>
+								    
+								    <div class="form-group">
+								       <label class="form-label"> Data do Teste:  </label>
+								
+										<div >
+											<datebox id="dtb_dataTeste"  format="dd/MM/yyyy" width="90%"/>
+										</div>
+								
+								    </div>
+								    
+								    <div class="form-group">
+								       <label class="form-label"> Data da Notificação:  </label>
+								
+										<div >
+											<datebox id="dtb_dataNotificacao"  format="dd/MM/yyyy" width="90%"/>
+										</div>
+								
+								    </div>	
+								   
+									
+								</div>
+							</div>
+								
+							<div zclass="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+							
+							<div class="row">
+				              	    
+				              	    <div class="col-md-2 col-lg-2">
+					              	     <div sclass="form-group">
+										   <label class="form-label">Viajou?</label>
+										 </div>
+				              	    
+				              	    </div>
+									
+								                  	<div class="custom-controls-stacked">
+																<radiogroup>
+																	<radio label="Sim" id="rdb_sim" selected="true"></radio>
+																	<radio label="Não" id="rdb_nao" ></radio>
+																</radiogroup>
+													</div>
+								    
+				              	
+				                </div>
+				      
+				               <div class="form-group">
+				       
+				              	   <div sclass="form-group"> 
+								     <label class=" form-label">Proveniencia:  </label>
+									  <div>
+											<textbox id="txt_proveniencia" zclass="form-control" width="90%" > </textbox>
+									  </div>
+									 </div>
+									 
+									<div sclass="form-group">  
+									 <label class=" form-label">Ponto de Entrada:  </label>
+									  <div>
+											<textbox id="txt_pontoEntrada" zclass="form-control" width="90%" > </textbox>
+									  </div>
+									 </div>
+									
+									
+									
+									<div class="row">
+				              	    
+				              	    <div class="col-md-6 col-lg-6">
+					              	     <div sclass="form-group">
+										   <label class="form-label">Detectado no ponto de entrada?</label>
+										 </div>
+				              	    
+				              	    </div>
+				              	    
+									
+								                  	<div >
+																<radiogroup>
+																	<radio label="Sim" id="rdb_sim_detectado" selected="true"></radio>
+																	<radio label="Não" id="rdb_nao_detectado" ></radio>
+																</radiogroup>
+													</div>
+								     
+				              	
+				                </div>
+								
+								   <div class="form-group"> 
+									 <label class="form-label">Data de Entrada no Pais:  </label>
+									 <div >
+											<datebox id="dtb_dataEntrada"  format="dd/MM/yyyy" width="90%"/>
+										</div>
+								   </div>
+									
+									<label class="form-label">Meio de transporte:  </label>
+									<div>
+											<textbox id="txt_MeioTransporte" zclass="form-control" width="90%" > </textbox>
+									</div>
+									
+								</div>
+				           </div>
+								
+								
+							</div>					
+		
+									</div>
+								</div>
+								
+							</div>
+							
+						
+						
+					</div>
+				</div>
+			<separator />
+			
+				</div>
+			</div>
+			
+			<div zclass="box box-success">
+				<div zclass="box-header" style="background-color:#bbb; ">
+						<separator orient="vertical" spacing="8px" />
+						<h:label class="box-title" 
+							style="font-family:Arial;color:black;text-align:left; font-weight:bold;">
+							INFORMAÇÃO DA RESIDÊNCIA DO CASO
+						</h:label>
+								
+					 </div>
+					 <separator/>
+
+
+				<div zclass="box-body">
+
+					<div class="row">
+						<div zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div zclass="box box-default">
+								
+								
+								<div>
+									<div zclass="box-body">
+										<div class="row">
+										
+										<div zclass="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+												
+												<div class="row">
+		              	    
+								              	    <div class="col-md-4 col-lg-4">
+									              	     <div sclass="form-group">
+														   <label class="form-label">Em isolamento?</label>
+														 </div>
+								              	    
+								              	    </div>
+								              	    
+													
+												       <div >
+															<radiogroup>
+															 <radio label="Sim" id="rdb_sim_isolamento" selected="true"></radio>
+															 <radio label="Não" id="rdb_nao_isolamento" ></radio>
+															</radiogroup>
+														</div>
+												    
+								              	
+								                </div>
+												
+												<div class="form-group">
+												
+													<div class="form-group">
+														<label class="form-label">
+															Local de Isolamento:
+														</label>
+
+														<div>
+															<combobox id="cbxLocalIsolamento" readonly="true"
+																placeholder="Selecione o local de isolamento" width="90%"
+																autocomplete="true">
+																
+																	<comboitem label="Casa" value="Casa"></comboitem>
+																	<comboitem label="Hospital" value="Hospital"></comboitem>
+																	<comboitem label="Outro" value="Outro"></comboitem>
+																
+															</combobox>
+														</div>
+
+													</div>
+													<div class="form-group">
+														<label class=" form-label">
+															Província de isolamento:
+														</label>
+
+														<div>
+															<combobox id="cbxProvIsolamento" readonly="true"
+																placeholder="Selecione a província de isolamento" width="90%"
+																autocomplete="true">
+																<template name="model">
+																	<comboitem label="${each.designacao}">
+																	</comboitem>
+																</template>
+															</combobox>
+														</div>
+
+													</div>
+													
+													<div class="form-group">
+														<label class=" form-label">
+															Distrito de isolamento:
+														</label>
+
+														<div>
+															<combobox id="cbxDistrIsolamento" readonly="true"
+																placeholder="Selecione o Distrito de isolamento" width="90%"
+																autocomplete="true">
+																<template name="model">
+																	<comboitem label="${each.designacao}">
+																	</comboitem>
+																</template>
+															</combobox>
+														</div>
+
+													</div>
+													
+												
+
+
+													
+
+												</div>
+											</div>
+
+											<div zclass="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+												<div class="form-group">
+												
+													<div class="form-group">
+												       <label class="form-label"> Data em que informou à Unidade:  </label>
+												
+														<div >
+															<datebox id="dtb_dataInformou"  format="dd/MM/yyyy" width="90%"/>
+														</div>
+												
+												    </div>
+													
+													<div class="form-group">
+												       <label class="form-label"> Última vez que esteve na Unidade:  </label>
+												
+														<div >
+															<datebox id="dtb_dataUltima"  format="dd/MM/yyyy" width="90%"/>
+														</div>
+												
+												    </div>
+													
+												</div>
+											</div>
+											
+								
+									</div>
+
+									</div>
+								</div>
+
+							</div>
+
+                            <div style="text-align:center">
+									<h:label class="box-title"
+									    style="font-family:Arial;color:green;text-align:center; font-weight:bold;">
+										Outras Informações úteis
+									</h:label>
+				 		    </div>
+				 		    <separator/>
+				 						
+				 			<div>
+								<textbox id="txt_outras" zclass="form-control" rows="2" width="100%" height="100px"
+									placeholder="Digite outras informacoes uteis">
+								</textbox>
+							</div>
+
+						</div>
+					</div>
+					<separator />
+					
+					
+				</div>
+			</div>
+			
+			<separator/>
+			<div zclass="box-header" style="background-color:#bbb; ">
+				<separator orient="vertical" spacing="8px" />
+				<h:label class="box-title" 
+					style="font-family:Arial;color:black;text-align:left; font-weight:bold;">
+					SEGUIMENTO DE CONTACTOS NA UNIDADE
+				</h:label>
+						
+			 </div>
+			 <separator />
+			
+			<div class="col-12">
+     	                <div>
+                			  <div class="row" >
+                				
+                				<div class="col-md-6 col-lg-6">
+                				
+                				<div class="row" >
+                				 
+                				 <div class="col-md-6 col-lg-6">
+                 				 <div >
+                 				   <label class="form-label">
+							Teve Contacto Dentro da Unidade?
+						   </label>
+                 				 </div>
+                				  </div>
+                				 
+                				 <div class="col-md-6 col-lg-6">
+                 				 	   <div >								
+							  <div class="custom-controls-stacked">
+							    <radiogroup>
+								  <radio label="Sim" id="rdb_sim_dentro"></radio>
+								  <radio label="Não" id="rdb_nao3"></radio>
+								</radiogroup>  
+							  </div>									
+					       </div>
+                				 </div>
+                				
+                				
+                				</div>
+                				
+                				  
+	                     
+	                </div>
+	                
+	                <div class="col-md-6 col-lg-6">
+                				
+                				<div class="row" >
+                				 
+                				 <div class="col-md-6 col-lg-6">
+                 				 <div class="form-group">
+                 				   <label class="form-label">
+							Teve Contacto Fora da Unidade?
+						   </label>
+                 				 </div>
+                				  </div>
+                				 
+                				 <div class="col-md-6 col-lg-6">
+                 				 	   <div >								
+							  <div class="custom-controls-stacked">
+							    <radiogroup>
+								  <radio label="Sim" id="rdb_sim_fora"></radio>
+								  <radio label="Não" id="rdb_nao2"></radio>
+								</radiogroup>  
+							  </div>									
+					       </div>
+                				 </div>
+                				
+                				
+                				</div>
+                				
+                				  
+	                     
+	                </div>
+	                     					                     
+	               </div>
+	               <separator/>
+	               
+                      
+	               
+	               
+	            <div class="row">
+	            
+	            <div class="col-md-6 col-lg-6">
+	            
+	                 <div class="row">
+				                
+				                   <div class="col-md-4 col-lg-4">
+										<label class="form-label">Departamento:</label>
+								   </div>
+            	    
+				              	    <div >
+					              	     <div class="form-group">
+	                    				  <combobox id="cbxDepartamentoDentro" readonly="true"
+											placeholder="Selecione o Departamento" width="100%"
+											autocomplete="true">
+											<template name="model">
+												<comboitem label="${each.designacao}">
+												</comboitem>
+											</template>
+										  </combobox>
+										</div>
+				              	    
+				              	    </div>
+				              	    
+									
+								       <div class="col-md-4 col-lg-4">
+											<button iconSclass="fe fe-plus" width="30%"></button>
+										</div>
+								    
+				              	
+				             </div>
+				             
+				    <div class="row">
+				                
+				                   <div class="col-md-4 col-lg-4">
+										<label class="form-label">Sector:</label>
+								   </div>
+            	    
+				              	    <div class="form-group">
+                    				  <combobox id="cbxSectorDentro" readonly="true"
+										placeholder="Selecione o Sector" width="100%"
+										autocomplete="true">
+										<template name="model">
+											<comboitem label="${each.designacao}">
+											</comboitem>
+										</template>
+									  </combobox>
+									</div>
+				              	    
+									
+								       <div class="col-md-4 col-lg-4">
+											<button iconSclass="fe fe-plus" width="30%"></button>
+										</div>
+								    
+				              	
+				             </div>
+                				
+                				<div class="row">
+                				 
+                				 <div class="col-md-6 col-lg-6">
+                 				 
+						<div class="form-group">
+                 				   <label class="form-label">
+							Outros Espaços:
+						   </label>
+                 				 </div>
+                 				 
+                 				 <div class="form-group">
+					        <textbox id="txtOutrosDentro" zclass="form-control" width="100%" placeholder="Indique outros"> </textbox>
+			             </div> 
+                				  </div>
+                				 
+                				 </div>     
+	                </div>
+	                
+	                <div class="col-md-6 col-lg-6">
+	                
+	                <div class="row">
+				                
+				                   <div class="col-md-4 col-lg-4">
+										<label class="form-label">Unidade Orgânica:</label>
+								   </div>
+            	    
+				              	    <div class="form-group">
+                    				  <combobox id="cbxUnidadeFora" readonly="true"
+										placeholder="Selecione a Unidade Orgânica" width="100%"
+										autocomplete="true">
+										<template name="model">
+											<comboitem label="${each.designacao}">
+											</comboitem>
+										</template>
+									  </combobox>
+									</div>
+				              	    
+									
+								       <div class="col-md-4 col-lg-4">
+											<button iconSclass="fe fe-plus" width="30%"></button>
+										</div>
+								    
+				              	
+				             </div>
+				             
+				     <div class="row">
+				                
+				                   <div class="col-md-4 col-lg-4">
+										<label class="form-label">Departamento:</label>
+								   </div>
+            	    
+				              	    <div class="form-group">
+                    				  <combobox id="cbxDepartamentoFora" readonly="true"
+										placeholder="Selecione o Departamento" width="100%"
+										autocomplete="true">
+										<template name="model">
+											<comboitem label="${each.designacao}">
+											</comboitem>
+										</template>
+									  </combobox>
+									</div>
+				              	    
+									
+								       <div class="col-md-4 col-lg-4">
+											<button iconSclass="fe fe-plus" width="30%"></button>
+										</div>
+								    
+				              	
+				             </div>
+				             
+				      <div class="row">
+				                
+				                   <div class="col-md-4 col-lg-4">
+										<label class="form-label">Sector:</label>
+								   </div>
+            	    
+				              	    <div class="form-group">
+                    				  <combobox id="cbxSectorFora" readonly="true"
+										placeholder="Selecione o Sector" width="100%"
+										autocomplete="true">
+										<template name="model">
+											<comboitem label="${each.designacao}">
+											</comboitem>
+										</template>
+									  </combobox>
+									</div>
+				              	    
+									
+								       <div class="col-md-4 col-lg-4">
+											<button iconSclass="fe fe-plus" width="30%"></button>
+										</div>
+								    
+				              	
+				             </div>
+				             
+				             
+				    <div class="row">
+                				 
+                				 <div class="col-md-6 col-lg-6">
+                 				 
+						<div class="form-group">
+                 				   <label class="form-label">
+							Outros Espaços:
+						   </label>
+                 				 </div>
+                 				 
+                 				 <div class="form-group">
+					        <textbox id="txtoutrosFora" zclass="form-control" width="100%" placeholder="Indique outros"> </textbox>
+			             </div> 
+                				  </div>
+                				 
+                				 </div> 
+                				
+                				    
+	                </div>
+                				
+	                    
+		               
+	                  					                     
+	            </div>
+	               
+	               
+	               
+	            
+	               
+	               
+	               
+	               
+                </div>
+			              
+			                
+				            
+			                
+		</div> 
+			
+			<div class="row">
+												
+				<div class="col-md-12 col-lg-12">
+			        <div align="right" >
+			           <button  iconSclass="fe fe-delete" zclass="btn btn-danger" width="10%" id="btn_voltar1" >Cancelar</button>
+			           <button  iconSclass="fe fe-save" zclass="btn btn-primary" width="10%" id="btn_proximo2">Actualizar</button>
+			         </div>
+			    </div>
+								
+		    </div>
+		    <separator/>
+			
+		</div>
+	</window>
+</zk>

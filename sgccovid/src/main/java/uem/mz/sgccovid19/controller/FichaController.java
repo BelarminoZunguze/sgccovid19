@@ -153,10 +153,10 @@ public class FichaController extends GenericForwardComposer{
 		map.put("target", target);
 		map.put("ficha", ficha);
 		target.getChildren().clear();
-		Executions.createComponents("views/ficha_investigacao/confirmacao_ficha.zul", target, map);
- 		
+		Executions.createComponents("views/ficha_investigacao/edicao_dados.zul", target, map);
+		
 		links = new ArrayList<String>();
-		links.add("Detalhes da Ficha");
+		links.add("Actualizar dados");
 		Breadcrumb.drawn(breadcrumb, "", links);
 		
 	}

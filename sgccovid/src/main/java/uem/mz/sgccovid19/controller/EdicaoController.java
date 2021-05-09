@@ -16,7 +16,6 @@ import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Textbox;
 import org.zkoss.zul.Window;
 
-import uem.mz.sgccovid19.entity.Departamento;
 import uem.mz.sgccovid19.entity.Distrito;
 import uem.mz.sgccovid19.entity.Provincia;
 import uem.mz.sgccovid19.entity.TipoUtente;
@@ -31,9 +30,8 @@ import uem.mz.sgccovid19.service.UtenteService;
 import uem.mz.sgccovid19.util.Breadcrumb;
 import uem.mz.sgccovid19.util.showClientNotification;
 
-public class UtenteController extends GenericForwardComposer{
+public class EdicaoController extends GenericForwardComposer{
 	
-
 	private Window win;
 	private Div pesquisar;
 	
@@ -199,14 +197,5 @@ public class UtenteController extends GenericForwardComposer{
     
      
     
-   
-     
-     
-     
-     
-     
-     
-     
-   
 
 }

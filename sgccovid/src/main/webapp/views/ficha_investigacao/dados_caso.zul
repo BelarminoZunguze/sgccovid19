@@ -39,7 +39,7 @@
 						<!-- 	<h:hr/> -->
 						<h:label class="box-title" 
 							style="font-family:Arial;color:rgb(51, 153, 122);text-align:center; font-weight:bold;">
-							DADOS DA NOTIFICAÇÃO
+							DADOS DO UTENTE
 						</h:label>
 								
 					</div>

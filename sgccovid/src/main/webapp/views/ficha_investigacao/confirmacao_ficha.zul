@@ -9,15 +9,16 @@
 	    
 	      <div id ="dadosFicha" visible="true" class="row">
        <div class="col-12">
-        <div class="card">
-			              					                	
-			<div class="row">
+       
+       <div class="card">
+     
+       <div class="row">
 				<div class="col-md-11">
 				  <div zclass="box-header" style="background-color:#bbb; ">
 						<separator orient="vertical" spacing="8px" />
 						<h:label class="box-title" 
 							style="font-family:Arial;color:black;text-align:left; font-weight:bold;">
-							DADOS DA NOTIFICAÇÃO
+							DADOS DO UTENTE
 						</h:label>
 								
 					 </div>
@@ -25,15 +26,107 @@
 			    
 			    <div class="col-md-1" >
 			      <div>
-			     	<button style="background:rgb(51, 153, 122);color:white" iconSclass="fe fe fe-edit" zclass="btn btn-secondary" height="34px" >Editar</button>
+			     	<button style="background:rgb(51, 153, 122);color:white" iconSclass="fe fe fe-edit" zclass="btn btn-secondary" forward="onClick=onClickEditarDados" height="34px" >Editar</button>
 				  </div>  
 			    </div>
 			
-			</div>           
+			</div>  
+			              					                	
+		         
+			
+			     <div class="card-body">
+			     
+		     			<div class="row">
+				                    				
+                   				<div class="col-md-3 col-lg-3">
+				                   <label class="form-label">Nome: </label>
+				                </div>
 				                
-			 <div class="card-body">    
-                 
-			     <div class="row">
+				                <div class="col-md-3 col-lg-3">
+				                       <label id="label_nome"></label>
+				                </div>
+				                
+				                <div class="col-md-3 col-lg-3">
+				                   <label class="form-label">Tipo de Utente: </label>
+				                </div>
+				                
+				                <div class="col-md-3 col-lg-3">
+				                       <label id="label_caso"></label>
+				                </div>	
+				                
+				                	                    					                     
+						</div>
+					               
+					               
+					                
+								     
+					     <div class="row">
+		                    				
+                   				<div class="col-md-3 col-lg-3">
+				                   <label class="form-label">Nacionalidade:  </label>
+				                </div>
+				                
+				                <div class="col-md-3 col-lg-3">
+				                       <label id="label_Nacionalidade"></label>
+				                </div>	
+							                
+							                                
+							                    					                     
+					     </div>
+								     
+					     <div class="row">
+		                    				
+                   				<div class="col-md-3 col-lg-3">
+				                   <label class="form-label">Sexo:</label>
+				                </div>
+				                
+				                <div class="col-md-3 col-lg-3">
+				                       <label id="label_Sexo"></label>
+				                </div>	
+							                    					                     
+					     </div>
+								     
+					     <div class="row">
+				                    				
+                   				<div class="col-md-3 col-lg-3">
+				                   <label class="form-label">Idade: </label>
+				                </div>
+				                
+				                <div class="col-md-3 col-lg-3">
+				                       <label id="label_idade"></label>
+				                </div>	
+				                
+				                	                
+									                    					                     
+							</div>
+								
+								
+								
+							<div class="row">
+				                    				
+                   				<div class="col-md-3 col-lg-3">
+				                   <label class="form-label">Contacto: </label>
+				                </div>
+				                
+				                <div class="col-md-3 col-lg-3">
+				                       <label id="label_contacto"></label>
+				                </div>
+									                    					                     
+							</div>
+								
+							<div class="row">
+				                    				
+                   				<div class="col-md-3 col-lg-3">
+				                   <label class="form-label">E-mail: </label>
+				                </div>
+				                
+				                <div class="col-md-3 col-lg-3">
+				                       <label id="label_email"></label>
+				                </div>
+									                    					                     
+							</div>
+							
+							<div class="row">
                     				
                     				<div class="col-md-3 col-lg-3">
 					                   <label class="form-label">Nome da Unidade:  </label>
@@ -45,9 +138,78 @@
 					                
 					                	                
 					                    					                     
-			     </div>
-			     
-			     <div class="row">
+			     			</div>
+			     			
+			     			<div class="row">
+					                    				
+                    				<div class="col-md-3 col-lg-3">
+					                   <label class="form-label">Província de residência: </label>
+					                </div>
+					                
+					                <div class="col-md-3 col-lg-3">
+					                     <label id="label_provincia_residencia"></label>
+					                </div>	
+										                
+										                	                
+										                    					                     
+						     </div>
+						     
+						     <div class="row">
+			                    				
+                    				<div class="col-md-3 col-lg-3">
+					                   <label class="form-label">Distrito de residência:  </label>
+					                </div>
+					                
+					                <div class="col-md-3 col-lg-3">
+					                       <label id="label_distrito_residencia"></label>
+					                </div>	
+								                
+								                	                
+								                    					                     
+						     </div>
+						     
+						     <div class="row">
+			                    				
+                    				<div class="col-md-3 col-lg-3">
+					                   <label class="form-label">Endereço/ local de residência: </label>
+					                </div>
+					                
+					                <div class="col-md-3 col-lg-3">
+					                       <label id="label_endereco"> </label>
+					                </div>	
+								                
+								                	                
+								                    					                     
+						     </div>
+								
+			          </div>  
+	                </div>
+       
+        <div class="card">
+			              					                	
+			<div class="row">
+				<div class="col-md-11">
+				  <div zclass="box-header" style="background-color:#bbb; ">
+						<separator orient="vertical" spacing="8px" />
+						<h:label class="box-title" 
+							style="font-family:Arial;color:black;text-align:left; font-weight:bold;">
+							INFORMAÇÕES SOBRE O CASO
+						</h:label>
+								
+					 </div>
+			    </div>
+			    
+			    <div class="col-md-1" >
+			      <div>
+			     	<button style="background:rgb(51, 153, 122);color:white" iconSclass="fe fe fe-edit" zclass="btn btn-secondary" height="34px" forward="onClick=onClickEditarDados">Editar</button>
+				  </div>  
+			    </div>
+			
+			</div>           
+				                
+			 <div class="card-body">
+			 
+			 	<div class="row">
                     				
                     				<div class="col-md-3 col-lg-3">
 					                   <label class="form-label">Classificação:</label>
@@ -60,6 +222,12 @@
 					                                
 					                    					                     
 			     </div>
+			 	
+			 	   
+                 
+			     
+			     
+			     
 			     
 			     <div class="row">
                     				
@@ -89,6 +257,72 @@
 					                    					                     
 			     </div>
 			     
+			     <div class="row">				                  
+					                
+					                <div class="col-md-3 col-lg-3">
+					                   <label class="form-label">Viajou:</label>
+					                </div>
+					                
+					                <div class="col-md-3 col-lg-3">
+					                       <label id="label_viajou"></label>
+					                </div>	                
+										                    					                     
+			     </div> 
+			     
+			     <div class="row">
+					            
+		                <div id="div_proveniencia" class="col-md-3 col-lg-3">
+		                   <label class="form-label">Proveniência:</label>
+		                </div>
+		                
+		                <div class="col-md-3 col-lg-3">
+		                       <label id="label_Proveniencia"></label>
+		                </div>
+		                
+		                <div id="div_ponto_entrada" class="col-md-3 col-lg-3">
+		                   <label class="form-label">Ponto de entrada: </label>
+		                </div>
+		                
+		                <div class="col-md-3 col-lg-3">
+		                       <label id="label_ponto_entrada"></label>
+		                </div>	                
+										                    					                     
+			     </div>
+			     
+			     <div class="row">
+					    
+		                <div id="div_data_entrada" class="col-md-3 col-lg-3">
+		                   <label class="form-label">Data de entrada no país:</label>
+		                </div>
+		                
+		                <div class="col-md-3 col-lg-3">
+		                       <label id="label_data_entrada"></label>
+		                </div>
+		                
+		                <div id="div_detectado" class="col-md-3 col-lg-3">
+		                   <label class="form-label">Detectado no ponto de entrada: </label>
+		                </div>
+		                
+		                <div class="col-md-3 col-lg-3">
+		                       <label id="label_Detectado"></label>
+		                </div>		                
+										                    					                     
+			     </div>
+			     
+			     <div class="row">
+					                    			    
+	                	<div id="div_meio_transporte" class="col-md-3 col-lg-3">
+		                   <label class="form-label">Meio de transporte: </label>
+		                </div>
+		                
+		                <div class="col-md-3 col-lg-3">
+		                       <label id="label_meio_transporte"></label>
+		                </div>	
+										                
+										                	                
+										                    					                     
+				</div>
+			     
           </div>
     			                
 	</div>
@@ -99,176 +333,7 @@
 			                
 			                
 			                
-    <div class="card">
-     
-       <div class="row">
-				<div class="col-md-11">
-				  <div zclass="box-header" style="background-color:#bbb; ">
-						<separator orient="vertical" spacing="8px" />
-						<h:label class="box-title" 
-							style="font-family:Arial;color:black;text-align:left; font-weight:bold;">
-							INFORMAÇÕES SOBRE O CASO
-						</h:label>
-								
-					 </div>
-			    </div>
-			    
-			    <div class="col-md-1" >
-			      <div>
-			     	<button style="background:rgb(51, 153, 122);color:white" iconSclass="fe fe fe-edit" zclass="btn btn-secondary" height="34px" >Editar</button>
-				  </div>  
-			    </div>
-			
-			</div>  
-			              					                	
-		         
-			
-			     <div class="card-body">
-					               
-					               
-					                <div class="row">				                  
-					                                       
-					                    				
-					                    				<div class="col-md-3 col-lg-3">
-										                   <label class="form-label">Caso: </label>
-										                </div>
-										                
-										                <div class="col-md-3 col-lg-3">
-										                       <label id="label_caso"></label>
-										                </div>	
-										                
-										                <div class="col-md-3 col-lg-3">
-										                   <label class="form-label">Viajou:</label>
-										                </div>
-										                
-										                <div class="col-md-3 col-lg-3">
-										                       <label id="label_viajou"></label>
-										                </div>	                
-										                    					                     
-								     </div>
-								     
-								     <div class="row">
-					                    				
-					                    				<div class="col-md-3 col-lg-3">
-										                   <label class="form-label">Nacionalidade:  </label>
-										                </div>
-										                
-										                <div class="col-md-3 col-lg-3">
-										                       <label id="label_Nacionalidade"></label>
-										                </div>	
-										                
-										                <div id="div_proveniencia" class="col-md-3 col-lg-3">
-										                   <label class="form-label">Proveniência:</label>
-										                </div>
-										                
-										                <div class="col-md-3 col-lg-3">
-										                       <label id="label_Proveniencia"></label>
-										                </div>	                
-										                    					                     
-								     </div>
-								     
-								     <div class="row">
-					                    				
-					                    				<div class="col-md-3 col-lg-3">
-										                   <label class="form-label">Sexo:</label>
-										                </div>
-										                
-										                <div class="col-md-3 col-lg-3">
-										                       <label id="label_Sexo"></label>
-										                </div>	
-										                
-										                <div id="div_data_entrada" class="col-md-3 col-lg-3">
-										                   <label class="form-label">Data de entrada no país:</label>
-										                </div>
-										                
-										                <div class="col-md-3 col-lg-3">
-										                       <label id="label_data_entrada"></label>
-										                </div>	                
-										                    					                     
-								     </div>
-								     
-								     <div class="row">
-					                    				
-					                    				<div class="col-md-3 col-lg-3">
-										                   <label class="form-label">Idade: </label>
-										                </div>
-										                
-										                <div class="col-md-3 col-lg-3">
-										                       <label id="label_idade"></label>
-										                </div>	
-										                
-										                <div id="div_ponto_entrada" class="col-md-3 col-lg-3">
-										                   <label class="form-label">Ponto de entrada: </label>
-										                </div>
-										                
-										                <div class="col-md-3 col-lg-3">
-										                       <label id="label_ponto_entrada"></label>
-										                </div>	                
-										                    					                     
-								</div>
-								
-								<div class="row">
-					                    				
-					                    				<div class="col-md-3 col-lg-3">
-										                   <label class="form-label">Nome: </label>
-										                </div>
-										                
-										                <div class="col-md-3 col-lg-3">
-										                       <label id="label_nome"></label>
-										                </div>
-										                
-										                <div id="div_meio_transporte" class="col-md-3 col-lg-3">
-										                   <label class="form-label">Meio de transporte: </label>
-										                </div>
-										                
-										                <div class="col-md-3 col-lg-3">
-										                       <label id="label_meio_transporte"></label>
-										                </div>	
-										                
-										                	                
-										                    					                     
-								</div>
-								
-								<div class="row">
-					                    				
-					                    				<div class="col-md-3 col-lg-3">
-										                   <label class="form-label">Contacto: </label>
-										                </div>
-										                
-										                <div class="col-md-3 col-lg-3">
-										                       <label id="label_contacto"></label>
-										                </div>
-										                
-										                <div id="div_detectado" class="col-md-3 col-lg-3">
-										                   <label class="form-label">Detectado no ponto de entrada: </label>
-										                </div>
-										                
-										                <div class="col-md-3 col-lg-3">
-										                       <label id="label_Detectado"></label>
-										                </div>	
-										                
-										                	                
-										                    					                     
-								</div>
-								
-								<div class="row">
-					                    				
-					                    				<div class="col-md-3 col-lg-3">
-										                   <label class="form-label">E-mail: </label>
-										                </div>
-										                
-										                <div class="col-md-3 col-lg-3">
-										                       <label id="label_email"></label>
-										                </div>
-										                
-										                	
-										                
-										                	                
-										                    					                     
-								</div>
-								
-					          </div>  
-			                </div>
+    
 			                
 			                
 			                
@@ -289,7 +354,7 @@
 			    
 			    <div class="col-md-1" >
 			      <div>
-			     	<button style="background:rgb(51, 153, 122);color:white" iconSclass="fe fe fe-edit" zclass="btn btn-secondary" height="34px" >Editar</button>
+			     	<button style="background:rgb(51, 153, 122);color:white" iconSclass="fe fe fe-edit" zclass="btn btn-secondary" height="34px" forward="onClick=onClickEditarDados">Editar</button>
 				  </div>  
 			    </div>
 			
@@ -299,47 +364,7 @@
 			
 			     <div class="card-body">
             		                
-            		                <div class="row">
-					                    				
-					                    				<div class="col-md-3 col-lg-3">
-										                   <label class="form-label">Província de residência: </label>
-										                </div>
-										                
-										                <div class="col-md-3 col-lg-3">
-										                     <label id="label_provincia_residencia"></label>
-										                </div>	
-										                
-										                	                
-										                    					                     
-								     </div>
-								     
-								     <div class="row">
-					                    				
-					                    				<div class="col-md-3 col-lg-3">
-										                   <label class="form-label">Distrito de residência:  </label>
-										                </div>
-										                
-										                <div class="col-md-3 col-lg-3">
-										                       <label id="label_distrito_residencia"></label>
-										                </div>	
-										                
-										                	                
-										                    					                     
-								     </div>
-								     
-								     <div class="row">
-					                    				
-					                    				<div class="col-md-3 col-lg-3">
-										                   <label class="form-label">Endereço/ local de residência: </label>
-										                </div>
-										                
-										                <div class="col-md-3 col-lg-3">
-										                       <label id="label_endereco"> </label>
-										                </div>	
-										                
-										                	                
-										                    					                     
-								     </div>
+            		                
 								     
 								     <div class="row">
 					                    				
@@ -349,6 +374,19 @@
 										                
 										                <div class="col-md-3 col-lg-3">
 										                       <label id="label_emIsolamento"></label>
+										                </div>	
+										                	                
+										                    					                     
+								     </div>
+								     
+								     <div class="row">
+					                    				
+					                    				<div class="col-md-3 col-lg-3">
+										                   <label class="form-label">Local de Isolamento:</label>
+										                </div>
+										                
+										                <div class="col-md-3 col-lg-3">
+										                       <label id="label_localIsolamento"></label>
 										                </div>	
 										                	                
 										                    					                     
@@ -400,7 +438,7 @@
 			    
 			    <div class="col-md-1" >
 			      <div>
-			     	<button style="background:rgb(51, 153, 122);color:white" iconSclass="fe fe fe-edit" zclass="btn btn-secondary" height="34px" >Editar</button>
+			     	<button style="background:rgb(51, 153, 122);color:white" iconSclass="fe fe fe-edit" zclass="btn btn-secondary" height="34px" forward="onClick=onClickEditarDados">Editar</button>
 				  </div>  
 			    </div>
 			
