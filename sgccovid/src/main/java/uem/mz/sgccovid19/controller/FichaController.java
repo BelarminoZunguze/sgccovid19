@@ -24,6 +24,7 @@ import org.zkoss.zk.ui.util.GenericForwardComposer;
 import org.zkoss.zul.Combobox;
 import org.zkoss.zul.Datebox;
 import org.zkoss.zul.Div;
+import org.zkoss.zul.Label;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Listbox;
 import org.zkoss.zul.Listitem;
@@ -81,7 +82,9 @@ public class FichaController extends GenericForwardComposer{
 	
 	private Ficha ficha;
 	
+	private Utente utente;
 	
+	private Label total_resultados;
 	
 	@Override
 	public void doBeforeComposeChildren(Component comp) throws Exception {
@@ -110,6 +113,7 @@ public class FichaController extends GenericForwardComposer{
 		fichaList = fichaService.buscarFicha();
 		fichaModel = new ListModelList<Ficha>(fichaList);
 		lbxFichas.setModel(fichaModel);
+		total_resultados.setValue("Total de Resultados: "+fichaList.size());
 	}
 	
 	
@@ -148,10 +152,12 @@ public class FichaController extends GenericForwardComposer{
 	public void onClickEditarFicha(ForwardEvent evt){
     	
 		ficha = (Ficha) evt.getData();
+		utente = ficha.getUtente();
 		
 		final HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("target", target);
 		map.put("ficha", ficha);
+		map.put("utente", utente);
 		target.getChildren().clear();
 		Executions.createComponents("views/ficha_investigacao/edicao_dados.zul", target, map);
 		

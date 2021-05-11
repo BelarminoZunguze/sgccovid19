@@ -11,7 +11,7 @@
           <div id="pesquisar" visible="true" class="row">
 	              		<div class="col-12">
 	              		
-	              		<x:div class="row row-cards">
+	              		<x:div class="row row-cards" if="${sec:isAnyGranted('NOVA_FICHA')}">
 	              		     <x:div class="col-6 col-sm-4 col-lg-2">
 				                
 				                
@@ -31,17 +31,13 @@
 				                    
 				                    
                     				<div class="row">
-                    				
                     					<div class="col-md-6 col-lg-4">
 							              <div class="form-group">
-												<label class="form-label">Unidade Orgânica</label>
-												<combobox id="cbx_unidade"  placeholder="Seleccione a Unidade" readonly="true" width="100%">
-							                 	    <template name="model">
-							                 		   <comboitem label="${each.designacao}"></comboitem>
-							                 	     </template>
-							                 </combobox>		
+												<label class="form-label">Número da ficha</label>
+												<textbox class="form-control" name="example-text-input" placeholder="Pesquisar pelo nr. da ficha" id="txt_nrFicha"/>		
 											</div>
 										</div>
+                    					
 				                		 
 										 <div class="col-md-6 col-lg-4">
 					                        <div class="form-group">
@@ -90,12 +86,25 @@
 					                        </div>
 					                     </div> 
 					                     
-					                     
-										
-										 <div class="col-md-6 col-lg-4">
+					                    
+										<div class="col-md-6 col-lg-4" if="${sec:isAnyGranted('PESQUISAR_UNIDADE')}">
 							              <div class="form-group">
-												<label class="form-label">Número da ficha</label>
-												<textbox class="form-control" name="example-text-input" placeholder="Pesquisar pelo nr. da ficha" id="txt_nrFicha"/>		
+												<label class="form-label">Unidade Orgânica</label>
+												<combobox id="cbx_unidade"  placeholder="Seleccione a Unidade" readonly="true" width="100%">
+							                 	    <template name="model">
+							                 		   <comboitem label="${each.designacao}"></comboitem>
+							                 	     </template>
+							                 </combobox>		
+											</div>
+										</div>
+										
+										<div class="col-md-6 col-lg-4" if="${sec:isAnyGranted('PESQUISAR_DEPARTAMENTO')}">
+							              <div class="form-group">
+												<label class="form-label">Departamento</label>
+												<combobox id="cbx_departamento"  placeholder="Seleccione a Unidade" readonly="true" width="100%">
+							                 	    <comboitem label="Recursos Humanos" />
+							                 		<comboitem label="Finanças"/>  
+							                   </combobox>		
 											</div>
 										</div>
 										
@@ -120,9 +129,9 @@
 	            	
 	            	
 	            	
-	            	<div id="fichas" class="row">	
-	            	<x:div class="col-12">
-                <x:div class="card">
+          	<div id="fichas" class="row">	
+          	 <x:div class="col-12">
+               <x:div class="card">
                                 
                 <listbox id="lbxFichas" mold="paging" rows="10" 
 					pageSize="10" >
@@ -134,7 +143,8 @@
 						<listheader width="13%">Data de Submissão</listheader>
 						<listheader width="13%">Classificação</listheader>
 						<listheader width="13%">Tipo de Utente</listheader>
-						<listheader >Unidade Orgânica</listheader>
+						<listheader if="${sec:isAnyGranted('PESQUISAR_UNIDADE')}">Unidade Orgânica</listheader>
+						<listheader if="${sec:isAnyGranted('PESQUISAR_DEPARTAMENTO')}">Departamento</listheader>
 						<listheader width="13%">Detalhes</listheader>
 						
 						
@@ -148,15 +158,15 @@
 								<listcell label="${each.created}"></listcell>
 								<listcell label="${each.classificacao.nome}"></listcell>
 								<listcell label="${each.utente.tipo_utente.designacao}"></listcell>
-								<listcell label="${each.utente.unidade.designacao}"></listcell>
-								
+								<listcell label="${each.utente.unidade.designacao}" if="${sec:isAnyGranted('PESQUISAR_UNIDADE')}"></listcell>
+								<listcell label="Recursos Humanos" if="${sec:isAnyGranted('PESQUISAR_DEPARTAMENTO')}"></listcell>
 								<listcell>
 								  
                             		<button class="fe fe fe-eye" forward="onClick=onClickVerFicha(${each})"></button>
                             		
-                            		<button class="fe fe fe-edit" forward="onClick=onClickEditarFicha(${each})"></button>
+                            		<button class="fe fe fe-edit" forward="onClick=onClickEditarFicha(${each})" if="${sec:isAnyGranted('EDITAR_FICHA')}"></button>
                             		
-                            		<button class="fe fe fe-trash" forward="onClick=onClickApagar(${each})"></button>
+                            		<button class="fe fe fe-trash" forward="onClick=onClickApagar(${each})" if="${sec:isAnyGranted('APAGAR_FICHA')}"></button>
                             		
 								   
 								</listcell> 
@@ -167,10 +177,30 @@
 				
 				</listbox>
 				
+				<separator/>
+				<div class="row">
+					<div class="col-12">
+						<label id="total_resultados" style="font-weight:bold; font-size:12pt"></label>
+					</div>
+					
+				</div>
 				
-								
-                  
+				  
+				  
                 </x:div>
+                
+                <div class="row">
+				                
+								<div class="col-md-12 col-lg-12">
+					                <div align="right" >
+					                    <button iconSclass="fe fe-printer" zclass="btn btn-primary" id="btn_imprimir">Imprimir Lista</button>
+					                </div>
+					            </div>
+										
+				</div>
+                
+				
+                
               </x:div>
 	     </div>
           

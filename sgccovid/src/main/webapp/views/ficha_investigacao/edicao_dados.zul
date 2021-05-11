@@ -1,6 +1,6 @@
 <?page title="Dados da Notificação" contentType="text/html;charset=UTF-8"?>
 <zk xmlns:h="xhtml" xmlns:zk="zk">
-	<window id="win">
+	<window id="win" apply="uem.mz.sgccovid19.controller.EdicaoController">
 
 		<div zclass="col-md-12 col-lg-12 col-xs-12 col-sm-12">
 			<div zclass="box box-success">
@@ -587,7 +587,7 @@
 							  <div class="custom-controls-stacked">
 							    <radiogroup>
 								  <radio label="Sim" id="rdb_sim_dentro"></radio>
-								  <radio label="Não" id="rdb_nao3"></radio>
+								  <radio label="Não" id="rdb_nao_dentro"></radio>
 								</radiogroup>  
 							  </div>									
 					       </div>
@@ -617,7 +617,7 @@
 							  <div class="custom-controls-stacked">
 							    <radiogroup>
 								  <radio label="Sim" id="rdb_sim_fora"></radio>
-								  <radio label="Não" id="rdb_nao2"></radio>
+								  <radio label="Não" id="rdb_nao_fora"></radio>
 								</radiogroup>  
 							  </div>									
 					       </div>
@@ -642,11 +642,11 @@
 	            
 	                 <div class="row">
 				                
-				                   <div class="col-md-4 col-lg-4">
+				                   <div class="col-md-3 col-lg-3">
 										<label class="form-label">Departamento:</label>
 								   </div>
             	    
-				              	    <div >
+				              	    <div class="col-md-5 col-lg-5">
 					              	     <div class="form-group">
 	                    				  <combobox id="cbxDepartamentoDentro" readonly="true"
 											placeholder="Selecione o Departamento" width="100%"
@@ -670,10 +670,11 @@
 				             
 				    <div class="row">
 				                
-				                   <div class="col-md-4 col-lg-4">
+				                   <div class="col-md-3 col-lg-3">
 										<label class="form-label">Sector:</label>
 								   </div>
             	    
+            	    				<div class="col-md-5 col-lg-5">
 				              	    <div class="form-group">
                     				  <combobox id="cbxSectorDentro" readonly="true"
 										placeholder="Selecione o Sector" width="100%"
@@ -684,31 +685,31 @@
 										</template>
 									  </combobox>
 									</div>
-				              	    
+				              	    </div>
 									
 								       <div class="col-md-4 col-lg-4">
 											<button iconSclass="fe fe-plus" width="30%"></button>
 										</div>
 								    
 				              	
-				             </div>
+	             </div>
                 				
-                				<div class="row">
+            		<div class="row">
                 				 
-                				 <div class="col-md-6 col-lg-6">
+                		<div class="col-md-11 col-lg-11">
                  				 
-						<div class="form-group">
+							<div class="form-group">
                  				   <label class="form-label">
-							Outros Espaços:
-						   </label>
-                 				 </div>
+										Outros Espaços:
+								   </label>
+             				</div>
                  				 
-                 				 <div class="form-group">
-					        <textbox id="txtOutrosDentro" zclass="form-control" width="100%" placeholder="Indique outros"> </textbox>
-			             </div> 
-                				  </div>
+                 			<div class="form-group">
+					       		 <textbox id="txtOutrosDentro" zclass="form-control" width="100%" placeholder="Indique outros"> </textbox>
+			            	</div> 
+                		</div>
                 				 
-                				 </div>     
+               	 </div>     
 	                </div>
 	                
 	                <div class="col-md-6 col-lg-6">
@@ -791,7 +792,7 @@
 				             
 				    <div class="row">
                 				 
-                				 <div class="col-md-6 col-lg-6">
+                				 <div class="col-md-11 col-lg-11">
                  				 
 						<div class="form-group">
                  				   <label class="form-label">
@@ -832,8 +833,8 @@
 												
 				<div class="col-md-12 col-lg-12">
 			        <div align="right" >
-			           <button  iconSclass="fe fe-delete" zclass="btn btn-danger" width="10%" id="btn_voltar1" >Cancelar</button>
-			           <button  iconSclass="fe fe-save" zclass="btn btn-primary" width="10%" id="btn_proximo2">Actualizar</button>
+			           <button  iconSclass="fe fe-delete" zclass="btn btn-danger" width="10%" id="btn_cancelar" >Cancelar</button>
+			           <button  iconSclass="fe fe-save" zclass="btn btn-primary" width="10%" id="btn_actualizar">Actualizar</button>
 			         </div>
 			    </div>
 								

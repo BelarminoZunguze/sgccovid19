@@ -165,7 +165,7 @@ public class UtenteController extends GenericForwardComposer{
    public void onClick$btn_proximo2() {
 	   
 	    utente = new Utente();
-	    
+	    /*
 	    utente.setNome(txtNome.getText());
 	    utente.setNacionalidade((String)cbxNacionalidade.getSelectedItem().getValue());
 		utente.setGenero((String)(cbxGenero.getSelectedItem().getValue()));
@@ -176,9 +176,12 @@ public class UtenteController extends GenericForwardComposer{
 	    utente.setTipo_utente((TipoUtente)(cbxTipoUtente.getSelectedItem().getValue()));
 	    utente.setDistrito((Distrito)(cbxDistrito.getSelectedItem().getValue()));
 	    utente.setUnidade((UnidadeOrganica)(cbxUnidade.getSelectedItem().getValue()));
-	    	
+	    */
+	    
+	    gravarDadosUtente(utente);
+	    
 	    utente.setUserCreated(user.getId());
-	    utente.setUserUpdated(user.getId());	
+	    //utente.setUserUpdated(user.getId());	
 	    
 	    utenteService.saveOrUpdate(utente);
 		
@@ -195,6 +198,23 @@ public class UtenteController extends GenericForwardComposer{
 		
 		
 	}
+   
+   public void gravarDadosUtente(Utente utenteMetodo) {
+	   
+	   utenteMetodo.setNome(txtNome.getText());
+	   utenteMetodo.setNacionalidade((String)cbxNacionalidade.getSelectedItem().getValue());
+	   utenteMetodo.setGenero((String)(cbxGenero.getSelectedItem().getValue()));
+	   utenteMetodo.setDataNascimento(dtb_dataNascimento.getValue());
+	   utenteMetodo.setEmail(txtEmail.getValue());
+	   utenteMetodo.setContacto(txtContacto.getValue());
+	   utenteMetodo.setEndereco(txtEndereco.getValue());
+	   utenteMetodo.setTipo_utente((TipoUtente)(cbxTipoUtente.getSelectedItem().getValue()));
+	   utenteMetodo.setDistrito((Distrito)(cbxDistrito.getSelectedItem().getValue()));
+	   utenteMetodo.setUnidade((UnidadeOrganica)(cbxUnidade.getSelectedItem().getValue()));
+	    
+	   
+	   
+   }
    
     
      
