@@ -21,9 +21,12 @@ import org.zkoss.zul.ListModelList;
 
 import uem.mz.sgccovid19.util.Breadcrumb;
 import uem.mz.sgccovid19.entity.Ficha;
+import uem.mz.sgccovid19.entity.UnidadeOrganica;
+import uem.mz.sgccovid19.entity.administracao.User;
 import uem.mz.sgccovid19.entity.monitoria.FichaMonitoria;
 import uem.mz.sgccovid19.service.FichaMonitoriaService;
 import uem.mz.sgccovid19.service.FichaService;
+import uem.mz.sgccovid19.service.UnidadeOrganicaService;
 
 @VariableResolver(org.zkoss.zkplus.spring.DelegatingVariableResolver.class)
 public class ParametrizacaoVM extends AbstractVM{
@@ -41,14 +44,36 @@ public class ParametrizacaoVM extends AbstractVM{
 	
 	private FichaService fichaService;
 	private List<Ficha> fichaList;
+	private List<Ficha> UnidadefichaList;
 	
 	private FichaMonitoriaService fichaMonitoriaService;
 	private List<FichaMonitoria> fichMonList;
 	
+	private UnidadeOrganicaService unidadeOrganicaService;
+	private List<UnidadeOrganica> uniOrgList;
+	private UnidadeOrganica uniorg;
+	
+	private User user;
+	
+	private int numeroUnidade; 
+	
+	private int numero;
+	private int numeroMonitoria = buscarFichasMonitoria();
+	private int numeroMonUnidade;
+	
+	
 	@AfterCompose
 	public void initSetup(@ContextParam(ContextType.VIEW) Component view) throws IOException {
 
-		Selectors.wireComponents(view, this, false);		
+		Selectors.wireComponents(view, this, false);
+		
+		user = (User) Executions.getCurrent().getDesktop().getSession().getAttribute("utilizadorAutenticado");
+		
+		if(user.getId()==1) {
+			numero = buscarFichas();
+		} else {
+			numeroUnidade = buscarFichasUnidade();
+		}
 		
 	}
 	
@@ -73,9 +98,9 @@ public class ParametrizacaoVM extends AbstractVM{
 	}
 	
 	
-	 
-	private int numero = buscarFichas();
-	private int numeroMonitoria = buscarFichasMonitoria();
+	
+	
+	
 	
 	public int getNumero() {
 		return numero;
@@ -92,6 +117,35 @@ public class ParametrizacaoVM extends AbstractVM{
 
 	public void setNumeroMonitoria(int numeroMonitoria) {
 		this.numeroMonitoria = numeroMonitoria;
+	}
+	
+	
+	public int getNumeroUnidade() {
+		return numeroUnidade;
+	}
+
+	public void setNumeroUnidade(int numeroUnidade) {
+		this.numeroUnidade = numeroUnidade;
+	}
+
+	public int getNumeroMonUnidade() {
+		return numeroMonUnidade;
+	}
+
+	public void setNumeroMonUnidade(int numeroMonUnidade) {
+		this.numeroMonUnidade = numeroMonUnidade;
+	}
+
+	public UnidadeOrganica buscarUnidade() {
+		unidadeOrganicaService = (UnidadeOrganicaService) SpringUtil.getBean("unidadeOrganicaService");	
+		uniorg = user.getUnidade();
+		return uniorg;
+	}
+	
+	public int buscarFichasUnidade() {
+		fichaService = (FichaService) SpringUtil.getBean("fichaService");
+		UnidadefichaList = fichaService.buscarFichasPorUnidade(buscarUnidade());
+		return UnidadefichaList.size();
 	}
 
 	public int buscarFichas() {

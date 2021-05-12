@@ -75,7 +75,6 @@ public class UtenteController extends GenericForwardComposer{
 	private Combobox cbxGenero;
 	private Combobox cbxProvincia;
 	private Combobox cbxDistrito;
-	private Combobox cbxUnidade;
 	private Textbox txtNome;
 	private Textbox txtEmail;
 	private Textbox txtContacto;
@@ -102,7 +101,6 @@ public class UtenteController extends GenericForwardComposer{
 		
 		provinciaService = (ProvinciaService) SpringUtil.getBean("provinciaService");
 		
-		unidadeOrganicaService = (UnidadeOrganicaService) SpringUtil.getBean("unidadeOrganicaService");
 		
 		
 		}
@@ -116,7 +114,7 @@ public class UtenteController extends GenericForwardComposer{
 		buscarTipoUtente();
 		buscarDistrito();
 		buscarProvincia();
-		buscarUnidadeOrganica();
+		
 		
 	}
 	
@@ -140,11 +138,6 @@ public class UtenteController extends GenericForwardComposer{
 		
 	}
 	
-	private void buscarUnidadeOrganica(){    	  
-	  	  uniOrgList = unidadeOrganicaService.buscarUnidadeOrganica();
-	  	  uniOrgModel = new ListModelList<UnidadeOrganica>(uniOrgList);
-	  	  cbxUnidade.setModel(uniOrgModel);    	  
-	}
 	
     
     
@@ -165,7 +158,7 @@ public class UtenteController extends GenericForwardComposer{
    public void onClick$btn_proximo2() {
 	   
 	    utente = new Utente();
-	    /*
+	    
 	    utente.setNome(txtNome.getText());
 	    utente.setNacionalidade((String)cbxNacionalidade.getSelectedItem().getValue());
 		utente.setGenero((String)(cbxGenero.getSelectedItem().getValue()));
@@ -175,13 +168,10 @@ public class UtenteController extends GenericForwardComposer{
 	    utente.setEndereco(txtEndereco.getValue());
 	    utente.setTipo_utente((TipoUtente)(cbxTipoUtente.getSelectedItem().getValue()));
 	    utente.setDistrito((Distrito)(cbxDistrito.getSelectedItem().getValue()));
-	    utente.setUnidade((UnidadeOrganica)(cbxUnidade.getSelectedItem().getValue()));
-	    */
-	    
-	    gravarDadosUtente(utente);
+	    utente.setUnidade(user.getUnidade());
 	    
 	    utente.setUserCreated(user.getId());
-	    //utente.setUserUpdated(user.getId());	
+	    utente.setUserUpdated(user.getId());	
 	    
 	    utenteService.saveOrUpdate(utente);
 		
@@ -210,7 +200,7 @@ public class UtenteController extends GenericForwardComposer{
 	   utenteMetodo.setEndereco(txtEndereco.getValue());
 	   utenteMetodo.setTipo_utente((TipoUtente)(cbxTipoUtente.getSelectedItem().getValue()));
 	   utenteMetodo.setDistrito((Distrito)(cbxDistrito.getSelectedItem().getValue()));
-	   utenteMetodo.setUnidade((UnidadeOrganica)(cbxUnidade.getSelectedItem().getValue()));
+	   utenteMetodo.setUnidade(user.getUnidade());
 	    
 	   
 	   

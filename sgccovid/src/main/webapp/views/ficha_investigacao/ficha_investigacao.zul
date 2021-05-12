@@ -44,7 +44,7 @@
 					                          <label class="form-label">Classificação</label>
 					                          <combobox id="cbx_classificacao" placeholder="Seleccione a classificação" readonly="true" width="100%">
 												    <template name="model">
-							                 		   <comboitem label="${each}"></comboitem>
+							                 		   <comboitem label="${each.nome}"></comboitem>
 							                 	     </template>
 												</combobox>
 					                        </div>
@@ -55,12 +55,16 @@
 										 <div class="col-md-6 col-lg-4">
 							              <div class="form-group">
 												<label class="form-label">Tipo de Utente</label>
-												<combobox id="cbx_tipo_utente" placeholder="Seleccione o Tipo de Utente" readonly="true" width="100%">
-							                 								               
-							                 		<comboitem label="Janeiro" />
-							                 		<comboitem label="Fevereiro"/>
-												    
-							                 </combobox>		
+												<combobox id="cbxTipoUtente" readonly="true" placeholder="Selecione o tipo de Utente" width="90%"
+													autocomplete="true">
+													
+													<template name="model">
+														<comboitem
+															label="${each.designacao}">
+														</comboitem>
+													</template>
+													
+												</combobox>		
 											</div>
 										</div>
 										
@@ -73,8 +77,8 @@
 							              <div class="form-group">
 												<label class="form-label">Gênero</label>
 												<combobox id="cbx_genero"  placeholder="Seleccione o Gênero" readonly="true" width="100%">
-							                 	    <comboitem label="Masculino" />
-							                 		<comboitem label="Feminino"/>
+							                 	    <comboitem label="Masculino" value="Masculino" />
+							                 		<comboitem label="Feminino" value="Feminino"/>
 							                 </combobox>		
 											</div>
 										</div>

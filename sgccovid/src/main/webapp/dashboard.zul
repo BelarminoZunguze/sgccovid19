@@ -17,15 +17,17 @@
                <!-- Admin  -->
                
               
-              <x:div class="col-6 col-sm-4 col-lg-2" if="${sec:isAnyGranted('GESTÃO_FICHA_DE_INVESTIGAÇÃO')}">
+              <x:div class="col-6 col-sm-4 col-lg-2">
                <x:div class="card">
                   <x:a style="background:rgb(51, 153, 122); color:white; font-weight:bold;" href="#" onClick="@command('openFicha')" class="button btn-secondary">
-              	      <div class="fe fe fe-file">  <label value="@load(vm.numero)"/></div>
+              	      <div class="fe fe fe-file" if="${sec:isAnyGranted('GESTÃO_FICHA_DE_INVESTIGAÇÃO')}">  <label value="@load(vm.numero)"/></div>
+              	      <div class="fe fe fe-file" if="${sec:isAnyGranted('GESTÃO_FICHA_DE_INVESTIGAÇÃO_UNIDADE')}">  <label value="@load(vm.numeroUnidade)"/></div>
               	      <div >Ficha de Investigação</div>
               	     
                   </x:a>
                 </x:div>
               </x:div>
+              
               
               <x:div class="col-6 col-sm-4 col-lg-2" if="${sec:isAnyGranted('GESTÃO_MONITORIA')}">
                <x:div class="card">

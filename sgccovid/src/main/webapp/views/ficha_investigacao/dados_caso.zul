@@ -151,22 +151,6 @@
 					<div zclass="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 						<div class="form-group">
 						
-						<div class="form-group">
-						       <label class="form-label"> Unidade Orgânica:  </label>
-						
-								<div >
-									<combobox id="cbxUnidade"
-										readonly="true" placeholder="Selecione a Unidade Orgânica" width="90%"
-										autocomplete="true">
-										<template name="model">
-											<comboitem
-												label="${each.designacao}">
-											</comboitem>
-										</template>
-									</combobox>
-								</div>
-						
-						    </div>
 						    
 						    <div class="form-group">
 						       <label class="form-label"> Província de Residência:  </label>

@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
@@ -24,6 +25,7 @@ import com.google.common.base.Objects;
 
 import uem.mz.sgccovid19.entity.Delegacao;
 import uem.mz.sgccovid19.entity.IdEntity;
+import uem.mz.sgccovid19.entity.UnidadeOrganica;
 
 @Entity
 @Table(name = "users")
@@ -55,6 +57,10 @@ public class User extends IdEntity implements UserDetails {
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "user_delegacao", joinColumns = @JoinColumn(name = "user_id", nullable = false, updatable = true), inverseJoinColumns = @JoinColumn(name = "delegacao_id", nullable = false, updatable = true))
 	private Set<Delegacao> userDelegacao = new HashSet<Delegacao>();
+	
+	@ManyToOne
+	@JoinColumn (name = "unidade_organica")
+	private UnidadeOrganica unidade;
 
 	public User() {
 		this.enabled = true;
@@ -94,6 +100,14 @@ public class User extends IdEntity implements UserDetails {
 
 	
 	
+	public UnidadeOrganica getUnidade() {
+		return unidade;
+	}
+
+	public void setUnidade(UnidadeOrganica unidade) {
+		this.unidade = unidade;
+	}
+
 	public String getPlanPass() {
 		return planPass;
 	}

@@ -34,6 +34,7 @@ import org.zkoss.zul.Textbox;
 import org.zkoss.zul.Window;
 
 import net.sf.jasperreports.engine.JRException;
+import uem.mz.sgccovid19.entity.Classificacao;
 import uem.mz.sgccovid19.entity.Departamento;
 import uem.mz.sgccovid19.entity.Distrito;
 import uem.mz.sgccovid19.entity.Ficha;
@@ -45,6 +46,7 @@ import uem.mz.sgccovid19.entity.UnidadeOrganica;
 import uem.mz.sgccovid19.entity.Utente;
 import uem.mz.sgccovid19.entity.administracao.User;
 import uem.mz.sgccovid19.entity.monitoria.FichaMonitoriaRespostas;
+import uem.mz.sgccovid19.service.ClassificacaoService;
 import uem.mz.sgccovid19.service.DistritoService;
 import uem.mz.sgccovid19.service.FichaService;
 import uem.mz.sgccovid19.service.ProvinciaService;
@@ -76,6 +78,7 @@ public class FichaController extends GenericForwardComposer{
 	
 	private FichaService fichaService;
 	private List<Ficha> fichaList;
+	private List<Ficha> pesquisaList;
 	private ListModelList<Ficha> fichaModel;
 	
 	private Listbox lbxFichas;
@@ -84,7 +87,41 @@ public class FichaController extends GenericForwardComposer{
 	
 	private Utente utente;
 	
+	
+	private Textbox txt_nrFicha;
+	
+	private UnidadeOrganicaService unidadeOrganicaService;
+	private List<UnidadeOrganica> uniOrgList;
+	private ListModelList<UnidadeOrganica> uniOrgModel;
+	
+	private ClassificacaoService classificacaoService;
+	private List<Classificacao> classList;
+	private ListModelList<Classificacao> classModel;
+	
+	private TipoUtenteService tipoUtenteService;
+	private List<TipoUtente> tiputList;
+	private ListModelList<TipoUtente> tiputModel;
+	
+	private Combobox cbxTipoUtente;
+	
+	private Combobox cbx_unidade;
+	
+	private Combobox cbx_classificacao;
+	
+	private Combobox cbx_genero;
+	
+	private Datebox dtb_dataSubmissao;
+	
+	private Combobox cbx_departamento;
+	
 	private Label total_resultados;
+	
+	private String numeroFicha;
+	private String genero;
+	private UnidadeOrganica uniorg;
+	private Classificacao classific;
+	private TipoUtente tipoUte;
+	
 	
 	@Override
 	public void doBeforeComposeChildren(Component comp) throws Exception {
@@ -97,6 +134,13 @@ public class FichaController extends GenericForwardComposer{
 		
 		fichaService = (FichaService) SpringUtil.getBean("fichaService");
 		
+		unidadeOrganicaService = (UnidadeOrganicaService) SpringUtil.getBean("unidadeOrganicaService");
+		
+		classificacaoService = (ClassificacaoService) SpringUtil.getBean("classificacaoService");
+		
+		tipoUtenteService = (TipoUtenteService) SpringUtil.getBean("tipoUtenteService");
+		
+		
 		}
 	
 	
@@ -105,15 +149,77 @@ public class FichaController extends GenericForwardComposer{
 		// TODO Auto-generated method stub
 		super.doAfterCompose(comp);
 		
+		if(user.getId()==1) {
+			buscarUnidadeOrganica();
+		}
+		buscarClassificacao();
+		buscarTipoUtente();
 		buscarFichas();
 		
 	}
 	
 	public void buscarFichas() {
-		fichaList = fichaService.buscarFicha();
-		fichaModel = new ListModelList<Ficha>(fichaList);
-		lbxFichas.setModel(fichaModel);
+		
+		if(user.getId()==1) {
+			fichaList = fichaService.buscarFicha();
+			fichaModel = new ListModelList<Ficha>(fichaList);
+			lbxFichas.setModel(fichaModel);
+		} else {
+			uniOrgList = unidadeOrganicaService.buscarUnidadeOrganica();
+			fichaList = fichaService.buscarFichasPorUnidade(user.getUnidade());
+			fichaModel = new ListModelList<Ficha>(fichaList);
+			lbxFichas.setModel(fichaModel);
+		}
+		
 		total_resultados.setValue("Total de Resultados: "+fichaList.size());
+		fichaList.clear();
+	}
+	
+	private void buscarUnidadeOrganica(){    	  
+	  	  uniOrgList = unidadeOrganicaService.buscarUnidadeOrganica();
+	  	  uniOrgModel = new ListModelList<UnidadeOrganica>(uniOrgList);
+	  	  cbx_unidade.setModel(uniOrgModel);    	  
+	}
+	
+	public void buscarClassificacao() {
+		classList = classificacaoService.buscarClassificacao();
+		classModel = new ListModelList<Classificacao>(classList);
+		cbx_classificacao.setModel(classModel);
+	}
+	
+	public void buscarTipoUtente() {
+		tiputList = tipoUtenteService.buscarTipoUtente();
+		tiputModel = new ListModelList<TipoUtente>(tiputList);
+		cbxTipoUtente.setModel(tiputModel);
+	}
+	
+	public void onClick$btn_pesquisar() {
+		numeroFicha = txt_nrFicha.getValue();
+		
+		if(user.getId()==1) {
+			if(cbx_unidade.getSelectedItem()!=null) {
+				uniorg = cbx_unidade.getSelectedItem().getValue();
+			}
+		} else {uniorg=user.getUnidade();}
+		
+		
+		if(cbx_classificacao.getSelectedItem()!=null) {
+			classific = cbx_classificacao.getSelectedItem().getValue();
+		}
+		
+		if(cbx_genero.getSelectedItem()!=null) {
+			genero = cbx_genero.getSelectedItem().getValue();
+		}
+		
+		if(cbxTipoUtente.getSelectedItem()!=null) {
+			tipoUte = cbxTipoUtente.getSelectedItem().getValue();
+		}
+		
+		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte);
+		fichaModel = new ListModelList<Ficha>(pesquisaList);
+		lbxFichas.setModel(fichaModel);
+		total_resultados.setValue("Total de Resultados: "+pesquisaList.size());
+		pesquisaList.clear();
 	}
 	
 	
