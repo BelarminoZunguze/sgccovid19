@@ -11,17 +11,21 @@ import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.ForwardEvent;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zk.ui.util.GenericForwardComposer;
+import org.zkoss.zul.Combobox;
 import org.zkoss.zul.Div;
+import org.zkoss.zul.Label;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Listbox;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 
 import uem.mz.sgccovid19.entity.Ficha;
+import uem.mz.sgccovid19.entity.UnidadeOrganica;
 import uem.mz.sgccovid19.entity.administracao.User;
 import uem.mz.sgccovid19.entity.monitoria.FichaMonitoria;
 import uem.mz.sgccovid19.service.FichaMonitoriaService;
 import uem.mz.sgccovid19.service.FichaService;
+import uem.mz.sgccovid19.service.UnidadeOrganicaService;
 import uem.mz.sgccovid19.util.Breadcrumb;
 import uem.mz.sgccovid19.util.showClientNotification;
 
@@ -50,7 +54,15 @@ public class MonitoriaController extends GenericForwardComposer{
 	private List<FichaMonitoria> fichMonList;
 	private ListModelList<FichaMonitoria> fichMonModel;
 	
+	private UnidadeOrganicaService unidadeOrganicaService;
+	private List<UnidadeOrganica> uniOrgList;
+	private ListModelList<UnidadeOrganica> uniOrgModel;
+	
+	private Combobox cbx_unidade;
+	
 	private FichaMonitoria fichaMon;
+	
+	private Label total_resultados;
 	
 	@Override
 	public void doBeforeComposeChildren(Component comp) throws Exception {
@@ -63,6 +75,8 @@ public class MonitoriaController extends GenericForwardComposer{
 		
 		fichaMonitoriaService = (FichaMonitoriaService) SpringUtil.getBean("fichaMonitoriaService");
 		
+		unidadeOrganicaService = (UnidadeOrganicaService) SpringUtil.getBean("unidadeOrganicaService");
+		
 		
 		}
 	
@@ -72,15 +86,34 @@ public class MonitoriaController extends GenericForwardComposer{
 		// TODO Auto-generated method stub
 		super.doAfterCompose(comp);
 		
+		if(user.getId()==1) {
+			buscarUnidadeOrganica();
+		}
+		
 		buscarFichas();
 		
 	}
 	
+	private void buscarUnidadeOrganica(){    	  
+	  	  uniOrgList = unidadeOrganicaService.buscarUnidadeOrganica();
+	  	  uniOrgModel = new ListModelList<UnidadeOrganica>(uniOrgList);
+	  	  cbx_unidade.setModel(uniOrgModel);    	  
+	}
+	
 	
 	public void buscarFichas() {
-		fichMonList = fichaMonitoriaService.buscarFichaMonitoria();
+		
+		if(user.getId()==1) {
+			fichMonList = fichaMonitoriaService.buscarFichaMonitoria();
+			
+		} else {
+			fichMonList = fichaMonitoriaService.buscarFichasMonPorUnidade(user.getUnidade());
+			
+		}
 		fichMonModel = new ListModelList<FichaMonitoria>(fichMonList);
 		lbxFichas.setModel(fichMonModel);
+		total_resultados.setValue("Total de Resultados: "+fichMonList.size());
+		fichMonList.clear();
 		
 	}
 	

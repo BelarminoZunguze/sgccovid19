@@ -48,6 +48,7 @@ public class ParametrizacaoVM extends AbstractVM{
 	
 	private FichaMonitoriaService fichaMonitoriaService;
 	private List<FichaMonitoria> fichMonList;
+	private List<FichaMonitoria> UnidadefichMonList;
 	
 	private UnidadeOrganicaService unidadeOrganicaService;
 	private List<UnidadeOrganica> uniOrgList;
@@ -58,7 +59,7 @@ public class ParametrizacaoVM extends AbstractVM{
 	private int numeroUnidade; 
 	
 	private int numero;
-	private int numeroMonitoria = buscarFichasMonitoria();
+	private int numeroMonitoria;
 	private int numeroMonUnidade;
 	
 	
@@ -73,6 +74,12 @@ public class ParametrizacaoVM extends AbstractVM{
 			numero = buscarFichas();
 		} else {
 			numeroUnidade = buscarFichasUnidade();
+		}
+		
+		if(user.getId()==1) {
+			numeroMonitoria = buscarFichasMonitoria();
+		} else {
+			numeroMonUnidade = buscarFichasMonitoriaUnidade();
 		}
 		
 	}
@@ -136,15 +143,10 @@ public class ParametrizacaoVM extends AbstractVM{
 		this.numeroMonUnidade = numeroMonUnidade;
 	}
 
-	public UnidadeOrganica buscarUnidade() {
-		unidadeOrganicaService = (UnidadeOrganicaService) SpringUtil.getBean("unidadeOrganicaService");	
-		uniorg = user.getUnidade();
-		return uniorg;
-	}
 	
 	public int buscarFichasUnidade() {
 		fichaService = (FichaService) SpringUtil.getBean("fichaService");
-		UnidadefichaList = fichaService.buscarFichasPorUnidade(buscarUnidade());
+		UnidadefichaList = fichaService.buscarFichasPorUnidade(user.getUnidade());
 		return UnidadefichaList.size();
 	}
 
@@ -158,6 +160,12 @@ public class ParametrizacaoVM extends AbstractVM{
 		fichaMonitoriaService = (FichaMonitoriaService) SpringUtil.getBean("fichaMonitoriaService");
 		fichMonList = fichaMonitoriaService.buscarFichaMonitoria();
 		return fichMonList.size();
+	}
+	
+	public int buscarFichasMonitoriaUnidade() {
+		fichaMonitoriaService = (FichaMonitoriaService) SpringUtil.getBean("fichaMonitoriaService");
+		UnidadefichMonList = fichaMonitoriaService.buscarFichasMonPorUnidade(user.getUnidade());
+		return UnidadefichMonList.size();
 	}
 	
 	

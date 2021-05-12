@@ -2,9 +2,12 @@ package uem.mz.sgccovid19.entity.monitoria;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import uem.mz.sgccovid19.entity.IdEntity;
+import uem.mz.sgccovid19.entity.UnidadeOrganica;
 
 @Entity
 @Table (name = "ficha_monitoria")
@@ -33,6 +36,10 @@ public class FichaMonitoria extends IdEntity{
 	
 	@Column (name = "estado")
 	private String estado;
+	
+	@ManyToOne
+	@JoinColumn (name = "unidade_organica")
+	private UnidadeOrganica unidade;
 
 	public String getNumeroFicha() {
 		return numeroFicha;
@@ -88,6 +95,14 @@ public class FichaMonitoria extends IdEntity{
 
 	public void setRecomendacoes(String recomendacoes) {
 		this.recomendacoes = recomendacoes;
+	}
+
+	public UnidadeOrganica getUnidade() {
+		return unidade;
+	}
+
+	public void setUnidade(UnidadeOrganica unidade) {
+		this.unidade = unidade;
 	}
 	
 	

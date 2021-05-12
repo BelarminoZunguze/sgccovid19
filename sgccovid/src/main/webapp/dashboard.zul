@@ -29,11 +29,12 @@
               </x:div>
               
               
-              <x:div class="col-6 col-sm-4 col-lg-2" if="${sec:isAnyGranted('GESTÃO_MONITORIA')}">
+              <x:div class="col-6 col-sm-4 col-lg-2">
                <x:div class="card">
                   <x:a style="background:rgb(51, 153, 122); color:white; font-weight:bold;" href="#" onClick="@command('openMonitoria')" class="button btn-secondary">
-              	      <div class="fe fe fe-eye"> <label value="@load(vm.numeroMonitoria)"/></div>
-              	      <div >Monitoria das Acções</div>
+              	      	<div class="fe fe fe-eye" if="${sec:isAnyGranted('GESTÃO_MONITORIA')}"> <label value="@load(vm.numeroMonitoria)"/></div>
+						<div class="fe fe fe-eye" if="${sec:isAnyGranted('GESTAO_MONITORIA_UNIDADE')}"> <label value="@load(vm.numeroMonUnidade)"/></div>
+              	      	<div >Monitoria das Acções</div>
                   </x:a>
                 </x:div>
               </x:div>

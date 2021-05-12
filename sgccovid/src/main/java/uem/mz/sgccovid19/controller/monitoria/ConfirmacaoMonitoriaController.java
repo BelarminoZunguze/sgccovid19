@@ -133,6 +133,7 @@ public class ConfirmacaoMonitoriaController extends GenericForwardComposer{
 	   fichMon.setDesafios(txt_desafios.getValue());
 	   fichMon.setNumPessoas(txt_quantPessoas.getValue());
 	   fichMon.setNumNiveis(txt_quantNiveis.getValue());
+	   fichMon.setUnidade(user.getUnidade());
 	   
 	   fichaMonitoriaService.saveOrUpdate(fichMon);
 	   
