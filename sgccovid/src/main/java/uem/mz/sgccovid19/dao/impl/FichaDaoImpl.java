@@ -35,7 +35,7 @@ implements FichaDao{
 		String ParamnumFicha = numFicha=="" ? "fich.numeroFicha is not null" : "fich.numeroFicha=:numFicha";
 		String Paramunidade = uniOrg==null ? "" : "and ute.unidade=:uniOrg";
 		String Paramgenero = genero==null ? "" : "and ute.genero=:genero";
-		String Paramclass = classific==null ? "" : "and cla.nome=:classific";
+		String Paramclass = classific==null ? "" : "and fich.classificacao=:classific";
 		String Paramtipo = tipoUte==null ? "" : "and tput=:tipoUte";
 		
 		Query query = getCurrentSession().createQuery("select fich from Ficha fich JOIN FETCH fich.utente ute "
