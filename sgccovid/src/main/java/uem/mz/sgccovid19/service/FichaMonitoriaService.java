@@ -10,5 +10,7 @@ public interface FichaMonitoriaService extends GenericService<FichaMonitoria>{
 	public List<FichaMonitoria> buscarFichaMonitoria();
 	
 	public List<FichaMonitoria> buscarFichasMonPorUnidade(UnidadeOrganica uniOrg);
+	
+	public List<FichaMonitoria> buscarFichaMonitoria(String numFicha, UnidadeOrganica uniOrg);
 
 }

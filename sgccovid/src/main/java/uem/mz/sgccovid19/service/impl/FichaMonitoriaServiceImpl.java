@@ -27,5 +27,13 @@ public class FichaMonitoriaServiceImpl extends GenericServiceImpl<FichaMonitoria
 		// TODO Auto-generated method stub
 		return fichDao.buscarFichasMonPorUnidade(uniOrg);
 	}
+	
+	@Override
+	public List<FichaMonitoria> buscarFichaMonitoria(String numFicha, UnidadeOrganica uniOrg) {
+		// TODO Auto-generated method stub
+		return fichDao.buscarFichaMonitoria(numFicha, uniOrg);
+	}
+	
+	
 
 }

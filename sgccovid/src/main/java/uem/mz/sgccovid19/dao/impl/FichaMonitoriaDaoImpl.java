@@ -30,6 +30,17 @@ implements FichaMonitoriaDao{
 		if(uniOrg!=null){query.setParameter("uniOrg", uniOrg);}
 		return query.list();
 	}
+	
+	@Override
+	public List<FichaMonitoria> buscarFichaMonitoria(String numFicha, UnidadeOrganica uniOrg) {
+		String ParamnumFicha = numFicha=="" ? "fich.numeroFicha is not null" : "fich.numeroFicha=:numFicha";
+		String Paramunidade = uniOrg==null ? "" : "and fich.unidade=:uniOrg";
+		
+		Query query = getCurrentSession().createQuery("select fich from FichaMonitoria fich where "+ParamnumFicha+" "+Paramunidade);
+		if(numFicha!=""){query.setParameter("numFicha", numFicha);}
+		if(uniOrg!=null){query.setParameter("uniOrg", uniOrg);}
+		return query.list();
+	}
 
 
 }

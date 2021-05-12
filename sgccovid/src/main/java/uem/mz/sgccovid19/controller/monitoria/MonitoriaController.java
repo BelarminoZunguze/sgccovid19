@@ -17,6 +17,7 @@ import org.zkoss.zul.Label;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Listbox;
 import org.zkoss.zul.Messagebox;
+import org.zkoss.zul.Textbox;
 import org.zkoss.zul.Window;
 
 import uem.mz.sgccovid19.entity.Ficha;
@@ -44,6 +45,8 @@ public class MonitoriaController extends GenericForwardComposer{
 	
 	private User user;
 	
+	private Textbox txt_nrFicha;
+	
 	private FichaService fichaService;
 	private List<Ficha> fichaList;
 	private ListModelList<Ficha> fichaModel;
@@ -52,6 +55,7 @@ public class MonitoriaController extends GenericForwardComposer{
 	
 	private FichaMonitoriaService fichaMonitoriaService;
 	private List<FichaMonitoria> fichMonList;
+	private List<FichaMonitoria> pesquisaList;
 	private ListModelList<FichaMonitoria> fichMonModel;
 	
 	private UnidadeOrganicaService unidadeOrganicaService;
@@ -62,7 +66,11 @@ public class MonitoriaController extends GenericForwardComposer{
 	
 	private FichaMonitoria fichaMon;
 	
+	private UnidadeOrganica uniorg;
+	
 	private Label total_resultados;
+	
+	private String numeroFicha;
 	
 	@Override
 	public void doBeforeComposeChildren(Component comp) throws Exception {
@@ -115,6 +123,23 @@ public class MonitoriaController extends GenericForwardComposer{
 		total_resultados.setValue("Total de Resultados: "+fichMonList.size());
 		fichMonList.clear();
 		
+	}
+	
+	public void onClick$btn_pesquisar() {
+		numeroFicha = txt_nrFicha.getValue();
+		
+		if(user.getId()==1) {
+			if(cbx_unidade.getSelectedItem()!=null) {
+				uniorg = cbx_unidade.getSelectedItem().getValue();
+			}
+		} else {uniorg=user.getUnidade();}
+		
+		
+		pesquisaList = fichaMonitoriaService.buscarFichaMonitoria(numeroFicha, uniorg);
+		fichMonModel = new ListModelList<FichaMonitoria>(pesquisaList);
+		lbxFichas.setModel(fichMonModel);
+		total_resultados.setValue("Total de Resultados: "+pesquisaList.size());
+		pesquisaList.clear();
 	}
 	
 	public void onClickApagar(ForwardEvent evt){
