@@ -23,6 +23,7 @@ import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Window;
 
 import uem.mz.sgccovid19.entity.Ficha;
+import uem.mz.sgccovid19.entity.FichaContactoDirecto;
 import uem.mz.sgccovid19.entity.Utente;
 import uem.mz.sgccovid19.entity.administracao.User;
 import uem.mz.sgccovid19.service.FichaService;
@@ -101,7 +102,7 @@ public class ConfirmacaoController extends GenericForwardComposer{
 	private Label label_outros2;
 	private Label label_outros_espacos2;
 	
-	
+	private FichaContactoDirecto fichContacto;
 	
 	@Override
 	public void doBeforeComposeChildren(Component comp) throws Exception {
@@ -119,6 +120,8 @@ public class ConfirmacaoController extends GenericForwardComposer{
 		utenteService = (UtenteService) SpringUtil.getBean("utenteService");
 		
 		fichaService = (FichaService) SpringUtil.getBean("fichaService");
+		
+		fichContacto = (FichaContactoDirecto) Executions.getCurrent().getArg().get("fichContacto");
 		
 		}
 	
@@ -234,19 +237,25 @@ public class ConfirmacaoController extends GenericForwardComposer{
 		
 		
 		
-		
-		
 		Date dataTeste = ficha.getDataTeste();
-		label_dataTeste.setValue(dateFormat.format(dataTeste));
+		if(ficha.getDataTeste()!=null) {
+			label_dataTeste.setValue(dateFormat.format(dataTeste));
+		}
 		
 		Date dataNotificacao = ficha.getDataNotificacao();
-		label_dataNotificacao.setValue(dateFormat.format(dataNotificacao));
+		if(ficha.getDataNotificacao()!=null) {
+			label_dataNotificacao.setValue(dateFormat.format(dataNotificacao));
+		}
 		
 		Date dataUltima = ficha.getDataUltimaVezNaUnidade();
-		label_data_ultima.setValue(dateFormat.format(dataUltima));
+		if(ficha.getDataUltimaVezNaUnidade()!=null) {
+			label_data_ultima.setValue(dateFormat.format(dataUltima));
+		}
 		
 		Date dataInformou = ficha.getDataUltimaVezNaUnidade();
-		label_data_informou.setValue(dateFormat.format(dataInformou));
+		if(ficha.getDataUltimaVezNaUnidade()!=null) {
+			label_data_informou.setValue(dateFormat.format(dataInformou));
+		}
 		
 	}
 	
@@ -259,16 +268,18 @@ public class ConfirmacaoController extends GenericForwardComposer{
 	
 	
     
-	public void onClick$btn_btn_Editar() {
+	public void onClick$btn_Editar() {
  	   	
-  		final HashMap<String, Object> map = new HashMap<String, Object>();
-  		map.put("target", target);
-  		target.getChildren().clear();
-  		Executions.createComponents("views/ficha_investigacao/residencia_caso.zul", target, map);
-
-  		links = new ArrayList<String>();
-  		links.add("Informações da residência do caso");
-  		Breadcrumb.drawn(breadcrumb, "", links);
+		final HashMap<String, Object> map = new HashMap<String, Object>();
+   		map.put("target", target);
+   		map.put("ficha", ficha);
+   		map.put("utente", utente);
+   		target.getChildren().clear();
+   		Executions.createComponents("views/ficha_investigacao/edicao_dados.zul", target, map);
+		
+		links = new ArrayList<String>();
+		links.add("Actualizar dados");
+		Breadcrumb.drawn(breadcrumb, "", links);
 
   		
   	}
@@ -294,6 +305,8 @@ public class ConfirmacaoController extends GenericForwardComposer{
   	   	
    		final HashMap<String, Object> map = new HashMap<String, Object>();
    		map.put("target", target);
+   		map.put("ficha", ficha);
+   		map.put("utente", utente);
    		target.getChildren().clear();
    		Executions.createComponents("views/ficha_investigacao/edicao_dados.zul", target, map);
 		

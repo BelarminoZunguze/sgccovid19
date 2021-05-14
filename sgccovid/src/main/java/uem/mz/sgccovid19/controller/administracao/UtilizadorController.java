@@ -31,11 +31,13 @@ import org.zkoss.zul.Treeitem;
 import org.zkoss.zul.Window;
 
 import uem.mz.sgccovid19.entity.Delegacao;
+import uem.mz.sgccovid19.entity.UnidadeOrganica;
 import uem.mz.sgccovid19.entity.administracao.Permission;
 import uem.mz.sgccovid19.entity.administracao.User;
 import uem.mz.sgccovid19.entity.administracao.UserRole;
 import uem.mz.sgccovid19.service.DelegacaoService;
 import uem.mz.sgccovid19.service.PermissionService;
+import uem.mz.sgccovid19.service.UnidadeOrganicaService;
 import uem.mz.sgccovid19.service.UserRoleService;
 import uem.mz.sgccovid19.service.UserService;
 import uem.mz.sgccovid19.util.showClientNotification;
@@ -47,14 +49,22 @@ public class UtilizadorController extends GenericForwardComposer {
 	private Textbox txtUtilizador;
 	private Textbox txtSenha;
 	private Textbox txtConfirmarSenha;
+	private Textbox txtNome;
+	private Textbox txtContacto;
+	
 	private Checkbox chx_activo;
 	private Checkbox chx_alterarSenha;
 	private Listbox lbxUtilizador;
 	//private Listbox lbxLocal;
 	private Combobox cbxPerfil;// private Listbox lbxPerfil;
+	
+	private Combobox cbxUnidade;
 
 	private org.zkoss.zhtml.Div divConfirmarSenha;
 	private org.zkoss.zhtml.Div divSenha;
+	private org.zkoss.zhtml.Div divNome;
+	private org.zkoss.zhtml.Div divContacto;
+	private org.zkoss.zhtml.Div divUnidade;
 	// private Tree tree;
 
 	private Button btnProcurar;
@@ -78,6 +88,10 @@ public class UtilizadorController extends GenericForwardComposer {
 	private List<Delegacao> selLocations;
 	private List<User> listUti;
 	private ListModelList<User> listModUti;
+	
+	private UnidadeOrganicaService unidadeOrganicaService;
+	private List<UnidadeOrganica> uniOrgList;
+	private ListModelList<UnidadeOrganica> uniOrgModel;
 
 	private showClientNotification cli = new showClientNotification();
 
@@ -104,6 +118,7 @@ public class UtilizadorController extends GenericForwardComposer {
 		perSer = (UserRoleService) SpringUtil.getBean("userRoleService");
 		permSer = (PermissionService) SpringUtil.getBean("permissionService");
 		locSer = (DelegacaoService) SpringUtil.getBean("delegacaoService");
+		unidadeOrganicaService = (UnidadeOrganicaService) SpringUtil.getBean("unidadeOrganicaService");
 
 	}
 
@@ -114,6 +129,7 @@ public class UtilizadorController extends GenericForwardComposer {
 
 		// listaUtilizador();
 		listaPerfil();
+		buscarUnidadeOrganica();
 
 	}
 
@@ -126,7 +142,9 @@ public class UtilizadorController extends GenericForwardComposer {
 	public void onClick$btnGravar() {
 
 		if (btnGravar.getLabel().equals("Novo")) {
-
+			divNome.setVisible(true);
+			divContacto.setVisible(true);
+			divUnidade.setVisible(true);
 			divConfirmarSenha.setVisible(true);
 			divSenha.setVisible(true);
 			txtConfirmarSenha.setRawValue(null);
@@ -143,6 +161,9 @@ public class UtilizadorController extends GenericForwardComposer {
 
 				uti = new User();
 				uti.setUsername(txtUtilizador.getValue());
+				uti.setNome(txtNome.getValue());
+				uti.setContacto(txtContacto.getValue());
+				uti.setUnidade((UnidadeOrganica)cbxUnidade.getSelectedItem().getValue());
 				uti.SetPasswordEncripted(txtSenha.getValue());
 				uti.setPlanPass(txtSenha.getValue());
 				uti.setEnabled(chx_activo.isChecked());
@@ -279,6 +300,9 @@ public class UtilizadorController extends GenericForwardComposer {
 		divConfirmarSenha.setVisible(false);
 		divSenha.setVisible(false);
 		// txtSenha.setDisabled(true);
+		txtNome.setRawValue(null);
+		txtContacto.setRawValue(null);
+		cbxUnidade.setModel(uniOrgModel);   
 
 		cbxPerfil.setModel(listModPer);
 		cbxPerfil.setRawValue(null);
@@ -305,6 +329,12 @@ public class UtilizadorController extends GenericForwardComposer {
 		//lbxLocal.setModel(lml);
 		//lml.setMultiple(true);
 
+	}
+	
+	private void buscarUnidadeOrganica(){    	  
+	  	  uniOrgList = unidadeOrganicaService.buscarUnidadeOrganica();
+	  	  uniOrgModel = new ListModelList<UnidadeOrganica>(uniOrgList);
+	  	  cbxUnidade.setModel(uniOrgModel);    	  
 	}
 
 	public void actualizarPerfil(User user) {

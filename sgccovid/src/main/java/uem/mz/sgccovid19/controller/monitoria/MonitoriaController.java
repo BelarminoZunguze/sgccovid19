@@ -64,7 +64,8 @@ public class MonitoriaController extends GenericForwardComposer{
 	
 	private Combobox cbx_unidade;
 	
-	private FichaMonitoria fichaMon;
+	private FichaMonitoria fichMon;
+	
 	
 	private UnidadeOrganica uniorg;
 	
@@ -144,7 +145,7 @@ public class MonitoriaController extends GenericForwardComposer{
 	
 	public void onClickApagar(ForwardEvent evt){
 		
-		fichaMon = (FichaMonitoria) evt.getData();
+		fichMon = (FichaMonitoria) evt.getData();
 		
 		Messagebox.show("Tem a certeza que pretende apagar?", "Confirm Dialog", Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION, new org.zkoss.zk.ui.event.EventListener() {
 		    public void onEvent(Event evt) throws InterruptedException {
@@ -176,6 +177,22 @@ public class MonitoriaController extends GenericForwardComposer{
 		links = new ArrayList<String>();
 		links.add("Nova Ficha");
 		Breadcrumb.drawn(breadcrumb, "", links);
+	}
+	
+	public void onClickVerFicha(ForwardEvent evt){
+    	
+		fichMon = (FichaMonitoria) evt.getData();
+		
+		final HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("target", target);
+		map.put("fichMon", fichMon);
+		target.getChildren().clear();
+		Executions.createComponents("views/monitoria/detalhes_monitoria.zul", target, map);
+
+		links = new ArrayList<String>();
+		links.add("Detalhes da Ficha");
+		Breadcrumb.drawn(breadcrumb, "", links);
+		
 	}
 	
 	

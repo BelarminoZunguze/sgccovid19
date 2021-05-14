@@ -480,7 +480,7 @@
 									   
 								     </div>
 								     
-								     
+								     <separator/>
 								     
 								     <div class="row">
 					                    				
@@ -542,6 +542,7 @@
 										    </div>
 										
 								     </div>
+								     <separator/>
 								     
 								     <div class="row">
 					                    				
@@ -553,7 +554,7 @@
 										                       <label id="label_unidade_contacto"></label>
 										                </div>
 										                
-										                <div class="col-md-3 col-lg-3">
+										                <div class="col-md-3 col-lg-6">
 										                       <label id="label_unidade_fora"></label>
 										                </div>	                
 										                    					                     
@@ -638,8 +639,8 @@
 										<div class="col-md-12 col-lg-12">
 					                     	<div align="right" >
 					                     	    
-								               <button zclass="btn btn-danger" width="110px" id="btn_Editar" >Editar</button>
-					                     		<button iconSclass="fe fe-save" zclass="btn btn-success" width="110px" id="btn_confirmar_ficha" >Confirmar</button>
+								                <button style="background:rgb(51, 153, 122);color:white" iconSclass="fe fe fe-edit" zclass="btn btn-secondary" width="110px"  id="btn_Editar" >Editar</button>
+					                     		<button style="background:rgb(51, 153, 122);color:white" iconSclass="fe fe fe-save" zclass="btn btn-secondary" width="110px"  id="btn_confirmar_ficha" >Confirmar</button>
 					                     	</div>
 					                     </div>
 										

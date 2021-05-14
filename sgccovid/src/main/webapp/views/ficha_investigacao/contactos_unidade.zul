@@ -142,11 +142,12 @@
 					            
 					                 <div class="row">
 								                
-								                   <div class="col-md-4 col-lg-4">
+								                   <div class="col-md-3 col-lg-3">
 														<label class="form-label">Departamento:</label>
 												   </div>
 		              	    
-								              	    <div >
+		              	    
+								              	    <div class="col-md-8 col-lg-8">
 									              	     <div class="form-group">
 					                    				  <combobox id="cbxDepartamentoDentro" readonly="true"
 															placeholder="Selecione o Departamento" width="100%"
@@ -161,19 +162,18 @@
 								              	    </div>
 								              	    
 													
-												       <div class="col-md-4 col-lg-4">
-															<button iconSclass="fe fe-plus" width="30%"></button>
-														</div>
+												       
 												    
 								              	
 								             </div>
 								             
 								    <div class="row">
 								                
-								                   <div class="col-md-4 col-lg-4">
+								                   <div class="col-md-3 col-lg-3">
 														<label class="form-label">Sector:</label>
 												   </div>
 		              	    
+		              	    					<div class="col-md-8 col-lg-8">
 								              	    <div class="form-group">
 				                    				  <combobox id="cbxSectorDentro" readonly="true"
 														placeholder="Selecione o Sector" width="100%"
@@ -184,18 +184,16 @@
 														</template>
 													  </combobox>
 													</div>
-								              	    
+								              	  </div>  
 													
-												       <div class="col-md-4 col-lg-4">
-															<button iconSclass="fe fe-plus" width="30%"></button>
-														</div>
+												       
 												    
 								              	
 								             </div>
                     				
                     				<div class="row">
                     				 
-                    				 <div class="col-md-6 col-lg-6">
+                    				 <div class="col-md-11 col-lg-11">
 	                    				 
 										<div class="form-group">
 	                    				   <label class="form-label">
@@ -219,6 +217,7 @@
 														<label class="form-label">Unidade Orgânica:</label>
 												   </div>
 		              	    
+		              	    					<div class="col-md-8 col-lg-8">
 								              	    <div class="form-group">
 				                    				  <combobox id="cbxUnidadeFora" readonly="true"
 														placeholder="Selecione a Unidade Orgânica" width="100%"
@@ -229,11 +228,9 @@
 														</template>
 													  </combobox>
 													</div>
-								              	    
+								              	 </div>   
 													
-												       <div class="col-md-4 col-lg-4">
-															<button iconSclass="fe fe-plus" width="30%"></button>
-														</div>
+												       
 												    
 								              	
 								             </div>
@@ -244,6 +241,7 @@
 														<label class="form-label">Departamento:</label>
 												   </div>
 		              	    
+		              	    					<div class="col-md-8 col-lg-8">
 								              	    <div class="form-group">
 				                    				  <combobox id="cbxDepartamentoFora" readonly="true"
 														placeholder="Selecione o Departamento" width="100%"
@@ -254,11 +252,9 @@
 														</template>
 													  </combobox>
 													</div>
-								              	    
+								              	  </div>  
 													
-												       <div class="col-md-4 col-lg-4">
-															<button iconSclass="fe fe-plus" width="30%"></button>
-														</div>
+												       
 												    
 								              	
 								             </div>
@@ -269,6 +265,7 @@
 														<label class="form-label">Sector:</label>
 												   </div>
 		              	    
+		              	    					<div class="col-md-8 col-lg-8">
 								              	    <div class="form-group">
 				                    				  <combobox id="cbxSectorFora" readonly="true"
 														placeholder="Selecione o Sector" width="100%"
@@ -279,11 +276,9 @@
 														</template>
 													  </combobox>
 													</div>
-								              	    
+								              	  </div>  
 													
-												       <div class="col-md-4 col-lg-4">
-															<button iconSclass="fe fe-plus" width="30%"></button>
-														</div>
+												       
 												    
 								              	
 								             </div>
@@ -291,7 +286,7 @@
 								             
 								    <div class="row">
                     				 
-                    				 <div class="col-md-6 col-lg-6">
+                    				 <div class="col-md-12 col-lg-12">
 	                    				 
 										<div class="form-group">
 	                    				   <label class="form-label">
@@ -329,7 +324,7 @@
 					                     	<div align="right" >
 					                     		
 					                     		<button style="background:rgb(51, 153, 122); color:white" iconSclass="fe fe-arrow-left" zclass="btn btn-secondary" width="10%" id="btn_voltar4" >Voltar</button>
-					                     		<button style="background:rgb(51, 153, 122); color:white" iconSclass="fe fe-arrow-right" zclass="btn btn-secondary" width="10%" id="btn_gravar_ficha" >Próximo</button>
+					                     		<button style="background:rgb(51, 153, 122); color:white" iconSclass="fe fe-arrow-right" zclass="btn btn-secondary" width="10%" id="btn_proximo5" >Próximo</button>
 					                     	</div>
 					                     </div>
 										

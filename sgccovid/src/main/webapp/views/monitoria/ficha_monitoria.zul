@@ -125,7 +125,7 @@
 								  
                             		<button class="fe fe fe-eye" forward="onClick=onClickVerFicha(${each})"></button>
                             		
-                            		<button class="fe fe fe-edit" forward="onClick=onClickVerFicha(${each})" if="${sec:isAnyGranted('EDITAR_FICHA')}"></button>
+                            		<button class="fe fe fe-edit" forward="onClick=onClickEditarFicha(${each})" if="${sec:isAnyGranted('EDITAR_FICHA')}"></button>
                             		
                             		<button class="fe fe fe-trash" forward="onClick=onClickApagar(${each})" if="${sec:isAnyGranted('APAGAR_FICHA')}"></button>
 								   

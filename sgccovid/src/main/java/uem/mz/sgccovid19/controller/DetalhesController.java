@@ -236,16 +236,25 @@ public class DetalhesController extends GenericForwardComposer{
 		
 		
 		Date dataTeste = ficha.getDataTeste();
-		label_dataTeste.setValue(dateFormat.format(dataTeste));
+		if(ficha.getDataTeste()!=null) {
+			label_dataTeste.setValue(dateFormat.format(dataTeste));
+		}
 		
 		Date dataNotificacao = ficha.getDataNotificacao();
-		label_dataNotificacao.setValue(dateFormat.format(dataNotificacao));
+		if(ficha.getDataNotificacao()!=null) {
+			label_dataNotificacao.setValue(dateFormat.format(dataNotificacao));
+		}
 		
 		Date dataUltima = ficha.getDataUltimaVezNaUnidade();
-		label_data_ultima.setValue(dateFormat.format(dataUltima));
+		if(ficha.getDataUltimaVezNaUnidade()!=null) {
+			label_data_ultima.setValue(dateFormat.format(dataUltima));
+		}
 		
 		Date dataInformou = ficha.getDataUltimaVezNaUnidade();
-		label_data_informou.setValue(dateFormat.format(dataInformou));
+		if(ficha.getDataUltimaVezNaUnidade()!=null) {
+			label_data_informou.setValue(dateFormat.format(dataInformou));
+		}
+		
 		
 	}
 	
@@ -258,16 +267,19 @@ public class DetalhesController extends GenericForwardComposer{
 	
 	
     
-	public void onClick$btn_btn_Editar() {
+	public void onClick$btn_editar() {
  	   	
-  		final HashMap<String, Object> map = new HashMap<String, Object>();
-  		map.put("target", target);
-  		target.getChildren().clear();
-  		Executions.createComponents("views/ficha_investigacao/residencia_caso.zul", target, map);
-
-  		links = new ArrayList<String>();
-  		links.add("Informações da residência do caso");
-  		Breadcrumb.drawn(breadcrumb, "", links);
+ 	   	
+		final HashMap<String, Object> map = new HashMap<String, Object>();
+   		map.put("target", target);
+   		map.put("ficha", ficha);
+   		map.put("utente", utente);
+   		target.getChildren().clear();
+   		Executions.createComponents("views/ficha_investigacao/edicao_dados.zul", target, map);
+		
+		links = new ArrayList<String>();
+		links.add("Actualizar dados");
+		Breadcrumb.drawn(breadcrumb, "", links);
 
   		
   	}
@@ -287,6 +299,19 @@ public class DetalhesController extends GenericForwardComposer{
 
    		
    	}
+     
+     public void onClick$btn_voltar() {
+    	
+     	final HashMap<String, Object> map = new HashMap<String, Object>();
+  		map.put("target", target);
+  		target.getChildren().clear();
+  		Executions.createComponents("views/ficha_investigacao/ficha_investigacao.zul", target, map);
+
+  		links = new ArrayList<String>();
+  		Breadcrumb.drawn(breadcrumb, "", links);
+
+    		
+    	}
      
      
    

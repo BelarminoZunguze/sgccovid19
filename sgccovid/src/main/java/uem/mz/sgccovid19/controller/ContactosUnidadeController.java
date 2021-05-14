@@ -57,7 +57,10 @@ public class ContactosUnidadeController extends GenericForwardComposer{
 	private FichaService fichaService;
 	
 	private Radio rdb_sim_dentro;
+	private Radio rdb_nao;
 	private Radio rdb_sim_fora;
+	private Radio rdb_nao2;
+	
 	
 	private Combobox cbxDepartamentoDentro;
 	private Combobox cbxDepartamentoFora;
@@ -98,6 +101,8 @@ public class ContactosUnidadeController extends GenericForwardComposer{
 		
 		ficha = (Ficha) Executions.getCurrent().getArg().get("ficha");
 		
+		fichContacto = (FichaContactoDirecto) Executions.getCurrent().getArg().get("fichContacto");
+		
 		utenteService = (UtenteService) SpringUtil.getBean("utenteService");
 		
 		fichaService = (FichaService) SpringUtil.getBean("fichaService");
@@ -124,6 +129,8 @@ public class ContactosUnidadeController extends GenericForwardComposer{
 		buscarDepartamento();
 		
 		buscarSector();
+		
+		carregarDados();
 		
 	}
 	
@@ -156,6 +163,9 @@ public class ContactosUnidadeController extends GenericForwardComposer{
  	   	
   		final HashMap<String, Object> map = new HashMap<String, Object>();
   		map.put("target", target);
+  		map.put("utente", utente);
+  		map.put("ficha", ficha);
+  		map.put("fichContacto", fichContacto);
   		target.getChildren().clear();
   		Executions.createComponents("views/ficha_investigacao/residencia_caso.zul", target, map);
 
@@ -166,11 +176,14 @@ public class ContactosUnidadeController extends GenericForwardComposer{
   		
   	}
      
-     public void onClick$btn_gravar_ficha() {
+     public void onClick$btn_proximo5() {
     	 
     	 if(rdb_sim_dentro.isSelected() || rdb_sim_fora.isSelected()) {
     		 
-    		 fichContacto = new FichaContactoDirecto();
+    		 if(fichContacto==null) {
+    			 fichContacto = new FichaContactoDirecto(); 
+    		 }
+    		 
     		 
     		 if(rdb_sim_dentro.isSelected()) {
     			 fichContacto.setTeveContactoDentro(true);
@@ -223,6 +236,7 @@ public class ContactosUnidadeController extends GenericForwardComposer{
  		map.put("target", target);
  		map.put("ficha", ficha);
  		map.put("utente", utente);
+ 		map.put("fichContacto", fichContacto);
  		target.getChildren().clear();
  		Executions.createComponents("views/ficha_investigacao/confirmacao_ficha.zul", target, map);
  		
@@ -231,6 +245,53 @@ public class ContactosUnidadeController extends GenericForwardComposer{
 		
    		
    	}
+     
+     public void carregarDados() {
+    	 
+    	 if(fichContacto!=null) {
+    		 
+    		 if(fichContacto.isTeveContactoDentro()==true) {
+    			 rdb_sim_dentro.setChecked(true);
+    			 
+    			 if(fichContacto.getDepartamentoDentro()!=null) {
+    				 cbxDepartamentoDentro.setValue(fichContacto.getDepartamentoDentro().getDesignacao());
+    			 }
+    			 
+    			 if(fichContacto.getSectorDentro()!=null) {
+    				 cbxSectorDentro.setValue(fichContacto.getSectorDentro().getDesignacao());
+    			 }
+    			 
+    			 if(fichContacto.getOutrosEspacosDentro()!=null) {
+    				 txtOutrosDentro.setValue(fichContacto.getOutrosEspacosDentro());
+    			 }
+    			 
+    		 }else {rdb_nao.setChecked(true);}
+    		 
+    		 
+    		 if(fichContacto.isTeveContactoFora()==true) {
+    			 rdb_sim_fora.setChecked(true);
+    			 
+    			 if(fichContacto.getUnidadeFora()!=null) {
+    				 cbxUnidadeFora.setValue(fichContacto.getUnidadeFora().getDesignacao());
+    			 }
+    			 
+    			 if(fichContacto.getDepartamentoFora()!=null) {
+    				 cbxDepartamentoFora.setValue(fichContacto.getDepartamentoFora().getDesignacao());
+    			 }
+    			 
+    			 if(fichContacto.getSectorFora()!=null) {
+    				 cbxSectorFora.setValue(fichContacto.getSectorFora().getDesignacao());
+    			 }
+    			 
+    			 if(fichContacto.getOutrosEspacosFora()!=null) {
+    				 txtoutrosFora.setValue(fichContacto.getOutrosEspacosFora());
+    			 }
+    			 
+    		 }else {rdb_nao2.setChecked(true);}
+    		 
+    	 }
+    	 
+     }
      
      
    

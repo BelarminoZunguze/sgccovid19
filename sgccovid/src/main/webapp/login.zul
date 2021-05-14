@@ -46,7 +46,7 @@
                   <div sclass="form-signin-heading text-center">
                   	<image src="images/moz.png" width="100px" /> 	
                   	<separator/>
-                  	<x:h4>Plataforma de Monitoria e Notificações de Casos de  COVID-19</x:h4>
+                  	<x:h4>Plataforma de Monitoria e Notificação de Casos de  COVID-19</x:h4>
                   	
                   	<x:div class="alert alert-warning"  if="${empty param.login_error and empty param.loggedout}">
                         <label value="Autentique com seu utilizador e senha!"></label>

@@ -13,11 +13,14 @@ import org.zkoss.zul.Combobox;
 import org.zkoss.zul.Datebox;
 import org.zkoss.zul.Div;
 import org.zkoss.zul.ListModelList;
+import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Textbox;
 import org.zkoss.zul.Window;
 
 import uem.mz.sgccovid19.entity.Departamento;
 import uem.mz.sgccovid19.entity.Distrito;
+import uem.mz.sgccovid19.entity.Ficha;
+import uem.mz.sgccovid19.entity.FichaContactoDirecto;
 import uem.mz.sgccovid19.entity.Provincia;
 import uem.mz.sgccovid19.entity.TipoUtente;
 import uem.mz.sgccovid19.entity.UnidadeOrganica;
@@ -81,7 +84,9 @@ public class UtenteController extends GenericForwardComposer{
 	private Textbox txtEndereco;
 	private Datebox dtb_dataNascimento;
 	
+	private Ficha ficha;
 	
+	private FichaContactoDirecto fichContacto;
 	
 	
 	@Override
@@ -101,7 +106,11 @@ public class UtenteController extends GenericForwardComposer{
 		
 		provinciaService = (ProvinciaService) SpringUtil.getBean("provinciaService");
 		
+		utente = (Utente) Executions.getCurrent().getArg().get("utente");
 		
+		ficha = (Ficha) Executions.getCurrent().getArg().get("ficha");
+		
+		fichContacto = (FichaContactoDirecto) Executions.getCurrent().getArg().get("fichContacto");
 		
 		}
 	
@@ -114,7 +123,7 @@ public class UtenteController extends GenericForwardComposer{
 		buscarTipoUtente();
 		buscarDistrito();
 		buscarProvincia();
-		
+		PreencherDados();
 		
 	}
 	
@@ -145,6 +154,9 @@ public class UtenteController extends GenericForwardComposer{
     	
 		final HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("target", target);
+		map.put("utente", utente);
+		map.put("ficha", ficha);
+		map.put("fichContacto", fichContacto);
 		target.getChildren().clear();
 		Executions.createComponents("views/ficha_investigacao/notificacao.zul", target, map);
 
@@ -156,20 +168,36 @@ public class UtenteController extends GenericForwardComposer{
 	}
    
    public void onClick$btn_proximo2() {
+	   if(utente==null) {
+		   utente = new Utente();
+	   }
+	    
+	   utente.setNome(txtNome.getText());
 	   
-	    utente = new Utente();
+	   if(txtEmail.getValue()!=null) {
+	    	utente.setEmail(txtEmail.getValue());
+	    }
+	   
+	   if(txtContacto.getValue()!=null) {
+	    	utente.setContacto(txtContacto.getValue());
+	    }
+	   
+	   utente.setGenero((String)(cbxGenero.getSelectedItem().getValue()));
+	   
+	   utente.setDataNascimento(dtb_dataNascimento.getValue());
+	   
+	   
+	   utente.setNacionalidade((String)cbxNacionalidade.getSelectedItem().getValue());
+	   utente.setTipo_utente((TipoUtente)(cbxTipoUtente.getSelectedItem().getValue()));
+	   utente.setDistrito((Distrito)(cbxDistrito.getSelectedItem().getValue()));
+	   utente.setEndereco(txtEndereco.getValue());
+	   
 	    
-	    utente.setNome(txtNome.getText());
-	    utente.setNacionalidade((String)cbxNacionalidade.getSelectedItem().getValue());
-		utente.setGenero((String)(cbxGenero.getSelectedItem().getValue()));
-	    utente.setDataNascimento(dtb_dataNascimento.getValue());
-	    utente.setEmail(txtEmail.getValue());
-	    utente.setContacto(txtContacto.getValue());
-	    utente.setEndereco(txtEndereco.getValue());
-	    utente.setTipo_utente((TipoUtente)(cbxTipoUtente.getSelectedItem().getValue()));
-	    utente.setDistrito((Distrito)(cbxDistrito.getSelectedItem().getValue()));
+	   
+	    
+	    
+	    
 	    utente.setUnidade(user.getUnidade());
-	    
 	    utente.setUserCreated(user.getId());
 	    utente.setUserUpdated(user.getId());	
 	    
@@ -179,6 +207,8 @@ public class UtenteController extends GenericForwardComposer{
 		final HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("target", target);
 		map.put("utente", utente);
+		map.put("ficha", ficha);
+		map.put("fichContacto", fichContacto);
 		target.getChildren().clear();
 		Executions.createComponents("views/ficha_investigacao/dados_notificacao.zul", target, map);
 		
@@ -189,18 +219,52 @@ public class UtenteController extends GenericForwardComposer{
 		
 	}
    
-   public void gravarDadosUtente(Utente utenteMetodo) {
-	   
-	   utenteMetodo.setNome(txtNome.getText());
-	   utenteMetodo.setNacionalidade((String)cbxNacionalidade.getSelectedItem().getValue());
-	   utenteMetodo.setGenero((String)(cbxGenero.getSelectedItem().getValue()));
-	   utenteMetodo.setDataNascimento(dtb_dataNascimento.getValue());
-	   utenteMetodo.setEmail(txtEmail.getValue());
-	   utenteMetodo.setContacto(txtContacto.getValue());
-	   utenteMetodo.setEndereco(txtEndereco.getValue());
-	   utenteMetodo.setTipo_utente((TipoUtente)(cbxTipoUtente.getSelectedItem().getValue()));
-	   utenteMetodo.setDistrito((Distrito)(cbxDistrito.getSelectedItem().getValue()));
-	   utenteMetodo.setUnidade(user.getUnidade());
+   public void PreencherDados() {
+	   if(utente!=null) {
+		   
+		   if(utente.getTipo_utente()!=null) {
+			   cbxTipoUtente.setValue(utente.getTipo_utente().getDesignacao());
+		   }
+		   
+		   if(utente.getNacionalidade()!=null) {
+			   cbxNacionalidade.setValue(utente.getNacionalidade());
+		   }
+		   
+		   if(utente.getNome()!=null) {
+			   txtNome.setValue(utente.getNome());
+		   }
+		   
+		   if(utente.getEmail()!=null) {
+			   txtEmail.setValue(utente.getEmail());
+		   }
+		   
+		   if(utente.getContacto()!=null) {
+			   txtContacto.setValue(utente.getContacto());
+		   }
+		   
+		   if(utente.getGenero()!=null) {
+			   cbxGenero.setValue(utente.getGenero());
+		   }
+		   
+		   if(utente.getDataNascimento()!=null) {
+			   dtb_dataNascimento.setValue(utente.getDataNascimento());
+		   }
+		   
+		   if(utente.getDistrito().getProvincia()!=null) {
+			   cbxProvincia.setValue(utente.getDistrito().getProvincia().getDesignacao());
+		   }
+		   
+		   if(utente.getDistrito()!=null) {
+			   cbxDistrito.setValue(utente.getDistrito().getDesignacao());
+		   }
+		   
+		   if(utente.getEndereco()!=null) {
+			   txtEndereco.setValue(utente.getEndereco());
+		   }
+		   
+		   
+		   
+	   }
 	    
 	   
 	   

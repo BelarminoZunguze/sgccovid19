@@ -108,7 +108,7 @@
 										
 						<div class="col-md-12 col-lg-12">
 					        <div align="right" >
-					           <button zclass="btn btn-primary" width="110px" id="btn_proximo4">Próximo</button>
+					           <button style="background:rgb(51, 153, 122); color:white" iconSclass="fe fe-arrow-right" zclass="btn btn-secondary" width="110px" id="btn_proximo4">Próximo</button>
 					         </div>
 					    </div>
 										

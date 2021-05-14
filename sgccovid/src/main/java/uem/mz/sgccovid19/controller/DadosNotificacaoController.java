@@ -20,6 +20,7 @@ import org.zkoss.zul.Window;
 import uem.mz.sgccovid19.entity.Classificacao;
 import uem.mz.sgccovid19.entity.Distrito;
 import uem.mz.sgccovid19.entity.Ficha;
+import uem.mz.sgccovid19.entity.FichaContactoDirecto;
 import uem.mz.sgccovid19.entity.Provincia;
 import uem.mz.sgccovid19.entity.TipoUtente;
 import uem.mz.sgccovid19.entity.Utente;
@@ -66,10 +67,12 @@ public class DadosNotificacaoController extends GenericForwardComposer{
 	private Textbox txt_proveniencia;
 	private Textbox txt_pontoEntrada;
 	private Radio rdb_sim_detectado;
+	private Radio rdb_nao_detectado;
+	private Radio rdb_nao;
 	private Datebox dtb_dataEntrada;
 	private Textbox txt_MeioTransporte;
 	
-	
+	private FichaContactoDirecto fichContacto;
 	
 	
 	@Override
@@ -86,6 +89,11 @@ public class DadosNotificacaoController extends GenericForwardComposer{
 		classificacaoService = (ClassificacaoService) SpringUtil.getBean("classificacaoService");
 		
 		fichaService = (FichaService) SpringUtil.getBean("fichaService");
+		
+		ficha = (Ficha) Executions.getCurrent().getArg().get("ficha");
+		
+		fichContacto = (FichaContactoDirecto) Executions.getCurrent().getArg().get("fichContacto");
+		
 		}
 	
 	
@@ -95,6 +103,7 @@ public class DadosNotificacaoController extends GenericForwardComposer{
 		super.doAfterCompose(comp);
 		
 		buscarClassificacao();
+		carregarDados();
 		
 	}
 	
@@ -109,20 +118,24 @@ public class DadosNotificacaoController extends GenericForwardComposer{
 	public void onClick$btn_voltar2() {
 	   	
 		final HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("utente", utente);
+		map.put("ficha", ficha);
+		map.put("fichContacto", fichContacto);
 		map.put("target", target);
 		target.getChildren().clear();
 		Executions.createComponents("views/ficha_investigacao/dados_caso.zul", target, map);
 
 		links = new ArrayList<String>();
-		links.add("Dados do Caso");
+		links.add("Dados do utente");
 		Breadcrumb.drawn(breadcrumb, "", links);
 
 		
 	}
      
      public void onClick$btn_proximo3() {
-    	 
-    	ficha = new Ficha();
+    	if(ficha==null) {
+    		ficha = new Ficha();
+    	}
     	
     	ficha.setClassificacao((Classificacao)(cbxClassificacao.getSelectedItem().getValue()));
     	ficha.setDataTeste(dtb_dataTeste.getValue());
@@ -157,6 +170,7 @@ public class DadosNotificacaoController extends GenericForwardComposer{
  		map.put("target", target);
  		map.put("utente", utente);
  		map.put("ficha", ficha);
+ 		map.put("fichContacto", fichContacto);
  		target.getChildren().clear();
  		Executions.createComponents("views/ficha_investigacao/residencia_caso.zul", target, map);
  		
@@ -166,6 +180,51 @@ public class DadosNotificacaoController extends GenericForwardComposer{
 		
  		
  	}
+     
+     public void carregarDados() {
+    	 
+    	 if (ficha!=null) {
+    		 
+    		 if(ficha.getClassificacao().getNome()!=null) {
+    			 cbxClassificacao.setValue(ficha.getClassificacao().getNome()); 
+    		 }
+    		 
+    		 if(ficha.getDataTeste()!=null) {
+    			 dtb_dataTeste.setValue(ficha.getDataTeste());
+    		 }
+    		 
+    		 if(ficha.getDataNotificacao()!=null) {
+    			 dtb_dataNotificacao.setValue(ficha.getDataNotificacao());
+    		 }
+    		 
+    		 if(ficha.isViajou()==true) {
+    			 rdb_sim.setChecked(true);
+    		 } else {rdb_nao.setChecked(true);}
+    		 
+    		 if(ficha.getProveniencia()!=null) {
+    			 txt_proveniencia.setValue(ficha.getProveniencia());
+    		 }
+    		 
+    		 if(ficha.getPontoEntrada()!=null) {
+    			 txt_pontoEntrada.setValue(ficha.getPontoEntrada());
+    		 }
+    		 
+    		 if(ficha.isDetectadoNoPontoEntrada()==true) {
+    			 rdb_sim_detectado.setChecked(true);
+    		 } else {rdb_nao_detectado.setChecked(true);}
+    		 
+    		 if(ficha.getDataEntradaNoPais()!=null) {
+    			 dtb_dataEntrada.setValue(ficha.getDataEntradaNoPais());
+    		 }
+    		 
+    		 if(ficha.getMeioTransporte()!=null) {
+    			 txt_MeioTransporte.setValue(ficha.getMeioTransporte());
+    		 }
+    		 
+    	 }
+    	 
+    	 
+     }
     
      
 

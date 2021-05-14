@@ -1,6 +1,6 @@
 <?page title="Comunicação" contentType="text/html;charset=UTF-8"?>
 <zk xmlns:h="xhtml" xmlns:zk="zk">
-	<window id="win" apply="uem.mz.sgccovid19.controller.monitoria.DisponibilizacaoController">
+	<window id="win" apply="uem.mz.sgccovid19.controller.monitoria.DetalhesController">
 
 		<div zclass="col-md-12 col-lg-12 col-xs-12 col-sm-12">
 			<div zclass="box box-success">
@@ -26,25 +26,11 @@
 					 </div>
 					 <separator/>
 					
-					<!--  
-					<h:div style=" text-align:rigth">
-					<h:label style="background-color: green">PARTE</h:label>
-							<h:a href="#" onClick="@command('openDadosNotificacao')" >0</h:a>
-							<h:a href="#" onClick="@command('openDadosNotificacao')" >1</h:a>
-							<h:a href="#" onClick="@command('openDadosNotificacao')">2</h:a>
-							<h:a href="#" onClick="@command('openDadosNotificacao')" >3</h:a>
-							<h:a href="#" onClick="@command('openDadosNotificacao')" >4</h:a>
-							<h:a href="#" onClick="@command('openDadosNotificacao')" >5</h:a>
-					
-					</h:div>
-			        -->
-			
-			
 						<div zclass="box-header" align="center" style="background-color:rgb(51, 153, 122)">
 						<!-- 	<h:hr/> -->
 						<h:label class="box-title" 
 							style="font-family:Arial;color:white;text-align:center; font-weight:bold;">
-							Disponibilização de meios de prevenção da COVID-19
+							Detalhes da Ficha de Monitoria
 						</h:label>
 								
 					</div>
@@ -52,10 +38,10 @@
 					
 					
 					<div zclass="box-body">
-				
+						
 						<listbox id="lbxFichas" mold="paging">
 							
-							<listhead style="background-color:rgb(51, 153, 122)">
+							<listhead >
 							   
 								<listheader >Actividades/Acções</listheader>						
 								<listheader>Indicador</listheader>
@@ -66,26 +52,90 @@
 							      
 							  	<template name="model">    
 							     <listitem>
-										<listcell label="${each.actividade.designacao}"></listcell>
-										 <listcell label="${each.designacao}">
-										 </listcell>
-										<listcell>
-										    <radiogroup forward="onCheck=onCheckTestar">
-											  <radio label="Sim" />
-											  <radio label="Não" />
-											</radiogroup>   
-									     </listcell> 
-		                            	<listcell  > 
-											<textbox width="100%" rows="2" forward="onChanging=onChangingTestar"> </textbox>
-		                            	</listcell>
+										<listcell label="${each.indicador.actividade.designacao}"></listcell>
+										<listcell label="${each.indicador.designacao}"></listcell>
+										<listcell label="${each.pontoSituacao =='true' ? 'Sim' : 'Não'}"></listcell> 
+		                            	<listcell label="${each.observacoes}"></listcell>
 		                            	
 		                      </listitem>
 		                    </template>
 		                 
 						
-						</listbox>								
-
-			 		</div>
+						</listbox>
+						
+						<separator/>
+						
+						<div class="row">
+								
+						<div zclass="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+						
+						<div class="form-group">    	
+							
+						    <div class="form-group">
+						       <label class="form-label">1. Constrangimentos</label>
+						
+								<div >
+									<div>
+									    <label id="label_constrangimentos"></label>
+									 </div>
+								</div>
+						
+						    </div>
+						    
+						    <div class="form-group">
+						       <label class="form-label">3. Recomendações</label>
+						
+								<div >
+									<div>
+									  <label id="label_recomendacoes"></label>
+							        </div>
+								</div>
+						
+						    </div>
+						    
+						    
+						</div>
+					 </div>
+						
+					<div zclass="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+					
+					<div class="form-group">    	
+							
+						    <div class="form-group">
+						       <label class="form-label">2. Desafios</label>
+						
+								<div >
+									<div>
+									  <label id="label_desafios"></label>
+							        </div>
+								</div>
+						
+						    </div>
+						    
+						    <div class="form-group">
+						       <label class="form-label">4. Outras questões</label>
+						
+								<div >
+									<div class="form-group">
+									  <label>Quantidade de pessoas envolvidas no processo de preenchimento deste formulários:</label>
+									  <label id="label_quant_pessoas"></label>
+							        </div>
+							        
+							        <div>
+									  <label>Quantidade de níveis na estrutura orgânica:</label>
+									  <label id="label_quant_niveis"></label>
+							        </div>
+								</div>
+						
+						    </div>
+						    
+						    
+						</div>
+					</div>
+					
+					</div>	
+				
+			 </div>
 						
 					
 					  
@@ -99,12 +149,13 @@
 			       
 			
 		</div>
-		<separator/>
+		<separator />
 		          <div class="row">
 										
 						<div class="col-md-12 col-lg-12">
 					        <div align="right" >
-					           <button style="background:rgb(51, 153, 122); color:white" iconSclass="fe fe-arrow-right" zclass="btn btn-secondary" width="110px" id="btn_proximo2">Próximo</button>
+					           <button zclass="btn btn-danger" width="110px" id="btn_Editar" >Editar</button>
+					           <button iconSclass="fe fe-save" zclass="btn btn-success" width="110px" id="btn_confirmar_ficha" >Confirmar</button>
 					         </div>
 					    </div>
 										

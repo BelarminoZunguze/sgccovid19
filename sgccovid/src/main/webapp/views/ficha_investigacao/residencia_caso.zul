@@ -66,7 +66,7 @@
 													
 												       <div >
 															<radiogroup>
-															 <radio label="Sim" id="rdb_sim_isolamento" selected="true"></radio>
+															 <radio label="Sim" id="rdb_sim_isolamento"></radio>
 															 <radio label="Não" id="rdb_nao_isolamento" ></radio>
 															</radiogroup>
 														</div>

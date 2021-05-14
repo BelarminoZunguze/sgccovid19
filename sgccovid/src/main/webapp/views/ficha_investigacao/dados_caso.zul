@@ -53,45 +53,15 @@
 						<div zclass="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 						<div class="form-group">    	
 							
-							<div class="form-group">
-						       <label class="form-label"> Tipo de Utente:  </label>
-						
-								<div >
-									<combobox id="cbxTipoUtente"
-										readonly="true" placeholder="Selecione o tipo de Utente" width="90%"
-										autocomplete="true">
-										
-										<template name="model">
-											<comboitem
-												label="${each.designacao}">
-											</comboitem>
-										</template>
-										
-									</combobox>
-								</div>
-						
-						    </div>
-						    
-						    <div class="form-group">
-						       <label class="form-label">Nacionalidade:  </label>
-						
-								<div >
-									<combobox id="cbxNacionalidade"
-										readonly="true" placeholder="Selecione a Nacionalidade" width="90%"
-										autocomplete="true">
-										    <comboitem label="Moçambicana" value="Moçambicana"></comboitem>
-											<comboitem label="Outra"></comboitem>
-									</combobox>
-								</div>
-						
-						    </div>
-						    
+							
 						    <div class="form-group">
 						       <label class="form-label">Nome:  </label>
 						
 								<div >
 									<div>
-									  <textbox id="txtNome" zclass="form-control" width="90%" > </textbox>
+									  <textbox id="txtNome" zclass="form-control" width="90%" 
+									  constraint="no empty/.[a-z]+/: Por favor insira um nome válido!"
+									  > </textbox>
 							        </div>
 								</div>
 						
@@ -102,7 +72,8 @@
 						
 								<div >
 									<div>
-									  <textbox id="txtEmail" zclass="form-control" width="90%" > </textbox>
+									  <textbox id="txtEmail" zclass="form-control" width="90%" 
+									  constraint="/.+@.+\.[a-z]+/: Por favor, insira um e-mail válido!"> </textbox>
 							        </div>
 								</div>
 						
@@ -113,7 +84,8 @@
 						
 								<div >
 									<div>
-									  <textbox id="txtContacto" zclass="form-control" width="90%" > </textbox>
+									  <textbox id="txtContacto" zclass="form-control" width="90%" 
+									  constraint="/[0-9]+/: Por favor, insira um número válido!"> </textbox>
 							        </div>
 								</div>
 						
@@ -126,7 +98,8 @@
 								<div >
 									<combobox id="cbxGenero"
 										readonly="true" placeholder="Selecione o Gênero" width="90%"
-										autocomplete="true">
+										autocomplete="true"
+										constraint="no empty: Selecione o Gênero!">
 										
 											<comboitem label="Masculino" value="Masculino"></comboitem>
 											<comboitem label="Feminino" value="Feminino"></comboitem>
@@ -140,7 +113,8 @@
 						       <label class="form-label"> Data de Nascimento:  </label>
 						
 								<div >
-									<datebox id="dtb_dataNascimento"  format="dd/MM/yyyy" width="90%"/>
+									<datebox id="dtb_dataNascimento"  format="dd/MM/yyyy" width="90%"
+									constraint="no future: Insira uma data válida!"/>
 								</div>
 						
 						    </div>
@@ -151,6 +125,40 @@
 					<div zclass="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 						<div class="form-group">
 						
+						    <div class="form-group">
+						       <label class="form-label">Nacionalidade:  </label>
+						
+								<div >
+									<combobox id="cbxNacionalidade"
+										readonly="true" placeholder="Selecione a Nacionalidade" width="90%"
+										autocomplete="true"
+										constraint="no empty: Selecione a Nacionalidade!">
+										    <comboitem label="Moçambicana" value="Moçambicana"></comboitem>
+											<comboitem label="Outra"></comboitem>
+									</combobox>
+								</div>
+						
+						    </div>
+						    
+						    <div class="form-group">
+						       <label class="form-label"> Tipo de utente:  </label>
+						
+								<div >
+									<combobox id="cbxTipoUtente"
+										readonly="true" placeholder="Selecione o tipo de utente" width="90%"
+										autocomplete="true"
+										constraint="no empty: Selecione o tipo de utente!">
+										
+										<template name="model">
+											<comboitem
+												label="${each.designacao}">
+											</comboitem>
+										</template>
+										
+									</combobox>
+								</div>
+						
+						    </div>
 						    
 						    <div class="form-group">
 						       <label class="form-label"> Província de Residência:  </label>
@@ -158,7 +166,8 @@
 								<div >
 									<combobox id="cbxProvincia"
 										readonly="true" placeholder="Selecione a Província" width="90%"
-										autocomplete="true">
+										autocomplete="true"
+										constraint="no empty: Selecione a Província!">
 										<template name="model">
 											<comboitem
 												label="${each.designacao}">
@@ -174,8 +183,9 @@
 						
 								<div >
 									<combobox id="cbxDistrito"
-										readonly="true" placeholder="Selecione a Província" width="90%"
-										autocomplete="true">
+										readonly="true" placeholder="Selecione a distrito" width="90%"
+										autocomplete="true"
+										constraint="no empty: Selecione a distrito!">
 										<template name="model">
 											<comboitem
 												label="${each.designacao}">
@@ -191,7 +201,8 @@
 						
 								<div >
 									<div>
-									  <textbox id="txtEndereco" zclass="form-control" width="90%" > </textbox>
+									  <textbox id="txtEndereco" zclass="form-control" width="90%" 
+									  constraint="no empty: Este campo não pode ser vazio!"> </textbox>
 							        </div>
 								</div>
 						

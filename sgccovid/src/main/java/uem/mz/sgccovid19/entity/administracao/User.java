@@ -61,6 +61,30 @@ public class User extends IdEntity implements UserDetails {
 	@ManyToOne
 	@JoinColumn (name = "unidade_organica")
 	private UnidadeOrganica unidade;
+	
+	@Column (name = "nome")
+	private String nome;
+	
+	@Column (name = "contacto")
+	private String contacto;
+	
+	
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getContacto() {
+		return contacto;
+	}
+
+	public void setContacto(String contacto) {
+		this.contacto = contacto;
+	}
 
 	public User() {
 		this.enabled = true;

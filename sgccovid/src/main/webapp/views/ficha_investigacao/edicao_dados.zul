@@ -646,7 +646,7 @@
 										<label class="form-label">Departamento:</label>
 								   </div>
             	    
-				              	    <div class="col-md-5 col-lg-5">
+				              	    <div class="col-md-8 col-lg-8">
 					              	     <div class="form-group">
 	                    				  <combobox id="cbxDepartamentoDentro" readonly="true"
 											placeholder="Selecione o Departamento" width="100%"
@@ -659,11 +659,7 @@
 										</div>
 				              	    
 				              	    </div>
-				              	    
-									
-								       <div class="col-md-4 col-lg-4">
-											<button iconSclass="fe fe-plus" width="30%"></button>
-										</div>
+				              	       
 								    
 				              	
 				             </div>
@@ -674,7 +670,7 @@
 										<label class="form-label">Sector:</label>
 								   </div>
             	    
-            	    				<div class="col-md-5 col-lg-5">
+           	    				<div class="col-md-8 col-lg-8">
 				              	    <div class="form-group">
                     				  <combobox id="cbxSectorDentro" readonly="true"
 										placeholder="Selecione o Sector" width="100%"
@@ -685,11 +681,9 @@
 										</template>
 									  </combobox>
 									</div>
-				              	    </div>
+			              	    </div>
 									
-								       <div class="col-md-4 col-lg-4">
-											<button iconSclass="fe fe-plus" width="30%"></button>
-										</div>
+								       
 								    
 				              	
 	             </div>
@@ -719,7 +713,8 @@
 				                   <div class="col-md-4 col-lg-4">
 										<label class="form-label">Unidade Orgânica:</label>
 								   </div>
-            	    
+								   
+            	    			<div class="col-md-8 col-lg-8">
 				              	    <div class="form-group">
                     				  <combobox id="cbxUnidadeFora" readonly="true"
 										placeholder="Selecione a Unidade Orgânica" width="100%"
@@ -730,11 +725,8 @@
 										</template>
 									  </combobox>
 									</div>
-				              	    
+				              	  </div>  
 									
-								       <div class="col-md-4 col-lg-4">
-											<button iconSclass="fe fe-plus" width="30%"></button>
-										</div>
 								    
 				              	
 				             </div>
@@ -745,6 +737,7 @@
 										<label class="form-label">Departamento:</label>
 								   </div>
             	    
+            	    			<div class="col-md-8 col-lg-8">
 				              	    <div class="form-group">
                     				  <combobox id="cbxDepartamentoFora" readonly="true"
 										placeholder="Selecione o Departamento" width="100%"
@@ -755,13 +748,8 @@
 										</template>
 									  </combobox>
 									</div>
-				              	    
+				              	 </div>   
 									
-								       <div class="col-md-4 col-lg-4">
-											<button iconSclass="fe fe-plus" width="30%"></button>
-										</div>
-								    
-				              	
 				             </div>
 				             
 				      <div class="row">
@@ -770,6 +758,7 @@
 										<label class="form-label">Sector:</label>
 								   </div>
             	    
+            	    			<div class="col-md-8 col-lg-8">
 				              	    <div class="form-group">
                     				  <combobox id="cbxSectorFora" readonly="true"
 										placeholder="Selecione o Sector" width="100%"
@@ -780,32 +769,27 @@
 										</template>
 									  </combobox>
 									</div>
-				              	    
-									
-								       <div class="col-md-4 col-lg-4">
-											<button iconSclass="fe fe-plus" width="30%"></button>
-										</div>
-								    
+				              	 </div>   
 				              	
 				             </div>
 				             
 				             
 				    <div class="row">
                 				 
-                				 <div class="col-md-11 col-lg-11">
+                		<div class="col-md-12 col-lg-12">
                  				 
-						<div class="form-group">
-                 				   <label class="form-label">
-							Outros Espaços:
-						   </label>
-                 				 </div>
-                 				 
-                 				 <div class="form-group">
-					        <textbox id="txtoutrosFora" zclass="form-control" width="100%" placeholder="Indique outros"> </textbox>
-			             </div> 
-                				  </div>
+								<div class="form-group">
+		                 				   <label class="form-label">
+											Outros Espaços:
+										   </label>
+		              			</div>
+		                 				 
+		                 		<div class="form-group">
+							        <textbox id="txtoutrosFora" zclass="form-control" width="100%" placeholder="Indique outros"> </textbox>
+					             </div> 
+                		</div>
                 				 
-                				 </div> 
+                	</div> 
                 				
                 				    
 	                </div>
@@ -833,8 +817,8 @@
 												
 				<div class="col-md-12 col-lg-12">
 			        <div align="right" >
-			           <button  iconSclass="fe fe-delete" zclass="btn btn-danger" width="10%" id="btn_cancelar" >Cancelar</button>
-			           <button  iconSclass="fe fe-save" zclass="btn btn-primary" width="10%" id="btn_actualizar">Actualizar</button>
+			           <button style="background:rgb(51, 153, 122);color:white"  iconSclass="fe fe-delete" zclass="btn btn-secondary" width="110px" id="btn_cancelar" >Cancelar</button>
+			           <button style="background:rgb(51, 153, 122);color:white"  iconSclass="fe fe-save" zclass="btn btn-secondary" width="110px" id="btn_actualizar">Actualizar</button>
 			         </div>
 			    </div>
 								

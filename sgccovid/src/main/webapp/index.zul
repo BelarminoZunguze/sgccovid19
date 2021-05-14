@@ -58,70 +58,40 @@
         <x:div class="header py-4">
           <x:div class="container">
             <x:div class="d-flex">
-              <x:a class="header-brand" href="#" onClick="@command('openHome')">
-                <x:img src="images/logo.svg" class="header-brand-img" alt="tabler logo"></x:img>
-              </x:a>
+              
               <x:div class="d-flex order-lg-2 ml-auto">
                 
                 <x:div class="dropdown d-none d-md-flex">
-                  <x:a class="nav-link icon" data-toggle="dropdown">
-                    <x:i class="fe fe-bell"></x:i>
-                    <x:span class="nav-unread"></x:span>
-                  </x:a>
-                  <x:div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                    <x:a href="#" class="dropdown-item d-flex">
-                      <x:span class="avatar mr-3 align-self-center" style="background-image: url(demo/faces/male/41.jpg)"></x:span>
-                      <x:div>
-                        <x:strong>Nathan</x:strong> pushed new commit: Fix page load performance issue.
-                        <div class="small text-muted">10 minutes ago</div>
-                      </x:div>
-                    </x:a>
-                    <x:a href="#" class="dropdown-item d-flex">
-                      <x:span class="avatar mr-3 align-self-center" style="background-image: url(demo/faces/female/1.jpg)"></x:span>
-                      <x:div>
-                        <x:strong>Alice</x:strong> started new task: Tabler UI design.
-                        <div class="small text-muted">1 hour ago</div>
-                      </x:div>
-                    </x:a>
-                    <x:a href="#" class="dropdown-item d-flex">
-                      <x:span class="avatar mr-3 align-self-center" style="background-image: url(demo/faces/female/18.jpg)"></x:span>
-                      <x:div>
-                        <x:strong>Rose</x:strong> deployed new version of NodeJS REST Api V3
-                        <div class="small text-muted">2 hours ago</div>
-                      </x:div>
-                    </x:a>
-                    <x:div class="dropdown-divider"></x:div>
-                    <x:a href="#" class="dropdown-item text-center text-muted-dark">Mark all as read</x:a>
-                  </x:div>
+                  
+                  
                 </x:div>
                 <x:div class="dropdown">
                   <x:a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
                     <x:span class="avatar" style="background-image: url(./demo/faces/female/25.jpg)"></x:span>
                     <x:span class="ml-2 d-none d-lg-block">
-                      <x:span class="text-default">${vm.loggeduser.username }</x:span>
+                      <x:span class="text-default">${vm.loggeduser.nome }</x:span>
                       <x:small class="text-muted d-block mt-1">${vm.loggeduser.roles }</x:small>
                     </x:span>
                   </x:a>
                   <x:div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                     <x:a class="dropdown-item" href="#">
-                      <x:i class="dropdown-icon fe fe-user"></x:i> Profile
+                      <x:i class="dropdown-icon fe fe-user"></x:i> Perfil
                     </x:a>
                     <x:a class="dropdown-item" href="#">
-                      <x:i class="dropdown-icon fe fe-settings"></x:i> Settings
+                      <x:i class="dropdown-icon fe fe-settings"></x:i> Definições
                     </x:a>
                     <x:a class="dropdown-item" href="#">
-                      <x:span class="float-right"><x:span class="badge badge-primary">6</x:span></x:span>
-                      <x:i class="dropdown-icon fe fe-mail"></x:i> Inbox
+                      <x:i class="dropdown-icon fe fe-mail"></x:i> Caixa de Entrada
                     </x:a>
                     <x:a class="dropdown-item" href="#">
-                      <x:i class="dropdown-icon fe fe-send"></x:i> Message
+                      <x:i class="dropdown-icon fe fe-send"></x:i> Enviar Mensagem
                     </x:a>
                     <x:div class="dropdown-divider"></x:div>
                     <x:a class="dropdown-item" href="#">
-                      <x:i class="dropdown-icon fe fe-help-circle"></x:i> Need help?
+                      <x:i class="dropdown-icon fe fe-help-circle"></x:i> Precisa de ajuda?
                     </x:a>
                     <x:a class="dropdown-item"  href="j_spring_security_logout"><!-- href="#" -->
-                      <x:i class="dropdown-icon fe fe-log-out"></x:i> Sign out
+                      <x:i class="dropdown-icon fe fe-log-out"></x:i> Sair
                     </x:a>
                   </x:div>
                 </x:div>
@@ -265,12 +235,12 @@
             <div class="col-auto ml-lg-auto">
               <div class="row align-items-center">
                 <div class="col-auto">
-                  <x:a href="j_spring_security_logout" class="btn btn-outline-primary btn-sm">Log Out</x:a>
+                  <x:a href="j_spring_security_logout" class="btn btn-outline-primary btn-sm">Sair</x:a>
                 </div>
               </div>
             </div>
             <div class="col-12 col-lg-auto mt-3 mt-lg-0 text-center">
-              Copyright © 2021 <x:a href=".">SGC-Covid19</x:a>. Developed by <x:a href="https://ciuem.mz" target="_blank">ciuem.mz</x:a> Part of rights reserved.
+              Copyright © 2021 <x:a href=".">SGC-Covid19</x:a>. Desenvolvido por <x:a href="https://ciuem.mz" target="_blank">ciuem.mz</x:a> 
             </div>
           </div>
         </div>

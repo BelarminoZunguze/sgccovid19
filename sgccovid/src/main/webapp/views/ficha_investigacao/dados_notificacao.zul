@@ -95,7 +95,9 @@
 									<datebox id="dtb_dataNotificacao"  format="dd/MM/yyyy" width="90%"/>
 								</div>
 						
-						    </div>	
+						    </div>
+						    
+						    	
 						   
 							
 						</div>
@@ -103,7 +105,11 @@
 						
 					<div zclass="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 					
-					<div class="row">
+					
+		      
+		               <div class="form-group">
+		               
+		               <div class="row">
 		              	    
 		              	    <div class="col-md-2 col-lg-2">
 			              	     <div sclass="form-group">
@@ -112,17 +118,15 @@
 		              	    
 		              	    </div>
 							
-						                  	<div class="custom-controls-stacked">
-														<radiogroup>
-															<radio label="Sim" id="rdb_sim" selected="true"></radio>
-															<radio label="Não" id="rdb_nao" ></radio>
-														</radiogroup>
-											</div>
+			                  	<div class="custom-controls-stacked">
+									<radiogroup>
+										<radio label="Sim" id="rdb_sim" ></radio>
+										<radio label="Não" id="rdb_nao" ></radio>
+									</radiogroup>
+								</div>
 						    
 		              	
-		                </div>
-		      
-		               <div class="form-group">
+		                	</div>
 		       
 		              	   <div sclass="form-group"> 
 						     <label class=" form-label">Proveniencia:  </label>
@@ -152,7 +156,7 @@
 							
 						                  	<div >
 														<radiogroup>
-															<radio label="Sim" id="rdb_sim_detectado" selected="true"></radio>
+															<radio label="Sim" id="rdb_sim_detectado"></radio>
 															<radio label="Não" id="rdb_nao_detectado" ></radio>
 														</radiogroup>
 											</div>
