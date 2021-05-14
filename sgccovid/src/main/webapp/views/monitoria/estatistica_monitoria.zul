@@ -1,25 +1,23 @@
 <zk xmlns:x="xhtml" xmlns:zk="zk">
-<x:script src="plugins/datatables/plugin.js"></x:script>
 <x:script>
     require(['datatables', 'jquery'], function(datatable, $) {
           $('.datatable').DataTable();
             });
  </x:script>
 
-<window  id="win" apply="uem.mz.sgccovid19.controller.FichaController">
+<window  id="win" apply="uem.mz.sgccovid19.controller.monitoria.MonitoriaController">
 	      
           <div id="pesquisar" visible="true" class="row">
 	              		<div class="col-12">
 	              		
 	              		<x:div class="row row-cards" if="${sec:isAnyGranted('NOVA_FICHA')}">
-	              		     <x:div class="col-12 col-sm-4 col-lg-4">
+	              		     <x:div class="col-6 col-sm-4 col-lg-2">
 				                
 				                
 				                <div >
-							      <button style="background:rgb(51, 153, 122); color:white" iconSclass="fe fe-file-plus" zclass="btn btn-secondary" id="btn_nova_ficha" >Criar Nova Ficha de Investigação</button>
+							      <button style="background:rgb(51, 153, 122); color:white" iconSclass="fe fe-file-plus" zclass="btn btn-secondary" id="btn_nova_ficha_monitoria" >Nova Ficha</button>
 									                          
 							   </div>
-							   
 				              </x:div>                                 
 				         </x:div>
 				         <separator/>
@@ -32,55 +30,11 @@
 				                    
 				                    
                     				<div class="row">
+                    				
                     					<div class="col-md-6 col-lg-4">
 							              <div class="form-group">
 												<label class="form-label">Número da ficha</label>
 												<textbox class="form-control" name="example-text-input" placeholder="Pesquisar pelo nr. da ficha" id="txt_nrFicha"/>		
-											</div>
-										</div>
-                    					
-				                		 
-										 <div class="col-md-6 col-lg-4">
-					                        <div class="form-group">
-					                          <label class="form-label">Classificação</label>
-					                          <combobox id="cbx_classificacao" placeholder="Seleccione a classificação" readonly="true" width="100%">
-												    <template name="model">
-							                 		   <comboitem label="${each.nome}"></comboitem>
-							                 	     </template>
-												</combobox>
-					                        </div>
-					                     </div> 
-					                     
-					                     
-										
-										 <div class="col-md-6 col-lg-4">
-							              <div class="form-group">
-												<label class="form-label">Tipo de Utente</label>
-												<combobox id="cbxTipoUtente" readonly="true" placeholder="Selecione o tipo de Utente" width="100%"
-													autocomplete="true">
-													
-													<template name="model">
-														<comboitem
-															label="${each.designacao}">
-														</comboitem>
-													</template>
-													
-												</combobox>		
-											</div>
-										</div>
-										
-					                     					                     
-					                </div>
-					                
-					                <div class="row">
-                    				
-                    					<div class="col-md-6 col-lg-4">
-							              <div class="form-group">
-												<label class="form-label">Gênero</label>
-												<combobox id="cbx_genero"  placeholder="Seleccione o Gênero" readonly="true" width="100%">
-							                 	    <comboitem label="Masculino" value="Masculino" />
-							                 		<comboitem label="Feminino" value="Feminino"/>
-							                 </combobox>		
 											</div>
 										</div>
 				                		 
@@ -89,10 +43,11 @@
 					                          <label class="form-label">Data de Submissão</label>
 					                          <datebox id="dtb_dataSubmissao"  format="dd/MM/yyyy" width="100%"/>
 					                        </div>
-					                     </div> 
+					                     </div>
 					                     
-					                    
-										<div class="col-md-6 col-lg-4" if="${sec:isAnyGranted('PESQUISAR_UNIDADE')}">
+					                     
+										
+										 <div class="col-md-6 col-lg-4" if="${sec:isAnyGranted('PESQUISAR_UNIDADE')}">
 							              <div class="form-group">
 												<label class="form-label">Unidade Orgânica</label>
 												<combobox id="cbx_unidade"  placeholder="Seleccione a Unidade" readonly="true" width="100%">
@@ -116,6 +71,7 @@
 					                     					                     
 					                </div>
 					                
+					                
 				                	
 				                	<div class="row">
 				                
@@ -134,36 +90,36 @@
 	            	
 	            	
 	            	
-          	<div id="fichas" class="row">	
-          	 <x:div class="col-12">
-               <x:div class="card">
+	            	<div id="fichas" class="row">	
+	            	<x:div class="col-12">
+                <x:div class="card">
                                 
                 <listbox id="lbxFichas" mold="paging" rows="10" 
 					pageSize="10" >
 					
 					<listhead >
 					   
-												
+											
 						<listheader width="7%" >Nr. Ficha</listheader>
-						<listheader width="13%">Data de Submissão</listheader>
-						<listheader width="13%">Classificação</listheader>
-						<listheader width="13%">Tipo de Utente</listheader>
+						<listheader >Descrição</listheader>
+						<listheader >Data de Submissão</listheader>
 						<listheader if="${sec:isAnyGranted('PESQUISAR_UNIDADE')}">Unidade Orgânica</listheader>
 						<listheader if="${sec:isAnyGranted('PESQUISAR_DEPARTAMENTO')}">Departamento</listheader>
-						<listheader width="13%">Detalhes</listheader>
+						<listheader>Detalhes</listheader>
+						
 						
 						
 					</listhead>
 					
-				<template name="model">
+				
+					<template name="model">
 					<listitem>
 
 								
 								<listcell label="${each.numeroFicha}"></listcell>
+								<listcell label="Ficha de Monitoria - ${each.id}"></listcell>
 								<listcell label="${each.created}"></listcell>
-								<listcell label="${each.classificacao.nome}"></listcell>
-								<listcell label="${each.utente.tipo_utente.designacao}"></listcell>
-								<listcell label="${each.utente.unidade.designacao}" if="${sec:isAnyGranted('PESQUISAR_UNIDADE')}"></listcell>
+								<listcell label="${each.unidade.designacao}" if="${sec:isAnyGranted('PESQUISAR_UNIDADE')}"></listcell>
 								<listcell label="Recursos Humanos" if="${sec:isAnyGranted('PESQUISAR_DEPARTAMENTO')}"></listcell>
 								<listcell>
 								  
@@ -172,37 +128,36 @@
                             		<button class="fe fe fe-edit" forward="onClick=onClickEditarFicha(${each})" if="${sec:isAnyGranted('EDITAR_FICHA')}"></button>
                             		
                             		<button class="fe fe fe-trash" forward="onClick=onClickApagar(${each})" if="${sec:isAnyGranted('APAGAR_FICHA')}"></button>
-                            		
 								   
 								</listcell> 
                             	
                             	
                       </listitem>
                   </template>
+                 
 				
 				</listbox>
 				
+				<separator/>
 				<div class="row">
-				  <div class="col-12">
-					<div align="center" style="background-color:rgb(242, 242, 242)">
-						<label id="total_resultados" style="font-weight:bold;text-align:center; font-size:11pt"></label>
+					<div class="col-12">
+						<label id="total_resultados" style="font-weight:bold; font-size:12pt"></label>
 					</div>
-				  </div>
+					
 				</div>
-				  
+								
+                  
                 </x:div>
                 
                 <div class="row">
 				                
 								<div class="col-md-12 col-lg-12">
 					                <div align="right" >
-					                    <button style="background:rgb(51, 153, 122); color:white" iconSclass="fe fe-printer" zclass="btn btn-secondary" id="btn_imprimir">Imprimir Lista</button>
+					                    <button iconSclass="fe fe-printer" zclass="btn btn-primary" id="btn_imprimir">Imprimir Lista</button>
 					                </div>
 					            </div>
 										
 				</div>
-                
-				
                 
               </x:div>
 	     </div>

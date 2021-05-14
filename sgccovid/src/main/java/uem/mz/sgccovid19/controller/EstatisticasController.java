@@ -1,25 +1,15 @@
 package uem.mz.sgccovid19.controller;
 
 import java.awt.Dialog;
-import java.io.InputStream;  
-import java.time.Year;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
-import javax.swing.JOptionPane;
-
-import org.zkoss.bind.annotation.Command;
 import org.zkoss.spring.SpringUtil;
 import org.zkoss.zk.ui.Component;
-import org.zkoss.zk.ui.Execution;
 import org.zkoss.zk.ui.Executions;
-import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.ForwardEvent;
 import org.zkoss.zk.ui.select.annotation.Wire;
-import org.zkoss.zk.ui.util.Clients;
 import org.zkoss.zk.ui.util.GenericForwardComposer;
 import org.zkoss.zul.Combobox;
 import org.zkoss.zul.Datebox;
@@ -27,40 +17,25 @@ import org.zkoss.zul.Div;
 import org.zkoss.zul.Label;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Listbox;
-import org.zkoss.zul.Listitem;
-import org.zkoss.zul.Messagebox;
-import org.zkoss.zul.Radio;
 import org.zkoss.zul.Textbox;
 import org.zkoss.zul.Window;
 
-import net.sf.jasperreports.engine.JRException;
 import uem.mz.sgccovid19.entity.Classificacao;
-import uem.mz.sgccovid19.entity.Departamento;
-import uem.mz.sgccovid19.entity.Distrito;
 import uem.mz.sgccovid19.entity.Ficha;
-import uem.mz.sgccovid19.entity.Indicador;
-import uem.mz.sgccovid19.entity.Provincia;
-import uem.mz.sgccovid19.entity.Sector;
 import uem.mz.sgccovid19.entity.TipoUtente;
 import uem.mz.sgccovid19.entity.UnidadeOrganica;
 import uem.mz.sgccovid19.entity.Utente;
 import uem.mz.sgccovid19.entity.administracao.User;
-import uem.mz.sgccovid19.entity.monitoria.FichaMonitoriaRespostas;
 import uem.mz.sgccovid19.service.ClassificacaoService;
-import uem.mz.sgccovid19.service.DistritoService;
 import uem.mz.sgccovid19.service.FichaService;
-import uem.mz.sgccovid19.service.ProvinciaService;
-import uem.mz.sgccovid19.service.SectorService;
 import uem.mz.sgccovid19.service.TipoUtenteService;
 import uem.mz.sgccovid19.service.UnidadeOrganicaService;
-import uem.mz.sgccovid19.service.UtenteService;
 import uem.mz.sgccovid19.util.Breadcrumb;
-import uem.mz.sgccovid19.util.MasterRep;
 import uem.mz.sgccovid19.util.showClientNotification;
 
-public class FichaController extends GenericForwardComposer{
+public class EstatisticasController extends GenericForwardComposer{
 	
-	
+
 	private Window win;
 	private Div pesquisar;
 	
@@ -83,10 +58,12 @@ public class FichaController extends GenericForwardComposer{
 	
 	private Listbox lbxFichas;
 	
+	
 	private Ficha ficha;
 	
 	private Utente utente;
 	
+	private Label label_suspeitos;
 	
 	private Textbox txt_nrFicha;
 	
@@ -155,6 +132,27 @@ public class FichaController extends GenericForwardComposer{
 		buscarClassificacao();
 		buscarTipoUtente();
 		buscarFichas();
+		//pesquisarPorClassificacao();
+		
+	}
+	
+	public void pesquisarPorClassificacao() {
+		numeroFicha = "";
+		if(user.getId()!=1) {
+			uniorg=user.getUnidade();
+		}
+		classList = classificacaoService.buscarClassificacao();
+		classific = classList.get(0);
+		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte);
+		label_suspeitos.setValue(""+pesquisaList.size());
+		pesquisaList.clear();
+		classList.clear();
+		
+		/*
+		classific = classList.get(1);
+		classific = classList.get(2);
+		classific = classList.get(3);
+		*/
 		
 	}
 	
@@ -162,16 +160,16 @@ public class FichaController extends GenericForwardComposer{
 		
 		if(user.getId()==1) {
 			fichaList = fichaService.buscarFicha();
-			fichaModel = new ListModelList<Ficha>(fichaList);
-			lbxFichas.setModel(fichaModel);
+			/*fichaModel = new ListModelList<Ficha>(fichaList);
+			lbxFichas.setModel(fichaModel);*/
 		} else {
 			uniOrgList = unidadeOrganicaService.buscarUnidadeOrganica();
 			fichaList = fichaService.buscarFichasPorUnidade(user.getUnidade());
-			fichaModel = new ListModelList<Ficha>(fichaList);
-			lbxFichas.setModel(fichaModel);
+			/*fichaModel = new ListModelList<Ficha>(fichaList);
+			lbxFichas.setModel(fichaModel);*/
 		}
 		
-		total_resultados.setValue("Total de Resultados: "+fichaList.size());
+		total_resultados.setValue("Total: "+fichaList.size());
 		fichaList.clear();
 	}
 	
@@ -185,6 +183,7 @@ public class FichaController extends GenericForwardComposer{
 		classList = classificacaoService.buscarClassificacao();
 		classModel = new ListModelList<Classificacao>(classList);
 		cbx_classificacao.setModel(classModel);
+		classList.clear();
 	}
 	
 	public void buscarTipoUtente() {
@@ -273,41 +272,6 @@ public class FichaController extends GenericForwardComposer{
 		
 	}
 	
-	public void onClickApagar(ForwardEvent evt){
-		ficha = (Ficha) evt.getData();
-		
-		Messagebox.show("Tem a certeza que pretende apagar?", "Confirm Dialog", Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION, new org.zkoss.zk.ui.event.EventListener() {
-		    public void onEvent(Event evt) throws InterruptedException {
-		        if (evt.getName().equals("onOK")) {
-		            alert("Ficha apagada com sucesso!");
-		            fichaService.delete(ficha);
-		            buscarFichas();
-		        }  
-		    }
-		});
-		
-		
-		
-	}
-	
-	
-        
-   
-     
-   
-     
-     
-     
-     
-     
-   
-   
-   
-   
-   
-    
-    
-   
-   
+
 
 }

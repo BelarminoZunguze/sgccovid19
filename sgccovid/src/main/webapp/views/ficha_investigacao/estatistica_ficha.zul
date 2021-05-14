@@ -6,23 +6,11 @@
             });
  </x:script>
 
-<window  id="win" apply="uem.mz.sgccovid19.controller.FichaController">
+<window  id="win" apply="uem.mz.sgccovid19.controller.EstatisticasController">
 	      
           <div id="pesquisar" visible="true" class="row">
 	              		<div class="col-12">
 	              		
-	              		<x:div class="row row-cards" if="${sec:isAnyGranted('NOVA_FICHA')}">
-	              		     <x:div class="col-12 col-sm-4 col-lg-4">
-				                
-				                
-				                <div >
-							      <button style="background:rgb(51, 153, 122); color:white" iconSclass="fe fe-file-plus" zclass="btn btn-secondary" id="btn_nova_ficha" >Criar Nova Ficha de Investigação</button>
-									                          
-							   </div>
-							   
-				              </x:div>                                 
-				         </x:div>
-				         <separator/>
 	              		
 	              			<div class="card">
 			              		
@@ -132,80 +120,193 @@
 			            </div>    
 	            	</div>
 	            	
-	            	
-	            	
-          	<div id="fichas" class="row">	
-          	 <x:div class="col-12">
-               <x:div class="card">
-                                
-                <listbox id="lbxFichas" mold="paging" rows="10" 
-					pageSize="10" >
-					
-					<listhead >
-					   
-												
-						<listheader width="7%" >Nr. Ficha</listheader>
-						<listheader width="13%">Data de Submissão</listheader>
-						<listheader width="13%">Classificação</listheader>
-						<listheader width="13%">Tipo de Utente</listheader>
-						<listheader if="${sec:isAnyGranted('PESQUISAR_UNIDADE')}">Unidade Orgânica</listheader>
-						<listheader if="${sec:isAnyGranted('PESQUISAR_DEPARTAMENTO')}">Departamento</listheader>
-						<listheader width="13%">Detalhes</listheader>
-						
-						
-					</listhead>
-					
-				<template name="model">
-					<listitem>
-
+	        <tabbox >
+			    <tabs>
+			        <tab label="Fichas por Classificação"  />
+			        <tab label="Fichas por Gênero" />
+			        <tab label="Fichas por tipo de utente"/>
+			        <tab label="Fichas por distrito de residência"/>
+			    </tabs>
+			    <tabpanels>
+			        <tabpanel>
+			        	<div id="fichas" class="row">	
+			          	 <x:div class="col-12">
+			               <x:div class="card">
+			                                
+			                <listbox id="lbxFichas">
 								
-								<listcell label="${each.numeroFicha}"></listcell>
-								<listcell label="${each.created}"></listcell>
-								<listcell label="${each.classificacao.nome}"></listcell>
-								<listcell label="${each.utente.tipo_utente.designacao}"></listcell>
-								<listcell label="${each.utente.unidade.designacao}" if="${sec:isAnyGranted('PESQUISAR_UNIDADE')}"></listcell>
-								<listcell label="Recursos Humanos" if="${sec:isAnyGranted('PESQUISAR_DEPARTAMENTO')}"></listcell>
-								<listcell>
-								  
-                            		<button class="fe fe fe-eye" forward="onClick=onClickVerFicha(${each})"></button>
-                            		
-                            		<button class="fe fe fe-edit" forward="onClick=onClickEditarFicha(${each})" if="${sec:isAnyGranted('EDITAR_FICHA')}"></button>
-                            		
-                            		<button class="fe fe fe-trash" forward="onClick=onClickApagar(${each})" if="${sec:isAnyGranted('APAGAR_FICHA')}"></button>
-                            		
+								<listhead >
+								    <listheader >Classificação</listheader>
+									<listheader >Quantidade</listheader>
+									
+								</listhead>
+								
+							
+								<listitem>
+									
+									<listcell>
+										<label>Casos confirmados</label>
+									</listcell>
+									
+									<listcell>
+										<label>25</label>
+									</listcell>
+									
+			                    </listitem>
+			                    
+			                    <listitem>
+									
+									<listcell>
+										<label>Casos suspeitos</label>
+									</listcell>
+									
+									<listcell>
+										<label id="label_suspeitos"></label>
+									</listcell>
+									
+			                    </listitem>
+			                    
+			                    <listitem>
+									
+									<listcell>
+										<label>Casos testados</label>
+									</listcell>
+									
+									<listcell>
+										<label>25</label>
+									</listcell>
+									
+			                    </listitem>
+			                    
+			                    <listitem>
+									
+									<listcell>
+										<label>Contacto com caso positivo</label>
+									</listcell>
+									
+									<listcell>
+										<label>25</label>
+									</listcell>
+									
+			                    </listitem>
+			                  
+							
+							</listbox>
+							<div class="row">
+							  <div class="col-12">
+								<div align="center" style="background-color:rgb(242, 242, 242)">
+									<label id="total_resultados" style="font-weight:bold;text-align:center; font-size:11pt"></label>
+								</div>
+							  </div>
+							</div>
+							
+							  
+			                </x:div>
+			                
+			                
+			              </x:div>
+				     </div>
+			        
+			        </tabpanel>
+			        
+			        <tabpanel>
+			        	<listbox id="lbxFichasGenero" >
+								
+								<listhead >
 								   
-								</listcell> 
-                            	
-                            	
-                      </listitem>
-                  </template>
-				
-				</listbox>
-				
-				<div class="row">
-				  <div class="col-12">
-					<div align="center" style="background-color:rgb(242, 242, 242)">
-						<label id="total_resultados" style="font-weight:bold;text-align:center; font-size:11pt"></label>
-					</div>
-				  </div>
-				</div>
-				  
-                </x:div>
-                
-                <div class="row">
-				                
-								<div class="col-md-12 col-lg-12">
-					                <div align="right" >
-					                    <button style="background:rgb(51, 153, 122); color:white" iconSclass="fe fe-printer" zclass="btn btn-secondary" id="btn_imprimir">Imprimir Lista</button>
-					                </div>
-					            </div>
-										
-				</div>
-                
-				
-                
-              </x:div>
-	     </div>
+															
+									<listheader>Gênero</listheader>
+									<listheader>Quantidade</listheader>
+									
+								</listhead>
+								
+							
+								<listitem>
+											<listcell label="Masculino"></listcell>
+											<listcell label="25"></listcell>
+											
+			                      </listitem>
+			                      
+			                      <listitem>
+											<listcell label="Feminino"></listcell>
+											<listcell label="25"></listcell>
+											
+			                      </listitem>
+			                  
+							
+							</listbox>
+							<div class="row">
+							  <div class="col-12">
+								<div align="center" style="background-color:rgb(242, 242, 242)">
+									<label style="font-weight:bold;text-align:center; font-size:11pt">Total:</label>
+								</div>
+							  </div>
+							</div>
+			        </tabpanel>
+			        
+			        <tabpanel>
+			        	<listbox id="lbxFichasTipoUtente" >
+								
+								<listhead >
+								   
+															
+									<listheader>Tipo de utente</listheader>
+									<listheader>Quantidade</listheader>
+									
+								</listhead>
+								
+							
+								<listitem>
+											<listcell label="Estudante"></listcell>
+											<listcell label="25"></listcell>
+											
+			                      </listitem>
+			                      
+			                      
+							</listbox>
+							<div class="row">
+							  <div class="col-12">
+								<div align="center" style="background-color:rgb(242, 242, 242)">
+									<label style="font-weight:bold;text-align:center; font-size:11pt">Total:</label>
+								</div>
+							  </div>
+							</div>
+			        </tabpanel>
+			        
+			        <tabpanel>
+			        	<listbox id="lbxFichasDistrito" >
+								
+								<listhead >
+								   
+															
+									<listheader>Distrito de Residencia</listheader>
+									<listheader>Quantidade</listheader>
+									
+								</listhead>
+								
+							
+								<listitem>
+											<listcell label="Estudante"></listcell>
+											<listcell label="25"></listcell>
+											
+			                      </listitem>
+			                      
+			                      
+							</listbox>
+							<div class="row">
+							  <div class="col-12">
+								<div align="center" style="background-color:rgb(242, 242, 242)">
+									<label style="font-weight:bold;text-align:center; font-size:11pt">Total:</label>
+								</div>
+							  </div>
+							</div>
+			        </tabpanel>
+			    </tabpanels>
+			</tabbox>
+	            	
+	            	
+	            	
+          	
           
           
           

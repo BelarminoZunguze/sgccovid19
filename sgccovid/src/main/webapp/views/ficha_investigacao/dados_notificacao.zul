@@ -17,7 +17,7 @@
 				<div zclass="box box-default">
 					<div zclass="box-header" align="center" style="background-color:rgb(242, 242, 242)">
 						<!-- 	<h:hr/> -->
-						<h:img src="images/img/home-icon.png" class="header-brand-img" alt="tabler logo"></h:img>
+						
 						<h:label class="box-title" 
 							style="font-family:Arial;color:rgb(51, 153, 122);text-align:center; font-weight:bold;">
 							FICHA DE INVESTIGAÇÃO/NOTIFICAÇÃO DE CASO DE COVID-19
@@ -65,7 +65,8 @@
 								<div >
 									<combobox id="cbxClassificacao"
 										readonly="true" placeholder="Selecione a classificação" width="90%"
-										autocomplete="true">
+										autocomplete="true"
+										constraint="no empty: Este campo não pode ser vazio!">
 										
 										<template name="model">
 											<comboitem
@@ -83,7 +84,8 @@
 						       <label class="form-label"> Data do Teste:  </label>
 						
 								<div >
-									<datebox id="dtb_dataTeste"  format="dd/MM/yyyy" width="90%"/>
+									<datebox id="dtb_dataTeste"  format="dd/MM/yyyy" width="90%"
+									constraint="no future: Insira uma data válida!"/>
 								</div>
 						
 						    </div>
@@ -92,7 +94,8 @@
 						       <label class="form-label"> Data da Notificação:  </label>
 						
 								<div >
-									<datebox id="dtb_dataNotificacao"  format="dd/MM/yyyy" width="90%"/>
+									<datebox id="dtb_dataNotificacao"  format="dd/MM/yyyy" width="90%"
+									constraint="no future: Insira uma data válida!"/>
 								</div>
 						
 						    </div>
@@ -167,7 +170,8 @@
 						   <div class="form-group"> 
 							 <label class="form-label">Data de Entrada no Pais:  </label>
 							 <div >
-									<datebox id="dtb_dataEntrada"  format="dd/MM/yyyy" width="90%"/>
+									<datebox id="dtb_dataEntrada"  format="dd/MM/yyyy" width="90%"
+									constraint="no future: Insira uma data válida!"/>
 								</div>
 						   </div>
 							

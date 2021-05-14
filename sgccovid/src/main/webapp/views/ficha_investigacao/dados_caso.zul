@@ -17,7 +17,7 @@
 				<div zclass="box box-default">
 					<div zclass="box-header" align="center" style="background-color:rgb(242, 242, 242)">
 						<!-- 	<h:hr/> -->
-						<h:img src="images/img/home-icon.png" class="header-brand-img" alt="tabler logo"></h:img>
+						
 						<h:label class="box-title" 
 							style="font-family:Arial;color:rgb(51, 153, 122);text-align:center; font-weight:bold;">
 							FICHA DE INVESTIGAÇÃO/NOTIFICAÇÃO DE CASO DE COVID-19
@@ -46,6 +46,7 @@
 					
 					<separator/>
 					
+					
 					<div>
 						<div zclass="box-body">
 						<div class="row">
@@ -55,7 +56,9 @@
 							
 							
 						    <div class="form-group">
-						       <label class="form-label">Nome:  </label>
+						       	
+						       <label style="font-weight:bold;font-size:11pt">Nome:  </label> 
+						       <label style="font-weight:bold;color:red">*</label>
 						
 								<div >
 									<div>
@@ -80,7 +83,7 @@
 						    </div>
 						    
 						    <div class="form-group">
-						       <label class="form-label">Contacto:  </label>
+						       <label class="form-label">Celular:  </label>
 						
 								<div >
 									<div>
@@ -219,7 +222,11 @@
 						</div>
 					</div>
 					
-					</div>					
+					</div>
+					
+					<label style="font-size:10pt">Os campos assinalados com</label>
+					<label style="font-weight:bold;color:red;font-size:10pt">*</label>
+					<label style="font-size:10pt"> são de preenchimento obrigatório</label>				
 
 							</div>
 						</div>

@@ -1,0 +1,58 @@
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+<x:script src="plugins/datatables/plugin.js"></x:script>
+<x:script>
+    require(['datatables', 'jquery'], function(datatable, $) {
+          $('.datatable').DataTable();
+            });
+</x:script>
+
+
+
+	<div apply="org.zkoss.bind.BindComposer" id="paramet"
+	  			viewModel="@id('vm')@init('uem.mz.sgccovid19.vm.ParametrizacaoVM')">
+	  			
+	<div class="my-3 my-md-5">
+		<div class="container">
+        	<x:div class="row row-cards">
+        	
+        	<x:div class="col-6 col-sm-4 col-lg-2">
+               <x:div class="card">
+                  <x:a style="background:rgb(51, 153, 122); color:white; font-weight:bold;" href="#" onClick="@command('openEstatisticaFicha')" class="button btn-secondary">
+              	      <div class="fe fe fe-file" if="${sec:isAnyGranted('GESTÃO_FICHA_DE_INVESTIGAÇÃO')}">  <label value="@load(vm.numero)"/></div>
+              	      <div class="fe fe fe-file" if="${sec:isAnyGranted('GESTÃO_FICHA_DE_INVESTIGAÇÃO_UNIDADE')}">  <label value="@load(vm.numeroUnidade)"/></div>
+              	      <div >Ficha de Investigação</div>
+              	     
+                  </x:a>
+                </x:div>
+              </x:div>
+              
+              <x:div class="col-6 col-sm-4 col-lg-2">
+               <x:div class="card">
+                  <x:a style="background:rgb(51, 153, 122); color:white; font-weight:bold;" href="#" onClick="@command('openEstatisticaMonitoria')" class="button btn-secondary">
+              	      	<div class="fe fe fe-eye" if="${sec:isAnyGranted('GESTÃO_MONITORIA')}"> <label value="@load(vm.numeroMonitoria)"/></div>
+						<div class="fe fe fe-eye" if="${sec:isAnyGranted('GESTAO_MONITORIA_UNIDADE')}"> <label value="@load(vm.numeroMonUnidade)"/></div>
+              	      	<div >Monitoria das Acções</div>
+                  </x:a>
+                </x:div>
+              </x:div>
+          
+          
+          
+            </x:div>
+        </div>
+       </div>					
+    </div>
+
+			
+              
+              
+	      
+          
+	            	
+	            	
+	            	
+          	
+          
+          
+          
+</zk>

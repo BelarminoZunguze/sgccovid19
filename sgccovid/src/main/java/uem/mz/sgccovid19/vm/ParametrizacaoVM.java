@@ -176,12 +176,29 @@ public class ParametrizacaoVM extends AbstractVM{
 		map.put("target", target);
 		target.getChildren().clear();
 		Executions.createComponents("views/ficha_investigacao/ficha_investigacao.zul", target, map);
+		
+		
+	}
 	
-		/*
-		links = new ArrayList<String>();
-		links.add("Ficha de Investigação");
-		Breadcrumb.drawn(breadcrumb, "", links);
-		*/
+	@Command
+	public void openEstatisticaFicha() {
+
+		final HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("target", target);
+		target.getChildren().clear();
+		Executions.createComponents("views/ficha_investigacao/estatistica_ficha.zul", target, map);
+		
+		
+	}
+	
+	@Command
+	public void openEstatisticas() {
+
+		final HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("target", target);
+		target.getChildren().clear();
+		Executions.createComponents("views/ficha_investigacao/estatisticas.zul", target, map);
+	
 		
 	}
 	
@@ -196,6 +213,16 @@ public class ParametrizacaoVM extends AbstractVM{
 		links = new ArrayList<String>();
 		links.add("Monitoria das Acções");
 		Breadcrumb.drawn(breadcrumb, "", links);
+	}
+	
+	@Command
+	public void openEstatisticaMonitoria() {
+
+		final HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("target", target);
+		target.getChildren().clear();
+		Executions.createComponents("views/monitoria/estatistica_monitoria.zul", target, map);
+
 	}
 	
 	@Command

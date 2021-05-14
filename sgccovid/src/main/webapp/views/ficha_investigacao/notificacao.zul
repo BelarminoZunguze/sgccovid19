@@ -24,7 +24,7 @@
 				<div zclass="box box-default">
 					<div zclass="box-header" align="center" style="background-color:rgb(242, 242, 242)">
 						<!-- 	<h:hr/> -->
-						<h:img src="images/img/home-icon.png" class="header-brand-img" alt="tabler logo"></h:img>
+						
 						<h:label class="box-title" 
 							style="font-family:Arial;color:rgb(51, 153, 122);text-align:center; font-weight:bold;">
 							FICHA DE INVESTIGAÇÃO/NOTIFICAÇÃO DE CASO DE COVID-19
