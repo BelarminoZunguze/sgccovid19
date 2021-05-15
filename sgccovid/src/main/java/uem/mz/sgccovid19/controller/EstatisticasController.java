@@ -64,6 +64,14 @@ public class EstatisticasController extends GenericForwardComposer{
 	private Utente utente;
 	
 	private Label label_suspeitos;
+	private Label label_confirmados;
+	private Label label_testados;
+	private Label label_contactos;
+	private Label label_masculino;
+	private Label label_feminino;
+	private Label label_estudante;
+	private Label label_docente;
+	private Label label_cta;
 	
 	private Textbox txt_nrFicha;
 	
@@ -129,15 +137,18 @@ public class EstatisticasController extends GenericForwardComposer{
 		if(user.getId()==1) {
 			buscarUnidadeOrganica();
 		}
-		buscarClassificacao();
-		buscarTipoUtente();
+		
 		buscarFichas();
-		//pesquisarPorClassificacao();
+		pesquisarPorClassificacao();
+		pesquisarPorGenero();
+		pesquisarPorTipoUtente();
 		
 	}
 	
 	public void pesquisarPorClassificacao() {
 		numeroFicha = "";
+		genero=null;
+		tipoUte=null;
 		if(user.getId()!=1) {
 			uniorg=user.getUnidade();
 		}
@@ -146,13 +157,74 @@ public class EstatisticasController extends GenericForwardComposer{
 		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte);
 		label_suspeitos.setValue(""+pesquisaList.size());
 		pesquisaList.clear();
+		
+		classific = classList.get(1);
+		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte);
+		label_confirmados.setValue(""+pesquisaList.size());
+		pesquisaList.clear();
+		
+		classific = classList.get(2);
+		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte);
+		label_testados.setValue(""+pesquisaList.size());
+		pesquisaList.clear();
+		
+		classific = classList.get(3);
+		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte);
+		label_contactos.setValue(""+pesquisaList.size());
+		pesquisaList.clear();
+		
 		classList.clear();
 		
-		/*
-		classific = classList.get(1);
-		classific = classList.get(2);
-		classific = classList.get(3);
-		*/
+	}
+	
+	public void pesquisarPorTipoUtente() {
+		numeroFicha = "";
+		genero=null;
+		classific=null;
+		if(user.getId()!=1) {
+			uniorg=user.getUnidade();
+		}
+		tiputList = tipoUtenteService.buscarTipoUtente();
+		tipoUte = tiputList.get(0);
+		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte);
+		label_estudante.setValue(""+pesquisaList.size());
+		pesquisaList.clear();
+		
+		tiputList = tipoUtenteService.buscarTipoUtente();
+		tipoUte = tiputList.get(1);
+		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte);
+		label_docente.setValue(""+pesquisaList.size());
+		pesquisaList.clear();
+		
+		tiputList = tipoUtenteService.buscarTipoUtente();
+		tipoUte = tiputList.get(2);
+		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte);
+		label_cta.setValue(""+pesquisaList.size());
+		pesquisaList.clear();
+		
+		
+		tiputList.clear();
+		
+	}
+	
+	public void pesquisarPorGenero() {
+		numeroFicha = "";
+		classific=null;
+		tipoUte=null;
+		if(user.getId()!=1) {
+			uniorg=user.getUnidade();
+		}
+		String masculino = "Masculino";
+		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, masculino, classific, tipoUte);
+		label_masculino.setValue(""+pesquisaList.size());
+		pesquisaList.clear();
+		
+		String feminino = "Feminino";
+		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, feminino, classific, tipoUte);
+		label_feminino.setValue(""+pesquisaList.size());
+		pesquisaList.clear();
+		
+		
 		
 	}
 	
@@ -179,18 +251,7 @@ public class EstatisticasController extends GenericForwardComposer{
 	  	  cbx_unidade.setModel(uniOrgModel);    	  
 	}
 	
-	public void buscarClassificacao() {
-		classList = classificacaoService.buscarClassificacao();
-		classModel = new ListModelList<Classificacao>(classList);
-		cbx_classificacao.setModel(classModel);
-		classList.clear();
-	}
 	
-	public void buscarTipoUtente() {
-		tiputList = tipoUtenteService.buscarTipoUtente();
-		tiputModel = new ListModelList<TipoUtente>(tiputList);
-		cbxTipoUtente.setModel(tiputModel);
-	}
 	
 	public void onClick$btn_pesquisar() {
 		numeroFicha = txt_nrFicha.getValue();

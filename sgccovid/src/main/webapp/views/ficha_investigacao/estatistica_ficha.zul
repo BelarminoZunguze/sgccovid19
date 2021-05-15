@@ -17,69 +17,10 @@
 				                
 				                <div class="card-body">
 				                
-				                    
-				                    
-                    				<div class="row">
-                    					<div class="col-md-6 col-lg-4">
-							              <div class="form-group">
-												<label class="form-label">Número da ficha</label>
-												<textbox class="form-control" name="example-text-input" placeholder="Pesquisar pelo nr. da ficha" id="txt_nrFicha"/>		
-											</div>
-										</div>
-                    					
-				                		 
-										 <div class="col-md-6 col-lg-4">
-					                        <div class="form-group">
-					                          <label class="form-label">Classificação</label>
-					                          <combobox id="cbx_classificacao" placeholder="Seleccione a classificação" readonly="true" width="100%">
-												    <template name="model">
-							                 		   <comboitem label="${each.nome}"></comboitem>
-							                 	     </template>
-												</combobox>
-					                        </div>
-					                     </div> 
-					                     
-					                     
-										
-										 <div class="col-md-6 col-lg-4">
-							              <div class="form-group">
-												<label class="form-label">Tipo de Utente</label>
-												<combobox id="cbxTipoUtente" readonly="true" placeholder="Selecione o tipo de Utente" width="100%"
-													autocomplete="true">
-													
-													<template name="model">
-														<comboitem
-															label="${each.designacao}">
-														</comboitem>
-													</template>
-													
-												</combobox>		
-											</div>
-										</div>
-										
-					                     					                     
-					                </div>
+				                   
 					                
 					                <div class="row">
-                    				
-                    					<div class="col-md-6 col-lg-4">
-							              <div class="form-group">
-												<label class="form-label">Gênero</label>
-												<combobox id="cbx_genero"  placeholder="Seleccione o Gênero" readonly="true" width="100%">
-							                 	    <comboitem label="Masculino" value="Masculino" />
-							                 		<comboitem label="Feminino" value="Feminino"/>
-							                 </combobox>		
-											</div>
-										</div>
-				                		 
-										 <div class="col-md-6 col-lg-4">
-					                        <div class="form-group">
-					                          <label class="form-label">Data de Submissão</label>
-					                          <datebox id="dtb_dataSubmissao"  format="dd/MM/yyyy" width="100%"/>
-					                        </div>
-					                     </div> 
-					                     
-					                    
+                    				    
 										<div class="col-md-6 col-lg-4" if="${sec:isAnyGranted('PESQUISAR_UNIDADE')}">
 							              <div class="form-group">
 												<label class="form-label">Unidade Orgânica</label>
@@ -91,29 +32,19 @@
 											</div>
 										</div>
 										
-										<div class="col-md-6 col-lg-4" if="${sec:isAnyGranted('PESQUISAR_DEPARTAMENTO')}">
-							              <div class="form-group">
-												<label class="form-label">Departamento</label>
-												<combobox id="cbx_departamento"  placeholder="Seleccione o Departamento" readonly="true" width="100%">
-							                 	    <comboitem label="Recursos Humanos" />
-							                 		<comboitem label="Finanças"/>  
-							                   </combobox>		
-											</div>
-										</div>
+										
+										
+										<div class="col-md-6 col-lg-4">
+					                        <div class="form-group">
+					                          <label class="form-label">Data de Submissão</label>
+					                          <datebox id="dtb_dataSubmissao"  format="dd/MM/yyyy" width="100%"/>
+					                        </div>
+					                     </div> 
 										
 					                     					                     
 					                </div>
 					                
 				                	
-				                	<div class="row">
-				                
-										<div class="col-md-12 col-lg-12">
-					                     	<div align="right" >
-					                     		<button iconSclass="fe fe-search" zclass="btn btn-secondary" width="110px" id="btn_pesquisar" >Pesquisar</button>
-					                     	</div>
-					                     </div>
-										
-				                	</div>
 				                </div>
 				                
 			                </div>
@@ -129,11 +60,7 @@
 			    </tabs>
 			    <tabpanels>
 			        <tabpanel>
-			        	<div id="fichas" class="row">	
-			          	 <x:div class="col-12">
-			               <x:div class="card">
-			                                
-			                <listbox id="lbxFichas">
+			        	    <listbox id="lbxFichas">
 								
 								<listhead >
 								    <listheader >Classificação</listheader>
@@ -149,7 +76,7 @@
 									</listcell>
 									
 									<listcell>
-										<label>25</label>
+										<label id="label_confirmados"></label>
 									</listcell>
 									
 			                    </listitem>
@@ -173,7 +100,7 @@
 									</listcell>
 									
 									<listcell>
-										<label>25</label>
+										<label id="label_testados"></label>
 									</listcell>
 									
 			                    </listitem>
@@ -185,28 +112,14 @@
 									</listcell>
 									
 									<listcell>
-										<label>25</label>
+										<label id="label_contactos"></label>
 									</listcell>
 									
 			                    </listitem>
 			                  
 							
 							</listbox>
-							<div class="row">
-							  <div class="col-12">
-								<div align="center" style="background-color:rgb(242, 242, 242)">
-									<label id="total_resultados" style="font-weight:bold;text-align:center; font-size:11pt"></label>
-								</div>
-							  </div>
-							</div>
 							
-							  
-			                </x:div>
-			                
-			                
-			              </x:div>
-				     </div>
-			        
 			        </tabpanel>
 			        
 			        <tabpanel>
@@ -223,25 +136,23 @@
 							
 								<listitem>
 											<listcell label="Masculino"></listcell>
-											<listcell label="25"></listcell>
+											<listcell>
+												<label id="label_masculino"></label>
+											</listcell>
 											
 			                      </listitem>
 			                      
 			                      <listitem>
 											<listcell label="Feminino"></listcell>
-											<listcell label="25"></listcell>
+											<listcell>
+												<label id="label_feminino"></label>
+											</listcell>
 											
 			                      </listitem>
 			                  
 							
 							</listbox>
-							<div class="row">
-							  <div class="col-12">
-								<div align="center" style="background-color:rgb(242, 242, 242)">
-									<label style="font-weight:bold;text-align:center; font-size:11pt">Total:</label>
-								</div>
-							  </div>
-							</div>
+							
 			        </tabpanel>
 			        
 			        <tabpanel>
@@ -258,19 +169,31 @@
 							
 								<listitem>
 											<listcell label="Estudante"></listcell>
-											<listcell label="25"></listcell>
+											<listcell>
+												<label id="label_estudante"></label>
+											</listcell>
+											
+			                      </listitem>
+			                      
+			                      <listitem>
+											<listcell label="Docente"></listcell>
+											<listcell>
+												<label id="label_docente"></label>
+											</listcell>
+											
+			                      </listitem>
+			                      
+			                      <listitem>
+											<listcell label="CTA"></listcell>
+											<listcell>
+												<label id="label_cta"></label>
+											</listcell>
 											
 			                      </listitem>
 			                      
 			                      
 							</listbox>
-							<div class="row">
-							  <div class="col-12">
-								<div align="center" style="background-color:rgb(242, 242, 242)">
-									<label style="font-weight:bold;text-align:center; font-size:11pt">Total:</label>
-								</div>
-							  </div>
-							</div>
+							
 			        </tabpanel>
 			        
 			        <tabpanel>
@@ -286,23 +209,25 @@
 								
 							
 								<listitem>
-											<listcell label="Estudante"></listcell>
-											<listcell label="25"></listcell>
+											<listcell label="KaMaxaquene"></listcell>
+											<listcell></listcell>
 											
 			                      </listitem>
 			                      
 			                      
 							</listbox>
-							<div class="row">
-							  <div class="col-12">
-								<div align="center" style="background-color:rgb(242, 242, 242)">
-									<label style="font-weight:bold;text-align:center; font-size:11pt">Total:</label>
-								</div>
-							  </div>
-							</div>
+							
 			        </tabpanel>
+			        
 			    </tabpanels>
 			</tabbox>
+			<div class="row">
+			  <div class="col-12">
+				<div align="center" style="background-color:rgb(242, 242, 242)">
+					<label id="total_resultados" style="font-weight:bold;text-align:center; font-size:11pt"></label>
+				</div>
+			  </div>
+			</div>
 	            	
 	            	
 	            	

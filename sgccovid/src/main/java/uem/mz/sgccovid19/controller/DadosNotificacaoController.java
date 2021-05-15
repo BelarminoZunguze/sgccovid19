@@ -135,6 +135,7 @@ public class DadosNotificacaoController extends GenericForwardComposer{
      public void onClick$btn_proximo3() {
     	if(ficha==null) {
     		ficha = new Ficha();
+    		ficha.setNumeroFicha("F");
     	}
     	
     	ficha.setClassificacao((Classificacao)(cbxClassificacao.getSelectedItem().getValue()));
