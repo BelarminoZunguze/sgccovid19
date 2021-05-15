@@ -210,9 +210,6 @@ public class ParametrizacaoVM extends AbstractVM{
 		target.getChildren().clear();
 		Executions.createComponents("views/monitoria/ficha_monitoria.zul", target, map);
 
-		links = new ArrayList<String>();
-		links.add("Monitoria das Acções");
-		Breadcrumb.drawn(breadcrumb, "", links);
 	}
 	
 	@Command

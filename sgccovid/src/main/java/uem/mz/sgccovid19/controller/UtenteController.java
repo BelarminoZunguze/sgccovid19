@@ -88,6 +88,8 @@ public class UtenteController extends GenericForwardComposer{
 	
 	private FichaContactoDirecto fichContacto;
 	
+	private Provincia provincia;
+	
 	
 	@Override
 	public void doBeforeComposeChildren(Component comp) throws Exception {
@@ -121,8 +123,8 @@ public class UtenteController extends GenericForwardComposer{
 		super.doAfterCompose(comp);
 		
 		buscarTipoUtente();
-		buscarDistrito();
 		buscarProvincia();
+		buscarDistrito();
 		PreencherDados();
 		
 	}
@@ -135,6 +137,14 @@ public class UtenteController extends GenericForwardComposer{
 	
 	public void buscarDistrito() {
 		distritoList = distritoService.buscarDistritos();
+		distritoModel = new ListModelList<Distrito>(distritoList);
+		cbxDistrito.setModel(distritoModel);
+		
+	}
+	
+	public void onSelect$cbxProvincia() {
+		provincia = cbxProvincia.getSelectedItem().getValue();
+		distritoList = distritoService.buscarDistritosPorProvincia(provincia);
 		distritoModel = new ListModelList<Distrito>(distritoList);
 		cbxDistrito.setModel(distritoModel);
 		
@@ -160,9 +170,7 @@ public class UtenteController extends GenericForwardComposer{
 		target.getChildren().clear();
 		Executions.createComponents("views/ficha_investigacao/notificacao.zul", target, map);
 
-		links = new ArrayList<String>();
-		links.add("Notificacao");
-		Breadcrumb.drawn(breadcrumb, "", links);
+		
 
 		
 	}
@@ -212,9 +220,7 @@ public class UtenteController extends GenericForwardComposer{
 		target.getChildren().clear();
 		Executions.createComponents("views/ficha_investigacao/dados_notificacao.zul", target, map);
 		
-		links = new ArrayList<String>();
-		links.add("Informações Sobre o Caso");
-		Breadcrumb.drawn(breadcrumb, "", links);
+		
 		
 		
 	}

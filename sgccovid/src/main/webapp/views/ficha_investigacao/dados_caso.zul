@@ -15,30 +15,73 @@
 		<div class="row">
 			<div zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				<div zclass="box box-default">
-					<div zclass="box-header" align="center" style="background-color:rgb(242, 242, 242)">
-						<!-- 	<h:hr/> -->
-						
-						<h:label class="box-title" 
-							style="font-family:Arial;color:rgb(51, 153, 122);text-align:center; font-weight:bold;">
-							FICHA DE INVESTIGAÇÃO/NOTIFICAÇÃO DE CASO DE COVID-19
-						</h:label>
-								
-					 </div>
-					 <separator/>			
+				
+					
+					<div class="container">
+	              			
+	              			<div class="row">
+	              			
+	              			 <div class="col-2">
+	              			 
+	              			   <div height="50px" width="110%" style="background:rgb(51, 153, 122);
+	              			   text-align: center; padding: 12px;">
+				          			<label style="font-family:Arial;font-size:13pt;color:white;font-weight:bold;">
+				          			PARTE
+				          			</label>
+				          		</div>
+	              			 
+	              			 </div>
+			          			
+				          	
+				          	<div class="col-1">
+				          		<div height="50px" width="130%" style="background:rgb(51, 153, 122);
+				          		text-align: center; padding: 12px;">
+				          			<label style="font-family:Arial;font-size:14pt;color:white;font-weight:bold;">1</label>
+				          		</div>
+				          	</div>
+				          	
+				          	<div class="col-1">
+				          		<div height="50px" width="130%" style="background:#bbb;
+				          		text-align: center; padding: 12px;">
+				          			<label style="font-family:Arial;font-size:14pt;color:white;font-weight:bold;">2</label>
+				          		</div>
+				          	</div>
+				          	
+				          	<div class="col-1">
+				          		<div height="50px" width="130%" style="background:#bbb;
+				          		text-align: center; padding: 12px;">
+				          			<label style="font-family:Arial;font-size:14pt;color:white;font-weight:bold;">3</label>
+				          		</div>
+				          	</div>
+				          	
+				          	<div class="col-1">
+				          		<div height="50px" width="130%" style="background:#bbb;
+				          		text-align: center; padding: 12px;">
+				          			<label style="font-family:Arial;font-size:14pt;color:white;font-weight:bold;">4</label>
+				          		</div>
+				          	</div>
+				          	<div class="col-4"></div>
+				          	
+				          	<div class="col-1">
+				          		<div height="50px" width="130%" style="background:rgb(51, 153, 122);
+				          		text-align: center; padding: 12px;">
+				          			<label style="font-family:Arial;font-size:14pt;color:white;font-weight:bold;">0 %</label>
+				          		</div>
+				          	</div>
+				          		
+				          		
+				          	</div>
+	              		
+	              		
+	              		</div>			
 			
-					<div zclass="box-header" align="center" style="background-color:rgb(51, 153, 122)">
-						<!-- 	<h:hr/> -->
-						<h:label class="box-title" 
-							style="font-family:Arial;color:white;text-align:center; font-weight:bold;">
-							Instrumento adaptado com base na Ficha respectiva do MISAU e simplificado para uso na UEM
-						</h:label>
-								
-					</div>
+					<separator/>
+					<separator/>
 					<separator/>
 					<div zclass="box-header" align="center">
 						<!-- 	<h:hr/> -->
 						<h:label class="box-title" 
-							style="font-family:Arial;color:rgb(51, 153, 122);text-align:center; font-weight:bold;">
+							style="font-family:Arial;font-size:12pt;color:rgb(51, 153, 122);text-align:center; font-weight:bold;">
 							DADOS DO UTENTE
 						</h:label>
 								
@@ -71,20 +114,20 @@
 						    </div>
 						    
 						    <div class="form-group">
-						       <label class="form-label">E-mail:  </label>
-						
+						       <label style="font-weight:bold;font-size:11pt">E-mail:  </label> 
+						       
 								<div >
 									<div>
-									  <textbox id="txtEmail" zclass="form-control" width="90%" 
-									  constraint="/.+@.+\.[a-z]+/: Por favor, insira um e-mail válido!"> </textbox>
+									  <textbox id="txtEmail" zclass="form-control" width="90%"> </textbox>
 							        </div>
 								</div>
 						
 						    </div>
 						    
 						    <div class="form-group">
-						       <label class="form-label">Celular:  </label>
-						
+						    	<label style="font-weight:bold;font-size:11pt">Celular:  </label> 
+						        <label style="font-weight:bold;color:red">*</label>
+						       
 								<div >
 									<div>
 									  <textbox id="txtContacto" zclass="form-control" width="90%" 
@@ -96,8 +139,9 @@
 						    
 							
 							<div class="form-group">
-						       <label class="form-label"> Gênero:  </label>
-						
+						       <label style="font-weight:bold;font-size:11pt">Gênero:  </label> 
+						        <label style="font-weight:bold;color:red">*</label>
+						       
 								<div >
 									<combobox id="cbxGenero"
 										readonly="true" placeholder="Selecione o Gênero" width="90%"
@@ -113,7 +157,9 @@
 						    </div>
 						    
 						    <div class="form-group">
-						       <label class="form-label"> Data de Nascimento:  </label>
+						        <label style="font-weight:bold;font-size:11pt">Data de Nascimento:  </label> 
+						        <label style="font-weight:bold;color:red">*</label>
+						
 						
 								<div >
 									<datebox id="dtb_dataNascimento"  format="dd/MM/yyyy" width="90%"
@@ -129,7 +175,8 @@
 						<div class="form-group">
 						
 						    <div class="form-group">
-						       <label class="form-label">Nacionalidade:  </label>
+						       <label style="font-weight:bold;font-size:11pt">Nacionalidade:  </label> 
+						        <label style="font-weight:bold;color:red">*</label>
 						
 								<div >
 									<combobox id="cbxNacionalidade"
@@ -144,7 +191,10 @@
 						    </div>
 						    
 						    <div class="form-group">
-						       <label class="form-label"> Tipo de utente:  </label>
+						       
+						       <label style="font-weight:bold;font-size:11pt">Tipo de utente:  </label> 
+						        <label style="font-weight:bold;color:red">*</label>
+						
 						
 								<div >
 									<combobox id="cbxTipoUtente"
@@ -164,8 +214,10 @@
 						    </div>
 						    
 						    <div class="form-group">
-						       <label class="form-label"> Província de Residência:  </label>
+						        <label style="font-weight:bold;font-size:11pt">Província de Residência:  </label> 
+						        <label style="font-weight:bold;color:red">*</label>
 						
+						      
 								<div >
 									<combobox id="cbxProvincia"
 										readonly="true" placeholder="Selecione a Província" width="90%"
@@ -182,8 +234,10 @@
 						    </div>
 						    
 						    <div class="form-group">
-						       <label class="form-label"> Distrito de Residência:  </label>
+						    	<label style="font-weight:bold;font-size:11pt">Distrito de Residência:  </label> 
+						        <label style="font-weight:bold;color:red">*</label>
 						
+						       
 								<div >
 									<combobox id="cbxDistrito"
 										readonly="true" placeholder="Selecione a distrito" width="90%"
@@ -200,8 +254,10 @@
 						    </div>
 						    
 						    <div class="form-group">
-						       <label class="form-label">Endereço/ Local de Residência:  </label>
+						      <label style="font-weight:bold;font-size:11pt">Endereço/ Local de Residência:  </label> 
+						        <label style="font-weight:bold;color:red">*</label>
 						
+						       
 								<div >
 									<div>
 									  <textbox id="txtEndereco" zclass="form-control" width="90%" 

@@ -15,29 +15,72 @@
 		<div class="row">
 			<div zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				<div zclass="box box-default">
-					<div zclass="box-header" align="center" style="background-color:rgb(242, 242, 242)">
-						<!-- 	<h:hr/> -->
-						
-						<h:label class="box-title" 
-							style="font-family:Arial;color:rgb(51, 153, 122);text-align:center; font-weight:bold;">
-							FICHA DE INVESTIGAÇÃO/NOTIFICAÇÃO DE CASO DE COVID-19
-						</h:label>
-								
-					 </div>
-					 <separator/>
-					 <div zclass="box-header" align="center" style="background-color:rgb(51, 153, 122)">
-						<!-- 	<h:hr/> -->
-						<h:label class="box-title" 
-							style="font-family:Arial;color:white;text-align:center; font-weight:bold;">
-							Instrumento adaptado com base na Ficha respectiva do MISAU e simplificado para uso na UEM
-						</h:label>
-								
-					</div>
+					
+					 <div class="container">
+	              			
+	              			<div class="row">
+	              			
+	              			 <div class="col-2">
+	              			 
+	              			   <div height="50px" width="110%" style="background:rgb(51, 153, 122);
+	              			   text-align: center; padding: 12px;">
+				          			<label style="font-family:Arial;font-size:13pt;color:white;font-weight:bold;">
+				          			PARTE
+				          			</label>
+				          		</div>
+	              			 
+	              			 </div>
+			          			
+				          	
+				          	<div class="col-1">
+				          		<div height="50px" width="130%" style="background:rgb(51, 153, 122);
+				          		text-align: center; padding: 12px;">
+				          			<label style="font-family:Arial;font-size:14pt;color:white;font-weight:bold;">1</label>
+				          		</div>
+				          	</div>
+				          	
+				          	<div class="col-1">
+				          		<div height="50px" width="130%" style="background:rgb(51, 153, 122);
+				          		text-align: center; padding: 12px;">
+				          			<label style="font-family:Arial;font-size:14pt;color:white;font-weight:bold;">2</label>
+				          		</div>
+				          	</div>
+				          	
+				          	<div class="col-1">
+				          		<div height="50px" width="130%" style="background:#bbb;
+				          		text-align: center; padding: 12px;">
+				          			<label style="font-family:Arial;font-size:14pt;color:white;font-weight:bold;">3</label>
+				          		</div>
+				          	</div>
+				          	
+				          	<div class="col-1">
+				          		<div height="50px" width="130%" style="background:#bbb;
+				          		text-align: center; padding: 12px;">
+				          			<label style="font-family:Arial;font-size:14pt;color:white;font-weight:bold;">4</label>
+				          		</div>
+				          	</div>
+				          	<div class="col-4"></div>
+				          	
+				          	<div class="col-1">
+				          		<div height="50px" width="130%" style="background:rgb(51, 153, 122);
+				          		text-align: center; padding: 12px;">
+				          			<label style="font-family:Arial;font-size:14pt;color:white;font-weight:bold;">25 %</label>
+				          		</div>
+				          	</div>
+				          		
+				          		
+				          	</div>
+	              		
+	              		
+	              		</div>			
+			
+					<separator/>
+					<separator/>
 					<separator/>
 					<div zclass="box-header" align="center">
 						<!-- 	<h:hr/> -->
 						<h:label class="box-title" 
-							style="font-family:Arial;color:rgb(51, 153, 122);text-align:center; font-weight:bold;">
+							style="font-family:Arial;font-size:12pt;color:rgb(51, 153, 122);text-align:center; font-weight:bold;">
 							INFORMAÇÕES SOBRE O CASO
 						</h:label>
 								
@@ -60,7 +103,8 @@
 						   
 						       
 							<div class="form-group">
-						       <label class="form-label">Classificação:  </label>
+						       <label style="font-weight:bold;font-size:11pt">Classificação:  </label> 
+						        <label style="font-weight:bold;color:red">*</label>
 						
 								<div >
 									<combobox id="cbxClassificacao"

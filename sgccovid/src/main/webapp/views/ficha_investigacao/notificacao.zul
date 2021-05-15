@@ -9,7 +9,7 @@
 		<div zclass="col-md-12 col-lg-12 col-xs-12 col-sm-12">
 			<div zclass="box box-success">
 				<div zclass="box-header">
-					<!-- <x:h3 class="box-title">Modulos Registados</x:h3> -->
+					
 					<separator />
 				</div>
 
@@ -26,40 +26,27 @@
 						<!-- 	<h:hr/> -->
 						
 						<h:label class="box-title" 
-							style="font-family:Arial;color:rgb(51, 153, 122);text-align:center; font-weight:bold;">
+							style="font-family:Arial;font-size:14pt;color:rgb(51, 153, 122);text-align:center; font-weight:bold;">
 							FICHA DE INVESTIGAÇÃO/NOTIFICAÇÃO DE CASO DE COVID-19
+						</h:label>
+						<h:label class="box-title" 
+							style="font-family:Arial;font-size:12pt;color:rgb(51, 153, 122);text-align:center; font-weight:bold;">
+							Instrumento adaptado com base na Ficha respectiva do MISAU e simplificado para uso na UEM
 						</h:label>
 								
 					 </div>
 					 <separator/>
+					 <separator/>
+					 <separator/>		
 					
-					<!--  
-					<h:div style=" text-align:rigth">
-					<h:label style="background-color: green">PARTE</h:label>
-							<h:a href="#" onClick="@command('openDadosNotificacao')" >0</h:a>
-							<h:a href="#" onClick="@command('openDadosNotificacao')" >1</h:a>
-							<h:a href="#" onClick="@command('openDadosNotificacao')">2</h:a>
-							<h:a href="#" onClick="@command('openDadosNotificacao')" >3</h:a>
-							<h:a href="#" onClick="@command('openDadosNotificacao')" >4</h:a>
-							<h:a href="#" onClick="@command('openDadosNotificacao')" >5</h:a>
 					
-					</h:div>
-			        -->
-			
-			
-					<div zclass="box-header" align="center" style="background-color:rgb(51, 153, 122)">
-						<!-- 	<h:hr/> -->
-						<h:label class="box-title" 
-							style="font-family:Arial;color:white;text-align:center; font-weight:bold;">
-							Instrumento adaptado com base na Ficha respectiva do MISAU e simplificado para uso na UEM
-						</h:label>
-								
-					</div>
-					<separator/>
+					
+	              			
+					
 					<div zclass="box-header" align="center">
 						<!-- 	<h:hr/> -->
 						<h:label class="box-title" 
-							style="font-family:Arial;color:rgb(51, 153, 122);text-align:center; font-weight:bold;">
+							style="font-family:Arial;font-size:12pt;color:rgb(51, 153, 122);text-align:center; font-weight:bold;">
 							DEFINIÇÃO DE CASOS SUSPEITOS
 						</h:label>
 								

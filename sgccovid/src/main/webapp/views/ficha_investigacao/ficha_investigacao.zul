@@ -9,7 +9,13 @@
 <window  id="win" apply="uem.mz.sgccovid19.controller.FichaController">
 	      
           <div id="pesquisar" visible="true" class="row">
+          
+          	
 	              		<div class="col-12">
+	              		
+	              		
+	              		
+	              		
 	              		
 	              		<x:div class="row row-cards" if="${sec:isAnyGranted('NOVA_FICHA')}">
 	              		     <x:div class="col-12 col-sm-4 col-lg-4">
@@ -146,7 +152,7 @@
 												
 						<listheader width="7%" >Nr. Ficha</listheader>
 						<listheader width="13%">Data de Submissão</listheader>
-						<listheader width="13%">Classificação</listheader>
+						<listheader width="18%">Classificação</listheader>
 						<listheader width="13%">Tipo de Utente</listheader>
 						<listheader if="${sec:isAnyGranted('PESQUISAR_UNIDADE')}">Unidade Orgânica</listheader>
 						<listheader if="${sec:isAnyGranted('PESQUISAR_DEPARTAMENTO')}">Departamento</listheader>

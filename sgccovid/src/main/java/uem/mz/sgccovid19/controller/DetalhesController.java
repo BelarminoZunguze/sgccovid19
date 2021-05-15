@@ -277,9 +277,7 @@ public class DetalhesController extends GenericForwardComposer{
    		target.getChildren().clear();
    		Executions.createComponents("views/ficha_investigacao/edicao_dados.zul", target, map);
 		
-		links = new ArrayList<String>();
-		links.add("Actualizar dados");
-		Breadcrumb.drawn(breadcrumb, "", links);
+		
 
   		
   	}
@@ -294,8 +292,7 @@ public class DetalhesController extends GenericForwardComposer{
  		target.getChildren().clear();
  		Executions.createComponents("views/ficha_investigacao/ficha_investigacao.zul", target, map);
 
- 		links = new ArrayList<String>();
- 		Breadcrumb.drawn(breadcrumb, "", links);
+ 		
 
    		
    	}
@@ -307,8 +304,7 @@ public class DetalhesController extends GenericForwardComposer{
   		target.getChildren().clear();
   		Executions.createComponents("views/ficha_investigacao/ficha_investigacao.zul", target, map);
 
-  		links = new ArrayList<String>();
-  		Breadcrumb.drawn(breadcrumb, "", links);
+  		
 
     		
     	}

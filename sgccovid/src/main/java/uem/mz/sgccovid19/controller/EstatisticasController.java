@@ -21,6 +21,7 @@ import org.zkoss.zul.Textbox;
 import org.zkoss.zul.Window;
 
 import uem.mz.sgccovid19.entity.Classificacao;
+import uem.mz.sgccovid19.entity.EstatisticaDistrito;
 import uem.mz.sgccovid19.entity.Ficha;
 import uem.mz.sgccovid19.entity.TipoUtente;
 import uem.mz.sgccovid19.entity.UnidadeOrganica;
@@ -58,6 +59,7 @@ public class EstatisticasController extends GenericForwardComposer{
 	
 	private Listbox lbxFichas;
 	
+	private List<EstatisticaDistrito> estatisticaList;
 	
 	private Ficha ficha;
 	
@@ -139,9 +141,17 @@ public class EstatisticasController extends GenericForwardComposer{
 		}
 		
 		buscarFichas();
+		
+		if(user.getId()!=1) {
+			uniorg=user.getUnidade();
+		}
 		pesquisarPorClassificacao();
 		pesquisarPorGenero();
 		pesquisarPorTipoUtente();
+		
+	}
+	
+	public void pesquisarPorDistrito() {
 		
 	}
 	
@@ -149,30 +159,37 @@ public class EstatisticasController extends GenericForwardComposer{
 		numeroFicha = "";
 		genero=null;
 		tipoUte=null;
+		int contador=0;
+		/*
 		if(user.getId()!=1) {
 			uniorg=user.getUnidade();
-		}
+		}*/
 		classList = classificacaoService.buscarClassificacao();
 		classific = classList.get(0);
 		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte);
 		label_suspeitos.setValue(""+pesquisaList.size());
+		contador+=pesquisaList.size();
 		pesquisaList.clear();
 		
 		classific = classList.get(1);
 		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte);
 		label_confirmados.setValue(""+pesquisaList.size());
+		contador+=pesquisaList.size();
 		pesquisaList.clear();
 		
 		classific = classList.get(2);
 		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte);
 		label_testados.setValue(""+pesquisaList.size());
+		contador+=pesquisaList.size();
 		pesquisaList.clear();
 		
 		classific = classList.get(3);
 		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte);
 		label_contactos.setValue(""+pesquisaList.size());
+		contador+=pesquisaList.size();
 		pesquisaList.clear();
 		
+		total_resultados.setValue("Total: "+contador);
 		classList.clear();
 		
 	}
@@ -181,9 +198,12 @@ public class EstatisticasController extends GenericForwardComposer{
 		numeroFicha = "";
 		genero=null;
 		classific=null;
+		
+		/*
 		if(user.getId()!=1) {
 			uniorg=user.getUnidade();
-		}
+		}*/
+		
 		tiputList = tipoUtenteService.buscarTipoUtente();
 		tipoUte = tiputList.get(0);
 		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte);
@@ -211,9 +231,12 @@ public class EstatisticasController extends GenericForwardComposer{
 		numeroFicha = "";
 		classific=null;
 		tipoUte=null;
+		
+		/*
 		if(user.getId()!=1) {
 			uniorg=user.getUnidade();
-		}
+		}*/
+		
 		String masculino = "Masculino";
 		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, masculino, classific, tipoUte);
 		label_masculino.setValue(""+pesquisaList.size());
@@ -251,87 +274,20 @@ public class EstatisticasController extends GenericForwardComposer{
 	  	  cbx_unidade.setModel(uniOrgModel);    	  
 	}
 	
-	
-	
-	public void onClick$btn_pesquisar() {
-		numeroFicha = txt_nrFicha.getValue();
-		
-		if(user.getId()==1) {
-			if(cbx_unidade.getSelectedItem()!=null) {
-				uniorg = cbx_unidade.getSelectedItem().getValue();
-			}
-		} else {uniorg=user.getUnidade();}
-		
-		
-		if(cbx_classificacao.getSelectedItem()!=null) {
-			classific = cbx_classificacao.getSelectedItem().getValue();
-		}
-		
-		if(cbx_genero.getSelectedItem()!=null) {
-			genero = cbx_genero.getSelectedItem().getValue();
-		}
-		
-		if(cbxTipoUtente.getSelectedItem()!=null) {
-			tipoUte = cbxTipoUtente.getSelectedItem().getValue();
-		}
-		
-		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte);
-		fichaModel = new ListModelList<Ficha>(pesquisaList);
-		lbxFichas.setModel(fichaModel);
-		total_resultados.setValue("Total de Resultados: "+pesquisaList.size());
-		pesquisaList.clear();
-	}
-	
-	public void onClick$btn_nova_ficha() {
-
-		final HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("target", target);
-		target.getChildren().clear();
-		Executions.createComponents("views/ficha_investigacao/notificacao.zul",
-				target, map);
-
-		links = new ArrayList<String>();
-		links.add("Notificação");
-		Breadcrumb.drawn(breadcrumb, "", links);
+	public void onSelect$cbx_unidade() {
+		uniorg = cbx_unidade.getSelectedItem().getValue();
+		pesquisarPorClassificacao();
+		pesquisarPorGenero();
+		pesquisarPorTipoUtente();
 	}
 	
 	
 	
-	public void onClickVerFicha(ForwardEvent evt){
-    	
-		ficha = (Ficha) evt.getData();
-		utente=ficha.getUtente();
-		
-		final HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("target", target);
-		map.put("ficha", ficha);
-		map.put("utente", utente);
-		target.getChildren().clear();
-		Executions.createComponents("views/ficha_investigacao/detalhes.zul", target, map);
-
-		links = new ArrayList<String>();
-		links.add("Detalhes da Ficha");
-		Breadcrumb.drawn(breadcrumb, "", links);
-		
-	}
 	
-	public void onClickEditarFicha(ForwardEvent evt){
-    	
-		ficha = (Ficha) evt.getData();
-		utente = ficha.getUtente();
-		
-		final HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("target", target);
-		map.put("ficha", ficha);
-		map.put("utente", utente);
-		target.getChildren().clear();
-		Executions.createComponents("views/ficha_investigacao/edicao_dados.zul", target, map);
-		
-		links = new ArrayList<String>();
-		links.add("Actualizar dados");
-		Breadcrumb.drawn(breadcrumb, "", links);
-		
-	}
+	
+	
+	
+	
 	
 
 

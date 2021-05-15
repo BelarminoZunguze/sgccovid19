@@ -57,7 +57,16 @@
       <x:div class="page-main">
         <x:div class="header py-4">
           <x:div class="container">
-            <x:div class="d-flex">
+             <x:div class="d-flex">
+             <image src="images/moz.png" width="80px"></image>
+             <separator orient="vertical" spacing="8px" />
+             <div>
+              <separator/>
+              <separator/>
+              <separator/>
+              <separator/>
+             	<x:h4 style="font-family:Times New Roman;color:green;text-align:center;font-size:18pt; font-weight:bold;">Plataforma de Monitoria e Notificação de Casos de COVID-19</x:h4>
+             </div>
               
               <x:div class="d-flex order-lg-2 ml-auto">
                 
@@ -67,7 +76,7 @@
                 </x:div>
                 <x:div class="dropdown">
                   <x:a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
-                    <x:span class="avatar" style="background-image: url(./demo/faces/female/25.jpg)"></x:span>
+                    <x:span class="avatar" style="background-image: url(images/moz.png)"></x:span>
                     <x:span class="ml-2 d-none d-lg-block">
                       <x:span class="text-default">${vm.loggeduser.nome }</x:span>
                       <x:small class="text-muted d-block mt-1">${vm.loggeduser.roles }</x:small>

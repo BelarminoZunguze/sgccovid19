@@ -20,8 +20,8 @@
               <x:div class="col-6 col-sm-4 col-lg-2">
                <x:div class="card">
                   <x:a style="background:rgb(51, 153, 122); color:white; font-weight:bold;" href="#" onClick="@command('openFicha')" class="button btn-secondary">
-              	      <div class="fe fe fe-file" if="${sec:isAnyGranted('GESTÃO_FICHA_DE_INVESTIGAÇÃO')}">  <label value="@load(vm.numero)"/></div>
-              	      <div class="fe fe fe-file" if="${sec:isAnyGranted('GESTÃO_FICHA_DE_INVESTIGAÇÃO_UNIDADE')}">  <label value="@load(vm.numeroUnidade)"/></div>
+              	      <div class="fe fe fe-file-text" if="${sec:isAnyGranted('GESTÃO_FICHA_DE_INVESTIGAÇÃO')}">  <label value="@load(vm.numero)"/></div>
+              	      <div class="fe fe fe-file-text" if="${sec:isAnyGranted('GESTÃO_FICHA_DE_INVESTIGAÇÃO_UNIDADE')}">  <label value="@load(vm.numeroUnidade)"/></div>
               	      <div >Ficha de Investigação</div>
               	     
                   </x:a>
@@ -62,7 +62,7 @@
                <x:div class="card">
                
                	<x:a style="background:rgb(51, 153, 122); color:white; font-weight:bold;"  href="#" onClick="@command('openEstatisticas')" class="button btn-secondary">
-              	      <div class="fe fe fe-file-text"></div>
+              	      <div class="fe fe fe-bar-chart"></div>
               	      <div >Estatísticas</div>
                   </x:a>
                 </x:div>

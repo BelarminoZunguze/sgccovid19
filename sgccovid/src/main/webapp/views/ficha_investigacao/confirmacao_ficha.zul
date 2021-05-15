@@ -7,30 +7,41 @@
 	  <div zclass="box box-success">
 	    <div zclass="box-body">
 	    
+	    <div class="row">
+	      <div class="col-md-12 col-lg-12">
+	    	<div align="right">
+          		<div height="50px" width="100%" style="background:rgb(51, 153, 122);
+          		text-align: center; padding: 12px;">
+          			<label style="font-family:Arial;font-size:14pt;color:white;font-weight:bold;">100 %</label>
+          		</div>
+          	</div>
+          </div>
+	    </div>
+	    
 	      <div id ="dadosFicha" visible="true" class="row">
-       <div class="col-12">
-       
-       <div class="card">
-     
-       <div class="row">
-				<div class="col-md-11">
-				  <div zclass="box-header" style="background-color:#bbb; ">
-						<separator orient="vertical" spacing="8px" />
-						<h:label class="box-title" 
-							style="font-family:Arial;color:black;text-align:left; font-weight:bold;">
-							DADOS DO UTENTE
-						</h:label>
-								
-					 </div>
-			    </div>
-			    
-			    <div class="col-md-1" >
-			      <div>
-			     	<button style="background:rgb(51, 153, 122);color:white" iconSclass="fe fe fe-edit" zclass="btn btn-secondary" forward="onClick=onClickEditarDados" height="34px" >Editar</button>
-				  </div>  
-			    </div>
-			
-			</div>  
+	       <div class="col-12">
+	       
+	       <div class="card">
+	     
+	       <div class="row">
+					<div class="col-md-11">
+					  <div zclass="box-header" style="background-color:#bbb; ">
+							<separator orient="vertical" spacing="8px" />
+							<h:label class="box-title" 
+								style="font-family:Arial;color:black;text-align:left; font-weight:bold;">
+								DADOS DO UTENTE
+							</h:label>
+									
+						 </div>
+				    </div>
+				    
+				    <div class="col-md-1" >
+				      <div>
+				     	<button style="background:rgb(51, 153, 122);color:white" iconSclass="fe fe fe-edit" zclass="btn btn-secondary" forward="onClick=onClickEditarDados" height="34px" >Editar</button>
+					  </div>  
+				    </div>
+				
+				</div>  
 			              					                	
 		         
 			

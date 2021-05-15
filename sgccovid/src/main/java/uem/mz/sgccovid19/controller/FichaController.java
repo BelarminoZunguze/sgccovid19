@@ -230,9 +230,7 @@ public class FichaController extends GenericForwardComposer{
 		Executions.createComponents("views/ficha_investigacao/notificacao.zul",
 				target, map);
 
-		links = new ArrayList<String>();
-		links.add("Notificação");
-		Breadcrumb.drawn(breadcrumb, "", links);
+		
 	}
 	
 	
@@ -249,9 +247,6 @@ public class FichaController extends GenericForwardComposer{
 		target.getChildren().clear();
 		Executions.createComponents("views/ficha_investigacao/detalhes.zul", target, map);
 
-		links = new ArrayList<String>();
-		links.add("Detalhes da Ficha");
-		Breadcrumb.drawn(breadcrumb, "", links);
 		
 	}
 	
@@ -267,9 +262,7 @@ public class FichaController extends GenericForwardComposer{
 		target.getChildren().clear();
 		Executions.createComponents("views/ficha_investigacao/edicao_dados.zul", target, map);
 		
-		links = new ArrayList<String>();
-		links.add("Actualizar dados");
-		Breadcrumb.drawn(breadcrumb, "", links);
+		
 		
 	}
 	

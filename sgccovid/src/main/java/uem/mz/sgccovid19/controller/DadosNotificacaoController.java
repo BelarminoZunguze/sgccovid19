@@ -125,9 +125,7 @@ public class DadosNotificacaoController extends GenericForwardComposer{
 		target.getChildren().clear();
 		Executions.createComponents("views/ficha_investigacao/dados_caso.zul", target, map);
 
-		links = new ArrayList<String>();
-		links.add("Dados do utente");
-		Breadcrumb.drawn(breadcrumb, "", links);
+		
 
 		
 	}
@@ -175,9 +173,7 @@ public class DadosNotificacaoController extends GenericForwardComposer{
  		target.getChildren().clear();
  		Executions.createComponents("views/ficha_investigacao/residencia_caso.zul", target, map);
  		
- 		links = new ArrayList<String>();
- 		links.add("Informações da residência do caso");
- 		Breadcrumb.drawn(breadcrumb, "", links);
+ 		
 		
  		
  	}

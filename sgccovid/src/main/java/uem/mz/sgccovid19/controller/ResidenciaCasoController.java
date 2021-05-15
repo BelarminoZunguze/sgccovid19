@@ -71,6 +71,7 @@ public class ResidenciaCasoController extends GenericForwardComposer{
 	
 	private Datebox dtb_dataUltima;
 	
+	private Provincia provincia;
 	
 	private FichaService fichaService;
 	
@@ -108,13 +109,21 @@ public class ResidenciaCasoController extends GenericForwardComposer{
 		// TODO Auto-generated method stub
 		super.doAfterCompose(comp);
 		
-		buscarDistrito();
 		buscarProvincia();
+		buscarDistritoIsolamento();
 		carregarDados();
 		
 	}
 	
-	public void buscarDistrito() {
+	public void onSelect$cbxProvIsolamento() {
+		provincia = cbxProvIsolamento.getSelectedItem().getValue();
+		distritoList = distritoService.buscarDistritosPorProvincia(provincia);
+		distritoModel = new ListModelList<Distrito>(distritoList);
+		cbxDistrIsolamento.setModel(distritoModel);
+		
+	}
+	
+	public void buscarDistritoIsolamento() {
 		distritoList = distritoService.buscarDistritos();
 		distritoModel = new ListModelList<Distrito>(distritoList);
 		cbxDistrIsolamento.setModel(distritoModel);
@@ -139,9 +148,7 @@ public class ResidenciaCasoController extends GenericForwardComposer{
  		target.getChildren().clear();
  		Executions.createComponents("views/ficha_investigacao/dados_notificacao.zul", target, map);
 
- 		links = new ArrayList<String>();
- 		links.add("Dados da Notificação");
- 		Breadcrumb.drawn(breadcrumb, "", links);
+ 		
 
  		
  	}
@@ -174,9 +181,7 @@ public class ResidenciaCasoController extends GenericForwardComposer{
   		target.getChildren().clear();
   		Executions.createComponents("views/ficha_investigacao/contactos_unidade.zul", target, map);
   		
-  		links = new ArrayList<String>();
-  		links.add("Seguimento de Contactos na Unidade");
-  		Breadcrumb.drawn(breadcrumb, "", links);
+  		
 		
   		
   	}

@@ -62,9 +62,7 @@ public class NotificacaoController extends GenericForwardComposer{
 		target.getChildren().clear();
 		Executions.createComponents("views/ficha_investigacao/dados_caso.zul", target, map);
 		
-		links = new ArrayList<String>();
-		links.add("Dados do Caso");
-		Breadcrumb.drawn(breadcrumb, "", links);
+		
 		
 		
 	}

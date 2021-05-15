@@ -119,6 +119,8 @@ public class EdicaoController extends GenericForwardComposer{
 	private UtenteController ut;
 	private Ficha ficha;
 	
+	private Provincia provincia;
+	
 	
 	@Override
 	public void doBeforeComposeChildren(Component comp) throws Exception {
@@ -153,9 +155,10 @@ public class EdicaoController extends GenericForwardComposer{
 		super.doAfterCompose(comp);
 		
 		buscarTipoUtente();
-		buscarDistrito();
 		buscarProvincia();
+		buscarDistrito();
 		buscarUnidadeOrganica();
+		buscarDistritoIsolamento();
 		preencherTela();
 		
 	}
@@ -170,6 +173,29 @@ public class EdicaoController extends GenericForwardComposer{
 		distritoList = distritoService.buscarDistritos();
 		distritoModel = new ListModelList<Distrito>(distritoList);
 		cbxDistrito.setModel(distritoModel);
+		
+	}
+	
+	public void buscarDistritoIsolamento() {
+		distritoList = distritoService.buscarDistritos();
+		distritoModel = new ListModelList<Distrito>(distritoList);
+		cbxDistrIsolamento.setModel(distritoModel);
+		
+	}
+	
+	public void onSelect$cbxProvincia() {
+		provincia = cbxProvincia.getSelectedItem().getValue();
+		distritoList = distritoService.buscarDistritosPorProvincia(provincia);
+		distritoModel = new ListModelList<Distrito>(distritoList);
+		cbxDistrito.setModel(distritoModel);
+		
+	}
+	
+	public void onSelect$cbxProvIsolamento() {
+		provincia = cbxProvIsolamento.getSelectedItem().getValue();
+		distritoList = distritoService.buscarDistritosPorProvincia(provincia);
+		distritoModel = new ListModelList<Distrito>(distritoList);
+		cbxDistrIsolamento.setModel(distritoModel);
 		
 	}
 	
