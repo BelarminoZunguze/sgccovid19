@@ -70,6 +70,7 @@ public class ParametrizacaoVM extends AbstractVM{
 		
 		user = (User) Executions.getCurrent().getDesktop().getSession().getAttribute("utilizadorAutenticado");
 		
+		
 		if(user.getId()==1) {
 			numero = buscarFichas();
 		} else {
@@ -99,9 +100,6 @@ public class ParametrizacaoVM extends AbstractVM{
 		target.getChildren().clear();
 		Executions.createComponents("views/parametrizacao/parametrizacao.zul", target, map);
 
-		links = new ArrayList<String>();
-		links.add("Parametrizacao");
-		Breadcrumb.drawn(breadcrumb, "", links);
 	}
 	
 	
@@ -230,9 +228,7 @@ public class ParametrizacaoVM extends AbstractVM{
 		target.getChildren().clear();
 		Executions.createComponents("views/administracao/administracao.zul", target, map);
 
-		links = new ArrayList<String>();
-		links.add("Parametrizacao");
-		Breadcrumb.drawn(breadcrumb, "", links);
+		
 	}
 	
 	
@@ -245,185 +241,10 @@ public class ParametrizacaoVM extends AbstractVM{
 		target.getChildren().clear();
 		Executions.createComponents("views/parametrizacao/pagRegistarClasse.zul", target, map);
 
-		links = new ArrayList<String>();
-		links.add("Registar Classe");
-		Breadcrumb.drawn(breadcrumb, "", links);
-	}
-	
-	@Command
-	public void openRegEscal() {
-
-		final HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("target", target);
-		target.getChildren().clear();
-		Executions.createComponents("views/parametrizacao/pagRegistarEscalao.zul", target, map);
-
-		links = new ArrayList<String>();
-		links.add("Registar Escal�o");
-		Breadcrumb.drawn(breadcrumb, "", links);
-	}
-	
-	@Command
-	public void openGrupoSalarial() {
-
-		final HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("target", target);
-		target.getChildren().clear();
-		Executions.createComponents("views/parametrizacao/registar_grupo_salarial.zul", target, map);
-
-		links = new ArrayList<String>();
-		links.add("Registar Grupo Salarial");
-		Breadcrumb.drawn(breadcrumb, "", links);
-	}
-	
-	@Command
-	public void openNivelAcademico() {
-
-		final HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("target", target);
-		target.getChildren().clear();
-		Executions.createComponents("views/parametrizacao/registar_nivel_academico.zul", target, map);
-
-		links = new ArrayList<String>();
-		links.add("Registar N�vel Acad�mico");
-		Breadcrumb.drawn(breadcrumb, "", links);
-	}
-	
 		
-	@Command
-	public void openGrauAcademico() {
-
-		final HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("target", target);
-		target.getChildren().clear();
-		Executions.createComponents("views/parametrizacao/registar_grau_academico.zul", target, map);
-
-		links = new ArrayList<String>();
-		links.add("Registar Grau Acad�mico");
-		Breadcrumb.drawn(breadcrumb, "", links);
 	}
 	
-	@Command
-	public void openTabelaSalarial() {
-
-		final HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("target", target);
-		target.getChildren().clear();
-		Executions.createComponents("views/parametrizacao/registar_tipo_tabela_salarial.zul", target, map);
-
-		links = new ArrayList<String>();
-		links.add("Registar Tipo de Tabela Salarial");
-		Breadcrumb.drawn(breadcrumb, "", links);
-	}
 	
-	@Command
-	public void openCarreira() {
-
-		final HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("target", target);
-		target.getChildren().clear();
-		Executions.createComponents("views/parametrizacao/registar_carreira.zul", target, map);
-
-		links = new ArrayList<String>();
-		links.add("Registar Carreira");
-		Breadcrumb.drawn(breadcrumb, "", links);
-	}
-	
-	@Command
-	public void openCategoria() {
-
-		final HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("target", target);
-		target.getChildren().clear();
-		Executions.createComponents("views/parametrizacao/registar_categoria.zul", target, map);
-
-		links = new ArrayList<String>();
-		links.add("Registar Categoria");
-		Breadcrumb.drawn(breadcrumb, "", links);
-	}
-	
-	@Command
-	public void openDecreto(){
-		
-		
-		final HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("target", target);
-		target.getChildren().clear();
-		Executions.createComponents("views/parametrizacao/pagRegistarDecreto.zul", target, map);
-
-		links = new ArrayList<String>();
-		links.add("Registar Decreto");
-		Breadcrumb.drawn(breadcrumb, "", links);
-	}
-	
-	@Command
-	public void openBanco(){
-				
-		final HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("target", target);
-		target.getChildren().clear();
-		Executions.createComponents("views/parametrizacao/registar_banco.zul", target, map);
-
-		links = new ArrayList<String>();
-		links.add("Registar Banco");
-		Breadcrumb.drawn(breadcrumb, "", links);
-	}
-	
-	@Command
-	public void openSuplimento(){
-		
-		
-		final HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("target", target);
-		target.getChildren().clear();
-		Executions.createComponents("views/parametrizacao/registar_suplimento.zul", target, map);
-
-		links = new ArrayList<String>();
-		links.add("Registar Suplimento");
-		Breadcrumb.drawn(breadcrumb, "", links);
-	}
-	
-	@Command
-	public void openRegTabFunc(){
-		
-		
-		final HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("target", target);
-		target.getChildren().clear();
-		Executions.createComponents("views/parametrizacao/tabela_funcao.zul", target, map);
-
-		links = new ArrayList<String>();
-		links.add("Registar Tabela Fun��o");
-		Breadcrumb.drawn(breadcrumb, "", links);
-	}
-	
-	@Command
-	public void openRegGrupFunc(){
-		
-		
-		final HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("target", target);
-		target.getChildren().clear();
-		Executions.createComponents("views/parametrizacao/grupo_funcao.zul", target, map);
-
-		links = new ArrayList<String>();
-		links.add("Registar Grupo Fun��o");
-		Breadcrumb.drawn(breadcrumb, "", links);
-	}
-	
-	@Command
-	public void openRegFuncChef(){
-		
-		
-		final HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("target", target);
-		target.getChildren().clear();
-		Executions.createComponents("views/parametrizacao/funcao_chefia.zul", target, map);
-
-		links = new ArrayList<String>();
-		links.add("Registar Fun��o Chefia");
-		Breadcrumb.drawn(breadcrumb, "", links);
-	}
 	
 	@Command
 	public void openRegInst() {
@@ -433,9 +254,7 @@ public class ParametrizacaoVM extends AbstractVM{
 		target.getChildren().clear();
 		Executions.createComponents("views/organograma/registar_instituicao.zul", target, map);
 
-		links = new ArrayList<String>();
-		links.add("Registar Institui��o ");
-		Breadcrumb.drawn(breadcrumb, "", links);
+		
 	}
 	
 	@Command
@@ -446,9 +265,7 @@ public class ParametrizacaoVM extends AbstractVM{
 		target.getChildren().clear();
 		Executions.createComponents("views/organograma/registar_unidade_organica.zul", target, map);
 
-		links = new ArrayList<String>();
-		links.add("Registar Unidade Org�nica");
-		Breadcrumb.drawn(breadcrumb, "", links);
+		
 	}
 	
 	@Command
@@ -459,9 +276,7 @@ public class ParametrizacaoVM extends AbstractVM{
 		target.getChildren().clear();
 		Executions.createComponents("views/organograma/registar_provincia.zul", target, map);
 
-		links = new ArrayList<String>();
-		links.add("Registar Prov�ncia");
-		Breadcrumb.drawn(breadcrumb, "", links);
+		
 	}
 	
 	@Command
@@ -472,9 +287,7 @@ public class ParametrizacaoVM extends AbstractVM{
 		target.getChildren().clear();
 		Executions.createComponents("views/organograma/registar_departamento.zul", target, map);
 
-		links = new ArrayList<String>();
-		links.add("Registar Departamento");
-		Breadcrumb.drawn(breadcrumb, "", links);
+		
 	}
 	
 	@Command

@@ -92,8 +92,14 @@
 				                		 
 										 <div class="col-md-6 col-lg-4">
 					                        <div class="form-group">
-					                          <label class="form-label">Data de Submissão</label>
-					                          <datebox id="dtb_dataSubmissao"  format="dd/MM/yyyy" width="100%"/>
+					                          <label class="form-label">Intervalo de Pesquisa:</label>
+					                          <label style="font-weight:bold;font-size:11pt">De  </label>
+					                          <separator orient="vertical" spacing="8px" /> 
+					                          <datebox constraint="no future: Insira uma data válida!" id="dtb_dataSubmissao"  format="dd/MM/yyyy" width="39%"/>
+					                          <separator orient="vertical" spacing="8px" />
+					                          <label style="font-weight:bold;font-size:11pt">à  </label>
+					                          <separator orient="vertical" spacing="8px" />
+					                          <datebox constraint="no future: Insira uma data válida!" id="dtb_Fim"  format="dd/MM/yyyy" width="39%"/> 
 					                        </div>
 					                     </div> 
 					                     

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import uem.mz.sgccovid19.dao.FichaDao;
 import uem.mz.sgccovid19.entity.Classificacao;
+import uem.mz.sgccovid19.entity.Distrito;
 import uem.mz.sgccovid19.entity.Ficha;
 import uem.mz.sgccovid19.entity.TipoUtente;
 import uem.mz.sgccovid19.entity.UnidadeOrganica;
@@ -34,6 +35,12 @@ public class FichaServiceImpl extends GenericServiceImpl<Ficha> implements Ficha
 	public List<Ficha> buscarFichasPorUnidade(UnidadeOrganica uniOrg) {
 		// TODO Auto-generated method stub
 		return fichDao.buscarFichasPorUnidade(uniOrg);
+	}
+	
+	@Override
+	public List<Ficha> buscarFichasPorDistrito(Distrito distrito, UnidadeOrganica uniOrg) {
+		// TODO Auto-generated method stub
+		return fichDao.buscarFichasPorDistrito(distrito, uniOrg);
 	}
 
 }

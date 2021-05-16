@@ -81,13 +81,14 @@ public class MainVM extends PagVM {
 		map.put("target", target);
 		target.getChildren().clear();
 		Executions.createComponents("dashboard.zul", target, map);
-
+		
+		/*
 		links = new ArrayList<String>();
 		//links.add("Painel Inicial");
 		//links.add("Meu Painel Inicial");
 		Breadcrumb.drawn(breadcrumb, "", links);
 	
-
+		*/
 		//if (target != null) {
 
 			//////////////////imgPflSide.invalidate();
@@ -117,9 +118,6 @@ public class MainVM extends PagVM {
 		target.getChildren().clear();
 		Executions.createComponents("views/administracao/administracao.zul", target, map);
 
-		links = new ArrayList<String>();
-		links.add("Administracao");
-		Breadcrumb.drawn(breadcrumb, "", links);
 	}
 	
 	@Command
@@ -130,9 +128,6 @@ public class MainVM extends PagVM {
 		target.getChildren().clear();
 		Executions.createComponents("views/organograma/organograma.zul", target, map);
 
-		links = new ArrayList<String>();
-		links.add("Organigrama");
-		Breadcrumb.drawn(breadcrumb, "", links);
 	}
 	
 	@Command
@@ -143,56 +138,13 @@ public class MainVM extends PagVM {
 		target.getChildren().clear();
 		Executions.createComponents("/mint/src/main/webapp/views/tabela_salarial/tabela_salarial_dashboard.zul", target, map);
 
-		links = new ArrayList<String>();
-		links.add("Administracao");
-		Breadcrumb.drawn(breadcrumb, "", links);
 	}
 	
 		
-		
-	@Command
-    public void openHistorico() {
-		
-		final HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("target", target);
-		target.getChildren().clear();
-		Executions.createComponents("views/unidade/historico.zul", target, map);
-
-		links = new ArrayList<String>();
-		links.add("HISTORICO");
-		Breadcrumb.drawn(breadcrumb, "", links);
-
-		
-	}
 	
-	@Command
-	public void openFuncionario() {
-
-		final HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("target", target);
-		target.getChildren().clear();
-		Executions.createComponents("views/funcionario/funcionario.zul", target, map);
-
-		links = new ArrayList<String>();
-		links.add("Administracao");
-		Breadcrumb.drawn(breadcrumb, "", links);
-	}
-	
-	@Command
-	public void openParametrizacao() {
-
-		final HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("target", target);
-		target.getChildren().clear();
-		Executions.createComponents("views/parametrizacaoContratos/parametrizacao_contratos.zul", target, map);
-
-		links = new ArrayList<String>();
-		links.add("Parametrização");
-		Breadcrumb.drawn(breadcrumb, "", links);
-	}
 
 	
-	//Parametrizacao
+	
 	@Command
 	public void openParametrizetion() {
 
@@ -201,9 +153,6 @@ public class MainVM extends PagVM {
 		target.getChildren().clear();
 		Executions.createComponents("views/parametrizacao/parametrizacao.zul", target, map);
 
-		links = new ArrayList<String>();
-		links.add("Parametrizacao");
-		Breadcrumb.drawn(breadcrumb, "", links);
 	}
 	
 	@Command
@@ -214,53 +163,10 @@ public class MainVM extends PagVM {
 		target.getChildren().clear();
 		Executions.createComponents("dashboard.zul", target, map);
 
-		links = new ArrayList<String>();
-		//links.add("Painel Inicial");
-		//links.add("Meu Painel Inicial");
-		Breadcrumb.drawn(breadcrumb, "", links);
 	}
 	
-	@Command
-	public void openHomeReitor() {
-
-		final HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("target", target);
-		target.getChildren().clear();
-		Executions.createComponents("views/reitor/reitor.zul", target, map);
-
-		links = new ArrayList<String>();
-		links.add("Contratos");
-		Breadcrumb.drawn(breadcrumb, "", links);
-	}
 	
-	@Command
-	public void openHomeUnidade() {
-
-		final HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("target", target);
-		target.getChildren().clear();
-		Executions.createComponents("views/unidade/unidade.zul", target, map);
-
-		links = new ArrayList<String>();
-		links.add("Contratos");
-		Breadcrumb.drawn(breadcrumb, "", links);
-	}
 	
-	@Command
-	public void openForm() {
-		final HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("target", target);
-		map.put("breadcrumb", ol);
-		target.getChildren().clear();
-		Executions.createComponents("/views/parametrizacao/pagRegistarFuncao.zul", target, map);
-
-		links = new ArrayList<String>();
-		links.add("Inicio");
-		drawnBreadcrumb("fa fa-sort", "Pagina Inicial", links);
-
-		menuReset();
-		setInitPage("active");
-	}
 	
 	@Command
 	public void openRegistarClasse() {
@@ -270,63 +176,12 @@ public class MainVM extends PagVM {
 		target.getChildren().clear();
 		Executions.createComponents("/views/parametrizacao/registar_classe.zul", target, map);
 
-		links = new ArrayList<String>();
-		links.add("Parametrizacao");
-		drawnBreadcrumb("fa fa-sort", "Registar Classe", links);
 
 		menuReset();
 		setInitPage("active");
 	}
 
-	@Command
-	public void sideBarMore() {
-		final HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("target", target);
-		map.put("breadcrumb", ol);
-		target.getChildren().clear();
-		Executions.createComponents("views/more.zul", target, map);
 
-		links = new ArrayList<String>();
-		links.add("Inicio");
-		drawnBreadcrumb("fa fa-sort", "Mais", links);
-
-		menuReset();
-		setMorePage("active");
-	}
-
-	@Command
-	public void anexarDocumentos() {
-		final HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("target", target);
-		map.put("breadcrumb", ol);
-		target.getChildren().clear();
-		Executions.createComponents("views/Pre-registo/upload_docs.zul",
-				target, map);
-
-		links = new ArrayList<String>();
-		links.add("Inicio");
-		drawnBreadcrumb("fa fa-sort", "Mais", links);
-
-		menuReset();
-		setMorePage("active");
-	}
-
-	@Command
-	public void registarEstudante() {
-		final HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("target", target);
-		map.put("breadcrumb", ol);
-		target.getChildren().clear();
-		Executions
-				.createComponents("views/funcionario/create.zul", target, map);
-
-		links = new ArrayList<String>();
-		links.add("Inicio");
-		drawnBreadcrumb("fa fa-sort", "Mais", links);
-
-		menuReset();
-		setMorePage("active");
-	}
 
 	@Command
 	public void universidade() {
@@ -337,9 +192,7 @@ public class MainVM extends PagVM {
 		Executions.createComponents(
 				"views/Parametrizacao/registar_universidade.zul", target, map);
 
-		links = new ArrayList<String>();
-		links.add("Inicio");
-		drawnBreadcrumb("fa fa-sort", "Mais", links);
+		
 
 		menuReset();
 		setMorePage("active");
@@ -355,9 +208,7 @@ public class MainVM extends PagVM {
 				"views/Parametrizacao/registar_unidade_organica.zul", target,
 				map);
 
-		links = new ArrayList<String>();
-		links.add("Inicio");
-		drawnBreadcrumb("fa fa-sort", "Mais", links);
+		
 
 		menuReset();
 		setMorePage("active");
@@ -372,30 +223,13 @@ public class MainVM extends PagVM {
 		Executions.createComponents("views/Parametrizacao/registar_curso.zul",
 				target, map);
 
-		links = new ArrayList<String>();
-		links.add("Inicio");
-		drawnBreadcrumb("fa fa-sort", "Mais", links);
+		
 
 		menuReset();
 		setMorePage("active");
 	}
 
-	@Command
-	public void registarDisciplina() {
-		final HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("target", target);
-		map.put("breadcrumb", ol);
-		target.getChildren().clear();
-		Executions.createComponents(
-				"views/Parametrizacao/registar_disciplina.zul", target, map);
-
-		links = new ArrayList<String>();
-		links.add("Inicio");
-		drawnBreadcrumb("fa fa-sort", "Mais", links);
-
-		menuReset();
-		setMorePage("active");
-	}
+	
 	
 	@Command
 	public void registarGrupos() {
@@ -406,9 +240,7 @@ public class MainVM extends PagVM {
 		Executions.createComponents(
 				"views/Parametrizacao/registar_grupo.zul", target, map);
 
-		links = new ArrayList<String>();
-		links.add("Inicio");
-		drawnBreadcrumb("fa fa-sort", "Mais", links);
+		
 
 		menuReset();
 		setMorePage("active");
@@ -423,9 +255,7 @@ public class MainVM extends PagVM {
 		Executions.createComponents("views/Parametrizacao/registar_agente.zul",
 				target, map);
 
-		links = new ArrayList<String>();
-		links.add("Inicio");
-		drawnBreadcrumb("fa fa-sort", "Mais", links);
+		
 
 		menuReset();
 		setMorePage("active");
@@ -440,9 +270,7 @@ public class MainVM extends PagVM {
 		Executions.createComponents("views/Parametrizacao/registar_instituicao.zul",
 				target, map);
 
-		links = new ArrayList<String>();
-		links.add("Inicio");
-		drawnBreadcrumb("fa fa-sort", "Mais", links);
+		
 
 		menuReset();
 		setMorePage("active");
@@ -459,9 +287,7 @@ public class MainVM extends PagVM {
 		Executions.createComponents("views/Parametrizacao/registar_papel.zul",
 				target, map);
 
-		links = new ArrayList<String>();
-		links.add("Inicio");
-		drawnBreadcrumb("fa fa-sort", "Mais", links);
+		
 
 		menuReset();
 		setMorePage("active");
@@ -476,9 +302,7 @@ public class MainVM extends PagVM {
 		Executions.createComponents("views/Parametrizacao/registar_conta.zul",
 				target, map);
 
-		links = new ArrayList<String>();
-		links.add("Inicio");
-		drawnBreadcrumb("fa fa-sort", "Mais", links);
+		
 
 		menuReset();
 		setMorePage("active");
@@ -493,9 +317,7 @@ public class MainVM extends PagVM {
 		Executions.createComponents("views/Parametrizacao/registar_pais.zul",
 				target, map);
 
-		links = new ArrayList<String>();
-		links.add("Inicio");
-		drawnBreadcrumb("fa fa-sort", "Mais", links);
+		
 
 		menuReset();
 		setMorePage("active");
@@ -510,9 +332,7 @@ public class MainVM extends PagVM {
 		Executions.createComponents(
 				"views/Parametrizacao/registar_provincia.zul", target, map);
 
-		links = new ArrayList<String>();
-		links.add("Inicio");
-		drawnBreadcrumb("fa fa-sort", "Mais", links);
+		
 
 		menuReset();
 		setMorePage("active");
@@ -527,31 +347,12 @@ public class MainVM extends PagVM {
 		Executions.createComponents(
 				"views/Parametrizacao/registar_distrito.zul", target, map);
 
-		links = new ArrayList<String>();
-		links.add("Inicio");
-		drawnBreadcrumb("fa fa-sort", "Mais", links);
+		
 
 		menuReset();
 		setMorePage("active");
 	}
 
-	@Command
-	public void registarPreUniversitaria() {
-		final HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("target", target);
-		map.put("breadcrumb", ol);
-		target.getChildren().clear();
-		Executions.createComponents(
-				"views/Parametrizacao/registar_preuniversitarias.zul", target,
-				map);
-
-		links = new ArrayList<String>();
-		links.add("Inicio");
-		drawnBreadcrumb("fa fa-sort", "Mais", links);
-
-		menuReset();
-		setMorePage("active");
-	}
 
 	@Command
 	public void registarLocal() {
@@ -562,99 +363,22 @@ public class MainVM extends PagVM {
 		Executions.createComponents("views/Parametrizacao/registo_local.zul",
 				target, map);
 
-		links = new ArrayList<String>();
-		links.add("Inicio");
-		drawnBreadcrumb("fa fa-sort", "Mais", links);
-
-		menuReset();
-		setMorePage("active");
-	}
-	
-	@Command
-	public void registarSubLocal() {
-		final HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("target", target);
-		map.put("breadcrumb", ol);
-		target.getChildren().clear();
-		Executions.createComponents("views/Parametrizacao/registar_sub_local.zul",
-				target, map);
-
-		links = new ArrayList<String>();
-		links.add("Inicio");
-		drawnBreadcrumb("fa fa-sort", "Mais", links);
-
-		menuReset();
-		setMorePage("active");
-	}
-	
-	@Command
-	public void registarSala() {
-		final HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("target", target);
-		map.put("breadcrumb", ol);
-		target.getChildren().clear();
-		Executions.createComponents("views/Parametrizacao/registar_sala.zul",
-				target, map);
-
-		links = new ArrayList<String>();
-		links.add("Inicio");
-		drawnBreadcrumb("fa fa-sort", "Mais", links);
-
-		menuReset();
-		setMorePage("active");
-	}
-	
-	@Command
-	public void registarTipoData() {
-		final HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("target", target);
-		map.put("breadcrumb", ol);
-		target.getChildren().clear();
-		Executions.createComponents("views/Parametrizacao/registar_tipo_data.zul",
-				target, map);
-
-		links = new ArrayList<String>();
-		links.add("Inicio");
-		drawnBreadcrumb("fa fa-sort", "Mais", links);
-
-		menuReset();
-		setMorePage("active");
-	}
-	
-	@Command
-	public void registarData() {
-		final HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("target", target);
-		map.put("breadcrumb", ol);
-		target.getChildren().clear();
-		Executions.createComponents("views/Parametrizacao/registar_data.zul",
-				target, map);
-
-		links = new ArrayList<String>();
-		links.add("Inicio");
-		drawnBreadcrumb("fa fa-sort", "Mais", links);
+		
 
 		menuReset();
 		setMorePage("active");
 	}
 	
 	
-	@Command
-	public void registarLocalValidacao() {
-		final HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("target", target);
-		map.put("breadcrumb", ol);
-		target.getChildren().clear();
-		Executions.createComponents("views/Parametrizacao/registar_localValidacao.zul",
-				target, map);
-
-		links = new ArrayList<String>();
-		links.add("Inicio");
-		drawnBreadcrumb("fa fa-sort", "Mais", links);
-
-		menuReset();
-		setMorePage("active");
-	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	//Administracao
 	@Command
@@ -666,9 +390,7 @@ public class MainVM extends PagVM {
 		Executions.createComponents(
 				"views/administracao/registar_utilizador.zul", target, map);
 
-		links = new ArrayList<String>();
-		links.add("Inicio");
-		drawnBreadcrumb("fa fa-sort", "Mais", links);
+		
 
 		menuReset();
 		setMorePage("active");
@@ -683,9 +405,7 @@ public class MainVM extends PagVM {
 		Executions.createComponents("views/administracao/gerir_perfil.zul", target,
 				map);
 
-		links = new ArrayList<String>();
-		links.add("Inicio");
-		drawnBreadcrumb("fa fa-sort", "Mais", links);
+		
 
 		menuReset();
 		setMorePage("active");

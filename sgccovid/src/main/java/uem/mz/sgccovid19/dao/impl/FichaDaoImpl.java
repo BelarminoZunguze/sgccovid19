@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import uem.mz.sgccovid19.entity.UnidadeOrganica;
 import uem.mz.sgccovid19.dao.FichaDao;
 import uem.mz.sgccovid19.entity.Classificacao;
+import uem.mz.sgccovid19.entity.Distrito;
 import uem.mz.sgccovid19.entity.Ficha;
 import uem.mz.sgccovid19.entity.TipoUtente;
 
@@ -57,6 +58,16 @@ implements FichaDao{
 				+ "LEFT JOIN FETCH fich.classificacao cla"
 				+ "LEFT JOIN FETCH ute.distrito dis LEFT JOIN FETCH dis.provincia pro"
 				+ "LEFT JOIN FETCH ute.tipo_utente tput where ute.unidade=:uniOrg");
+		if(uniOrg!=null){query.setParameter("uniOrg", uniOrg);}
+		return query.list();
+	}
+	
+	@Override
+	public List<Ficha> buscarFichasPorDistrito(Distrito distrito, UnidadeOrganica uniOrg) {
+		String Paramunidade = uniOrg==null ? "" : "and ute.unidade=:uniOrg";
+		Query query = getCurrentSession().createQuery("select fich from Ficha fich JOIN FETCH fich.utente ute "
+				+ " where ute.distrito=:distrito "+Paramunidade);
+		if(distrito!=null){query.setParameter("distrito", distrito);}
 		if(uniOrg!=null){query.setParameter("uniOrg", uniOrg);}
 		return query.list();
 	}

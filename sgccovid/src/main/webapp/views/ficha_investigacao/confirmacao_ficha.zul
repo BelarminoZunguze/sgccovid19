@@ -17,6 +17,8 @@
           	</div>
           </div>
 	    </div>
+	    <separator/>
+	    <separator/>
 	    
 	      <div id ="dadosFicha" visible="true" class="row">
 	       <div class="col-12">

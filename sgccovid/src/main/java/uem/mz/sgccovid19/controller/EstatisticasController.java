@@ -21,6 +21,7 @@ import org.zkoss.zul.Textbox;
 import org.zkoss.zul.Window;
 
 import uem.mz.sgccovid19.entity.Classificacao;
+import uem.mz.sgccovid19.entity.Distrito;
 import uem.mz.sgccovid19.entity.EstatisticaDistrito;
 import uem.mz.sgccovid19.entity.Ficha;
 import uem.mz.sgccovid19.entity.TipoUtente;
@@ -55,11 +56,14 @@ public class EstatisticasController extends GenericForwardComposer{
 	private FichaService fichaService;
 	private List<Ficha> fichaList;
 	private List<Ficha> pesquisaList;
+	private List<Ficha> fichaDistritoList;
 	private ListModelList<Ficha> fichaModel;
 	
 	private Listbox lbxFichas;
+	private Listbox lbxFichasDistrito;
 	
 	private List<EstatisticaDistrito> estatisticaList;
+	private ListModelList<EstatisticaDistrito> estatisticaModel;
 	
 	private Ficha ficha;
 	
@@ -109,6 +113,11 @@ public class EstatisticasController extends GenericForwardComposer{
 	private Classificacao classific;
 	private TipoUtente tipoUte;
 	
+	private Distrito disResidencia;
+	private List<Distrito> controleDistrito;
+	
+	private EstatisticaDistrito est;
+	
 	
 	@Override
 	public void doBeforeComposeChildren(Component comp) throws Exception {
@@ -148,10 +157,45 @@ public class EstatisticasController extends GenericForwardComposer{
 		pesquisarPorClassificacao();
 		pesquisarPorGenero();
 		pesquisarPorTipoUtente();
+		pesquisarPorDistrito();
+		
 		
 	}
 	
 	public void pesquisarPorDistrito() {
+		controleDistrito = new ArrayList<Distrito>();
+		estatisticaList = new ArrayList<EstatisticaDistrito>();
+		
+		fichaDistritoList = fichaService.buscarFicha();
+		int cont;
+		int contadorTotal=0;
+		
+		for(int i=0;i<fichaDistritoList.size();i++) {
+			cont=0;
+			disResidencia = fichaDistritoList.get(i).getUtente().getDistrito();
+			if(controleDistrito.contains(disResidencia)) {
+				
+			}else {
+				controleDistrito.add(disResidencia);
+				pesquisaList = fichaService.buscarFichasPorDistrito(disResidencia,uniorg);
+				cont = pesquisaList.size();
+				contadorTotal+=pesquisaList.size();
+				
+				if(cont>0) {
+					est = new EstatisticaDistrito();
+					est.setDistritoResidencia(disResidencia);
+					est.setQuantidade(cont);
+					estatisticaList.add(est);
+				}
+				
+				pesquisaList.clear();
+				
+			}
+		}
+		estatisticaModel = new ListModelList<EstatisticaDistrito>(estatisticaList); 
+		lbxFichasDistrito.setModel(estatisticaModel);
+		total_resultados.setValue("Total: "+contadorTotal);
+		
 		
 	}
 	
@@ -279,6 +323,7 @@ public class EstatisticasController extends GenericForwardComposer{
 		pesquisarPorClassificacao();
 		pesquisarPorGenero();
 		pesquisarPorTipoUtente();
+		pesquisarPorDistrito();
 	}
 	
 	

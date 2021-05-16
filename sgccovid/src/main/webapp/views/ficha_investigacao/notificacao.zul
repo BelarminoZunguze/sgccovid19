@@ -22,15 +22,15 @@
 			
 			<div zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				<div zclass="box box-default">
-					<div zclass="box-header" align="center" style="background-color:rgb(242, 242, 242)">
+					<div zclass="box-header" align="center" style="background-color:rgb(51, 153, 122)">
 						<!-- 	<h:hr/> -->
 						
 						<h:label class="box-title" 
-							style="font-family:Arial;font-size:14pt;color:rgb(51, 153, 122);text-align:center; font-weight:bold;">
-							FICHA DE INVESTIGAÇÃO/NOTIFICAÇÃO DE CASO DE COVID-19
+							style="font-family:Arial;font-size:14pt;color:white;text-align:center; font-weight:bold;">
+							FICHA DE INVESTIGAÇÃO/NOTIFICAÇÃO DE CASOS DE COVID-19
 						</h:label>
 						<h:label class="box-title" 
-							style="font-family:Arial;font-size:12pt;color:rgb(51, 153, 122);text-align:center; font-weight:bold;">
+							style="font-family:Arial;font-size:12pt;color:white;text-align:center; font-weight:bold;">
 							Instrumento adaptado com base na Ficha respectiva do MISAU e simplificado para uso na UEM
 						</h:label>
 								
