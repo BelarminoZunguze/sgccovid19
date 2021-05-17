@@ -1,5 +1,6 @@
 package uem.mz.sgccovid19.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +27,9 @@ public class FichaServiceImpl extends GenericServiceImpl<Ficha> implements Ficha
 	}
 	
 	@Override
-	public List<Ficha> buscarFichas(String numFicha, UnidadeOrganica uniOrg, String genero, Classificacao classific, TipoUtente tipoUte) {
+	public List<Ficha> buscarFichas(String numFicha, UnidadeOrganica uniOrg, String genero, Classificacao classific, TipoUtente tipoUte, Date dataInicio, Date dataFim) {
 		// TODO Auto-generated method stub
-		return fichDao.buscarFichas(numFicha, uniOrg, genero, classific, tipoUte);
+		return fichDao.buscarFichas(numFicha, uniOrg, genero, classific, tipoUte, dataInicio, dataFim);
 	}
 	
 	@Override
@@ -38,9 +39,9 @@ public class FichaServiceImpl extends GenericServiceImpl<Ficha> implements Ficha
 	}
 	
 	@Override
-	public List<Ficha> buscarFichasPorDistrito(Distrito distrito, UnidadeOrganica uniOrg) {
+	public List<Ficha> buscarFichasPorDistrito(Distrito distrito, UnidadeOrganica uniOrg, Date dataInicio, Date dataFim) {
 		// TODO Auto-generated method stub
-		return fichDao.buscarFichasPorDistrito(distrito, uniOrg);
+		return fichDao.buscarFichasPorDistrito(distrito, uniOrg, dataInicio, dataFim);
 	}
 
 }

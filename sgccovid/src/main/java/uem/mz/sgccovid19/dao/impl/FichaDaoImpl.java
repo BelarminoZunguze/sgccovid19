@@ -1,5 +1,6 @@
 package uem.mz.sgccovid19.dao.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -32,22 +33,27 @@ implements FichaDao{
 	}
 	
 	@Override
-	public List<Ficha> buscarFichas(String numFicha, UnidadeOrganica uniOrg, String genero, Classificacao classific, TipoUtente tipoUte) {
+	public List<Ficha> buscarFichas(String numFicha, UnidadeOrganica uniOrg, String genero, Classificacao classific, TipoUtente tipoUte, Date dataInicio, Date dataFim) {
 		String ParamnumFicha = numFicha=="" ? "fich.numeroFicha is not null" : "fich.numeroFicha=:numFicha";
 		String Paramunidade = uniOrg==null ? "" : "and ute.unidade=:uniOrg";
 		String Paramgenero = genero==null ? "" : "and ute.genero=:genero";
 		String Paramclass = classific==null ? "" : "and fich.classificacao=:classific";
-		String Paramtipo = tipoUte==null ? "" : "and tput=:tipoUte";
+		String ParamData = dataFim==null ? "" : "and fich.created>=:dataInicio and fich.created<=:dataFim";
+		
+		String Paramtipo = tipoUte==null ? "" : "and tput=:tipoUte"; 
 		
 		Query query = getCurrentSession().createQuery("select fich from Ficha fich JOIN FETCH fich.utente ute "
 				+ "LEFT JOIN FETCH fich.classificacao cla"
 				+ "LEFT JOIN FETCH ute.distrito dis LEFT JOIN FETCH dis.provincia pro"
-				+ "LEFT JOIN FETCH ute.tipo_utente tput where "+ParamnumFicha+" "+Paramunidade+" "+Paramgenero+" "+Paramclass+" "+Paramtipo);
+				+ "LEFT JOIN FETCH ute.tipo_utente tput where "+ParamnumFicha+" "+Paramunidade+" "+Paramgenero+" "+Paramclass+" "+Paramtipo+" "+ParamData);
 		if(numFicha!=""){query.setParameter("numFicha", numFicha);}
+		
 		if(uniOrg!=null){query.setParameter("uniOrg", uniOrg);}
 		if(genero!=null){query.setParameter("genero", genero);}
 		if(classific!=null){query.setParameter("classific", classific);}
 		if(tipoUte!=null){query.setParameter("tipoUte", tipoUte);}
+		if(dataInicio!=null){query.setParameter("dataInicio", dataInicio);}
+		if(dataFim!=null){query.setParameter("dataFim", dataFim);}
 		return query.list();
 	}
 	
@@ -63,12 +69,15 @@ implements FichaDao{
 	}
 	
 	@Override
-	public List<Ficha> buscarFichasPorDistrito(Distrito distrito, UnidadeOrganica uniOrg) {
+	public List<Ficha> buscarFichasPorDistrito(Distrito distrito, UnidadeOrganica uniOrg, Date dataInicio, Date dataFim) {
 		String Paramunidade = uniOrg==null ? "" : "and ute.unidade=:uniOrg";
+		String ParamData = dataFim==null ? "" : "and fich.created>=:dataInicio and fich.created<=:dataFim";
 		Query query = getCurrentSession().createQuery("select fich from Ficha fich JOIN FETCH fich.utente ute "
-				+ " where ute.distrito=:distrito "+Paramunidade);
+				+ " where ute.distrito=:distrito "+Paramunidade+" "+ParamData);
 		if(distrito!=null){query.setParameter("distrito", distrito);}
 		if(uniOrg!=null){query.setParameter("uniOrg", uniOrg);}
+		if(dataInicio!=null){query.setParameter("dataInicio", dataInicio);}
+		if(dataFim!=null){query.setParameter("dataFim", dataFim);}
 		return query.list();
 	}
 

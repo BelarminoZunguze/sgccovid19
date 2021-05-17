@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Admin" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="dfba32bd-4655-4058-bf99-2dcb4ebe4088">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (2)"/>
+	<parameter name="imagemLogo" class="java.io.InputStream"/>
+	<parameter name="total" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[]]>
+	</queryString>
+	<field name="classificacao.nome" class="java.lang.String"/>
+	<field name="utente.genero" class="java.lang.String"/>
+	<field name="utente.tipo_utente.designacao" class="java.lang.String"/>
+	<field name="utente.distrito.designacao" class="java.lang.String"/>
+	<group name="Group1">
+		<groupHeader>
+			<band height="43">
+				<staticText>
+					<reportElement x="0" y="21" width="100" height="21" uuid="5f76bf4c-194d-438b-b24d-4941cac41603">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b0f62d75-1748-48bc-84bd-981f5b02d5a9"/>
+					</reportElement>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Tipo de utente]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="250" y="22" width="120" height="21" uuid="2b3378be-4513-4523-bb9a-ed7ca0d299fd">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="02d52585-2cee-4f7a-9d40-eda7debb96ac"/>
+					</reportElement>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Distrito de residencia]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="130" y="22" width="100" height="20" uuid="30bb2a11-c5ff-4d8b-a3cf-e34c10bfaeb9">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f10b15e9-03e7-4a7b-8813-8c18a85f4412"/>
+					</reportElement>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Genero]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="400" y="22" width="100" height="21" uuid="57490eff-a87d-475c-9022-71754114a025">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="59f458d4-23ef-4886-9877-7e6767ce8058"/>
+					</reportElement>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Classificacao]]></text>
+				</staticText>
+				<line>
+					<reportElement mode="Opaque" x="0" y="21" width="550" height="1" forecolor="#0CAB51" backcolor="#09B33F" uuid="797cc6a7-eb64-4c1c-bf3d-31adf1af3475"/>
+				</line>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="35">
+				<textField>
+					<reportElement x="470" y="15" width="100" height="20" uuid="0c10552f-a373-43ad-b833-ee96b8c091eb"/>
+					<textFieldExpression><![CDATA["Total de fichas: "+$P{total}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="80" splitType="Stretch">
+			<image>
+				<reportElement x="242" y="0" width="70" height="59" uuid="b40adbaf-c0e6-475b-8d62-3f67f063e660"/>
+				<imageExpression><![CDATA[$P{imagemLogo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="0" y="60" width="550" height="20" uuid="8a64b5e6-6c78-4269-b7f6-9c99e9b69565"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL DE FICHAS DE INVESTIGACAO]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="25" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="93fda95d-b63a-4941-bd92-411c82c69dcb">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e768a5d2-cc0e-4ce6-9bf6-2f7c817b68e8"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{utente.tipo_utente.designacao}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="130" y="-1" width="100" height="21" uuid="278be155-b8f0-41f6-acf9-8eb7a5709b8b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f10b15e9-03e7-4a7b-8813-8c18a85f4412"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{utente.genero}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="0" width="100" height="20" uuid="1ac993c8-7cde-4db3-8763-8461cfa9fe93">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="59f458d4-23ef-4886-9877-7e6767ce8058"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{classificacao.nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="250" y="2" width="100" height="21" uuid="7f44ac9a-2c4e-420b-a216-97089324e906">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f10b15e9-03e7-4a7b-8813-8c18a85f4412"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{utente.distrito.designacao}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="52" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="51" splitType="Stretch">
+			<line>
+				<reportElement mode="Opaque" x="2" y="50" width="550" height="1" forecolor="#0CAB51" backcolor="#09B33F" uuid="d715d5b7-fa18-475a-8dfa-c79785a73381"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="30" width="550" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="858406f9-e85c-4145-b695-ab2237744c56"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ Telefone: 21 493 724]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="0" width="550" height="1" forecolor="#0CAB51" backcolor="#089933" uuid="f378671b-ea9f-41cf-81cb-4844ca9bd05a"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="17" width="550" height="23" forecolor="#000000" backcolor="#FFFFFF" uuid="bb21b9ad-8834-4ca9-8beb-fad919683ebe"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ Email: helpdesk@ciuem.mz]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="1" width="550" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="0572fa32-eb26-4631-9512-0dd53accdc8a"/>
+				<textElement verticalAlignment="Top">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ Endereço: Campus Principal da UEM, Rua da Reserva da Universidade, Maputo                              
+]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

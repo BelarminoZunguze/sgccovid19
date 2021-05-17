@@ -138,13 +138,15 @@
 				
 				</listbox>
 				
-				<separator/>
 				<div class="row">
-					<div class="col-12">
-						<label id="total_resultados" style="font-weight:bold; font-size:12pt"></label>
+				  <div class="col-12">
+					<div align="center" style="background-color:rgb(242, 242, 242)">
+						<label id="total_resultados" style="font-weight:bold;text-align:center; font-size:11pt"></label>
 					</div>
-					
+				  </div>
 				</div>
+				
+				
 								
                   
                 </x:div>
@@ -153,7 +155,7 @@
 				                
 								<div class="col-md-12 col-lg-12">
 					                <div align="right" >
-					                    <button iconSclass="fe fe-printer" zclass="btn btn-primary" id="btn_imprimir">Imprimir Lista</button>
+					                    <button style="background:rgb(51, 153, 122); color:white" iconSclass="fe fe-printer" zclass="btn btn-secondary" id="btn_imprimir">Imprimir Lista</button>
 					                </div>
 					            </div>
 										

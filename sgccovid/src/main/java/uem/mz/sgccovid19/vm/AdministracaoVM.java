@@ -157,9 +157,7 @@ public class AdministracaoVM extends AbstractVM{
 		target.getChildren().clear();
 		Executions.createComponents("views/organograma/organograma.zul", target, map);
 
-		links = new ArrayList<String>();
-		links.add("");
-		Breadcrumb.drawn(breadcrumb, "", links);
+		
 	}
 	
 	@Command
@@ -171,9 +169,7 @@ public class AdministracaoVM extends AbstractVM{
 		Executions.createComponents(
 				"views/administracao/registar_utilizador.zul", target, map);
 
-		links = new ArrayList<String>();
-		links.add("Registar Utilizador");
-		Breadcrumb.drawn(breadcrumb, "", links);
+		
 	}
 	
 	@Command
@@ -185,9 +181,7 @@ public class AdministracaoVM extends AbstractVM{
 		Executions.createComponents("views/administracao/gerir_perfil.zul", target,
 				map);
 
-		links = new ArrayList<String>();
-		links.add("Registar Perfil");
-		Breadcrumb.drawn(breadcrumb, "", links);
+		
 	}
 	
 	@Command
@@ -199,9 +193,7 @@ public class AdministracaoVM extends AbstractVM{
 		Executions.createComponents("views/administracao/gerir_permissoes.zul",
 				target, map);
 
-		links = new ArrayList<String>();
-		links.add("Registar Permissoes");
-		Breadcrumb.drawn(breadcrumb, "", links);
+		
 	}
 	
 	@Command
@@ -213,9 +205,7 @@ public class AdministracaoVM extends AbstractVM{
 		Executions.createComponents("views/administracao/gerir_modulos.zul",
 				target, map);
 
-		links = new ArrayList<String>();
-		links.add("Registar Modulos");
-		Breadcrumb.drawn(breadcrumb, "", links);
+		
 	}
 	
 

@@ -2,6 +2,7 @@ package uem.mz.sgccovid19.controller;
 
 import java.awt.Dialog;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -106,12 +107,21 @@ public class EstatisticasController extends GenericForwardComposer{
 	private Combobox cbx_departamento;
 	
 	private Label total_resultados;
+	private Label total_genero;
+	private Label total_tipo_utente;
+	private Label total_distrito;
 	
 	private String numeroFicha;
 	private String genero;
 	private UnidadeOrganica uniorg;
 	private Classificacao classific;
 	private TipoUtente tipoUte;
+	private Date dataInicio; 
+	private Date dataFim;
+	
+	private Datebox dtb_dataInicio;
+	
+	private Datebox dtb_Fim;
 	
 	private Distrito disResidencia;
 	private List<Distrito> controleDistrito;
@@ -177,7 +187,7 @@ public class EstatisticasController extends GenericForwardComposer{
 				
 			}else {
 				controleDistrito.add(disResidencia);
-				pesquisaList = fichaService.buscarFichasPorDistrito(disResidencia,uniorg);
+				pesquisaList = fichaService.buscarFichasPorDistrito(disResidencia,uniorg,dataInicio, dataFim);
 				cont = pesquisaList.size();
 				contadorTotal+=pesquisaList.size();
 				
@@ -194,7 +204,7 @@ public class EstatisticasController extends GenericForwardComposer{
 		}
 		estatisticaModel = new ListModelList<EstatisticaDistrito>(estatisticaList); 
 		lbxFichasDistrito.setModel(estatisticaModel);
-		total_resultados.setValue("Total: "+contadorTotal);
+		total_distrito.setValue("Total: "+contadorTotal);
 		
 		
 	}
@@ -203,32 +213,30 @@ public class EstatisticasController extends GenericForwardComposer{
 		numeroFicha = "";
 		genero=null;
 		tipoUte=null;
+		
 		int contador=0;
-		/*
-		if(user.getId()!=1) {
-			uniorg=user.getUnidade();
-		}*/
+		
 		classList = classificacaoService.buscarClassificacao();
 		classific = classList.get(0);
-		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte);
+		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte, dataInicio, dataFim);
 		label_suspeitos.setValue(""+pesquisaList.size());
 		contador+=pesquisaList.size();
 		pesquisaList.clear();
 		
 		classific = classList.get(1);
-		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte);
+		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte, dataInicio, dataFim);
 		label_confirmados.setValue(""+pesquisaList.size());
 		contador+=pesquisaList.size();
 		pesquisaList.clear();
 		
 		classific = classList.get(2);
-		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte);
+		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte, dataInicio, dataFim);
 		label_testados.setValue(""+pesquisaList.size());
 		contador+=pesquisaList.size();
 		pesquisaList.clear();
 		
 		classific = classList.get(3);
-		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte);
+		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte, dataInicio, dataFim);
 		label_contactos.setValue(""+pesquisaList.size());
 		contador+=pesquisaList.size();
 		pesquisaList.clear();
@@ -243,29 +251,30 @@ public class EstatisticasController extends GenericForwardComposer{
 		genero=null;
 		classific=null;
 		
-		/*
-		if(user.getId()!=1) {
-			uniorg=user.getUnidade();
-		}*/
+		int contador=0;
 		
 		tiputList = tipoUtenteService.buscarTipoUtente();
 		tipoUte = tiputList.get(0);
-		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte);
+		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte, dataInicio, dataFim);
 		label_estudante.setValue(""+pesquisaList.size());
+		contador+=pesquisaList.size();
 		pesquisaList.clear();
 		
 		tiputList = tipoUtenteService.buscarTipoUtente();
 		tipoUte = tiputList.get(1);
-		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte);
+		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte, dataInicio, dataFim);
 		label_docente.setValue(""+pesquisaList.size());
+		contador+=pesquisaList.size();
 		pesquisaList.clear();
 		
 		tiputList = tipoUtenteService.buscarTipoUtente();
 		tipoUte = tiputList.get(2);
-		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte);
+		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte, dataInicio, dataFim);
 		label_cta.setValue(""+pesquisaList.size());
+		contador+=pesquisaList.size();
 		pesquisaList.clear();
 		
+		total_tipo_utente.setValue("Total: "+contador);
 		
 		tiputList.clear();
 		
@@ -276,22 +285,21 @@ public class EstatisticasController extends GenericForwardComposer{
 		classific=null;
 		tipoUte=null;
 		
-		/*
-		if(user.getId()!=1) {
-			uniorg=user.getUnidade();
-		}*/
 		
+		int contador=0;
 		String masculino = "Masculino";
-		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, masculino, classific, tipoUte);
+		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, masculino, classific, tipoUte, dataInicio, dataFim);
 		label_masculino.setValue(""+pesquisaList.size());
+		contador+=pesquisaList.size();
 		pesquisaList.clear();
 		
 		String feminino = "Feminino";
-		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, feminino, classific, tipoUte);
+		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, feminino, classific, tipoUte, dataInicio, dataFim);
 		label_feminino.setValue(""+pesquisaList.size());
+		contador+=pesquisaList.size();
 		pesquisaList.clear();
 		
-		
+		total_genero.setValue("Total: "+contador);
 		
 	}
 	
@@ -318,8 +326,17 @@ public class EstatisticasController extends GenericForwardComposer{
 	  	  cbx_unidade.setModel(uniOrgModel);    	  
 	}
 	
-	public void onSelect$cbx_unidade() {
-		uniorg = cbx_unidade.getSelectedItem().getValue();
+	public void onClick$btn_pesquisar() {
+		
+		if(cbx_unidade.getSelectedItem()!=null) {
+			uniorg = cbx_unidade.getSelectedItem().getValue();
+		}
+		if(dtb_dataInicio.getValue()!=null && dtb_Fim.getValue()!=null) {
+			
+			dataInicio = dtb_dataInicio.getValue();
+			dataFim = dtb_Fim.getValue();
+			
+		}
 		pesquisarPorClassificacao();
 		pesquisarPorGenero();
 		pesquisarPorTipoUtente();

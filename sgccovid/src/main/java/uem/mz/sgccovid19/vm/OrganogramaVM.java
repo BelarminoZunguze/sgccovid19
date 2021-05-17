@@ -95,9 +95,7 @@ public class OrganogramaVM extends AbstractVM{
 		target.getChildren().clear();
 		Executions.createComponents("views/parametrizacao/registar_instituicao.zul", target, map);
 
-		links = new ArrayList<String>();
-		links.add("Registar Institui��o ");
-		Breadcrumb.drawn(breadcrumb, "", links);
+		
 	}
 	
 	@Command
@@ -108,9 +106,7 @@ public class OrganogramaVM extends AbstractVM{
 		target.getChildren().clear();
 		Executions.createComponents("views/parametrizacao/registar_unidade_organica.zul", target, map);
 
-		links = new ArrayList<String>();
-		links.add("Registar Unidade Org�nica");
-		Breadcrumb.drawn(breadcrumb, "", links);
+		
 	}
 	
 	@Command
@@ -121,9 +117,7 @@ public class OrganogramaVM extends AbstractVM{
 		target.getChildren().clear();
 		Executions.createComponents("views/parametrizacao/registar_provincia.zul", target, map);
 
-		links = new ArrayList<String>();
-		links.add("Registar Prov�ncia");
-		Breadcrumb.drawn(breadcrumb, "", links);
+		
 	}
 	
 	@Command
@@ -134,9 +128,7 @@ public class OrganogramaVM extends AbstractVM{
 		target.getChildren().clear();
 		Executions.createComponents("views/parametrizacao/registar_distrito.zul", target, map);
 
-		links = new ArrayList<String>();
-		links.add("Registar Distrito");
-		Breadcrumb.drawn(breadcrumb, "", links);
+		
 	}
 	
 	@Command
@@ -147,9 +139,7 @@ public class OrganogramaVM extends AbstractVM{
 		target.getChildren().clear();
 		Executions.createComponents("views/parametrizacao/registar_departamento.zul", target, map);
 
-		links = new ArrayList<String>();
-		links.add("Registar Departamento");
-		Breadcrumb.drawn(breadcrumb, "", links);
+		
 	}
 	
 	@Command
@@ -160,9 +150,7 @@ public class OrganogramaVM extends AbstractVM{
 		target.getChildren().clear();
 		Executions.createComponents("views/parametrizacao/registar_sector.zul", target, map);
 
-		links = new ArrayList<String>();
-		links.add("Registar Sector");
-		Breadcrumb.drawn(breadcrumb, "", links);
+		
 	}
 	
 	

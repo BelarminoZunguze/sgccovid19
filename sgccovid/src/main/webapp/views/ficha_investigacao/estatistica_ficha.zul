@@ -39,16 +39,29 @@
 					                          <label class="form-label">Intervalo de Pesquisa:</label>
 					                          <label style="font-weight:bold;font-size:11pt">De  </label>
 					                          <separator orient="vertical" spacing="8px" /> 
-					                          <datebox constraint="no future: Insira uma data válida!" id="dtb_dataSubmissao"  format="dd/MM/yyyy" width="39%"/>
+					                          
+					                          <datebox constraint="no future: Insira uma data válida!" id="dtb_dataInicio"  format="dd/MM/yyyy" width="39%"/>
 					                          <separator orient="vertical" spacing="8px" />
+					                          
 					                          <label style="font-weight:bold;font-size:11pt">à  </label>
 					                          <separator orient="vertical" spacing="8px" />
+					                          
 					                          <datebox constraint="no future: Insira uma data válida!" id="dtb_Fim"  format="dd/MM/yyyy" width="39%"/> 
 					                        </div>
 					                     </div> 
 										
 					                     					                     
 					                </div>
+					                
+					                <div class="row">
+				                
+										<div class="col-md-12 col-lg-12">
+					                     	<div align="right" >
+					                     		<button iconSclass="fe fe-search" zclass="btn btn-secondary" width="110px" id="btn_pesquisar" >Pesquisar</button>
+					                     	</div>
+					                     </div>
+										
+				                	</div>
 					                
 				                	
 				                </div>
@@ -126,6 +139,27 @@
 							
 							</listbox>
 							
+							   <div class="row">
+								  <div class="col-12">
+									<div align="center" style="background-color:rgb(242, 242, 242)">
+										<label id="total_resultados" style="font-weight:bold;text-align:center; font-size:11pt"></label>
+									</div>
+								  </div>
+								</div>
+								<separator/>
+								<div class="row">
+									                
+									<div class="col-md-12 col-lg-12">
+						                <div align="right" >
+						                    <button style="background:rgb(51, 153, 122); color:white" iconSclass="fe fe-printer" zclass="btn btn-secondary" id="btn_imprimir">Imprimir</button>
+						                </div>
+						            </div>
+						           		
+								</div>
+								<separator/>
+							
+							
+							
 			        </tabpanel>
 			        
 			        <tabpanel>
@@ -158,6 +192,25 @@
 			                  
 							
 							</listbox>
+							
+							<div class="row">
+								  <div class="col-12">
+									<div align="center" style="background-color:rgb(242, 242, 242)">
+										<label id="total_genero" style="font-weight:bold;text-align:center; font-size:11pt"></label>
+									</div>
+								  </div>
+								</div>
+								<separator/>
+								<div class="row">
+									                
+									<div class="col-md-12 col-lg-12">
+						                <div align="right" >
+						                    <button style="background:rgb(51, 153, 122); color:white" iconSclass="fe fe-printer" zclass="btn btn-secondary" id="btn_imprimir_genero">Imprimir</button>
+						                </div>
+						            </div>
+						           		
+								</div>
+								<separator/>
 							
 			        </tabpanel>
 			        
@@ -200,6 +253,25 @@
 			                      
 							</listbox>
 							
+							<div class="row">
+								  <div class="col-12">
+									<div align="center" style="background-color:rgb(242, 242, 242)">
+										<label id="total_tipo_utente" style="font-weight:bold;text-align:center; font-size:11pt"></label>
+									</div>
+								  </div>
+								</div>
+								<separator/>
+								<div class="row">
+									                
+									<div class="col-md-12 col-lg-12">
+						                <div align="right" >
+						                    <button style="background:rgb(51, 153, 122); color:white" iconSclass="fe fe-printer" zclass="btn btn-secondary" id="btn_imprimir_tipo_utente">Imprimir</button>
+						                </div>
+						            </div>
+						           		
+								</div>
+								<separator/>
+							
 			        </tabpanel>
 			        
 			        <tabpanel>
@@ -220,17 +292,30 @@
 			                      
 							</listbox>
 							
+							<div class="row">
+								  <div class="col-12">
+									<div align="center" style="background-color:rgb(242, 242, 242)">
+										<label id="total_distrito" style="font-weight:bold;text-align:center; font-size:11pt"></label>
+									</div>
+								  </div>
+								</div>
+								<separator/>
+								<div class="row">
+									                
+									<div class="col-md-12 col-lg-12">
+						                <div align="right" >
+						                    <button style="background:rgb(51, 153, 122); color:white" iconSclass="fe fe-printer" zclass="btn btn-secondary" id="btn_imprimir_distrito">Imprimir</button>
+						                </div>
+						            </div>
+						           		
+								</div>
+								<separator/>
+							
 			        </tabpanel>
 			        
 			    </tabpanels>
 			</tabbox>
-			<div class="row">
-			  <div class="col-12">
-				<div align="center" style="background-color:rgb(242, 242, 242)">
-					<label id="total_resultados" style="font-weight:bold;text-align:center; font-size:11pt"></label>
-				</div>
-			  </div>
-			</div>
+			
 	            	
 	            	
 	            	

@@ -4,6 +4,7 @@ import java.awt.Dialog;
 import java.io.InputStream;  
 import java.time.Year;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -79,6 +80,7 @@ public class FichaController extends GenericForwardComposer{
 	private FichaService fichaService;
 	private List<Ficha> fichaList;
 	private List<Ficha> pesquisaList;
+	
 	private ListModelList<Ficha> fichaModel;
 	
 	private Listbox lbxFichas;
@@ -86,6 +88,8 @@ public class FichaController extends GenericForwardComposer{
 	private Ficha ficha;
 	
 	private Utente utente;
+	
+	
 	
 	
 	private Textbox txt_nrFicha;
@@ -112,6 +116,10 @@ public class FichaController extends GenericForwardComposer{
 	
 	private Datebox dtb_dataSubmissao;
 	
+	private Datebox dtb_dataInicio;
+	
+	private Datebox dtb_Fim;
+	
 	private Combobox cbx_departamento;
 	
 	private Label total_resultados;
@@ -122,6 +130,8 @@ public class FichaController extends GenericForwardComposer{
 	private Classificacao classific;
 	private TipoUtente tipoUte;
 	
+	private Date dataInicio;
+	private Date dataFim;
 	
 	@Override
 	public void doBeforeComposeChildren(Component comp) throws Exception {
@@ -155,6 +165,10 @@ public class FichaController extends GenericForwardComposer{
 		buscarClassificacao();
 		buscarTipoUtente();
 		buscarFichas();
+		
+	
+		
+		
 		
 	}
 	
@@ -194,6 +208,7 @@ public class FichaController extends GenericForwardComposer{
 	}
 	
 	public void onClick$btn_pesquisar() {
+		
 		numeroFicha = txt_nrFicha.getValue();
 		
 		if(user.getId()==1) {
@@ -215,11 +230,20 @@ public class FichaController extends GenericForwardComposer{
 			tipoUte = cbxTipoUtente.getSelectedItem().getValue();
 		}
 		
-		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte);
+		if(dtb_dataInicio.getValue()!=null && dtb_Fim.getValue()!=null) {
+			
+			dataInicio = dtb_dataInicio.getValue();
+			dataFim = dtb_Fim.getValue();
+			
+		}
+		
+		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte, dataInicio, dataFim);
 		fichaModel = new ListModelList<Ficha>(pesquisaList);
 		lbxFichas.setModel(fichaModel);
 		total_resultados.setValue("Total de Resultados: "+pesquisaList.size());
 		pesquisaList.clear();
+		
+		
 	}
 	
 	public void onClick$btn_nova_ficha() {
@@ -262,6 +286,42 @@ public class FichaController extends GenericForwardComposer{
 		target.getChildren().clear();
 		Executions.createComponents("views/ficha_investigacao/edicao_dados.zul", target, map);
 		
+		
+		
+	}
+	
+	public void onClick$btn_imprimir() throws JRException{
+		
+		
+			
+			if(user.getId()==1) {
+				fichaList = fichaService.buscarFicha();
+			} else {
+				fichaList = fichaService.buscarFichasPorUnidade(user.getUnidade());
+			}
+		 
+		
+		
+		
+		
+		if (fichaList.isEmpty()) {			
+			Clients.showNotification("Informação Vazia", "info", win, "middle_center", 3000);
+		} else {
+
+			MasterRep mas = new MasterRep();
+			Map<String, Object> map = new HashMap<String, Object>();
+			int total = fichaList.size();
+			
+			final Execution ex = Executions.getCurrent();
+			InputStream inputV = ex.getDesktop().getWebApp().getResourceAsStream("/images/moz.png");
+			map.put("imagemLogo", inputV);
+			map.put("total", total);
+			String realPath = ex.getDesktop().getWebApp().getRealPath("/reports/");
+			map.put("SUBREPORT_DIR", realPath);
+			mas.imprimir("/reports/Admin.jrxml", fichaList, map, win);
+		}
+		
+		fichaList.clear();
 		
 		
 	}
