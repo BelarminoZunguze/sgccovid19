@@ -1,16 +1,20 @@
 package uem.mz.sgccovid19.controller;
 
 import java.awt.Dialog;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.zkoss.spring.SpringUtil;
 import org.zkoss.zk.ui.Component;
+import org.zkoss.zk.ui.Execution;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.ForwardEvent;
 import org.zkoss.zk.ui.select.annotation.Wire;
+import org.zkoss.zk.ui.util.Clients;
 import org.zkoss.zk.ui.util.GenericForwardComposer;
 import org.zkoss.zul.Combobox;
 import org.zkoss.zul.Datebox;
@@ -21,6 +25,7 @@ import org.zkoss.zul.Listbox;
 import org.zkoss.zul.Textbox;
 import org.zkoss.zul.Window;
 
+import net.sf.jasperreports.engine.JRException;
 import uem.mz.sgccovid19.entity.Classificacao;
 import uem.mz.sgccovid19.entity.Distrito;
 import uem.mz.sgccovid19.entity.EstatisticaDistrito;
@@ -34,6 +39,7 @@ import uem.mz.sgccovid19.service.FichaService;
 import uem.mz.sgccovid19.service.TipoUtenteService;
 import uem.mz.sgccovid19.service.UnidadeOrganicaService;
 import uem.mz.sgccovid19.util.Breadcrumb;
+import uem.mz.sgccovid19.util.MasterRep;
 import uem.mz.sgccovid19.util.showClientNotification;
 
 public class EstatisticasController extends GenericForwardComposer{
@@ -79,6 +85,7 @@ public class EstatisticasController extends GenericForwardComposer{
 	private Label label_estudante;
 	private Label label_docente;
 	private Label label_cta;
+	private Label label_investigador;
 	
 	private Textbox txt_nrFicha;
 	
@@ -110,6 +117,11 @@ public class EstatisticasController extends GenericForwardComposer{
 	private Label total_genero;
 	private Label total_tipo_utente;
 	private Label total_distrito;
+	private Label total_situacao;
+	private Label label_recuperados;
+	private Label label_internados;
+	private Label label_indeterminados;
+	private Label label_obitos;
 	
 	private String numeroFicha;
 	private String genero;
@@ -118,6 +130,7 @@ public class EstatisticasController extends GenericForwardComposer{
 	private TipoUtente tipoUte;
 	private Date dataInicio; 
 	private Date dataFim;
+	private String estado;
 	
 	private Datebox dtb_dataInicio;
 	
@@ -168,6 +181,7 @@ public class EstatisticasController extends GenericForwardComposer{
 		pesquisarPorGenero();
 		pesquisarPorTipoUtente();
 		pesquisarPorDistrito();
+		buscarPorSituacao();
 		
 		
 	}
@@ -213,30 +227,31 @@ public class EstatisticasController extends GenericForwardComposer{
 		numeroFicha = "";
 		genero=null;
 		tipoUte=null;
+		estado=null;
 		
 		int contador=0;
 		
 		classList = classificacaoService.buscarClassificacao();
 		classific = classList.get(0);
-		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte, dataInicio, dataFim);
+		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte, dataInicio, dataFim, estado);
 		label_suspeitos.setValue(""+pesquisaList.size());
 		contador+=pesquisaList.size();
 		pesquisaList.clear();
 		
 		classific = classList.get(1);
-		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte, dataInicio, dataFim);
+		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte, dataInicio, dataFim, estado);
 		label_confirmados.setValue(""+pesquisaList.size());
 		contador+=pesquisaList.size();
 		pesquisaList.clear();
 		
 		classific = classList.get(2);
-		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte, dataInicio, dataFim);
+		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte, dataInicio, dataFim, estado);
 		label_testados.setValue(""+pesquisaList.size());
 		contador+=pesquisaList.size();
 		pesquisaList.clear();
 		
 		classific = classList.get(3);
-		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte, dataInicio, dataFim);
+		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte, dataInicio, dataFim, estado);
 		label_contactos.setValue(""+pesquisaList.size());
 		contador+=pesquisaList.size();
 		pesquisaList.clear();
@@ -250,27 +265,35 @@ public class EstatisticasController extends GenericForwardComposer{
 		numeroFicha = "";
 		genero=null;
 		classific=null;
+		estado=null;
 		
 		int contador=0;
 		
 		tiputList = tipoUtenteService.buscarTipoUtente();
 		tipoUte = tiputList.get(0);
-		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte, dataInicio, dataFim);
+		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte, dataInicio, dataFim, estado);
 		label_estudante.setValue(""+pesquisaList.size());
 		contador+=pesquisaList.size();
 		pesquisaList.clear();
 		
 		tiputList = tipoUtenteService.buscarTipoUtente();
 		tipoUte = tiputList.get(1);
-		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte, dataInicio, dataFim);
+		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte, dataInicio, dataFim, estado);
 		label_docente.setValue(""+pesquisaList.size());
 		contador+=pesquisaList.size();
 		pesquisaList.clear();
 		
 		tiputList = tipoUtenteService.buscarTipoUtente();
 		tipoUte = tiputList.get(2);
-		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte, dataInicio, dataFim);
+		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte, dataInicio, dataFim, estado);
 		label_cta.setValue(""+pesquisaList.size());
+		contador+=pesquisaList.size();
+		pesquisaList.clear();
+		
+		tiputList = tipoUtenteService.buscarTipoUtente();
+		tipoUte = tiputList.get(3);
+		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte, dataInicio, dataFim, estado);
+		label_investigador.setValue(""+pesquisaList.size());
 		contador+=pesquisaList.size();
 		pesquisaList.clear();
 		
@@ -284,22 +307,58 @@ public class EstatisticasController extends GenericForwardComposer{
 		numeroFicha = "";
 		classific=null;
 		tipoUte=null;
-		
+		estado=null;
 		
 		int contador=0;
 		String masculino = "Masculino";
-		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, masculino, classific, tipoUte, dataInicio, dataFim);
+		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, masculino, classific, tipoUte, dataInicio, dataFim, estado);
 		label_masculino.setValue(""+pesquisaList.size());
 		contador+=pesquisaList.size();
 		pesquisaList.clear();
 		
 		String feminino = "Feminino";
-		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, feminino, classific, tipoUte, dataInicio, dataFim);
+		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, feminino, classific, tipoUte, dataInicio, dataFim, estado);
 		label_feminino.setValue(""+pesquisaList.size());
 		contador+=pesquisaList.size();
 		pesquisaList.clear();
 		
 		total_genero.setValue("Total: "+contador);
+		
+	}
+	
+	public void buscarPorSituacao() {
+		numeroFicha = "";
+		classific=null;
+		tipoUte=null;
+		genero=null;
+		
+		
+		int contador=0;
+		String Recuperado = "Recuperado";
+		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte, dataInicio, dataFim, Recuperado);
+		label_recuperados.setValue(""+pesquisaList.size());
+		contador+=pesquisaList.size();
+		pesquisaList.clear();
+		
+		String Internado = "Internado";
+		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte, dataInicio, dataFim, Internado);
+		label_internados.setValue(""+pesquisaList.size());
+		contador+=pesquisaList.size();
+		pesquisaList.clear();
+		
+		String Indeterminado = "Indeterminado";
+		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte, dataInicio, dataFim, Indeterminado);
+		label_indeterminados.setValue(""+pesquisaList.size());
+		contador+=pesquisaList.size();
+		pesquisaList.clear();
+		
+		String obito = "Óbito";
+		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte, dataInicio, dataFim, obito);
+		label_obitos.setValue(""+pesquisaList.size());
+		contador+=pesquisaList.size();
+		pesquisaList.clear();
+		
+		total_situacao.setValue("Total: "+contador);
 		
 	}
 	
@@ -328,9 +387,14 @@ public class EstatisticasController extends GenericForwardComposer{
 	
 	public void onClick$btn_pesquisar() {
 		
-		if(cbx_unidade.getSelectedItem()!=null) {
-			uniorg = cbx_unidade.getSelectedItem().getValue();
+		if(user.getId()==1) {
+			if(cbx_unidade.getSelectedItem()!=null) {
+				uniorg = cbx_unidade.getSelectedItem().getValue();
+			}
 		}
+		
+		
+		
 		if(dtb_dataInicio.getValue()!=null && dtb_Fim.getValue()!=null) {
 			
 			dataInicio = dtb_dataInicio.getValue();
@@ -341,6 +405,188 @@ public class EstatisticasController extends GenericForwardComposer{
 		pesquisarPorGenero();
 		pesquisarPorTipoUtente();
 		pesquisarPorDistrito();
+		buscarPorSituacao();
+	}
+	
+	public void onClick$btn_imprimir() throws JRException{
+		
+		
+		
+		if(user.getId()==1) {
+			fichaList = fichaService.buscarFicha();
+		} else {
+			fichaList = fichaService.buscarFichasPorUnidade(user.getUnidade());
+		}
+	 
+	
+	
+	
+	
+	if (fichaList.isEmpty()) {			
+		Clients.showNotification("Informação Vazia", "info", win, "middle_center", 3000);
+	} else {
+
+		MasterRep mas = new MasterRep();
+		Map<String, Object> map = new HashMap<String, Object>();
+		int total = fichaList.size();
+		
+		final Execution ex = Executions.getCurrent();
+		InputStream inputV = ex.getDesktop().getWebApp().getResourceAsStream("/images/moz.png");
+		map.put("imagemLogo", inputV);
+		map.put("total", total);
+		String realPath = ex.getDesktop().getWebApp().getRealPath("/reports/");
+		map.put("SUBREPORT_DIR", realPath);
+		mas.imprimir("/reports/Admin.jrxml", fichaList, map, win);
+	}
+	
+	fichaList.clear();
+	
+	
+	}
+	
+	public void onClick$btn_imprimir_tipo_utente() throws JRException{
+		
+		
+		
+		if(user.getId()==1) {
+			fichaList = fichaService.buscarFicha();
+		} else {
+			fichaList = fichaService.buscarFichasPorUnidade(user.getUnidade());
+		}
+	 
+	
+	
+	
+	
+		if (fichaList.isEmpty()) {			
+			Clients.showNotification("Informação Vazia", "info", win, "middle_center", 3000);
+		} else {
+	
+			MasterRep mas = new MasterRep();
+			Map<String, Object> map = new HashMap<String, Object>();
+			int total = fichaList.size();
+			
+			final Execution ex = Executions.getCurrent();
+			InputStream inputV = ex.getDesktop().getWebApp().getResourceAsStream("/images/moz.png");
+			map.put("imagemLogo", inputV);
+			map.put("total", total);
+			String realPath = ex.getDesktop().getWebApp().getRealPath("/reports/");
+			map.put("SUBREPORT_DIR", realPath);
+			mas.imprimir("/reports/Admin.jrxml", fichaList, map, win);
+		}
+		
+		fichaList.clear();
+		
+		
+	}
+	
+	public void onClick$btn_imprimir_distrito() throws JRException{
+		
+		
+		
+		if(user.getId()==1) {
+			fichaList = fichaService.buscarFicha();
+		} else {
+			fichaList = fichaService.buscarFichasPorUnidade(user.getUnidade());
+		}
+	 
+	
+	
+	
+	
+		if (fichaList.isEmpty()) {			
+			Clients.showNotification("Informação Vazia", "info", win, "middle_center", 3000);
+		} else {
+	
+			MasterRep mas = new MasterRep();
+			Map<String, Object> map = new HashMap<String, Object>();
+			int total = fichaList.size();
+			
+			final Execution ex = Executions.getCurrent();
+			InputStream inputV = ex.getDesktop().getWebApp().getResourceAsStream("/images/moz.png");
+			map.put("imagemLogo", inputV);
+			map.put("total", total);
+			String realPath = ex.getDesktop().getWebApp().getRealPath("/reports/");
+			map.put("SUBREPORT_DIR", realPath);
+			mas.imprimir("/reports/Admin.jrxml", fichaList, map, win);
+		}
+		
+		fichaList.clear();
+		
+		
+	}
+	
+	public void onClick$btn_imprimir_genero() throws JRException{
+		
+		
+		
+		if(user.getId()==1) {
+			fichaList = fichaService.buscarFicha();
+		} else {
+			fichaList = fichaService.buscarFichasPorUnidade(user.getUnidade());
+		}
+	 
+	
+	
+	
+	
+		if (fichaList.isEmpty()) {			
+			Clients.showNotification("Informação Vazia", "info", win, "middle_center", 3000);
+		} else {
+	
+			MasterRep mas = new MasterRep();
+			Map<String, Object> map = new HashMap<String, Object>();
+			int total = fichaList.size();
+			
+			final Execution ex = Executions.getCurrent();
+			InputStream inputV = ex.getDesktop().getWebApp().getResourceAsStream("/images/moz.png");
+			map.put("imagemLogo", inputV);
+			map.put("total", total);
+			String realPath = ex.getDesktop().getWebApp().getRealPath("/reports/");
+			map.put("SUBREPORT_DIR", realPath);
+			mas.imprimir("/reports/Admin.jrxml", fichaList, map, win);
+		}
+		
+		fichaList.clear();
+		
+		
+	}
+	
+	
+public void onClick$btn_imprimir_situacao() throws JRException{
+		
+		
+		
+		if(user.getId()==1) {
+			fichaList = fichaService.buscarFicha();
+		} else {
+			fichaList = fichaService.buscarFichasPorUnidade(user.getUnidade());
+		}
+	 
+	
+	
+	
+	
+		if (fichaList.isEmpty()) {			
+			Clients.showNotification("Informação Vazia", "info", win, "middle_center", 3000);
+		} else {
+	
+			MasterRep mas = new MasterRep();
+			Map<String, Object> map = new HashMap<String, Object>();
+			int total = fichaList.size();
+			
+			final Execution ex = Executions.getCurrent();
+			InputStream inputV = ex.getDesktop().getWebApp().getResourceAsStream("/images/moz.png");
+			map.put("imagemLogo", inputV);
+			map.put("total", total);
+			String realPath = ex.getDesktop().getWebApp().getRealPath("/reports/");
+			map.put("SUBREPORT_DIR", realPath);
+			mas.imprimir("/reports/Admin.jrxml", fichaList, map, win);
+		}
+		
+		fichaList.clear();
+		
+		
 	}
 	
 	

@@ -203,9 +203,6 @@ public class ComunicacaoController extends GenericForwardComposer{
 		target.getChildren().clear();
 		Executions.createComponents("views/monitoria/disponibilizacao_meios.zul", target, map);
 
-		links = new ArrayList<String>();
-		links.add("Disponibilização de meios");
-		Breadcrumb.drawn(breadcrumb, "", links);
 		
 		
 		

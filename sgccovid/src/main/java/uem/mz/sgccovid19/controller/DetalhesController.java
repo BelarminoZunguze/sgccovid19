@@ -1,5 +1,6 @@
 package uem.mz.sgccovid19.controller;
 
+import java.io.InputStream;
 import java.text.DateFormat; 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -10,23 +11,28 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.zkoss.spring.SpringUtil;
 import org.zkoss.zk.ui.Component;
+import org.zkoss.zk.ui.Execution;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.select.annotation.Wire;
+import org.zkoss.zk.ui.util.Clients;
 import org.zkoss.zk.ui.util.GenericForwardComposer;
 import org.zkoss.zul.Div;
 import org.zkoss.zul.Label;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Window;
 
+import net.sf.jasperreports.engine.JRException;
 import uem.mz.sgccovid19.entity.Ficha;
 import uem.mz.sgccovid19.entity.Utente;
 import uem.mz.sgccovid19.entity.administracao.User;
 import uem.mz.sgccovid19.service.FichaService;
 import uem.mz.sgccovid19.service.UtenteService;
 import uem.mz.sgccovid19.util.Breadcrumb;
+import uem.mz.sgccovid19.util.MasterRep;
 import uem.mz.sgccovid19.util.showClientNotification;
 
 public class DetalhesController extends GenericForwardComposer{
@@ -55,6 +61,7 @@ public class DetalhesController extends GenericForwardComposer{
 	private List<Utente> utenteList;
 	private ListModelList<Utente> utenteModel;
 	
+	private List<Ficha> fichaList;
 	
 	private Utente utente;
 	private Ficha ficha;
@@ -296,6 +303,31 @@ public class DetalhesController extends GenericForwardComposer{
 
    		
    	}
+     
+     public void onClick$btn_imprimir() throws JRException{
+    	 
+    	 fichaList = new ArrayList<Ficha>();
+    	 fichaList.add(ficha);
+    	 
+    	 if (fichaList.isEmpty()) {			
+ 			Clients.showNotification("Informação Vazia", "info", win, "middle_center", 3000);
+ 		} else {
+
+ 			MasterRep mas = new MasterRep();
+ 			Map<String, Object> map = new HashMap<String, Object>();
+ 			
+ 			final Execution ex = Executions.getCurrent();
+ 			InputStream inputV = ex.getDesktop().getWebApp().getResourceAsStream("/images/moz.png");
+ 			map.put("imagemLogo", inputV);
+ 			String realPath = ex.getDesktop().getWebApp().getRealPath("/reports/");
+ 			map.put("SUBREPORT_DIR", realPath);
+ 			mas.imprimir("/reports/FichaNotificacao.jrxml", fichaList, map, win);
+ 		}
+ 		
+ 		fichaList.clear();
+    	 
+    	 
+     }
      
      public void onClick$btn_voltar() {
     	

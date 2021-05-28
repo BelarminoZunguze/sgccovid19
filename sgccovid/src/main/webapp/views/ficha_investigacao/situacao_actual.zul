@@ -1,0 +1,59 @@
+<window id="modalDialog" title="Actuaizar Situação Actual" border="normal" width="460px"
+    apply="uem.mz.sgccovid19.controller.SituacaoController"
+    position="center,center" closable="true"
+    action="show: slideDown;hide: slideUp">
+    
+    		<listbox id="lbxSituacao" mold="paging"  >
+					
+					<listhead >
+					   
+												
+						<listheader width="6%" >Nr. Ficha</listheader>
+						<listheader width="12%">Data de Submissão</listheader>
+						<listheader width="12%">Classificação</listheader>
+						<listheader width="12%">Categoria</listheader>
+						
+						
+						
+					</listhead>
+					
+				<template name="model">
+					<listitem>
+
+								
+								<listcell label="${each.numeroFicha}"></listcell>
+								<listcell label="${each.created}"></listcell>
+								<listcell label="${each.classificacao.nome}"></listcell>
+								<listcell label="${each.utente.tipo_utente.designacao}"></listcell>
+								
+                            	
+                      </listitem>
+                  </template>
+				
+			</listbox>
+			<separator/>
+			<div class="col-12" >
+              <div class="form-group">
+					<label class="form-label">Situação Actual</label>
+					<combobox id="cbx_situacao"  placeholder="Seleccione a Situação Actual" readonly="true" width="100%">
+                 	    <comboitem label="Recuperado" value="Recuperado" />
+                 		<comboitem label="Internado" value="Internado"/>
+                 		<comboitem label="Indeterminado" value="Indeterminado"/>
+                 		<comboitem label="Óbito" value="Óbito"/>  
+                   </combobox>		
+				</div>
+				
+			</div>
+			
+			<div class="row">
+										
+				<div class="col-md-12 col-lg-12">
+			        <div align="center" >
+			           <button style="background:rgb(51, 153, 122); color:white" iconSclass="fe fe-save" zclass="btn btn-secondary" width="30%" id="btn_actualizar">Actualizar</button>
+			         </div>
+			    </div>
+								
+		    </div>
+			
+    
+</window>

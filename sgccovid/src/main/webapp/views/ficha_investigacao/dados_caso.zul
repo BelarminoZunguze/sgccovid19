@@ -5,7 +5,7 @@
 		<div zclass="col-md-12 col-lg-12 col-xs-12 col-sm-12">
 			<div zclass="box box-success">
 				<div zclass="box-header">
-					<!-- <x:h3 class="box-title">Modulos Registados</x:h3> -->
+					
 					<separator />
 				</div>
 
@@ -23,8 +23,8 @@
 	              			
 	              			 <div class="col-2">
 	              			 
-	              			   <div height="50px" width="110%" style="background:rgb(51, 153, 122);
-	              			   text-align: center; padding: 12px;">
+	              			   <div height="40px" width="110%" style="background:rgb(51, 153, 122);
+	              			   text-align: center; padding: 10px;">
 				          			<label style="font-family:Arial;font-size:13pt;color:white;font-weight:bold;">
 				          			ETAPA
 				          			</label>
@@ -34,37 +34,37 @@
 			          			
 				          	
 				          	<div class="col-1">
-				          		<div height="50px" width="130%" style="background:rgb(51, 153, 122);
-				          		text-align: center; padding: 12px;">
+				          		<div height="40px" width="130%" style="background:rgb(51, 153, 122);
+				          		text-align: center; padding: 10px;">
 				          			<label style="font-family:Arial;font-size:14pt;color:white;font-weight:bold;">1</label>
 				          		</div>
 				          	</div>
 				          	
 				          	<div class="col-1">
-				          		<div height="50px" width="130%" style="background:#bbb;
-				          		text-align: center; padding: 12px;">
+				          		<div height="40px" width="130%" style="background:#bbb;
+				          		text-align: center; padding: 10px;">
 				          			<label style="font-family:Arial;font-size:14pt;color:white;font-weight:bold;">2</label>
 				          		</div>
 				          	</div>
 				          	
 				          	<div class="col-1">
-				          		<div height="50px" width="130%" style="background:#bbb;
-				          		text-align: center; padding: 12px;">
+				          		<div height="40px" width="130%" style="background:#bbb;
+				          		text-align: center; padding: 10px;">
 				          			<label style="font-family:Arial;font-size:14pt;color:white;font-weight:bold;">3</label>
 				          		</div>
 				          	</div>
 				          	
 				          	<div class="col-1">
-				          		<div height="50px" width="130%" style="background:#bbb;
-				          		text-align: center; padding: 12px;">
+				          		<div height="40px" width="130%" style="background:#bbb;
+				          		text-align: center; padding: 10px;">
 				          			<label style="font-family:Arial;font-size:14pt;color:white;font-weight:bold;">4</label>
 				          		</div>
 				          	</div>
-				          	<div class="col-4"></div>
+				          	<div class="col-5"></div>
 				          	
 				          	<div class="col-1">
-				          		<div height="50px" width="130%" style="background:rgb(51, 153, 122);
-				          		text-align: center; padding: 12px;">
+				          		<div height="40px" width="130%" style="background:rgb(51, 153, 122);
+				          		text-align: center; padding: 10px;">
 				          			<label style="font-family:Arial;font-size:14pt;color:white;font-weight:bold;">0 %</label>
 				          		</div>
 				          	</div>
@@ -82,7 +82,7 @@
 						<!-- 	<h:hr/> -->
 						<h:label class="box-title" 
 							style="font-family:Arial;font-size:12pt;color:rgb(51, 153, 122);text-align:center; font-weight:bold;">
-							DADOS DO UTENTE
+							DADOS PESSOAIS DO CASO
 						</h:label>
 								
 					</div>
@@ -91,11 +91,11 @@
 					
 					
 					<div>
-						<div zclass="box-body">
+					  <div zclass="box-body">
 						<div class="row">
 								
 						<div zclass="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-						<div class="form-group">    	
+						 <div class="form-group">    	
 							
 							
 						    <div class="form-group">
@@ -106,7 +106,7 @@
 								<div >
 									<div>
 									  <textbox id="txtNome" zclass="form-control" width="90%" 
-									  constraint="no empty/.[a-z]+/: Por favor insira um nome válido!"
+									  constraint="no empty: Este campo não pode ser nulo!"
 									  > </textbox>
 							        </div>
 								</div>
@@ -139,14 +139,14 @@
 						    
 							
 							<div class="form-group">
-						       <label style="font-weight:bold;font-size:11pt">Gênero:  </label> 
+						       <label style="font-weight:bold;font-size:11pt">Sexo:  </label> 
 						        <label style="font-weight:bold;color:red">*</label>
 						       
 								<div >
 									<combobox id="cbxGenero"
-										readonly="true" placeholder="Selecione o Gênero" width="90%"
+										readonly="true" placeholder="Selecione o Sexo" width="90%"
 										autocomplete="true"
-										constraint="no empty: Selecione o Gênero!">
+										constraint="no empty: Selecione o Sexo!">
 										
 											<comboitem label="Masculino" value="Masculino"></comboitem>
 											<comboitem label="Feminino" value="Feminino"></comboitem>
@@ -174,6 +174,29 @@
 					<div zclass="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 						<div class="form-group">
 						
+							<div class="form-group">
+						       
+						       <label style="font-weight:bold;font-size:11pt">Categoria:  </label> 
+						        <label style="font-weight:bold;color:red">*</label>
+						
+						
+								<div >
+									<combobox id="cbxTipoUtente"
+										readonly="true" placeholder="Selecione a Categoria" width="90%"
+										autocomplete="true"
+										constraint="no empty: Selecione a Categoria!">
+										
+										<template name="model">
+											<comboitem
+												label="${each.designacao}">
+											</comboitem>
+										</template>
+										
+									</combobox>
+								</div>
+						
+						    </div>
+						
 						    <div class="form-group">
 						       <label style="font-weight:bold;font-size:11pt">Nacionalidade:  </label> 
 						        <label style="font-weight:bold;color:red">*</label>
@@ -184,36 +207,15 @@
 										autocomplete="true"
 										constraint="no empty: Selecione a Nacionalidade!">
 										    <comboitem label="Moçambicana" value="Moçambicana"></comboitem>
-											<comboitem label="Outra"></comboitem>
+											<comboitem label="Outra" value="Outra"></comboitem>
 									</combobox>
 								</div>
 						
 						    </div>
 						    
-						    <div class="form-group">
-						       
-						       <label style="font-weight:bold;font-size:11pt">Tipo de utente:  </label> 
-						        <label style="font-weight:bold;color:red">*</label>
-						
-						
-								<div >
-									<combobox id="cbxTipoUtente"
-										readonly="true" placeholder="Selecione o tipo de utente" width="90%"
-										autocomplete="true"
-										constraint="no empty: Selecione o tipo de utente!">
-										
-										<template name="model">
-											<comboitem
-												label="${each.designacao}">
-											</comboitem>
-										</template>
-										
-									</combobox>
-								</div>
-						
-						    </div>
 						    
-						    <div class="form-group">
+						    
+						    <div class="form-group" id="div_provincia_residencia">
 						        <label style="font-weight:bold;font-size:11pt">Província de Residência:  </label> 
 						        <label style="font-weight:bold;color:red">*</label>
 						
@@ -221,8 +223,7 @@
 								<div >
 									<combobox id="cbxProvincia"
 										readonly="true" placeholder="Selecione a Província" width="90%"
-										autocomplete="true"
-										constraint="no empty: Selecione a Província!">
+										autocomplete="true" >
 										<template name="model">
 											<comboitem
 												label="${each.designacao}">
@@ -233,7 +234,7 @@
 						
 						    </div>
 						    
-						    <div class="form-group">
+						    <div class="form-group" id="div_distrito_residencia">
 						    	<label style="font-weight:bold;font-size:11pt">Distrito de Residência:  </label> 
 						        <label style="font-weight:bold;color:red">*</label>
 						
@@ -241,8 +242,7 @@
 								<div >
 									<combobox id="cbxDistrito"
 										readonly="true" placeholder="Selecione a distrito" width="90%"
-										autocomplete="true"
-										constraint="no empty: Selecione a distrito!">
+										autocomplete="true">
 										<template name="model">
 											<comboitem
 												label="${each.designacao}">

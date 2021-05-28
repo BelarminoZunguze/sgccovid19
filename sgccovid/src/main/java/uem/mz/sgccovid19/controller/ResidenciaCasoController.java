@@ -21,6 +21,7 @@ import uem.mz.sgccovid19.entity.Distrito;
 import uem.mz.sgccovid19.entity.Ficha;
 import uem.mz.sgccovid19.entity.FichaContactoDirecto;
 import uem.mz.sgccovid19.entity.Provincia;
+import uem.mz.sgccovid19.entity.Sector;
 import uem.mz.sgccovid19.entity.Utente;
 import uem.mz.sgccovid19.entity.administracao.User;
 import uem.mz.sgccovid19.service.DistritoService;
@@ -157,19 +158,29 @@ public class ResidenciaCasoController extends GenericForwardComposer{
     	 
     	if(rdb_sim_isolamento.isSelected()) {
     		ficha.setEmIsolamento(true);
-    		ficha.setLocal_isolamento((String)cbxLocalIsolamento.getSelectedItem().getValue());
-    		ficha.setDistrito_isolamento((Distrito)cbxDistrIsolamento.getSelectedItem().getValue());
+    		
+    		
+    		ficha.setLocal_isolamento((String)(cbxLocalIsolamento.getSelectedItem()==null ? null : cbxLocalIsolamento.getSelectedItem().getValue()));
+			 
+    		ficha.setDistrito_isolamento((Distrito)(cbxDistrIsolamento.getSelectedItem()==null ? null : cbxDistrIsolamento.getSelectedItem().getValue()));
+    		
+    		
     		
     	}else {ficha.setEmIsolamento(false);}
     	
-    	ficha.setDataQueInformoUnidade(dtb_dataInformou.getValue());
-    	ficha.setDataUltimaVezNaUnidade(dtb_dataUltima.getValue());
+    	if(dtb_dataInformou.getValue()!=null) {
+    		ficha.setDataQueInformoUnidade(dtb_dataInformou.getValue());
+    	}
+    	if(dtb_dataUltima.getValue()!=null) {
+    		ficha.setDataUltimaVezNaUnidade(dtb_dataUltima.getValue());
+    	}
+    	
     	
     	if(txt_outras.getValue()!=null) {
     		ficha.setOutrasInformacoes(txt_outras.getValue());
     	}
     	
-    	ficha.setNumeroFicha("F"+ficha.getId());
+    	//ficha.setNumeroFicha("F"+ficha.getId());
     	
     	fichaService.saveOrUpdate(ficha);
     	

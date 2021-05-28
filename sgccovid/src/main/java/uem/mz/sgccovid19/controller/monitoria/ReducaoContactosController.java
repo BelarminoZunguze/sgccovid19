@@ -200,10 +200,7 @@ public class ReducaoContactosController extends GenericForwardComposer{
 		target.getChildren().clear();
 		Executions.createComponents("views/monitoria/gestao_casos.zul", target, map);
 
-		links = new ArrayList<String>();
-		links.add("Gestão de caso Mitigação");
-		Breadcrumb.drawn(breadcrumb, "", links);
-
+		
 		
 	}
    

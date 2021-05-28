@@ -84,6 +84,9 @@ public class FichaController extends GenericForwardComposer{
 	private ListModelList<Ficha> fichaModel;
 	
 	private Listbox lbxFichas;
+	private Listbox lbxSituacao;
+	
+	private Combobox cbx_situacao;
 	
 	private Ficha ficha;
 	
@@ -129,6 +132,7 @@ public class FichaController extends GenericForwardComposer{
 	private UnidadeOrganica uniorg;
 	private Classificacao classific;
 	private TipoUtente tipoUte;
+	private String estado;
 	
 	private Date dataInicio;
 	private Date dataFim;
@@ -165,8 +169,6 @@ public class FichaController extends GenericForwardComposer{
 		buscarClassificacao();
 		buscarTipoUtente();
 		buscarFichas();
-		
-	
 		
 		
 		
@@ -208,8 +210,10 @@ public class FichaController extends GenericForwardComposer{
 	}
 	
 	public void onClick$btn_pesquisar() {
+		if(txt_nrFicha.getValue()!=null) {
+			numeroFicha = txt_nrFicha.getValue();
+		}
 		
-		numeroFicha = txt_nrFicha.getValue();
 		
 		if(user.getId()==1) {
 			if(cbx_unidade.getSelectedItem()!=null) {
@@ -237,17 +241,25 @@ public class FichaController extends GenericForwardComposer{
 			
 		}
 		
-		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte, dataInicio, dataFim);
+		if(cbx_situacao.getSelectedItem()!=null) {
+			estado  = cbx_situacao.getSelectedItem().getValue();
+		}
+		
+		pesquisaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte, dataInicio, dataFim, estado);
 		fichaModel = new ListModelList<Ficha>(pesquisaList);
 		lbxFichas.setModel(fichaModel);
 		total_resultados.setValue("Total de Resultados: "+pesquisaList.size());
 		pesquisaList.clear();
+		txt_nrFicha.setValue(null);
 		
 		
 	}
 	
+	
+	
 	public void onClick$btn_nova_ficha() {
-
+		
+		
 		final HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("target", target);
 		target.getChildren().clear();
@@ -271,6 +283,22 @@ public class FichaController extends GenericForwardComposer{
 		target.getChildren().clear();
 		Executions.createComponents("views/ficha_investigacao/detalhes.zul", target, map);
 
+		
+	}
+	
+	public void onClickActualizarFicha(ForwardEvent evt){
+				
+		ficha = (Ficha) evt.getData();
+		final HashMap<String, Object> map = new HashMap<String, Object>();
+		//target.getChildren().clear();
+ 		map.put("ficha", ficha);
+ 		map.put("target", target);
+ 		
+		Window window = (Window)Executions.createComponents(
+                "views/ficha_investigacao/situacao_actual.zul", target, map);
+        window.doModal();
+        
+    	
 		
 	}
 	

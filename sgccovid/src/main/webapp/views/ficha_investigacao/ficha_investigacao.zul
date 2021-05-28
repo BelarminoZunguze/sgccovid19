@@ -61,8 +61,8 @@
 										
 										 <div class="col-md-6 col-lg-4">
 							              <div class="form-group">
-												<label class="form-label">Tipo de Utente</label>
-												<combobox id="cbxTipoUtente" readonly="true" placeholder="Selecione o tipo de Utente" width="100%"
+												<label class="form-label">Categoria</label>
+												<combobox id="cbxTipoUtente" readonly="true" placeholder="Selecione a categoria" width="100%"
 													autocomplete="true">
 													
 													<template name="model">
@@ -79,11 +79,22 @@
 					                </div>
 					                
 					                <div class="row">
+					                    <div class="col-md-6 col-lg-4">
+						                	<div class="form-group">
+												<label class="form-label">Situação Actual</label>
+												<combobox id="cbx_situacao"  placeholder="Seleccione a Situação Actual" readonly="true" width="100%">
+							                 	    <comboitem label="Recuperado" value="Recuperado" />
+							                 		<comboitem label="Internado" value="Internado"/>
+							                 		<comboitem label="Indeterminado" value="Indeterminado"/>
+							                 		<comboitem label="Óbito" value="Óbito"/>  
+							                   </combobox>		
+											</div>
+										  </div>
                     				
                     					<div class="col-md-6 col-lg-4">
 							              <div class="form-group">
-												<label class="form-label">Gênero</label>
-												<combobox id="cbx_genero"  placeholder="Seleccione o Gênero" readonly="true" width="100%">
+												<label class="form-label">Sexo</label>
+												<combobox id="cbx_genero"  placeholder="Seleccione o Sexo" readonly="true" width="100%">
 							                 	    <comboitem label="Masculino" value="Masculino" />
 							                 		<comboitem label="Feminino" value="Feminino"/>
 							                 </combobox>		
@@ -106,9 +117,12 @@
 					                          <datebox constraint="no future: Insira uma data válida!" id="dtb_Fim"  format="dd/MM/yyyy" width="39%"/> 
 					                        </div>
 					                     </div> 
-					                     
-					                    
-										<div class="col-md-6 col-lg-4" if="${sec:isAnyGranted('PESQUISAR_UNIDADE')}">
+					                     					                     
+					                </div>
+					                
+					                <div class="row">
+					                
+					                <div class="col-md-6 col-lg-4" if="${sec:isAnyGranted('PESQUISAR_UNIDADE')}">
 							              <div class="form-group">
 												<label class="form-label">Unidade Orgânica</label>
 												<combobox id="cbx_unidade"  placeholder="Seleccione a Unidade" readonly="true" width="100%">
@@ -119,7 +133,7 @@
 											</div>
 										</div>
 										
-										<div class="col-md-6 col-lg-4" if="${sec:isAnyGranted('PESQUISAR_DEPARTAMENTO')}">
+										<div class="col-md-6 col-lg-4" if="${sec:isAnyGranted('PESQUISAR_DEPARTAMENTO')}" visible="false">
 							              <div class="form-group">
 												<label class="form-label">Departamento</label>
 												<combobox id="cbx_departamento"  placeholder="Seleccione o Departamento" readonly="true" width="100%">
@@ -128,8 +142,8 @@
 							                   </combobox>		
 											</div>
 										</div>
-										
-					                     					                     
+					                
+					                
 					                </div>
 					                
 				                	
@@ -160,13 +174,13 @@
 					<listhead >
 					   
 												
-						<listheader width="7%" >Nr. Ficha</listheader>
-						<listheader width="13%">Data de Submissão</listheader>
-						<listheader width="18%">Classificação</listheader>
-						<listheader width="13%">Tipo de Utente</listheader>
+						<listheader width="6%" >Nr. Ficha</listheader>
+						<listheader width="11%">Data de Submissão</listheader>
+						<listheader width="11%">Classificação</listheader>
+						<listheader width="11%">Categoria</listheader>
+						<listheader width="16%">Situação Actual</listheader>
 						<listheader if="${sec:isAnyGranted('PESQUISAR_UNIDADE')}">Unidade Orgânica</listheader>
-						<listheader if="${sec:isAnyGranted('PESQUISAR_DEPARTAMENTO')}">Departamento</listheader>
-						<listheader width="13%">Detalhes</listheader>
+						<listheader width="12%">Detalhes</listheader>
 						
 						
 					</listhead>
@@ -179,8 +193,11 @@
 								<listcell label="${each.created}"></listcell>
 								<listcell label="${each.classificacao.nome}"></listcell>
 								<listcell label="${each.utente.tipo_utente.designacao}"></listcell>
+								<listcell label="${each.estado}">
+									<separator orient="vertical" spacing="2px" />
+									<button class="fe fe fe-edit" forward="onClick=onClickActualizarFicha(${each})" if="${sec:isAnyGranted('EDITAR_FICHA')}">Actualizar</button>
+								</listcell>
 								<listcell label="${each.utente.unidade.designacao}" if="${sec:isAnyGranted('PESQUISAR_UNIDADE')}"></listcell>
-								<listcell label="Recursos Humanos" if="${sec:isAnyGranted('PESQUISAR_DEPARTAMENTO')}"></listcell>
 								<listcell>
 								  
                             		<button class="fe fe fe-eye" forward="onClick=onClickVerFicha(${each})"></button>

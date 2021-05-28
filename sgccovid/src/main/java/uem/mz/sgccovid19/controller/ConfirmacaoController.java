@@ -101,6 +101,7 @@ public class ConfirmacaoController extends GenericForwardComposer{
 	private Label label_sector_fora;
 	private Label label_outros2;
 	private Label label_outros_espacos2;
+	private Label label_localIsolamento;
 	
 	private FichaContactoDirecto fichContacto;
 	
@@ -165,10 +166,20 @@ public class ConfirmacaoController extends GenericForwardComposer{
 		
 		if(ficha.isViajou()==true) {
 			label_viajou.setValue("Sim");
-			label_Proveniencia.setValue(ficha.getProveniencia());
-			label_meio_transporte.setValue(ficha.getMeioTransporte());
-			Date dataEntrada = ficha.getDataEntradaNoPais();
-			label_data_entrada.setValue(dateFormat.format(dataEntrada));
+			
+			if(ficha.getProveniencia()!=null) {
+				label_Proveniencia.setValue(ficha.getProveniencia());
+			}
+			
+			if(ficha.getMeioTransporte()!=null) {
+				label_meio_transporte.setValue(ficha.getMeioTransporte());
+			}
+			
+			if(ficha.getDataEntradaNoPais()!=null) {
+				Date dataEntrada = ficha.getDataEntradaNoPais();
+				label_data_entrada.setValue(dateFormat.format(dataEntrada));
+			}
+			
 			
 			if(ficha.isDetectadoNoPontoEntrada()==true) {
 				label_Detectado.setValue("Sim");	
@@ -183,15 +194,24 @@ public class ConfirmacaoController extends GenericForwardComposer{
 			div_proveniencia.setVisible(false);
 			}
 		
-		
-		label_provincia_residencia.setValue(ficha.getUtente().getDistrito().getProvincia().getDesignacao());
-		label_distrito_residencia.setValue(ficha.getUtente().getDistrito().getDesignacao());
-		label_endereco.setValue(ficha.getUtente().getEndereco());
+		if(ficha.getUtente().getDistrito().getDesignacao()!=null) {
+			label_provincia_residencia.setValue(ficha.getUtente().getDistrito().getProvincia().getDesignacao());
+			label_distrito_residencia.setValue(ficha.getUtente().getDistrito().getDesignacao());
+			label_endereco.setValue(ficha.getUtente().getEndereco());
+			
+		}
 		
 		if(ficha.isEmIsolamento()==true) {
 			label_emIsolamento.setValue("Sim");
-			label_provincia_Isolamento.setValue(ficha.getDistrito_isolamento().getProvincia().getDesignacao());
-			label_distrito_Isolamento.setValue(ficha.getDistrito_isolamento().getDesignacao());
+			if(ficha.getDistrito_isolamento()!=null) {
+				label_provincia_Isolamento.setValue(ficha.getDistrito_isolamento().getProvincia().getDesignacao());
+				label_distrito_Isolamento.setValue(ficha.getDistrito_isolamento().getDesignacao());
+			}
+			
+			if(ficha.getLocal_isolamento()!=null) {
+				label_localIsolamento.setValue(ficha.getLocal_isolamento());
+			}
+			
 		} else {label_emIsolamento.setValue("Não");}
 		
 		
@@ -200,9 +220,17 @@ public class ConfirmacaoController extends GenericForwardComposer{
 			
 			if(ficha.getFichaContacto().isTeveContactoDentro()==true) {
 				label_deparamento.setValue("Sim");
-				label_departamento_dentro.setValue(ficha.getFichaContacto().getDepartamentoDentro().getDesignacao());
+				
+				if(ficha.getFichaContacto().getDepartamentoDentro()!=null) {
+					label_departamento_dentro.setValue(ficha.getFichaContacto().getDepartamentoDentro().getDesignacao());
+				}
+				
 				label_sector.setValue("Sim");
-				label_sector_dentro.setValue(ficha.getFichaContacto().getSectorDentro().getDesignacao());
+				
+				if(ficha.getFichaContacto().getSectorDentro()!=null) {
+					label_sector_dentro.setValue(ficha.getFichaContacto().getSectorDentro().getDesignacao());
+				}
+				
 				
 				if(ficha.getFichaContacto().getOutrosEspacosDentro()==null) {
 					label_outros.setValue("Não");
@@ -217,11 +245,23 @@ public class ConfirmacaoController extends GenericForwardComposer{
 			
 			if(ficha.getFichaContacto().isTeveContactoFora()==true) {
 				label_unidade_contacto.setValue("Sim");
-				label_unidade_fora.setValue(ficha.getFichaContacto().getUnidadeFora().getDesignacao());
+				
+				if(ficha.getFichaContacto().getUnidadeFora()!=null) {
+					label_unidade_fora.setValue(ficha.getFichaContacto().getUnidadeFora().getDesignacao());
+				}
+				
+				
 				label_deparamento2.setValue("Sim");
-				label_departamento_fora.setValue(ficha.getFichaContacto().getDepartamentoFora().getDesignacao());
+				
+				if(ficha.getFichaContacto().getDepartamentoFora()!=null) {
+					label_departamento_fora.setValue(ficha.getFichaContacto().getDepartamentoFora().getDesignacao());
+				}
 				label_sector2.setValue("Sim");
-				label_sector_fora.setValue(ficha.getFichaContacto().getSectorFora().getDesignacao());
+				
+				if(ficha.getFichaContacto().getSectorFora()!=null) {
+					label_sector_fora.setValue(ficha.getFichaContacto().getSectorFora().getDesignacao());
+				}
+				
 				
 				if(ficha.getFichaContacto().getOutrosEspacosFora()!=null) {
 					label_outros2.setValue("Sim");

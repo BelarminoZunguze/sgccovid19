@@ -78,6 +78,7 @@
 										
 						<div class="col-md-12 col-lg-12">
 					        <div align="right" >
+					           <button style="background:rgb(51, 153, 122); color:white" iconSclass="fe fe-arrow-left" zclass="btn btn-secondary" width="10%" id="btn_voltar_ficha" >Voltar</button>
 					           <button label="Próximo" style="background:rgb(51, 153, 122); color:white" iconSclass="fe fe-arrow-right" zclass="btn btn-secondary" id="btn_proximo1"></button>
 					         </div>
 					    </div>

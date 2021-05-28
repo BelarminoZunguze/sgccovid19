@@ -49,6 +49,7 @@ public class DadosNotificacaoController extends GenericForwardComposer{
 	
 	private User user;
 	
+	private List<Ficha> fichaList;
 	
 	private Utente utente;
 	private Ficha ficha;
@@ -133,31 +134,52 @@ public class DadosNotificacaoController extends GenericForwardComposer{
      public void onClick$btn_proximo3() {
     	if(ficha==null) {
     		ficha = new Ficha();
-    		ficha.setNumeroFicha("F");
+    		fichaList = fichaService.buscarFichasPorUnidade(user.getUnidade());
+    		int numero = fichaList.size();
+    		numero+=1;
+    		ficha.setNumeroFicha("F"+user.getUnidade().getId()+""+numero);
     	}
     	
     	ficha.setClassificacao((Classificacao)(cbxClassificacao.getSelectedItem().getValue()));
-    	ficha.setDataTeste(dtb_dataTeste.getValue());
-    	ficha.setDataNotificacao(dtb_dataNotificacao.getValue());
+    	
+    	if(dtb_dataTeste.getValue()!=null) {
+    		ficha.setDataTeste(dtb_dataTeste.getValue());
+    	}
+    	if(dtb_dataNotificacao.getValue()!=null) {
+    		ficha.setDataNotificacao(dtb_dataNotificacao.getValue());
+    	}
+    	
     	
     	if(rdb_sim.isSelected()) {
     		ficha.setViajou(true);
-    		ficha.setProveniencia(txt_proveniencia.getValue());
-    		ficha.setPontoEntrada(txt_pontoEntrada.getValue());
+    		if(txt_proveniencia.getValue()!=null) {
+    			ficha.setProveniencia(txt_proveniencia.getValue());
+    		}
+    		if(txt_pontoEntrada.getValue()!=null) {
+    			ficha.setPontoEntrada(txt_pontoEntrada.getValue());
+    		}
+    		
     		
     		if(rdb_sim_detectado.isSelected()) {
     		   ficha.setDetectadoNoPontoEntrada(true);
     		} else {ficha.setDetectadoNoPontoEntrada(false);}
     		
-    		ficha.setDataEntradaNoPais(dtb_dataEntrada.getValue());
-    		ficha.setMeioTransporte(txt_MeioTransporte.getValue());
+    		if(dtb_dataEntrada.getValue()!=null) {
+    			ficha.setDataEntradaNoPais(dtb_dataEntrada.getValue());
+    		}
+    		
+    		
+    		if(txt_MeioTransporte.getValue()!=null) {
+    			ficha.setMeioTransporte(txt_MeioTransporte.getValue());
+    		}
+    		
     		
     	} else {ficha.setViajou(false);}
     	
     	ficha.setUserCreated(user.getId());
     	ficha.setUserUpdated(user.getId());
     	
-    	ficha.setEstado("Pendente");
+    	ficha.setEstado("Indeterminado");
     	
     	
     	

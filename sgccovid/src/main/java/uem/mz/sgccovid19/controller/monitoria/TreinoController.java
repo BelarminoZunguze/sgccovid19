@@ -199,10 +199,7 @@ public class TreinoController extends GenericForwardComposer{
 		target.getChildren().clear();
 		Executions.createComponents("views/monitoria/confirmacao_monitoria.zul", target, map);
 
-		links = new ArrayList<String>();
-		links.add("Confirmar");
-		Breadcrumb.drawn(breadcrumb, "", links);
-
+		
 		
 	}
    

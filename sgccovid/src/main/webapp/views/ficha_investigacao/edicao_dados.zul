@@ -13,7 +13,7 @@
 					<separator orient="vertical" spacing="8px" />
 					<h:label class="box-title" 
 						style="font-family:Arial;color:black;text-align:left; font-weight:bold;">
-						DADOS DO UTENTE
+						DADOS PESSOAIS DO CASO
 					</h:label>
 							
 				 </div>
@@ -82,11 +82,11 @@
 								    
 									
 									<div class="form-group">
-								       <label class="form-label"> Gênero:  </label>
+								       <label class="form-label"> Sexo:  </label>
 								
 										<div >
 											<combobox id="cbxGenero"
-												readonly="true" placeholder="Selecione o Gênero" width="90%"
+												readonly="true" placeholder="Selecione o Sexo" width="90%"
 												autocomplete="true">
 												
 													<comboitem label="Masculino" value="Masculino"></comboitem>
@@ -113,11 +113,11 @@
 								<div class="form-group">
 								
 								<div class="form-group">
-								       <label class="form-label"> Tipo de Utente:  </label>
+								       <label class="form-label"> Categoria:  </label>
 								
 										<div >
 											<combobox id="cbxTipoUtente"
-												readonly="true" placeholder="Selecione o tipo de Utente" width="90%"
+												readonly="true" placeholder="Selecione a Categoria" width="90%"
 												autocomplete="true">
 												
 												<template name="model">

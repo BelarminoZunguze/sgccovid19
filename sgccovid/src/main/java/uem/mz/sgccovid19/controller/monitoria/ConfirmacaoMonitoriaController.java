@@ -143,10 +143,7 @@ public class ConfirmacaoMonitoriaController extends GenericForwardComposer{
 		target.getChildren().clear();
 		Executions.createComponents("views/monitoria/ficha_monitoria.zul", target, map);
 
-		links = new ArrayList<String>();
-		links.add("Confirmar");
-		Breadcrumb.drawn(breadcrumb, "", links);
-
+		
 		
 	}
    

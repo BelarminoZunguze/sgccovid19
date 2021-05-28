@@ -203,10 +203,7 @@ public class DisponibilizacaoController extends GenericForwardComposer{
 		target.getChildren().clear();
 		Executions.createComponents("views/monitoria/reducao_contactos.zul", target, map);
 
-		links = new ArrayList<String>();
-		links.add("Redução de Contactos Interpessoais");
-		Breadcrumb.drawn(breadcrumb, "", links);
-
+		
 		
 	}
    

@@ -27,25 +27,26 @@ implements FichaDao{
 		Query query = getCurrentSession().createQuery("select fich from Ficha fich JOIN FETCH fich.utente ute "
 				+ "LEFT JOIN FETCH fich.classificacao class"
 				+ "LEFT JOIN FETCH ute.distrito dis LEFT JOIN FETCH dis.provincia pro"
-				+ "LEFT JOIN FETCH ute.tipo_utente tput");
+				+ "LEFT JOIN FETCH ute.tipo_utente tput order by fich.numeroFicha asc");
 		
 		return query.list();
 	}
 	
 	@Override
-	public List<Ficha> buscarFichas(String numFicha, UnidadeOrganica uniOrg, String genero, Classificacao classific, TipoUtente tipoUte, Date dataInicio, Date dataFim) {
+	public List<Ficha> buscarFichas(String numFicha, UnidadeOrganica uniOrg, String genero, Classificacao classific, TipoUtente tipoUte, Date dataInicio, Date dataFim, String estado) {
 		String ParamnumFicha = numFicha=="" ? "fich.numeroFicha is not null" : "fich.numeroFicha=:numFicha";
 		String Paramunidade = uniOrg==null ? "" : "and ute.unidade=:uniOrg";
 		String Paramgenero = genero==null ? "" : "and ute.genero=:genero";
 		String Paramclass = classific==null ? "" : "and fich.classificacao=:classific";
 		String ParamData = dataFim==null ? "" : "and fich.created>=:dataInicio and fich.created<=:dataFim";
+		String Paramestado = estado==null ? "" : "and fich.estado=:estado";
 		
 		String Paramtipo = tipoUte==null ? "" : "and tput=:tipoUte"; 
 		
 		Query query = getCurrentSession().createQuery("select fich from Ficha fich JOIN FETCH fich.utente ute "
 				+ "LEFT JOIN FETCH fich.classificacao cla"
 				+ "LEFT JOIN FETCH ute.distrito dis LEFT JOIN FETCH dis.provincia pro"
-				+ "LEFT JOIN FETCH ute.tipo_utente tput where "+ParamnumFicha+" "+Paramunidade+" "+Paramgenero+" "+Paramclass+" "+Paramtipo+" "+ParamData);
+				+ "LEFT JOIN FETCH ute.tipo_utente tput where "+ParamnumFicha+" "+Paramunidade+" "+Paramgenero+" "+Paramclass+" "+Paramtipo+" "+ParamData+" "+Paramestado);
 		if(numFicha!=""){query.setParameter("numFicha", numFicha);}
 		
 		if(uniOrg!=null){query.setParameter("uniOrg", uniOrg);}
@@ -54,6 +55,7 @@ implements FichaDao{
 		if(tipoUte!=null){query.setParameter("tipoUte", tipoUte);}
 		if(dataInicio!=null){query.setParameter("dataInicio", dataInicio);}
 		if(dataFim!=null){query.setParameter("dataFim", dataFim);}
+		if(estado!=null){query.setParameter("estado", estado);}
 		return query.list();
 	}
 	
@@ -63,7 +65,7 @@ implements FichaDao{
 		Query query = getCurrentSession().createQuery("select fich from Ficha fich JOIN FETCH fich.utente ute "
 				+ "LEFT JOIN FETCH fich.classificacao cla"
 				+ "LEFT JOIN FETCH ute.distrito dis LEFT JOIN FETCH dis.provincia pro"
-				+ "LEFT JOIN FETCH ute.tipo_utente tput where ute.unidade=:uniOrg");
+				+ "LEFT JOIN FETCH ute.tipo_utente tput where ute.unidade=:uniOrg order by fich.numeroFicha asc");
 		if(uniOrg!=null){query.setParameter("uniOrg", uniOrg);}
 		return query.list();
 	}

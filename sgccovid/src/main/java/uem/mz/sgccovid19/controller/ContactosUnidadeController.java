@@ -138,15 +138,15 @@ public class ContactosUnidadeController extends GenericForwardComposer{
 		  sectortList = sectorService.buscarSector();
 		  sectorModel = new ListModelList<Sector>(sectortList);
 		  cbxSectorDentro.setModel(sectorModel);
-		  cbxSectorFora.setModel(sectorModel);
+		  //cbxSectorFora.setModel(sectorModel);
 		
 	}
 	
 	public void buscarDepartamento() {
-		  departList = departamentoService.buscarDepartamento();
+		  departList = departamentoService.buscarDepartamentoPorUnidade(user.getUnidade());
 		  departModel = new ListModelList<Departamento>(departList);
 		  cbxDepartamentoDentro.setModel(departModel);
-		  cbxDepartamentoFora.setModel(departModel);
+		  //cbxDepartamentoFora.setModel(departModel);
 		
 	}
 	
@@ -154,6 +154,31 @@ public class ContactosUnidadeController extends GenericForwardComposer{
 	  	  uniOrgList = unidadeOrganicaService.buscarUnidadeOrganica();
 	  	  uniOrgModel = new ListModelList<UnidadeOrganica>(uniOrgList);
 	  	  cbxUnidadeFora.setModel(uniOrgModel);    	  
+	}
+	
+	public void onSelect$cbxDepartamentoDentro() {
+		//buscar sector por departamento
+		  sectortList = sectorService.buscarSectorPorDepartamento((Departamento)cbxDepartamentoDentro.getSelectedItem().getValue());
+		  sectorModel = new ListModelList<Sector>(sectortList);
+		  cbxSectorDentro.setModel(sectorModel);
+		 
+		
+	}
+	
+	public void onSelect$cbxUnidadeFora() {
+		//buscar departamento por unidade 
+		  departList = departamentoService.buscarDepartamentoPorUnidade((UnidadeOrganica)cbxUnidadeFora.getSelectedItem().getValue());
+		  departModel = new ListModelList<Departamento>(departList);
+		  cbxDepartamentoFora.setModel(departModel);
+		
+	}
+	
+	public void onSelect$cbxDepartamentoFora() {
+		//buscar sector por departamento
+		  sectortList = sectorService.buscarSectorPorDepartamento((Departamento)cbxDepartamentoFora.getSelectedItem().getValue());
+		  sectorModel = new ListModelList<Sector>(sectortList);
+		  cbxSectorFora.setModel(sectorModel);
+		
 	}
 	
 	
@@ -192,7 +217,7 @@ public class ContactosUnidadeController extends GenericForwardComposer{
     			 fichContacto.setSectorDentro((Sector)(cbxSectorDentro.getSelectedItem()==null ? null : cbxSectorDentro.getSelectedItem().getValue()));
     			 
     			 if(txtOutrosDentro.getValue()!=null) {
-    				 
+
     				 fichContacto.setOutrosEspacosDentro(txtOutrosDentro.getValue());
     			 }
     			 

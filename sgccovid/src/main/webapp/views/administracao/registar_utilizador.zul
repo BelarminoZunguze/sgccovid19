@@ -28,7 +28,7 @@
 	                    <div class="form-group">    	
 							<label zclass=" control-label"> Utilizador:  </label>
 							<div>
-									<textbox id="txtUtilizador" zclass="form-control" width="100%" placeholder="Digite o apelido"> </textbox>
+									<textbox id="txtUtilizador" zclass="form-control" width="100%" placeholder="Digite o utilizador"> </textbox>
 							</div>
 						</div>
 						<div class="form-group">

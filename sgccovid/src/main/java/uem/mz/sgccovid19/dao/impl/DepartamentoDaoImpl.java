@@ -19,8 +19,7 @@ implements DepartamentoDao{
 
 	@Override
 	public List<Departamento> buscarDepartamento() {
-		Query query = getCurrentSession().createQuery("select dep from Departamento dep JOIN FETCH dep.provincia prov "
-				+ " left join fetch dep.unidade_organica uo left join fetch uo.instituicao inst order by dep.designacao asc ");
+		Query query = getCurrentSession().createQuery("select dep from Departamento dep order by dep.designacao asc ");
 		return query.list();
 	}
 

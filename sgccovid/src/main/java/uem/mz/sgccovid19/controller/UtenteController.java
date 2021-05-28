@@ -47,6 +47,8 @@ public class UtenteController extends GenericForwardComposer{
 	private Div breadcrumb;
 	
 	private Div target;
+	private Div div_provincia_residencia;
+	private Div div_distrito_residencia;
 	
 	private User user;
 	
@@ -197,13 +199,15 @@ public class UtenteController extends GenericForwardComposer{
 	   
 	   utente.setNacionalidade((String)cbxNacionalidade.getSelectedItem().getValue());
 	   utente.setTipo_utente((TipoUtente)(cbxTipoUtente.getSelectedItem().getValue()));
-	   utente.setDistrito((Distrito)(cbxDistrito.getSelectedItem().getValue()));
+	   
+	 
+	   if(cbxDistrito.getSelectedItem().getValue()!=null) {
+		   utente.setDistrito((Distrito)(cbxDistrito.getSelectedItem().getValue()));  
+	   }
+	   
+	   
 	   utente.setEndereco(txtEndereco.getValue());
 	   
-	    
-	   
-	    
-	    
 	    
 	    utente.setUnidade(user.getUnidade());
 	    utente.setUserCreated(user.getId());
@@ -255,7 +259,7 @@ public class UtenteController extends GenericForwardComposer{
 		   if(utente.getDataNascimento()!=null) {
 			   dtb_dataNascimento.setValue(utente.getDataNascimento());
 		   }
-		   
+			  
 		   if(utente.getDistrito().getProvincia()!=null) {
 			   cbxProvincia.setValue(utente.getDistrito().getProvincia().getDesignacao());
 		   }
@@ -263,6 +267,7 @@ public class UtenteController extends GenericForwardComposer{
 		   if(utente.getDistrito()!=null) {
 			   cbxDistrito.setValue(utente.getDistrito().getDesignacao());
 		   }
+		   
 		   
 		   if(utente.getEndereco()!=null) {
 			   txtEndereco.setValue(utente.getEndereco());
@@ -279,7 +284,6 @@ public class UtenteController extends GenericForwardComposer{
     
      
     
-   
      
      
      

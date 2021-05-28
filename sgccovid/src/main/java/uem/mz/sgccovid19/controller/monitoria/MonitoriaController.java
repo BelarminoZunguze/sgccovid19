@@ -174,9 +174,7 @@ public class MonitoriaController extends GenericForwardComposer{
 				target, map);
 
 		
-		links = new ArrayList<String>();
-		links.add("Nova Ficha");
-		Breadcrumb.drawn(breadcrumb, "", links);
+		
 	}
 	
 	public void onClickVerFicha(ForwardEvent evt){
@@ -189,9 +187,6 @@ public class MonitoriaController extends GenericForwardComposer{
 		target.getChildren().clear();
 		Executions.createComponents("views/monitoria/detalhes_monitoria.zul", target, map);
 
-		links = new ArrayList<String>();
-		links.add("Detalhes da Ficha");
-		Breadcrumb.drawn(breadcrumb, "", links);
 		
 	}
 	

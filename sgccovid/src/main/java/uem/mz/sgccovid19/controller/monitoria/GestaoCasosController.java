@@ -199,10 +199,7 @@ public class GestaoCasosController extends GenericForwardComposer{
 		target.getChildren().clear();
 		Executions.createComponents("views/monitoria/treino_capacitacao.zul", target, map);
 
-		links = new ArrayList<String>();
-		links.add("Treino/Capacitação");
-		Breadcrumb.drawn(breadcrumb, "", links);
-
+		
 		
 	}
    

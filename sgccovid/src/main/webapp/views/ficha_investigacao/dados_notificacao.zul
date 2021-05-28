@@ -5,7 +5,7 @@
 		<div zclass="col-md-12 col-lg-12 col-xs-12 col-sm-12">
 			<div zclass="box box-success">
 				<div zclass="box-header">
-					<!-- <x:h3 class="box-title">Modulos Registados</x:h3> -->
+					
 					<separator />
 				</div>
 
@@ -22,8 +22,8 @@
 	              			
 	              			 <div class="col-2">
 	              			 
-	              			   <div height="50px" width="110%" style="background:rgb(51, 153, 122);
-	              			   text-align: center; padding: 12px;">
+	              			   <div height="40px" width="110%" style="background:rgb(51, 153, 122);
+	              			   text-align: center; padding: 10px;">
 				          			<label style="font-family:Arial;font-size:13pt;color:white;font-weight:bold;">
 				          			ETAPA
 				          			</label>
@@ -33,37 +33,37 @@
 			          			
 				          	
 				          	<div class="col-1">
-				          		<div height="50px" width="130%" style="background:rgb(51, 153, 122);
-				          		text-align: center; padding: 12px;">
+				          		<div height="40px" width="130%" style="background:rgb(51, 153, 122);
+				          		text-align: center; padding: 10px;">
 				          			<label style="font-family:Arial;font-size:14pt;color:white;font-weight:bold;">1</label>
 				          		</div>
 				          	</div>
 				          	
 				          	<div class="col-1">
-				          		<div height="50px" width="130%" style="background:rgb(51, 153, 122);
-				          		text-align: center; padding: 12px;">
+				          		<div height="40px" width="130%" style="background:rgb(51, 153, 122);
+				          		text-align: center; padding: 10px;">
 				          			<label style="font-family:Arial;font-size:14pt;color:white;font-weight:bold;">2</label>
 				          		</div>
 				          	</div>
 				          	
 				          	<div class="col-1">
-				          		<div height="50px" width="130%" style="background:#bbb;
-				          		text-align: center; padding: 12px;">
+				          		<div height="40px" width="130%" style="background:#bbb;
+				          		text-align: center; padding: 10px;">
 				          			<label style="font-family:Arial;font-size:14pt;color:white;font-weight:bold;">3</label>
 				          		</div>
 				          	</div>
 				          	
 				          	<div class="col-1">
-				          		<div height="50px" width="130%" style="background:#bbb;
-				          		text-align: center; padding: 12px;">
+				          		<div height="40px" width="130%" style="background:#bbb;
+				          		text-align: center; padding: 10px;">
 				          			<label style="font-family:Arial;font-size:14pt;color:white;font-weight:bold;">4</label>
 				          		</div>
 				          	</div>
-				          	<div class="col-4"></div>
+				          	<div class="col-5"></div>
 				          	
 				          	<div class="col-1">
-				          		<div height="50px" width="130%" style="background:rgb(51, 153, 122);
-				          		text-align: center; padding: 12px;">
+				          		<div height="40px" width="130%" style="background:rgb(51, 153, 122);
+				          		text-align: center; padding: 10px;">
 				          			<label style="font-family:Arial;font-size:14pt;color:white;font-weight:bold;">25 %</label>
 				          		</div>
 				          	</div>

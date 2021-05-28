@@ -13,7 +13,7 @@ public interface FichaDao extends GenericDao<Ficha>{
 	
 	public List<Ficha> buscarFicha();
 	
-	public List<Ficha> buscarFichas(String numFicha, UnidadeOrganica uniOrg, String genero, Classificacao classific, TipoUtente tipoUte, Date dataInicio, Date dataFim);
+	public List<Ficha> buscarFichas(String numFicha, UnidadeOrganica uniOrg, String genero, Classificacao classific, TipoUtente tipoUte, Date dataInicio, Date dataFim, String estado);
 	
 	public List<Ficha> buscarFichasPorUnidade(UnidadeOrganica uniOrg);
 	

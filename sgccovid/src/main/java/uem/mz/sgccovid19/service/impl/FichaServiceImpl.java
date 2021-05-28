@@ -27,9 +27,9 @@ public class FichaServiceImpl extends GenericServiceImpl<Ficha> implements Ficha
 	}
 	
 	@Override
-	public List<Ficha> buscarFichas(String numFicha, UnidadeOrganica uniOrg, String genero, Classificacao classific, TipoUtente tipoUte, Date dataInicio, Date dataFim) {
+	public List<Ficha> buscarFichas(String numFicha, UnidadeOrganica uniOrg, String genero, Classificacao classific, TipoUtente tipoUte, Date dataInicio, Date dataFim, String estado) {
 		// TODO Auto-generated method stub
-		return fichDao.buscarFichas(numFicha, uniOrg, genero, classific, tipoUte, dataInicio, dataFim);
+		return fichDao.buscarFichas(numFicha, uniOrg, genero, classific, tipoUte, dataInicio, dataFim, estado);
 	}
 	
 	@Override
