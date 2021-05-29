@@ -8,11 +8,8 @@
 	<queryString language="SQL">
 		<![CDATA[]]>
 	</queryString>
-	<field name="classificacao.nome" class="java.lang.String"/>
-	<field name="utente.genero" class="java.lang.String"/>
-	<field name="utente.tipo_utente.designacao" class="java.lang.String"/>
-	<field name="utente.distrito.designacao" class="java.lang.String"/>
-	<field name="estado" class="java.lang.String"/>
+	<field name="designacao" class="java.lang.String"/>
+	<field name="userCreated" class="java.lang.Long"/>
 	<group name="Group1">
 		<groupHeader>
 			<band height="48">
@@ -26,44 +23,17 @@
 					<text><![CDATA[Categoria]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="214" y="22" width="120" height="21" uuid="2b3378be-4513-4523-bb9a-ed7ca0d299fd">
-						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="02d52585-2cee-4f7a-9d40-eda7debb96ac"/>
-					</reportElement>
-					<textElement>
-						<font isBold="true"/>
-					</textElement>
-					<text><![CDATA[Distrito de residencia]]></text>
-				</staticText>
-				<staticText>
-					<reportElement x="113" y="22" width="100" height="20" uuid="30bb2a11-c5ff-4d8b-a3cf-e34c10bfaeb9">
+					<reportElement x="186" y="22" width="100" height="20" uuid="30bb2a11-c5ff-4d8b-a3cf-e34c10bfaeb9">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f10b15e9-03e7-4a7b-8813-8c18a85f4412"/>
 					</reportElement>
 					<textElement>
 						<font isBold="true"/>
 					</textElement>
-					<text><![CDATA[Sexo]]></text>
-				</staticText>
-				<staticText>
-					<reportElement x="335" y="22" width="100" height="21" uuid="57490eff-a87d-475c-9022-71754114a025">
-						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="59f458d4-23ef-4886-9877-7e6767ce8058"/>
-					</reportElement>
-					<textElement>
-						<font isBold="true"/>
-					</textElement>
-					<text><![CDATA[Classificacao]]></text>
+					<text><![CDATA[Quantidade]]></text>
 				</staticText>
 				<line>
 					<reportElement mode="Opaque" x="-1" y="38" width="550" height="1" forecolor="#0CAB51" backcolor="#09B33F" uuid="797cc6a7-eb64-4c1c-bf3d-31adf1af3475"/>
 				</line>
-				<staticText>
-					<reportElement x="440" y="22" width="100" height="21" uuid="6811ffa2-9860-4ddb-a9fc-40645e9b579b">
-						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="59f458d4-23ef-4886-9877-7e6767ce8058"/>
-					</reportElement>
-					<textElement>
-						<font isBold="true"/>
-					</textElement>
-					<text><![CDATA[Situação Actual]]></text>
-				</staticText>
 			</band>
 		</groupHeader>
 		<groupFooter>
@@ -79,7 +49,7 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="91" splitType="Stretch">
+		<band height="113" splitType="Stretch">
 			<image>
 				<reportElement x="242" y="0" width="70" height="59" uuid="b40adbaf-c0e6-475b-8d62-3f67f063e660"/>
 				<imageExpression><![CDATA[$P{imagemLogo}]]></imageExpression>
@@ -90,6 +60,13 @@
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[PLATAFORMA DE NOTIFICAÇÃO E MONITORIA DE CASOS DE COVID-19]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="90" width="550" height="20" uuid="90f59f5c-83f6-4f60-87b7-b3a6c6373da9"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FICHAS POR CATEGORIA]]></text>
 			</staticText>
 		</band>
 	</title>
@@ -105,31 +82,13 @@
 				<reportElement x="0" y="0" width="100" height="20" uuid="93fda95d-b63a-4941-bd92-411c82c69dcb">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e768a5d2-cc0e-4ce6-9bf6-2f7c817b68e8"/>
 				</reportElement>
-				<textFieldExpression><![CDATA[$F{utente.tipo_utente.designacao}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{designacao}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="113" y="0" width="100" height="21" uuid="278be155-b8f0-41f6-acf9-8eb7a5709b8b">
+				<reportElement x="198" y="0" width="100" height="21" uuid="278be155-b8f0-41f6-acf9-8eb7a5709b8b">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f10b15e9-03e7-4a7b-8813-8c18a85f4412"/>
 				</reportElement>
-				<textFieldExpression><![CDATA[$F{utente.genero}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="335" y="0" width="100" height="20" uuid="1ac993c8-7cde-4db3-8763-8461cfa9fe93">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="59f458d4-23ef-4886-9877-7e6767ce8058"/>
-				</reportElement>
-				<textFieldExpression><![CDATA[$F{classificacao.nome}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="214" y="0" width="100" height="21" uuid="7f44ac9a-2c4e-420b-a216-97089324e906">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f10b15e9-03e7-4a7b-8813-8c18a85f4412"/>
-				</reportElement>
-				<textFieldExpression><![CDATA[$F{utente.distrito.designacao}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="440" y="0" width="100" height="20" uuid="b51160be-b8ee-4c22-9987-c856a1a14ff8">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="59f458d4-23ef-4886-9877-7e6767ce8058"/>
-				</reportElement>
-				<textFieldExpression><![CDATA[$F{estado}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{userCreated}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

@@ -1,3 +1,8 @@
 eclipse.preferences.version=1
 encoding//src/main/webapp/reports/Admin.jrxml=UTF-8
 encoding//src/main/webapp/reports/FichaNotificacao.jrxml=UTF-8
+encoding//src/main/webapp/reports/ficha_categoria.jrxml=UTF-8
+encoding//src/main/webapp/reports/ficha_classificacao.jrxml=UTF-8
+encoding//src/main/webapp/reports/ficha_distrito.jrxml=UTF-8
+encoding//src/main/webapp/reports/ficha_sexo.jrxml=UTF-8
+encoding//src/main/webapp/reports/ficha_situacao.jrxml=UTF-8

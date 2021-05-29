@@ -3,6 +3,7 @@ package uem.mz.sgccovid19.controller;
 import java.awt.Dialog;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -26,6 +27,7 @@ import org.zkoss.zul.Textbox;
 import org.zkoss.zul.Window;
 
 import net.sf.jasperreports.engine.JRException;
+import uem.mz.sgccovid19.entity.Actividade;
 import uem.mz.sgccovid19.entity.Classificacao;
 import uem.mz.sgccovid19.entity.Distrito;
 import uem.mz.sgccovid19.entity.EstatisticaDistrito;
@@ -408,51 +410,132 @@ public class EstatisticasController extends GenericForwardComposer{
 		buscarPorSituacao();
 	}
 	
+	//imprimir por classificação
 	public void onClick$btn_imprimir() throws JRException{
 		
-		
-		
 		if(user.getId()==1) {
-			fichaList = fichaService.buscarFicha();
-		} else {
-			fichaList = fichaService.buscarFichasPorUnidade(user.getUnidade());
+			if(cbx_unidade.getSelectedItem()!=null) {
+				uniorg = cbx_unidade.getSelectedItem().getValue();
+			}
 		}
 	 
+		if(dtb_dataInicio.getValue()!=null && dtb_Fim.getValue()!=null) {
+			
+			dataInicio = dtb_dataInicio.getValue();
+			dataFim = dtb_Fim.getValue();
+			
+		}
 	
+		fichaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte, dataInicio, dataFim, estado);
 	
-	
-	
-	if (fichaList.isEmpty()) {			
-		Clients.showNotification("Informação Vazia", "info", win, "middle_center", 3000);
-	} else {
-
-		MasterRep mas = new MasterRep();
-		Map<String, Object> map = new HashMap<String, Object>();
-		int total = fichaList.size();
 		
-		final Execution ex = Executions.getCurrent();
-		InputStream inputV = ex.getDesktop().getWebApp().getResourceAsStream("/images/moz.png");
-		map.put("imagemLogo", inputV);
-		map.put("total", total);
-		String realPath = ex.getDesktop().getWebApp().getRealPath("/reports/");
-		map.put("SUBREPORT_DIR", realPath);
-		mas.imprimir("/reports/Admin.jrxml", fichaList, map, win);
-	}
+		//Manipulações
+				List<Classificacao> controleClassifcacao = new ArrayList<Classificacao>();
+				List<Classificacao> finalClassifcacao = new ArrayList<Classificacao>();
+				
+				for(int i=0;i<fichaList.size();i++) {
+					
+					controleClassifcacao.add(fichaList.get(i).getClassificacao());
+					
+				}
+				
+				for(int i=0;i<controleClassifcacao.size();i++) {
+					
+					
+					Classificacao clas = controleClassifcacao.get(i);
+					
+					if(finalClassifcacao.contains(clas)) {
+						
+						
+					}else {
+						long quantidade = Collections.frequency(controleClassifcacao, clas);
+						
+						clas.setUserCreated(quantidade);
+						finalClassifcacao.add(clas);
+						
+					}
+					
+					
+					
+				}
+				
+				
+				
+		//Fim manipulações
+		
+		if (fichaList.isEmpty()) {			
+			Clients.showNotification("Informação Vazia", "info", win, "middle_center", 3000);
+		} else {
 	
-	fichaList.clear();
-	
-	
-	}
+			MasterRep mas = new MasterRep();
+			Map<String, Object> map = new HashMap<String, Object>();
+			int total = fichaList.size();
+			
+			final Execution ex = Executions.getCurrent();
+			InputStream inputV = ex.getDesktop().getWebApp().getResourceAsStream("/images/moz.png");
+			map.put("imagemLogo", inputV);
+			map.put("total", total);
+			String realPath = ex.getDesktop().getWebApp().getRealPath("/reports/");
+			map.put("SUBREPORT_DIR", realPath);
+			mas.imprimir("/reports/ficha_classificacao.jrxml", finalClassifcacao, map, win);
+		}
+		
+		fichaList.clear();
+		
+		
+		}
 	
 	public void onClick$btn_imprimir_tipo_utente() throws JRException{
 		
 		
 		
 		if(user.getId()==1) {
-			fichaList = fichaService.buscarFicha();
-		} else {
-			fichaList = fichaService.buscarFichasPorUnidade(user.getUnidade());
+			if(cbx_unidade.getSelectedItem()!=null) {
+				uniorg = cbx_unidade.getSelectedItem().getValue();
+			}
 		}
+	 
+		if(dtb_dataInicio.getValue()!=null && dtb_Fim.getValue()!=null) {
+			
+			dataInicio = dtb_dataInicio.getValue();
+			dataFim = dtb_Fim.getValue();
+			
+		}
+	
+		fichaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte, dataInicio, dataFim, estado);
+	
+		//Manipulações
+				List<TipoUtente> controleTipoUtente = new ArrayList<TipoUtente>();
+				List<TipoUtente> finalTipoUtente = new ArrayList<TipoUtente>();
+				
+				for(int i=0;i<fichaList.size();i++) {
+					
+					controleTipoUtente.add(fichaList.get(i).getUtente().getTipo_utente());
+					
+				}
+				
+				for(int i=0;i<controleTipoUtente.size();i++) {
+					
+					TipoUtente tipo = controleTipoUtente.get(i);
+					
+					if(finalTipoUtente.contains(tipo)) {
+						
+						
+					}else {
+						long quantidade = Collections.frequency(controleTipoUtente, tipo);
+						
+						tipo.setUserCreated(quantidade);
+					    finalTipoUtente.add(tipo);
+						
+					}
+					
+					
+					
+				}
+				
+				
+				
+	   //Fim manipulações
 	 
 	
 	
@@ -472,7 +555,7 @@ public class EstatisticasController extends GenericForwardComposer{
 			map.put("total", total);
 			String realPath = ex.getDesktop().getWebApp().getRealPath("/reports/");
 			map.put("SUBREPORT_DIR", realPath);
-			mas.imprimir("/reports/Admin.jrxml", fichaList, map, win);
+			mas.imprimir("/reports/ficha_categoria.jrxml", finalTipoUtente, map, win);
 		}
 		
 		fichaList.clear();
@@ -483,15 +566,57 @@ public class EstatisticasController extends GenericForwardComposer{
 	public void onClick$btn_imprimir_distrito() throws JRException{
 		
 		
-		
 		if(user.getId()==1) {
-			fichaList = fichaService.buscarFicha();
-		} else {
-			fichaList = fichaService.buscarFichasPorUnidade(user.getUnidade());
+			if(cbx_unidade.getSelectedItem()!=null) {
+				uniorg = cbx_unidade.getSelectedItem().getValue();
+			}
 		}
 	 
+		if(dtb_dataInicio.getValue()!=null && dtb_Fim.getValue()!=null) {
+			
+			dataInicio = dtb_dataInicio.getValue();
+			dataFim = dtb_Fim.getValue();
+			
+		}
 	
-	
+		fichaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte, dataInicio, dataFim, estado);
+		
+	 
+		//Manipulações
+		
+		controleDistrito = new ArrayList<Distrito>();
+		List<Distrito> finalDistrito = new ArrayList<Distrito>();
+		
+		for(int i=0;i<fichaList.size();i++) {
+			
+			controleDistrito.add(fichaList.get(i).getUtente().getDistrito());
+			
+			
+			
+		}
+		
+		for(int i=0;i<controleDistrito.size();i++) {
+			
+			Distrito dist = controleDistrito.get(i);
+			
+			if(finalDistrito.contains(dist)) {
+				
+				
+			}else {
+				long quantidade = Collections.frequency(controleDistrito, dist);
+				
+			    dist.setUserCreated(quantidade);
+				finalDistrito.add(dist);
+				
+			}
+			
+			
+			
+		}
+		
+		
+		
+	   //Fim manipulações
 	
 	
 		if (fichaList.isEmpty()) {			
@@ -508,7 +633,7 @@ public class EstatisticasController extends GenericForwardComposer{
 			map.put("total", total);
 			String realPath = ex.getDesktop().getWebApp().getRealPath("/reports/");
 			map.put("SUBREPORT_DIR", realPath);
-			mas.imprimir("/reports/Admin.jrxml", fichaList, map, win);
+			mas.imprimir("/reports/ficha_distrito.jrxml", finalDistrito, map, win);
 		}
 		
 		fichaList.clear();
@@ -521,10 +646,34 @@ public class EstatisticasController extends GenericForwardComposer{
 		
 		
 		if(user.getId()==1) {
-			fichaList = fichaService.buscarFicha();
-		} else {
-			fichaList = fichaService.buscarFichasPorUnidade(user.getUnidade());
+			if(cbx_unidade.getSelectedItem()!=null) {
+				uniorg = cbx_unidade.getSelectedItem().getValue();
+			}
 		}
+	 
+		if(dtb_dataInicio.getValue()!=null && dtb_Fim.getValue()!=null) {
+			
+			dataInicio = dtb_dataInicio.getValue();
+			dataFim = dtb_Fim.getValue();
+			
+		}
+	
+		fichaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte, dataInicio, dataFim, estado);
+	
+		//Manipulações
+			List<String> Sexo = new ArrayList<String>();
+			int masculino = 0;
+			int feminino = 0;
+			
+			for(int i=0;i<fichaList.size();i++) {
+				Sexo.add(fichaList.get(i).getUtente().getGenero());
+			}
+			
+			
+			masculino = Collections.frequency(Sexo, "Masculino");
+			feminino = Collections.frequency(Sexo, "Feminino");
+			
+	   //Fim manipulações
 	 
 	
 	
@@ -542,9 +691,11 @@ public class EstatisticasController extends GenericForwardComposer{
 			InputStream inputV = ex.getDesktop().getWebApp().getResourceAsStream("/images/moz.png");
 			map.put("imagemLogo", inputV);
 			map.put("total", total);
+			map.put("masculino", masculino);
+			map.put("feminino", feminino);
 			String realPath = ex.getDesktop().getWebApp().getRealPath("/reports/");
 			map.put("SUBREPORT_DIR", realPath);
-			mas.imprimir("/reports/Admin.jrxml", fichaList, map, win);
+			mas.imprimir("/reports/ficha_sexo.jrxml", fichaList, map, win);
 		}
 		
 		fichaList.clear();
@@ -553,39 +704,68 @@ public class EstatisticasController extends GenericForwardComposer{
 	}
 	
 	
-public void onClick$btn_imprimir_situacao() throws JRException{
+	public void onClick$btn_imprimir_situacao() throws JRException{
 		
 		
 		
 		if(user.getId()==1) {
-			fichaList = fichaService.buscarFicha();
-		} else {
-			fichaList = fichaService.buscarFichasPorUnidade(user.getUnidade());
+			if(cbx_unidade.getSelectedItem()!=null) {
+				uniorg = cbx_unidade.getSelectedItem().getValue();
+			}
 		}
 	 
-	
-	
-	
-	
-		if (fichaList.isEmpty()) {			
-			Clients.showNotification("Informação Vazia", "info", win, "middle_center", 3000);
-		} else {
-	
-			MasterRep mas = new MasterRep();
-			Map<String, Object> map = new HashMap<String, Object>();
-			int total = fichaList.size();
+		if(dtb_dataInicio.getValue()!=null && dtb_Fim.getValue()!=null) {
 			
-			final Execution ex = Executions.getCurrent();
-			InputStream inputV = ex.getDesktop().getWebApp().getResourceAsStream("/images/moz.png");
-			map.put("imagemLogo", inputV);
-			map.put("total", total);
-			String realPath = ex.getDesktop().getWebApp().getRealPath("/reports/");
-			map.put("SUBREPORT_DIR", realPath);
-			mas.imprimir("/reports/Admin.jrxml", fichaList, map, win);
+			dataInicio = dtb_dataInicio.getValue();
+			dataFim = dtb_Fim.getValue();
+			
 		}
+	
+		fichaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte, dataInicio, dataFim, estado);
+	
+	 
+		//Manipulações
+				List<String> situacaoActual = new ArrayList<String>();
+				int recuperados = 0;
+				int internados = 0;
+				int indeterminados = 0;
+				int obitos = 0;
+				
+				for(int i=0;i<fichaList.size();i++) {
+					situacaoActual.add(fichaList.get(i).getEstado());
+				}
+				
+				
+				recuperados = Collections.frequency(situacaoActual, "Recuperado");
+				internados = Collections.frequency(situacaoActual, "Internado");
+				indeterminados = Collections.frequency(situacaoActual, "Indeterminado");
+				obitos = Collections.frequency(situacaoActual, "Óbito");
+				
+		   //Fim manipulações
 		
-		fichaList.clear();
+			if (fichaList.isEmpty()) {			
+				Clients.showNotification("Informação Vazia", "info", win, "middle_center", 3000);
+			} else {
 		
+				MasterRep mas = new MasterRep();
+				Map<String, Object> map = new HashMap<String, Object>();
+				int total = fichaList.size();
+				
+				final Execution ex = Executions.getCurrent();
+				InputStream inputV = ex.getDesktop().getWebApp().getResourceAsStream("/images/moz.png");
+				map.put("imagemLogo", inputV);
+				map.put("total", total);
+				map.put("recuperados", recuperados);
+				map.put("internados", internados);
+				map.put("indeterminados", indeterminados);
+				map.put("obitos", obitos);
+				String realPath = ex.getDesktop().getWebApp().getRealPath("/reports/");
+				map.put("SUBREPORT_DIR", realPath);
+				mas.imprimir("/reports/ficha_situacao.jrxml", fichaList, map, win);
+			}
+			
+			fichaList.clear();
+			
 		
 	}
 	

@@ -210,6 +210,7 @@ public class FichaController extends GenericForwardComposer{
 	}
 	
 	public void onClick$btn_pesquisar() {
+		
 		if(txt_nrFicha.getValue()!=null) {
 			numeroFicha = txt_nrFicha.getValue();
 		}
@@ -319,17 +320,43 @@ public class FichaController extends GenericForwardComposer{
 	}
 	
 	public void onClick$btn_imprimir() throws JRException{
-		
-		
 			
-			if(user.getId()==1) {
-				fichaList = fichaService.buscarFicha();
-			} else {
-				fichaList = fichaService.buscarFichasPorUnidade(user.getUnidade());
+		if(txt_nrFicha.getValue()!=null) {
+			numeroFicha = txt_nrFicha.getValue();
+		}
+		
+		
+		if(user.getId()==1) {
+			if(cbx_unidade.getSelectedItem()!=null) {
+				uniorg = cbx_unidade.getSelectedItem().getValue();
 			}
-		 
+		} else {uniorg=user.getUnidade();}
 		
 		
+		if(cbx_classificacao.getSelectedItem()!=null) {
+			classific = cbx_classificacao.getSelectedItem().getValue();
+		}
+		
+		if(cbx_genero.getSelectedItem()!=null) {
+			genero = cbx_genero.getSelectedItem().getValue();
+		}
+		
+		if(cbxTipoUtente.getSelectedItem()!=null) {
+			tipoUte = cbxTipoUtente.getSelectedItem().getValue();
+		}
+		
+		if(dtb_dataInicio.getValue()!=null && dtb_Fim.getValue()!=null) {
+			
+			dataInicio = dtb_dataInicio.getValue();
+			dataFim = dtb_Fim.getValue();
+			
+		}
+		
+		if(cbx_situacao.getSelectedItem()!=null) {
+			estado  = cbx_situacao.getSelectedItem().getValue();
+		}
+		
+		fichaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte, dataInicio, dataFim, estado);
 		
 		
 		if (fichaList.isEmpty()) {			
