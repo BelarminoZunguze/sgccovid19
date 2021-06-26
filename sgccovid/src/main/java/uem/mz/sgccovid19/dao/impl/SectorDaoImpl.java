@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import uem.mz.sgccovid19.dao.SectorDao;
 import uem.mz.sgccovid19.entity.Departamento;
+import uem.mz.sgccovid19.entity.Ficha;
 import uem.mz.sgccovid19.entity.Sector;
 
 @Repository
@@ -18,7 +19,7 @@ public class SectorDaoImpl extends GenericDaoImpl<Sector> implements SectorDao{
 
 	@Override
 	public List<Sector> buscarSector() {
-		Query query = getCurrentSession().createQuery("select sect from Sector sect join fetch sect.departamento dep");
+		Query query = getCurrentSession().createQuery("select sect from Sector sect join fetch sect.departamento dep left join fetch dep.unidade_organica uo");
 		return query.list();
 	}
 
@@ -31,5 +32,7 @@ public class SectorDaoImpl extends GenericDaoImpl<Sector> implements SectorDao{
 		query.setParameter("dep", dep);
 		return query.list();
 	}
+	
+	
 
 }

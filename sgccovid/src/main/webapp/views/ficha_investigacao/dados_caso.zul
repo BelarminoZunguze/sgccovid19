@@ -223,7 +223,8 @@
 								<div >
 									<combobox id="cbxProvincia"
 										readonly="true" placeholder="Selecione a Província" width="90%"
-										autocomplete="true" >
+										autocomplete="true" 
+										constraint="no empty: Selecione a Província!">
 										<template name="model">
 											<comboitem
 												label="${each.designacao}">
@@ -241,8 +242,9 @@
 						       
 								<div >
 									<combobox id="cbxDistrito"
-										readonly="true" placeholder="Selecione a distrito" width="90%"
-										autocomplete="true">
+										readonly="true" placeholder="Selecione o distrito" width="90%"
+										autocomplete="true"
+										constraint="no empty: Selecione o distrito!">
 										<template name="model">
 											<comboitem
 												label="${each.designacao}">

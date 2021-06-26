@@ -1,0 +1,236 @@
+<?page title="Supervisor" contentType="text/html;charset=UTF-8"?>
+<zk xmlns:p="xhtml">
+
+	<window id="winRegistoSupervisor" title="" border="none"
+		contentStyle="overflow:auto" width="100%"
+		apply="uem.mz.sgccovid19.controller.administracao.DadosController">
+		
+		
+		
+		
+		
+		
+		<p:div class="col-lg-12">
+			
+			
+			
+			<p:div class="ibox-content">
+			  <p:div class="form-horizontal">
+				
+				<p:div class="col-lg-12">
+		 		  <p:div class="row">
+					<p:div class="col-md-1 col-lg-6">
+					 
+					   <p:div class="col-md-1 col-lg-12" visible="true" id="div_dados_utilizador">
+					   
+					        	
+	                    <div class="form-group">    	
+							<label zclass="control-label" style="font-weight:bold"> Nome:  </label>
+							<div>
+								<label id="label_nome"></label>
+							</div>
+						</div>
+						
+						<div class="form-group">    	
+							<label zclass="control-label" style="font-weight:bold"> Nome do utilizador:  </label>
+							<div>
+								<label id="label_nome_utilizador"></label>
+							</div>
+						</div>
+						
+						<p:div class="form-group">
+								<label zclass="control-label" style="font-weight:bold">
+									Contacto:
+								</label>
+								<div>
+									<label class=" control-label" id="label_contacto">
+										
+									</label>
+								</div>
+						</p:div>
+						
+						<p:div class="form-group" id="div_labelUnidade">
+								<label zclass="control-label" style="font-weight:bold">
+									Unidade Orgânica:
+								</label>
+								<div>
+									<label class="control-label" id="label_unidade">
+										Belarmino
+									</label>
+								</div>
+						</p:div>
+												
+						<div align="right">
+						
+							<button style="background:rgb(51, 153, 122); color:white" 
+							iconSclass="fe fe-edit" zclass="btn btn-secondary" 
+							width="25%" id="btn_editar" >Editar Dados</button>
+						       
+							<button style="background:rgb(51, 153, 122); color:white" 
+							iconSclass="fe fe-edit" zclass="btn btn-secondary" 
+							width="25%" id="btn_alterar_senha" >Alterar Senha</button>
+								
+							
+							
+							<button style="background:rgb(51, 153, 122); color:white" 
+							iconSclass="fe fe-arrow-left" zclass="btn btn-secondary" 
+							width="24%" id="btn_voltar" >Voltar</button>
+							
+							<separator/>
+					     	
+							
+							
+						 </div>
+						</p:div>
+						
+						
+						
+						
+						<p:div class="row" id="div_edicao_dados" visible="false">
+						
+							<p:div class="col-md-1 col-lg-12">
+							
+								<div class="form-group">    	
+									<label zclass=" control-label"> Utilizador:  </label>
+									<div>
+											<textbox id="txtUtilizador" zclass="form-control" width="100%" placeholder="Digite o utilizador"> </textbox>
+									</div>
+								</div>
+								
+								
+								<p:div class="form-group" id="divNome">
+										<label zclass=" control-label">
+											Nome:
+										</label>
+										<div>
+											<textbox id="txtNome" zclass=" form-control" readonly="false" width="100%"
+												placeholder="Digite o nome" style="margin:0px">
+											</textbox>
+										</div>
+								</p:div>
+								
+								<p:div class="form-group" id="divContacto">
+										<label zclass=" control-label">
+											Contacto:
+										</label>
+										<div>
+											<textbox id="txtContacto" zclass=" form-control" readonly="false" width="100%"
+												placeholder="Digite o contacto" style="margin:0px">
+											</textbox>
+										</div>
+								</p:div>
+								
+								<p:div class="form-group" id="divUnidade">
+										<label zclass=" control-label">
+											Unidade Orgânica:
+										</label>
+										<div>
+											<combobox id="cbxUnidade" readonly="true"
+												placeholder="Selecione a Unidade Orgânica" width="100%"
+												autocomplete="true">
+												<template name="model">
+													<comboitem label="${each.designacao}">
+													</comboitem>
+												</template>
+											 </combobox>
+										</div>
+								</p:div>
+							
+							</p:div>
+						
+						</p:div>
+	                        	
+	                    
+						
+						
+						
+						
+						<p:div class="row" id="divSenha" visible="false">
+						
+							<p:div class="col-md-1 col-lg-12">
+							
+								<p:div class="form-group" >
+										<label zclass=" control-label">
+											Antiga Senha:
+										</label>
+										<div>
+											<textbox id="txtSenhaAntiga" type="password"
+												zclass=" form-control" readonly="false" width="100%"
+												placeholder="Digite a antiga senha" style="margin:0px"
+												constraint="no empty: este campo não pode ser nulo">
+											</textbox>
+										</div>
+								 </p:div>
+							
+								 <p:div class="form-group" >
+										<label zclass=" control-label">
+											Nova Senha:
+										</label>
+										<div>
+											<textbox id="txtSenha" type="password"
+												zclass=" form-control" readonly="false" width="100%"
+												placeholder="Digite a nova senha" style="margin:0px"
+												constraint="no empty: este campo não pode ser nulo">
+											</textbox>
+										</div>
+								 </p:div>
+								 
+								 <p:div class="form-group" id="divConfirmarSenha" >
+										<label zclass=" control-label">
+											Confirmar Nova Senha:
+										</label>
+										<div>
+											<textbox id="txtConfirmarSenha" type="password"
+												zclass=" form-control" width="100%"
+												placeholder="Confirme a nova senha" style="margin:0px"
+												constraint="no empty: este campo não pode ser nulo">
+											</textbox>
+										</div>
+								</p:div>
+							
+							
+							</p:div>
+						
+						</p:div>
+					      
+						
+						
+						
+						<div align="right" id="div_botoes" visible="false">
+						
+							<button style="background:rgb(51, 153, 122); color:white" 
+							iconSclass="fe fe-delete" zclass="btn btn-secondary" 
+							width="21%" id="btn_cancelar" >Cancelar</button>
+						       
+							<button style="background:rgb(51, 153, 122); color:white" 
+							iconSclass="fe fe-save" zclass="btn btn-secondary" 
+							width="21%" id="btn_actualizar" >Actualizar</button>
+							
+							
+						</div>
+
+
+	                
+
+
+	                 </p:div>
+	                 
+	                 
+	                        
+	                 
+       </p:div> 
+		</p:div>
+				
+				
+				
+				
+				
+				
+				
+					
+					
+				</p:div>
+			</p:div>
+		</p:div>
+	</window>
+</zk>

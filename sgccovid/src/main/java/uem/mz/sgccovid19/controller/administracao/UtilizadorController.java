@@ -302,10 +302,11 @@ public class UtilizadorController extends GenericForwardComposer {
 		// txtSenha.setDisabled(true);
 		txtNome.setRawValue(null);
 		txtContacto.setRawValue(null);
-		cbxUnidade.setModel(uniOrgModel);   
+		//cbxUnidade.setModel(uniOrgModel);   
 
-		cbxPerfil.setModel(listModPer);
-		cbxPerfil.setRawValue(null);
+		//cbxPerfil.setModel(listModPer);
+		cbxPerfil.setValue(null);
+		cbxUnidade.setValue(null);
 		 lbxUtilizador.getItems().clear();
 		// cbxPerfil.setVisible(false);
 		//////////////////////////limparLocal();

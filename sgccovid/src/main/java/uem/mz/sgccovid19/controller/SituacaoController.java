@@ -1,6 +1,7 @@
 package uem.mz.sgccovid19.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zk.ui.util.Clients;
 import org.zkoss.zk.ui.util.GenericForwardComposer;
 import org.zkoss.zul.Combobox;
+import org.zkoss.zul.Datebox;
 import org.zkoss.zul.Div;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Listbox;
@@ -40,6 +42,8 @@ public class SituacaoController extends GenericForwardComposer{
 	private Combobox cbx_situacao;
 	
 	private Ficha ficha;
+	
+	private Datebox dtb_data_quadro_clinico;
 	
 	@Wire
     Window modalDialog;
@@ -79,6 +83,11 @@ public class SituacaoController extends GenericForwardComposer{
 	public void onClick$btn_actualizar() {
 		
 			ficha.setEstado((String)cbx_situacao.getSelectedItem().getValue());
+			
+			if(dtb_data_quadro_clinico.getValue()!=null) {
+				ficha.setData_quadro_clinico(dtb_data_quadro_clinico.getValue());
+			}
+			
 			ficha.setUserUpdated(user.getId());
 			fichaService.update(ficha);
 			Clients.showNotification("Actualizado com Sucesso!","info", win, "middle_center", 3000);

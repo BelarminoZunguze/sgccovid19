@@ -131,7 +131,7 @@
 								
 								    </div>
 								
-								<div class="form-group">
+								<div class="form-group" visible="false">
 								       <label class="form-label"> Unidade Orgânica:  </label>
 								
 										<div >
@@ -448,11 +448,10 @@
 															<combobox id="cbxLocalIsolamento" readonly="true"
 																placeholder="Selecione o local de isolamento" width="90%"
 																autocomplete="true">
-																
-																	<comboitem label="Casa" value="Casa"></comboitem>
-																	<comboitem label="Hospital" value="Hospital"></comboitem>
-																	<comboitem label="Outro" value="Outro"></comboitem>
-																
+																<template name="model">
+																	<comboitem label="${each.designacao}">
+																	</comboitem>
+																</template>
 															</combobox>
 														</div>
 
@@ -566,252 +565,284 @@
 			 </div>
 			 <separator />
 			
-			<div class="col-12">
-     	                <div>
-                			  <div class="row" >
-                				
-                				<div class="col-md-6 col-lg-6">
-                				
-                				<div class="row" >
-                				 
-                				 <div class="col-md-6 col-lg-6">
-                 				 <div >
-                 				   <label class="form-label">
-							Teve Contacto Dentro da Unidade?
-						   </label>
-                 				 </div>
-                				  </div>
-                				 
-                				 <div class="col-md-6 col-lg-6">
-                 				 	   <div >								
-							  <div class="custom-controls-stacked">
-							    <radiogroup>
-								  <radio label="Sim" id="rdb_sim_dentro"></radio>
-								  <radio label="Não" id="rdb_nao_dentro"></radio>
-								</radiogroup>  
-							  </div>									
-					       </div>
+			
+		
+		<div zclass="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+			
+			
+			 <separator />
+			 <separator />
+			 
+			 <div class="row">
+		    	<div class="col-md-6 col-lg-6">
+               				
+               				<div class="row" >
+               				 
+               				 <div class="col-md-6 col-lg-6">
+                				 <div class="form-group">
+                				   <label class="form-label">
+						Teve Contacto Dentro da Unidade?
+					   </label>
                 				 </div>
-                				
-                				
-                				</div>
-                				
-                				  
-	                     
-	                </div>
-	                
-	                <div class="col-md-6 col-lg-6">
-                				
-                				<div class="row" >
-                				 
-                				 <div class="col-md-6 col-lg-6">
-                 				 <div class="form-group">
-                 				   <label class="form-label">
-							Teve Contacto Fora da Unidade?
-						   </label>
-                 				 </div>
-                				  </div>
-                				 
-                				 <div class="col-md-6 col-lg-6">
-                 				 	   <div >								
-							  <div class="custom-controls-stacked">
-							    <radiogroup>
-								  <radio label="Sim" id="rdb_sim_fora"></radio>
-								  <radio label="Não" id="rdb_nao_fora"></radio>
-								</radiogroup>  
-							  </div>									
-					       </div>
-                				 </div>
-                				
-                				
-                				</div>
-                				
-                				  
-	                     
-	                </div>
-	                     					                     
-	               </div>
-	               <separator/>
-	               
-                      
-	               
-	               
-	            <div class="row">
-	            
-	            <div class="col-md-6 col-lg-6">
-	            
-	                 <div class="row">
-				                
-				                   <div class="col-md-3 col-lg-3">
-										<label class="form-label">Departamento:</label>
-								   </div>
-            	    
-				              	    <div class="col-md-8 col-lg-8">
-					              	     <div class="form-group">
-	                    				  <combobox id="cbxDepartamentoDentro" readonly="true"
-											placeholder="Selecione o Departamento" width="100%"
-											autocomplete="true">
-											<template name="model">
-												<comboitem label="${each.designacao}">
-												</comboitem>
-											</template>
-										  </combobox>
-										</div>
-				              	    
-				              	    </div>
-				              	       
-								    
-				              	
-				             </div>
-				             
-				    <div class="row">
-				                
-				                   <div class="col-md-3 col-lg-3">
-										<label class="form-label">Sector:</label>
-								   </div>
-            	    
-           	    				<div class="col-md-8 col-lg-8">
-				              	    <div class="form-group">
-                    				  <combobox id="cbxSectorDentro" readonly="true"
-										placeholder="Selecione o Sector" width="100%"
-										autocomplete="true">
-										<template name="model">
-											<comboitem label="${each.designacao}">
-											</comboitem>
-										</template>
-									  </combobox>
-									</div>
-			              	    </div>
-									
-								       
-								    
-				              	
-	             </div>
-                				
-            		<div class="row">
-                				 
-                		<div class="col-md-11 col-lg-11">
-                 				 
-							<div class="form-group">
-                 				   <label class="form-label">
-										Outros Espaços:
-								   </label>
-             				</div>
-                 				 
-                 			<div class="form-group">
-					       		 <textbox id="txtOutrosDentro" zclass="form-control" width="100%" placeholder="Indique outros"> </textbox>
-			            	</div> 
-                		</div>
-                				 
-               	 </div>     
-	                </div>
-	                
-	                <div class="col-md-6 col-lg-6">
-	                
-	                <div class="row">
-				                
-				                   <div class="col-md-4 col-lg-4">
-										<label class="form-label">Unidade Orgânica:</label>
-								   </div>
-								   
-            	    			<div class="col-md-8 col-lg-8">
-				              	    <div class="form-group">
-                    				  <combobox id="cbxUnidadeFora" readonly="true"
-										placeholder="Selecione a Unidade Orgânica" width="100%"
-										autocomplete="true">
-										<template name="model">
-											<comboitem label="${each.designacao}">
-											</comboitem>
-										</template>
-									  </combobox>
-									</div>
-				              	  </div>  
-									
-								    
-				              	
-				             </div>
-				             
-				     <div class="row">
-				                
-				                   <div class="col-md-4 col-lg-4">
-										<label class="form-label">Departamento:</label>
-								   </div>
-            	    
-            	    			<div class="col-md-8 col-lg-8">
-				              	    <div class="form-group">
-                    				  <combobox id="cbxDepartamentoFora" readonly="true"
-										placeholder="Selecione o Departamento" width="100%"
-										autocomplete="true">
-										<template name="model">
-											<comboitem label="${each.designacao}">
-											</comboitem>
-										</template>
-									  </combobox>
-									</div>
-				              	 </div>   
-									
-				             </div>
-				             
-				      <div class="row">
-				                
-				                   <div class="col-md-4 col-lg-4">
-										<label class="form-label">Sector:</label>
-								   </div>
-            	    
-            	    			<div class="col-md-8 col-lg-8">
-				              	    <div class="form-group">
-                    				  <combobox id="cbxSectorFora" readonly="true"
-										placeholder="Selecione o Sector" width="100%"
-										autocomplete="true">
-										<template name="model">
-											<comboitem label="${each.designacao}">
-											</comboitem>
-										</template>
-									  </combobox>
-									</div>
-				              	 </div>   
-				              	
-				             </div>
-				             
-				             
-				    <div class="row">
-                				 
-                		<div class="col-md-12 col-lg-12">
-                 				 
-								<div class="form-group">
-		                 				   <label class="form-label">
-											Outros Espaços:
-										   </label>
-		              			</div>
-		                 				 
-		                 		<div class="form-group">
-							        <textbox id="txtoutrosFora" zclass="form-control" width="100%" placeholder="Indique outros"> </textbox>
-					             </div> 
-                		</div>
-                				 
-                	</div> 
-                				
-                				    
-	                </div>
-                				
-	                    
-		               
-	                  					                     
-	            </div>
-	               
-	               
-	               
-	            
-	               
-	               
-	               
-	               
+               				  </div>
+               				 
+               				 <div class="col-md-6 col-lg-6">
+               				 	   <div >								
+									  <div class="custom-controls-stacked">
+									    <radiogroup>
+										  <radio label="Sim" id="rdb_sim_dentro"></radio>
+										  <radio label="Não" id="rdb_nao_dentro"></radio>
+										</radiogroup>  
+									  </div>									
+							       </div>
+               				 </div>
+               				
+               				
+               				</div>
+               				
+               				  
+                     
                 </div>
+		    </div>
+			 
+			
+			
+			<div class="col-12" id="div_espacos_dentro" >
+  	                
+                <separator/>
+                
+                <label>Selecione os sectores com os quais teve contacto</label>
+                <separator/>
+                <div class="row">
+                
+		
+					<h:div class="form-group">
+                              		 
+                            <hlayout  style="padding-buttom:2px">
+                              <div hflex="1" vflex="true">
+   								<listbox id="lbxDepartamentoSectores"   checkmark="true" multiple="true"   rows="8" >
+   									 <listhead>
+   									 <listheader label="" width="5%"></listheader>
+   									 <listheader label="" width=""></listheader>
+   									 </listhead>
+   									  	<template name="model">
+           									 <listitem>
+           									 <listcell  />
+                								<listcell label="${each.departamento.designacao} - ${each.designacao}"/>
+                							</listitem>
+                						</template>
+   								</listbox>
+                             </div>
+                              		 
+                        		 <vbox spacing="20px" width="24px" >
+       								<h:a style="cursor:pointer; padding-left:25%" id="chooseAll"  ><h:span class="fa fa-arrow-circle-o-right"/></h:a>
+       								<h:a style="cursor:pointer; padding-left:25%" id="chooseBtn"  ><h:span class="fe fe-arrow-right-circle"/></h:a>
+       								<h:a style="cursor:pointer; padding-left:25%" id="removeBtn"  ><h:span class="fe fe-arrow-left-circle"/></h:a>
+      								<h:a style="cursor:pointer; padding-left:25%" id="removeAll" disabled="true" ><h:span class="fa fa-arrow-circle-o-left"/></h:a>
+   								</vbox>
+    								
+    						<div hflex="1" vflex="true" >
+    							<listbox id="lbxSectoresEscolhidos" emptyMessage="Sem dados registados" checkmark="true" multiple="true"   rows="8">
+    								 <listhead>
+   									  <listheader label="" width="5%"></listheader>
+   									  <listheader label="" width=""></listheader>
+   									  <listheader id="lhrRemove" label="" width="10%" align="center" ></listheader>
+   									 </listhead>
+    								<template name="model">
+           								<listitem>
+           									 <listcell/>
+                							 <listcell label="${each.departamento.designacao} - ${each.designacao}"/>
+                							 <listcell ><image src="/images/img/apagar.gif" forward="onClick=onClickRemoverSectores(${each})" /></listcell>
+                						</listitem>
+                						</template>
+   								</listbox>
+   							</div>
+                         
+                         </hlayout>
+                              		 
+                              		
+                              		
+                              		
+                 		</h:div>
+					</div>
+					
+			
+			<div class="row">
+                				 
+               		<div class="col-md-12 col-lg-12">
+                				 
+						<div class="form-group">
+                				   <label class="form-label">
+									Outros Espaços dentro da Unidade:
+							   </label>
+            				</div>
+                				 
+                			<div class="form-group">
+				       		 <textbox id="txtOutrosDentro" rows="2" zclass="form-control" width="100%" 
+				       		 placeholder="Indique outros espaços com os quais teve contacto dentro da unidade"> </textbox>
+		            	</div> 
+               		</div>
+               				 
+              	 </div>
+			
+			
 			              
 			                
 				            
 			                
 		</div> 
+		
+		
+		<h:hr height="2px"></h:hr>
+				
+		    <div class="row">
+		    	<div class="col-md-6 col-lg-6">
+               				
+               				<div class="row" >
+               				 
+               				 <div class="col-md-6 col-lg-6">
+                				 <div class="form-group">
+                				   <label class="form-label">
+						Teve Contacto Fora da Unidade?
+					   </label>
+                				 </div>
+               				  </div>
+               				 
+               				 <div class="col-md-6 col-lg-6">
+                				 	   <div >								
+						  <div class="custom-controls-stacked">
+						    <radiogroup>
+							  <radio label="Sim" id="rdb_sim_fora"></radio>
+							  <radio label="Não" id="rdb_nao_fora"></radio>
+							</radiogroup>  
+						  </div>									
+				       </div>
+               				 </div>
+               				
+               				
+               				</div>
+               				
+               				  
+                     
+                </div>
+		    </div>
+		    
+		    			
+				             
+				<div class="row" id="div_espacos_fora" >
+				
+				 
+				  
+				  	 <div class="col-12">
+				  	 				       
+				      <div class="row">
+				                
+	                   <div class="col-md-3 col-lg-3">
+							<label class="form-label">Unidade Orgânica:</label>
+					   </div>
+						   
+	         	    	<div class="col-md-6 col-lg-6">
+		              	    <div class="form-group">
+	                 				  <combobox id="cbxUnidadeFora" readonly="true"
+								placeholder="Selecione a Unidade Orgânica" width="100%"
+								autocomplete="true">
+								<template name="model">
+									<comboitem label="${each.designacao}">
+									</comboitem>
+								</template>
+							  </combobox>
+							</div>
+		              	  </div>  
+							
+						</div>    
+		              	
+		             </div>
+				
+				
+				  <div class="col-12">
+				  
+				   <separator/>
+	                
+	                <label>Selecione os sectores com os quais teve contacto</label>
+	                <separator/>
+               
+				  
+				  
+		
+					<h:div class="form-group">
+                              		
+                              		 
+                              		 
+                              		 
+                              <hlayout  style="padding-buttom:2px">
+                              <div hflex="1" vflex="true">
+   								<listbox id="lbxSectoresFora"   checkmark="true" multiple="true"   rows="8" >
+   									 <listhead>
+   									 <listheader label="" width="5%"></listheader>
+   									 <listheader label="" width=""></listheader>
+   									 </listhead>
+   									  	<template name="model">
+           									 <listitem>
+           									 <listcell  />
+                								<listcell label="${each.departamento.designacao} - ${each.designacao}"/>
+                							</listitem>
+                						</template>
+   								</listbox>
+                              		 </div>
+                              		 <vbox spacing="20px" width="24px" >
+        								<h:a style="cursor:pointer; padding-left:25%" id="chooseAll2"  ><h:span class="fa fa-arrow-circle-o-right"/></h:a>
+        								<h:a style="cursor:pointer; padding-left:25%" id="chooseBtn2"  ><h:span class="fe fe-arrow-right-circle"/></h:a>
+        								<h:a style="cursor:pointer; padding-left:25%" id="removeBtn2"  ><h:span class="fe fe-arrow-left-circle"/></h:a>
+       									<h:a style="cursor:pointer; padding-left:25%" id="removeAll2" disabled="true" ><h:span class="fa fa-arrow-circle-o-left"/></h:a>
+    								</vbox>
+    								<div hflex="1" vflex="true" >
+    							<listbox id="lbxSectoresForaEscolhidos" emptyMessage="Sem dados registados" checkmark="true" multiple="true"   rows="8">
+    								 <listhead>
+   									 <listheader label="" width="5%"></listheader>
+   									 <listheader label="" width=""></listheader>
+   									  <listheader id="lhrRemove2" label="" width="10%" align="center" ></listheader>
+   									 </listhead>
+    								<template name="model">
+           									 <listitem>
+           									 <listcell/>
+                								<listcell label="${each.departamento.designacao} - ${each.designacao}"/>
+                								<listcell ><image src="/images/img/apagar.gif" forward="onClick=onClickRemoverSectores2(${each})" /></listcell>
+                							</listitem>
+                						</template>
+   								</listbox>
+   								</div>
+                              </hlayout>
+                              		 
+                              		
+                              		
+                              		
+                 		</h:div>
+                 		
+                 		<div class="row">
+                				 
+               		<div class="col-md-12 col-lg-12">
+                				 
+						<div class="form-group">
+                				   <label class="form-label">
+									Outros Espaços Fora da Unidade:
+							   </label>
+            				</div>
+                				 
+                			<div class="form-group">
+				       		 <textbox id="txtoutrosFora" rows="2" zclass="form-control" width="100%" 
+				       		 placeholder="Indique outros espaços com os quais teve contacto fora da unidade"> </textbox>
+		            	</div> 
+               		</div>
+               				 
+              	 </div>
+                 		
+                 		
+                 	  </div>
+			</div>
+					
+			
+			
+		</div>
 			
 			<div class="row">
 												

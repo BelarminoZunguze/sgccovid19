@@ -99,6 +99,50 @@
 	            <div class="row">	
 	            	<x:div class="col-12">
                 <x:div class="card">
+                
+                 <x:div class="card-body">
+                
+                 <separator/>
+	                
+	               <div class="row">
+	               	
+	               
+		                <div class="col-md-6 col-lg-4">
+			              <div class="form-group">
+								<label class="form-label">Unidade Orgânica</label>
+								<combobox id="cbx_unidade"  placeholder="Seleccione a Unidade" readonly="true" 
+								width="100%">
+			                 	    <template name="model">
+			                 		   <comboitem label="${each.designacao}"></comboitem>
+			                 	     </template>
+			                 </combobox>		
+							</div>
+						</div>
+		                
+		                <div class="col-md-6 col-lg-4">
+			              <div class="form-group">
+								<label class="form-label">Departamento</label>
+								<combobox id="cbx_departamento" placeholder="Seleccione o Departamento" readonly="true"
+								width="100%">
+			                 	<template name="model">
+			                 		<comboitem label="${each.designacao}"></comboitem>
+			                 	</template>
+			                 </combobox>		
+							</div>
+						</div>
+					
+					
+					
+					</div>
+					 </x:div>
+					<div class="col-md-12 col-lg-12">
+                     	<div align="right" >
+                     		<button iconSclass="fe fe-search" zclass="btn btn-secondary" width="110px" id="btn_pesquisar" >Pesquisar</button>
+                     	</div>
+                     </div>
+					
+				 
+				 <separator/>
                                 
                 <listbox id="lbxSet" mold="paging" rows="10" checkmark="true"
 					pageSize="10" multiple="false">
@@ -128,7 +172,7 @@
 					</template>
 				</listbox>
 								
-                  
+                 
                 </x:div>
               </x:div>
               <div class="col-md-12 col-lg-12">

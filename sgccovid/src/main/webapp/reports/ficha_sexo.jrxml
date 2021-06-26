@@ -7,6 +7,7 @@
 	<parameter name="total" class="java.lang.Integer"/>
 	<parameter name="masculino" class="java.lang.Integer"/>
 	<parameter name="feminino" class="java.lang.Integer"/>
+	<parameter name="titiloUnidade" class="java.lang.String"/>
 	<queryString language="SQL">
 		<![CDATA[]]>
 	</queryString>
@@ -71,7 +72,7 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="112" splitType="Stretch">
+		<band height="147" splitType="Stretch">
 			<image>
 				<reportElement x="242" y="0" width="70" height="59" uuid="b40adbaf-c0e6-475b-8d62-3f67f063e660"/>
 				<imageExpression><![CDATA[$P{imagemLogo}]]></imageExpression>
@@ -90,10 +91,17 @@
 				</textElement>
 				<text><![CDATA[FICHAS POR SEXO]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="62" y="120" width="430" height="20" uuid="0c10552f-a373-43ad-b833-ee96b8c091eb"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{titiloUnidade}]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="17" splitType="Stretch"/>
+		<band height="7" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
 		<band splitType="Stretch"/>

@@ -20,12 +20,14 @@ import org.zkoss.zul.Window;
 import uem.mz.sgccovid19.entity.Distrito;
 import uem.mz.sgccovid19.entity.Ficha;
 import uem.mz.sgccovid19.entity.FichaContactoDirecto;
+import uem.mz.sgccovid19.entity.LocalIsolamento;
 import uem.mz.sgccovid19.entity.Provincia;
 import uem.mz.sgccovid19.entity.Sector;
 import uem.mz.sgccovid19.entity.Utente;
 import uem.mz.sgccovid19.entity.administracao.User;
 import uem.mz.sgccovid19.service.DistritoService;
 import uem.mz.sgccovid19.service.FichaService;
+import uem.mz.sgccovid19.service.LocalIsolamentoService;
 import uem.mz.sgccovid19.service.ProvinciaService;
 import uem.mz.sgccovid19.util.Breadcrumb;
 import uem.mz.sgccovid19.util.showClientNotification;
@@ -58,6 +60,10 @@ public class ResidenciaCasoController extends GenericForwardComposer{
 	private List<Provincia> provinciaList;
 	private ListModelList<Provincia> provinciaModel;
 	
+	private LocalIsolamentoService localService;
+	private List<LocalIsolamento> localList;
+	private ListModelList<LocalIsolamento> localModel;
+	
 	
 	private Combobox cbxLocalIsolamento;
 	private Combobox cbxProvIsolamento;
@@ -77,6 +83,9 @@ public class ResidenciaCasoController extends GenericForwardComposer{
 	private FichaService fichaService;
 	
 	private FichaContactoDirecto fichContacto;
+	
+	private Div div_isolamento;
+	private Div div_datas;
 	
 	
 	@Override
@@ -101,6 +110,9 @@ public class ResidenciaCasoController extends GenericForwardComposer{
 		
 		fichContacto = (FichaContactoDirecto) Executions.getCurrent().getArg().get("fichContacto");
 		
+		localService = (LocalIsolamentoService) SpringUtil.getBean("localService");
+		
+		
 		
 		}
 	
@@ -112,8 +124,15 @@ public class ResidenciaCasoController extends GenericForwardComposer{
 		
 		buscarProvincia();
 		buscarDistritoIsolamento();
+		buscarLocal();
 		carregarDados();
 		
+	}
+	
+	private void buscarLocal(){
+		localList = localService.buscarLocalIsolamento();
+		localModel = new ListModelList<LocalIsolamento>(localList);
+		cbxLocalIsolamento.setModel(localModel);
 	}
 	
 	public void onSelect$cbxProvIsolamento() {
@@ -138,6 +157,16 @@ public class ResidenciaCasoController extends GenericForwardComposer{
 		
 	}
 	
+	public void onCheck$rdb_sim_isolamento() {
+		div_isolamento.setVisible(true);
+		div_datas.setVisible(true);
+	}
+	
+	public void onCheck$rdb_nao_isolamento() {
+		div_isolamento.setVisible(false);
+		div_datas.setVisible(false);
+	}
+	
     
 	public void onClick$btn_voltar3() {
 	   	
@@ -160,7 +189,7 @@ public class ResidenciaCasoController extends GenericForwardComposer{
     		ficha.setEmIsolamento(true);
     		
     		
-    		ficha.setLocal_isolamento((String)(cbxLocalIsolamento.getSelectedItem()==null ? null : cbxLocalIsolamento.getSelectedItem().getValue()));
+    		ficha.setLocal_isolamento((String)(cbxLocalIsolamento.getSelectedItem()==null ? null : cbxLocalIsolamento.getSelectedItem().getLabel()));
 			 
     		ficha.setDistrito_isolamento((Distrito)(cbxDistrIsolamento.getSelectedItem()==null ? null : cbxDistrIsolamento.getSelectedItem().getValue()));
     		
@@ -190,7 +219,7 @@ public class ResidenciaCasoController extends GenericForwardComposer{
   		map.put("ficha", ficha);
   		map.put("fichContacto", fichContacto);
   		target.getChildren().clear();
-  		Executions.createComponents("views/ficha_investigacao/contactos_unidade.zul", target, map);
+  		Executions.createComponents("views/ficha_investigacao/update_contactos.zul", target, map);
   		
   		
 		

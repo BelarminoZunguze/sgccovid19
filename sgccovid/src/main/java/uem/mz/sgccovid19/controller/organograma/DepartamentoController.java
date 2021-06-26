@@ -49,6 +49,7 @@ public class DepartamentoController  extends GenericForwardComposer{
 	private Combobox cbx_prov;
 	private Combobox cbx_inst;
 	private Combobox cbx_uniOrg;
+	private Combobox cbx_unidade;
 	
 	private DepartamentoService departamentoService;
 	
@@ -72,6 +73,8 @@ public class DepartamentoController  extends GenericForwardComposer{
 	private Departamento dep;
 	private User user;
 	
+	private UnidadeOrganica uniorg;
+	
 	@Override
 	public void doBeforeComposeChildren(Component comp) throws Exception {
 		super.doBeforeComposeChildren(comp);
@@ -90,7 +93,21 @@ public class DepartamentoController  extends GenericForwardComposer{
 		buscarDepartamento();
 		prencherProvincia();
 		prencherInstituicao();
-	}    
+		buscarUnidade();
+	}
+	
+	public void onClick$btn_pesquisar() {
+		
+		if(cbx_unidade.getSelectedItem()!=null) {
+			uniorg = cbx_unidade.getSelectedItem().getValue();
+			depList = departamentoService.buscarDepartamentoPorUnidade(uniorg);
+			depModel = new ListModelList<Departamento>(depList);
+			lbxDep.setModel(depModel);
+			
+		}
+		
+		cbx_unidade.setValue(null);
+	}
 	
 	
 	private void limpaCampos(){
@@ -200,6 +217,11 @@ public class DepartamentoController  extends GenericForwardComposer{
   	  uniOrgList = unidadeOrganicaService.buscarUnidadeOrganica();
   	  cbx_uniOrg.setModel(new ListModelList<UnidadeOrganica>(uniOrgList));    	  
 	 }
+	
+	private void buscarUnidade(){    	  
+	  	  uniOrgList = unidadeOrganicaService.buscarUnidadeOrganica();
+	  	  cbx_unidade.setModel(new ListModelList<UnidadeOrganica>(uniOrgList));    	  
+		 }
 	
 	public void onClick$btn_imprimir(Event e) throws JRException{
 		if (depList.isEmpty()) {			

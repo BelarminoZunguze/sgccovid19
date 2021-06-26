@@ -19,7 +19,7 @@ implements DepartamentoDao{
 
 	@Override
 	public List<Departamento> buscarDepartamento() {
-		Query query = getCurrentSession().createQuery("select dep from Departamento dep order by dep.designacao asc ");
+		Query query = getCurrentSession().createQuery("select dep from Departamento dep JOIN FETCH dep.unidade_organica uniOrg order by dep.designacao asc ");
 		return query.list();
 	}
 

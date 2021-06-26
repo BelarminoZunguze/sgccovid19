@@ -1,6 +1,7 @@
 package uem.mz.sgccovid19.controller.organograma;
 
-import java.io.InputStream; 
+import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -50,6 +51,8 @@ public class SectorController  extends GenericForwardComposer{
 	private Combobox cbx_dep;
 	private Combobox cbx_inst;
 	private Combobox cbx_uniOrg;
+	private Combobox cbx_departamento;
+	private Combobox cbx_unidade;
 	
 	private SectorService sectorService;
 	private DepartamentoService departamentoService;
@@ -66,10 +69,13 @@ public class SectorController  extends GenericForwardComposer{
 	private ListModelList<UnidadeOrganica> uniOrgModel;
 	
 	private List<Departamento> depList;
+	private List<Departamento> departList;
 	private ListModelList<Departamento> depModel;
 	
 	private Sector set;
 	private User user;
+	
+	private Departamento dep;
 	
 	@Override
 	public void doBeforeComposeChildren(Component comp) throws Exception {
@@ -88,7 +94,59 @@ public class SectorController  extends GenericForwardComposer{
 		super.doAfterCompose(comp);
 		buscarSector();	
 		prencherInstituicao();
-	}    
+		buscarUnidade();
+	} 
+	
+	public void buscarUnidade() {
+		uniOrgList = unidadeOrganicaService.buscarUnidadeOrganica();
+		cbx_unidade.setModel(new ListModelList<UnidadeOrganica>(uniOrgList));   
+	}
+	
+	public void onSelect$cbx_unidade() {
+		
+		departList = departamentoService.buscarDepartamentoPorUnidade((UnidadeOrganica)cbx_unidade.getSelectedItem().getValue());
+		
+		if(departList.isEmpty()==false) {
+			cbx_departamento.setModel(new ListModelList<Departamento>(departList));
+		}
+		 
+		
+	}
+	
+	public void onClick$btn_pesquisar() {
+		
+		if(cbx_unidade.getValue()!=null) {
+			
+			if(departList.isEmpty()==false) {
+				
+				List<Sector> sectoresProvisorios = new ArrayList<Sector>();
+				setList = new ArrayList<Sector>();
+				
+				for(int i=0;i<departList.size();i++) {
+					  sectoresProvisorios = sectorService.buscarSectorPorDepartamento((Departamento)departList.get(i));
+					  setList.addAll(sectoresProvisorios);
+					
+				  }
+				
+				if(cbx_departamento.getValue()!=null) {
+					dep = (Departamento) cbx_departamento.getSelectedItem().getValue();
+					setList = sectorService.buscarSectorPorDepartamento(dep);
+					
+					
+				}
+			}
+			
+			
+			
+			setModel = new ListModelList<Sector>(setList);
+			lbxSet.setModel(setModel);
+			
+		}
+		
+		cbx_unidade.setValue(null);
+		cbx_departamento.setValue(null);
+		
+	}
 	
 	
 	private void limpaCampos(){
@@ -200,6 +258,11 @@ public class SectorController  extends GenericForwardComposer{
 	private void prencherDepartamento(){    	  
 	  	  depList = departamentoService.buscarDepartamento();
 	  	  cbx_dep.setModel(new ListModelList<Departamento>(depList));    	  
+		 }
+	
+	private void buscarDepartamento(){    	  
+	  	  depList = departamentoService.buscarDepartamento();
+	  	  cbx_departamento.setModel(new ListModelList<Departamento>(depList));    	  
 		 }
 	
 	public void onClick$btn_imprimir(Event e) throws JRException{

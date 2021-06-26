@@ -143,6 +143,8 @@ public class EstatisticasController extends GenericForwardComposer{
 	
 	private EstatisticaDistrito est;
 	
+	private String titiloUnidade="";
+	
 	
 	@Override
 	public void doBeforeComposeChildren(Component comp) throws Exception {
@@ -170,15 +172,16 @@ public class EstatisticasController extends GenericForwardComposer{
 		// TODO Auto-generated method stub
 		super.doAfterCompose(comp);
 		
-		if(user.getId()==1) {
+		if(user.getRoles().toString().equals("[Admin]")) {
 			buscarUnidadeOrganica();
-		}
+		} else 	{
+			uniorg=user.getUnidade();
+			titiloUnidade = user.getUnidade().getDesignacao().toUpperCase();
+			}
 		
 		buscarFichas();
 		
-		if(user.getId()!=1) {
-			uniorg=user.getUnidade();
-		}
+		
 		pesquisarPorClassificacao();
 		pesquisarPorGenero();
 		pesquisarPorTipoUtente();
@@ -366,7 +369,7 @@ public class EstatisticasController extends GenericForwardComposer{
 	
 	public void buscarFichas() {
 		
-		if(user.getId()==1) {
+		if(user.getRoles().toString().equals("[Admin]")) {
 			fichaList = fichaService.buscarFicha();
 			/*fichaModel = new ListModelList<Ficha>(fichaList);
 			lbxFichas.setModel(fichaModel);*/
@@ -389,7 +392,7 @@ public class EstatisticasController extends GenericForwardComposer{
 	
 	public void onClick$btn_pesquisar() {
 		
-		if(user.getId()==1) {
+		if(user.getRoles().toString().equals("[Admin]")) {
 			if(cbx_unidade.getSelectedItem()!=null) {
 				uniorg = cbx_unidade.getSelectedItem().getValue();
 			}
@@ -413,7 +416,7 @@ public class EstatisticasController extends GenericForwardComposer{
 	//imprimir por classificação
 	public void onClick$btn_imprimir() throws JRException{
 		
-		if(user.getId()==1) {
+		if(user.getRoles().toString().equals("[Admin]")) {
 			if(cbx_unidade.getSelectedItem()!=null) {
 				uniorg = cbx_unidade.getSelectedItem().getValue();
 			}
@@ -475,6 +478,7 @@ public class EstatisticasController extends GenericForwardComposer{
 			InputStream inputV = ex.getDesktop().getWebApp().getResourceAsStream("/images/moz.png");
 			map.put("imagemLogo", inputV);
 			map.put("total", total);
+			map.put("titiloUnidade", titiloUnidade);
 			String realPath = ex.getDesktop().getWebApp().getRealPath("/reports/");
 			map.put("SUBREPORT_DIR", realPath);
 			mas.imprimir("/reports/ficha_classificacao.jrxml", finalClassifcacao, map, win);
@@ -489,7 +493,7 @@ public class EstatisticasController extends GenericForwardComposer{
 		
 		
 		
-		if(user.getId()==1) {
+		if(user.getRoles().toString().equals("[Admin]")) {
 			if(cbx_unidade.getSelectedItem()!=null) {
 				uniorg = cbx_unidade.getSelectedItem().getValue();
 			}
@@ -553,6 +557,7 @@ public class EstatisticasController extends GenericForwardComposer{
 			InputStream inputV = ex.getDesktop().getWebApp().getResourceAsStream("/images/moz.png");
 			map.put("imagemLogo", inputV);
 			map.put("total", total);
+			map.put("titiloUnidade", titiloUnidade);
 			String realPath = ex.getDesktop().getWebApp().getRealPath("/reports/");
 			map.put("SUBREPORT_DIR", realPath);
 			mas.imprimir("/reports/ficha_categoria.jrxml", finalTipoUtente, map, win);
@@ -566,7 +571,7 @@ public class EstatisticasController extends GenericForwardComposer{
 	public void onClick$btn_imprimir_distrito() throws JRException{
 		
 		
-		if(user.getId()==1) {
+		if(user.getRoles().toString().equals("[Admin]")) {
 			if(cbx_unidade.getSelectedItem()!=null) {
 				uniorg = cbx_unidade.getSelectedItem().getValue();
 			}
@@ -631,6 +636,7 @@ public class EstatisticasController extends GenericForwardComposer{
 			InputStream inputV = ex.getDesktop().getWebApp().getResourceAsStream("/images/moz.png");
 			map.put("imagemLogo", inputV);
 			map.put("total", total);
+			map.put("titiloUnidade", titiloUnidade);
 			String realPath = ex.getDesktop().getWebApp().getRealPath("/reports/");
 			map.put("SUBREPORT_DIR", realPath);
 			mas.imprimir("/reports/ficha_distrito.jrxml", finalDistrito, map, win);
@@ -645,7 +651,7 @@ public class EstatisticasController extends GenericForwardComposer{
 		
 		
 		
-		if(user.getId()==1) {
+		if(user.getRoles().toString().equals("[Admin]")) {
 			if(cbx_unidade.getSelectedItem()!=null) {
 				uniorg = cbx_unidade.getSelectedItem().getValue();
 			}
@@ -693,6 +699,7 @@ public class EstatisticasController extends GenericForwardComposer{
 			map.put("total", total);
 			map.put("masculino", masculino);
 			map.put("feminino", feminino);
+			map.put("titiloUnidade", titiloUnidade);
 			String realPath = ex.getDesktop().getWebApp().getRealPath("/reports/");
 			map.put("SUBREPORT_DIR", realPath);
 			mas.imprimir("/reports/ficha_sexo.jrxml", fichaList, map, win);
@@ -708,7 +715,7 @@ public class EstatisticasController extends GenericForwardComposer{
 		
 		
 		
-		if(user.getId()==1) {
+		if(user.getRoles().toString().equals("[Admin]")) {
 			if(cbx_unidade.getSelectedItem()!=null) {
 				uniorg = cbx_unidade.getSelectedItem().getValue();
 			}
@@ -759,6 +766,7 @@ public class EstatisticasController extends GenericForwardComposer{
 				map.put("internados", internados);
 				map.put("indeterminados", indeterminados);
 				map.put("obitos", obitos);
+				map.put("titiloUnidade", titiloUnidade);
 				String realPath = ex.getDesktop().getWebApp().getRealPath("/reports/");
 				map.put("SUBREPORT_DIR", realPath);
 				mas.imprimir("/reports/ficha_situacao.jrxml", fichaList, map, win);

@@ -95,7 +95,7 @@ public class MonitoriaController extends GenericForwardComposer{
 		// TODO Auto-generated method stub
 		super.doAfterCompose(comp);
 		
-		if(user.getId()==1) {
+		if(user.getRoles().toString().equals("[Admin]")) {
 			buscarUnidadeOrganica();
 		}
 		
@@ -112,7 +112,7 @@ public class MonitoriaController extends GenericForwardComposer{
 	
 	public void buscarFichas() {
 		
-		if(user.getId()==1) {
+		if(user.getRoles().toString().equals("[Admin]")) {
 			fichMonList = fichaMonitoriaService.buscarFichaMonitoria();
 			
 		} else {
@@ -129,7 +129,7 @@ public class MonitoriaController extends GenericForwardComposer{
 	public void onClick$btn_pesquisar() {
 		numeroFicha = txt_nrFicha.getValue();
 		
-		if(user.getId()==1) {
+		if(user.getRoles().toString().equals("[Admin]")) {
 			if(cbx_unidade.getSelectedItem()!=null) {
 				uniorg = cbx_unidade.getSelectedItem().getValue();
 			}

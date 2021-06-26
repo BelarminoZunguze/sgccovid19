@@ -77,6 +77,10 @@ public class Ficha extends IdEntity{
 	@Column (name = "dat_informa_unidade")
 	private Date dataQueInformoUnidade;
 	
+	@Temporal(TemporalType.DATE)
+	@Column (name = "data_quadro_clinico")
+	private Date data_quadro_clinico;
+	
 	
 	@ManyToOne
 	@JoinColumn (name = "utente_id")
@@ -251,6 +255,14 @@ public class Ficha extends IdEntity{
 
 	public void setFichaContacto(FichaContactoDirecto fichaContacto) {
 		this.fichaContacto = fichaContacto;
+	}
+
+	public Date getData_quadro_clinico() {
+		return data_quadro_clinico;
+	}
+
+	public void setData_quadro_clinico(Date data_quadro_clinico) {
+		this.data_quadro_clinico = data_quadro_clinico;
 	}
 
 	

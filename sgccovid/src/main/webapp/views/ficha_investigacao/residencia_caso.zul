@@ -108,7 +108,7 @@
 								              	    </div>
 								              	    
 													
-												       <div >
+												       <div class="custom-controls-stacked">
 															<radiogroup>
 															 <radio label="Sim" id="rdb_sim_isolamento"></radio>
 															 <radio label="Não" id="rdb_nao_isolamento" ></radio>
@@ -118,7 +118,7 @@
 								              	
 								                </div>
 												
-												<div class="form-group">
+												<div class="form-group" id="div_isolamento" visible="false">
 												
 													<div class="form-group">
 														<label class="form-label">
@@ -129,11 +129,10 @@
 															<combobox id="cbxLocalIsolamento" readonly="true"
 																placeholder="Selecione o local de isolamento" width="90%"
 																autocomplete="true">
-																
-																	<comboitem label="Casa" value="Casa"></comboitem>
-																	<comboitem label="Hospital" value="Hospital"></comboitem>
-																	<comboitem label="Outro" value="Outro"></comboitem>
-																
+																<template name="model">
+																	<comboitem label="${each.designacao}">
+																	</comboitem>
+																</template>
 															</combobox>
 														</div>
 
@@ -182,7 +181,7 @@
 												</div>
 											</div>
 
-											<div zclass="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+											<div zclass="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="div_datas" visible="false">
 												<div class="form-group">
 												
 													<div class="form-group">

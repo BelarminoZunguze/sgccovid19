@@ -153,10 +153,9 @@
 					<div zclass="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 					
 					
-		      
-		               <div class="form-group">
-		               
-		               <div class="row">
+		      		   <div class="form-group">
+		      		   
+		      		   	<div class="row">
 		              	    
 		              	    <div class="col-md-2 col-lg-2">
 			              	     <div sclass="form-group">
@@ -174,8 +173,12 @@
 						    
 		              	
 		                	</div>
-		       
-		              	   <div sclass="form-group"> 
+		      		   
+		      		   </div>
+		      		   
+		               <div class="form-group" id="div_viagem" visible="false">
+		               
+		                      	   <div sclass="form-group"> 
 						     <label class=" form-label">Proveniencia:  </label>
 							  <div>
 									<textbox id="txt_proveniencia" zclass="form-control" width="90%" > </textbox>

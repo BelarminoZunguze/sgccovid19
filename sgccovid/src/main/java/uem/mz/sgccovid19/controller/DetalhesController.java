@@ -23,12 +23,17 @@ import org.zkoss.zk.ui.util.GenericForwardComposer;
 import org.zkoss.zul.Div;
 import org.zkoss.zul.Label;
 import org.zkoss.zul.ListModelList;
+import org.zkoss.zul.Listbox;
 import org.zkoss.zul.Window;
 
 import net.sf.jasperreports.engine.JRException;
 import uem.mz.sgccovid19.entity.Ficha;
+import uem.mz.sgccovid19.entity.FichaContactoDirecto;
+import uem.mz.sgccovid19.entity.FichaSector;
+import uem.mz.sgccovid19.entity.Sector;
 import uem.mz.sgccovid19.entity.Utente;
 import uem.mz.sgccovid19.entity.administracao.User;
+import uem.mz.sgccovid19.service.FichaSectorService;
 import uem.mz.sgccovid19.service.FichaService;
 import uem.mz.sgccovid19.service.UtenteService;
 import uem.mz.sgccovid19.util.Breadcrumb;
@@ -86,6 +91,7 @@ public class DetalhesController extends GenericForwardComposer{
 	private Label label_email;
 	private Label label_provincia_residencia;
 	private Label label_distrito_residencia;
+	private Label label_localIsolamento;
 	private Label label_endereco;
 	private Label label_emIsolamento;
 	private Label label_provincia_Isolamento;
@@ -97,7 +103,7 @@ public class DetalhesController extends GenericForwardComposer{
 	private Label label_sector;
 	private Label label_sector_dentro;
 	private Label label_outros;
-	private Label label_outros_espacos;
+	private Label label_outros_espacos_dentro;
 	private Label label_unidade_contacto;
 	private Label label_unidade_fora;
 	private Label label_deparamento2;
@@ -105,7 +111,21 @@ public class DetalhesController extends GenericForwardComposer{
 	private Label label_sector2;
 	private Label label_sector_fora;
 	private Label label_outros2;
-	private Label label_outros_espacos2;
+	private Label label_outros_espacos_fora;
+	
+	private Div div_labels_isolamento;
+	private Div div_card_contactos;
+	private Div div_espacos_dentro;
+	private Div div_espacos_fora;
+	
+	private FichaSectorService fichaSectorService;
+	private List<Sector> sectoresList;
+	private List<FichaSector> fichaSecList;
+	private ListModelList<Sector> sectoresModel;
+	
+	private Listbox lbxSectoresDentro;
+	private Listbox lbxSectoresFora;
+	
 	
 	
 	
@@ -126,6 +146,11 @@ public class DetalhesController extends GenericForwardComposer{
 		
 		fichaService = (FichaService) SpringUtil.getBean("fichaService");
 		
+		//fichContacto = (FichaContactoDirecto) Executions.getCurrent().getArg().get("fichContacto");
+		
+		fichaSectorService = (FichaSectorService) SpringUtil.getBean("fichaSectorService");
+		
+		
 		}
 	
 	
@@ -133,6 +158,21 @@ public class DetalhesController extends GenericForwardComposer{
 	public void doAfterCompose(Component comp) throws Exception {
 		// TODO Auto-generated method stub
 		super.doAfterCompose(comp);
+		
+		
+		String isolamento="";
+		String contacto="";
+		
+		if(ficha.isEmIsolamento()) {
+			isolamento="certo";
+		} else {isolamento=null;}
+		
+		if(ficha.getFichaContacto()!=null) {
+			contacto="certo";
+		}
+		
+		fichaList = fichaService.buscarFichasPorUtente(utente, isolamento, contacto);
+		ficha = fichaList.get(0);
 		
 		preencherTela();
 		
@@ -144,7 +184,10 @@ public class DetalhesController extends GenericForwardComposer{
 		label_nomeUnidade.setValue(ficha.getUtente().getUnidade().getDesignacao());
 		label_classificacao.setValue(ficha.getClassificacao().getNome());
 		label_nome.setValue(ficha.getUtente().getNome());
-		label_ponto_entrada.setValue(ficha.getPontoEntrada());
+		
+		if(ficha.getPontoEntrada()!=null) {
+			label_ponto_entrada.setValue(ficha.getPontoEntrada());
+		}
 		label_caso.setValue(ficha.getUtente().getTipo_utente().getDesignacao());
 		label_Nacionalidade.setValue(ficha.getUtente().getNacionalidade());
 		label_Sexo.setValue(ficha.getUtente().getGenero());
@@ -164,14 +207,25 @@ public class DetalhesController extends GenericForwardComposer{
 		  
 		  
 		label_contacto.setValue(ficha.getUtente().getContacto());
-		label_email.setValue(ficha.getUtente().getEmail());
+		if(ficha.getUtente().getEmail()!=null) {
+			label_email.setValue(ficha.getUtente().getEmail());
+		}
+		
 		
 		if(ficha.isViajou()==true) {
 			label_viajou.setValue("Sim");
-			label_Proveniencia.setValue(ficha.getProveniencia());
-			label_meio_transporte.setValue(ficha.getMeioTransporte());
+			if(ficha.getProveniencia()!=null) {
+				label_Proveniencia.setValue(ficha.getProveniencia());
+			}
+			if(ficha.getMeioTransporte()!=null) {
+				label_meio_transporte.setValue(ficha.getMeioTransporte());
+			}
+			
 			Date dataEntrada = ficha.getDataEntradaNoPais();
-			label_data_entrada.setValue(dateFormat.format(dataEntrada));
+			if(dataEntrada!=null) {
+				label_data_entrada.setValue(dateFormat.format(dataEntrada));
+			}
+			
 			
 			if(ficha.isDetectadoNoPontoEntrada()==true) {
 				label_Detectado.setValue("Sim");	
@@ -191,53 +245,110 @@ public class DetalhesController extends GenericForwardComposer{
 		label_distrito_residencia.setValue(ficha.getUtente().getDistrito().getDesignacao());
 		label_endereco.setValue(ficha.getUtente().getEndereco());
 		
+		
+		
 		if(ficha.isEmIsolamento()==true) {
 			label_emIsolamento.setValue("Sim");
-			label_provincia_Isolamento.setValue(ficha.getDistrito_isolamento().getProvincia().getDesignacao());
-			label_distrito_Isolamento.setValue(ficha.getDistrito_isolamento().getDesignacao());
-		} else {label_emIsolamento.setValue("Não");}
+			
+			if(ficha.getLocal_isolamento()!=null) {
+				label_localIsolamento.setValue(ficha.getLocal_isolamento());
+			}
+			
+			if(ficha.getDistrito_isolamento().getProvincia()!=null) {
+				label_provincia_Isolamento.setValue(ficha.getDistrito_isolamento().getProvincia().getDesignacao());
+			}
+			if(ficha.getDistrito_isolamento()!=null) {
+				label_distrito_Isolamento.setValue(ficha.getDistrito_isolamento().getDesignacao());
+			}
+			
+		} else {
+			label_emIsolamento.setValue("Não");
+			div_labels_isolamento.setVisible(false);
+			}
 		
 		
-		
+		//Começa
 		if(ficha.getFichaContacto()!=null) {
 			
+			fichaSecList = fichaSectorService.buscarFichaSectorPorFicha(ficha);
+			String unidadeUser = utente.getUnidade().getDesignacao();
+			
+			
 			if(ficha.getFichaContacto().isTeveContactoDentro()==true) {
-				label_deparamento.setValue("Sim");
-				label_departamento_dentro.setValue(ficha.getFichaContacto().getDepartamentoDentro().getDesignacao());
-				label_sector.setValue("Sim");
-				label_sector_dentro.setValue(ficha.getFichaContacto().getSectorDentro().getDesignacao());
 				
-				if(ficha.getFichaContacto().getOutrosEspacosDentro()==null) {
-					label_outros.setValue("Não");
+				div_espacos_dentro.setVisible(true);
+				
+				List<Sector> sectoresDentro = new ArrayList<Sector>();
+				
+				
+				for(int i=0;i<fichaSecList.size();i++) {
 					
-				} else {
-					label_outros.setValue("Sim");
-					label_outros_espacos.setValue(ficha.getFichaContacto().getOutrosEspacosDentro());
+					String unidadeSector = fichaSecList.get(i).getSector().getDepartamento().getUnidade_organica().getDesignacao();
+					
+					if(unidadeSector.equals(unidadeUser)) {
+						sectoresDentro.add(fichaSecList.get(i).getSector());
+						
+					}
+					
 				}
 				
-			} else {div_Contactodentro.setVisible(false);}
+				
+				ListModelList<Sector >sectoresModelDentro = new ListModelList<Sector>(sectoresDentro);
+				lbxSectoresDentro.setModel(sectoresModelDentro);
+				
+				
+				if(ficha.getFichaContacto().getOutrosEspacosDentro()!=null) {
+					
+					label_outros_espacos_dentro.setValue(ficha.getFichaContacto().getOutrosEspacosDentro());
+				}
+				
+			} else {
+				
+				div_espacos_dentro.setVisible(false);
+				
+			}
 			
 			
 			if(ficha.getFichaContacto().isTeveContactoFora()==true) {
-				label_unidade_contacto.setValue("Sim");
-				label_unidade_fora.setValue(ficha.getFichaContacto().getUnidadeFora().getDesignacao());
-				label_deparamento2.setValue("Sim");
-				label_departamento_fora.setValue(ficha.getFichaContacto().getDepartamentoFora().getDesignacao());
-				label_sector2.setValue("Sim");
-				label_sector_fora.setValue(ficha.getFichaContacto().getSectorFora().getDesignacao());
+				
+				div_espacos_fora.setVisible(true);
+				
+				sectoresList = new ArrayList<Sector>();
+				
+				
+				
+				for(int i=0;i<fichaSecList.size();i++) {
+					
+					String unidadeSector = fichaSecList.get(i).getSector().getDepartamento().getUnidade_organica().getDesignacao();
+					
+					if(unidadeSector.equals(unidadeUser)==false) {
+						sectoresList.add(fichaSecList.get(i).getSector());
+					}
+					
+				}
+				
+				sectoresModel = new ListModelList<Sector>(sectoresList);
+				lbxSectoresFora.setModel(sectoresModel);
+				
+				
+				
 				
 				if(ficha.getFichaContacto().getOutrosEspacosFora()!=null) {
-					label_outros2.setValue("Sim");
-					label_outros_espacos2.setValue(ficha.getFichaContacto().getOutrosEspacosFora());
+					
+					label_outros_espacos_fora.setValue(ficha.getFichaContacto().getOutrosEspacosFora());
+					
 				}
-			} else {div_ContactoFora.setVisible(false);}
+			} else {
+				
+				div_espacos_fora.setVisible(false);
+				
+			}
 			
-		} else {
-			div_Contactodentro.setVisible(false);
-			div_ContactoFora.setVisible(false);
-		}
+		} else {div_card_contactos.setVisible(false);}
 		
 		
+		
+		//Termina
 		
 		
 		

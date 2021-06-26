@@ -22,14 +22,15 @@
 				                
 				                
 				                <div >
-							      <button style="background:rgb(51, 153, 122); color:white" iconSclass="fe fe-file-plus" zclass="btn btn-secondary" id="btn_nova_ficha" >Criar Nova Ficha de Investigação</button>
+							      <button style="background:rgb(51, 153, 122); color:white" iconSclass="fe fe-file-plus" zclass="btn btn-secondary" id="btn_nova_ficha" >Criar Nova Ficha de Investigação / Notificação</button>
 									                          
 							   </div>
 							   
 				              </x:div>                                 
 				         </x:div>
 				         <separator/>
-	              		
+				         
+				         
 	              			<div class="card">
 			              		
 				                

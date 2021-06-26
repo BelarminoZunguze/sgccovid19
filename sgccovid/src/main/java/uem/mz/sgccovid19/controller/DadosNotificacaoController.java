@@ -73,6 +73,8 @@ public class DadosNotificacaoController extends GenericForwardComposer{
 	private Datebox dtb_dataEntrada;
 	private Textbox txt_MeioTransporte;
 	
+	private Div div_viagem;
+	
 	private FichaContactoDirecto fichContacto;
 	
 	
@@ -112,6 +114,14 @@ public class DadosNotificacaoController extends GenericForwardComposer{
 		classList = classificacaoService.buscarClassificacao();
 		classModel = new ListModelList<Classificacao>(classList);
 		cbxClassificacao.setModel(classModel);
+	}
+	
+	public void onCheck$rdb_sim() {
+		div_viagem.setVisible(true);
+	}
+	
+	public void onCheck$rdb_nao() {
+		div_viagem.setVisible(false);
 	}
 	
 	

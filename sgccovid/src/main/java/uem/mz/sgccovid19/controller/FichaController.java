@@ -39,6 +39,7 @@ import uem.mz.sgccovid19.entity.Classificacao;
 import uem.mz.sgccovid19.entity.Departamento;
 import uem.mz.sgccovid19.entity.Distrito;
 import uem.mz.sgccovid19.entity.Ficha;
+import uem.mz.sgccovid19.entity.FichaContactoDirecto;
 import uem.mz.sgccovid19.entity.Indicador;
 import uem.mz.sgccovid19.entity.Provincia;
 import uem.mz.sgccovid19.entity.Sector;
@@ -163,7 +164,7 @@ public class FichaController extends GenericForwardComposer{
 		// TODO Auto-generated method stub
 		super.doAfterCompose(comp);
 		
-		if(user.getId()==1) {
+		if(user.getRoles().toString().equals("[Admin]")) {
 			buscarUnidadeOrganica();
 		}
 		buscarClassificacao();
@@ -174,9 +175,11 @@ public class FichaController extends GenericForwardComposer{
 		
 	}
 	
+	
+	
 	public void buscarFichas() {
 		
-		if(user.getId()==1) {
+		if(user.getRoles().toString().equals("[Admin]")) {
 			fichaList = fichaService.buscarFicha();
 			fichaModel = new ListModelList<Ficha>(fichaList);
 			lbxFichas.setModel(fichaModel);
@@ -216,7 +219,7 @@ public class FichaController extends GenericForwardComposer{
 		}
 		
 		
-		if(user.getId()==1) {
+		if(user.getRoles().toString().equals("[Admin]")) {
 			if(cbx_unidade.getSelectedItem()!=null) {
 				uniorg = cbx_unidade.getSelectedItem().getValue();
 			}
@@ -250,8 +253,35 @@ public class FichaController extends GenericForwardComposer{
 		fichaModel = new ListModelList<Ficha>(pesquisaList);
 		lbxFichas.setModel(fichaModel);
 		total_resultados.setValue("Total de Resultados: "+pesquisaList.size());
+		
 		pesquisaList.clear();
+		
 		txt_nrFicha.setValue(null);
+		numeroFicha=null;
+		
+		cbx_classificacao.setValue(null);
+		classific=null;
+		
+		cbx_genero.setValue(null);
+		genero=null;
+		
+		cbxTipoUtente.setValue(null);
+		tipoUte=null;
+		
+		cbx_situacao.setValue(null);
+		estado=null;
+		
+		dtb_dataInicio.setValue(null);
+		dataInicio=null;
+		
+		dtb_Fim.setValue(null);
+		dataFim=null;
+		
+		if(user.getRoles().toString().equals("[Admin]")) {
+			cbx_unidade.setValue(null);
+			uniorg=null;
+			}
+		
 		
 		
 	}
@@ -308,10 +338,18 @@ public class FichaController extends GenericForwardComposer{
 		ficha = (Ficha) evt.getData();
 		utente = ficha.getUtente();
 		
+		
+		
 		final HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("target", target);
 		map.put("ficha", ficha);
 		map.put("utente", utente);
+		
+		if(ficha.getFichaContacto()!=null) {
+			FichaContactoDirecto fichContacto = ficha.getFichaContacto();
+			map.put("fichContacto", fichContacto);
+		}
+		
 		target.getChildren().clear();
 		Executions.createComponents("views/ficha_investigacao/edicao_dados.zul", target, map);
 		
@@ -326,7 +364,7 @@ public class FichaController extends GenericForwardComposer{
 		}
 		
 		
-		if(user.getId()==1) {
+		if(user.getRoles().toString().equals("[Admin]")) {
 			if(cbx_unidade.getSelectedItem()!=null) {
 				uniorg = cbx_unidade.getSelectedItem().getValue();
 			}
@@ -366,6 +404,16 @@ public class FichaController extends GenericForwardComposer{
 			MasterRep mas = new MasterRep();
 			Map<String, Object> map = new HashMap<String, Object>();
 			int total = fichaList.size();
+			
+			String titiloUnidade="";
+			if(user.getRoles().toString().equals("[Admin]")){
+				titiloUnidade = "";
+			} else {
+				titiloUnidade = user.getUnidade().getDesignacao().toUpperCase();
+			}
+			map.put("titiloUnidade", titiloUnidade);
+			
+			
 			
 			final Execution ex = Executions.getCurrent();
 			InputStream inputV = ex.getDesktop().getWebApp().getResourceAsStream("/images/moz.png");

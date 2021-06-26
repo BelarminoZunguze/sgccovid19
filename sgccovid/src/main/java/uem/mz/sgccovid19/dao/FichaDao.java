@@ -8,6 +8,7 @@ import uem.mz.sgccovid19.entity.Distrito;
 import uem.mz.sgccovid19.entity.Ficha;
 import uem.mz.sgccovid19.entity.TipoUtente;
 import uem.mz.sgccovid19.entity.UnidadeOrganica;
+import uem.mz.sgccovid19.entity.Utente;
 
 public interface FichaDao extends GenericDao<Ficha>{
 	
@@ -18,5 +19,7 @@ public interface FichaDao extends GenericDao<Ficha>{
 	public List<Ficha> buscarFichasPorUnidade(UnidadeOrganica uniOrg);
 	
 	public List<Ficha> buscarFichasPorDistrito(Distrito distrito, UnidadeOrganica uniOrg, Date dataInicio, Date dataFim);
+	
+	public List<Ficha> buscarFichasPorUtente(Utente uten, String isolamento, String contacto);
 
 }

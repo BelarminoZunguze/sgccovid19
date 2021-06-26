@@ -31,5 +31,14 @@ public class UnidadeOrganicaDaoImpl extends GenericDaoImpl<UnidadeOrganica>
 		
 		return  query.list();
 	}
+	
+	@Override
+	public List<UnidadeOrganica> buscarUnidadePorId(Long userId) {
+		Query query = getCurrentSession().createQuery("select uo from UnidadeOrganica uo JOIN FETCH uo.instituicao inst where uo.id=:userId");
+		query.setParameter("userId", userId);
+
+		
+		return  query.list();
+	}
 
 }

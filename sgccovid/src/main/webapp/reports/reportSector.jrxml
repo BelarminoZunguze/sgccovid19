@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rubricaUEM" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5d057964-0193-46a7-b7f9-9ddd524a738a">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String"/>
+	<parameter name="imagemLogo" class="java.io.InputStream"/>
+	<parameter name="rubricaUEM" class="java.io.InputStream"/>
+	<parameter name="titulo" class="java.lang.String"/>
+	<field name="codigo" class="java.lang.String"/>
+	<field name="designacao" class="java.lang.String"/>
+	<field name="departamento.designacao" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="159" splitType="Stretch">
+			<image scaleImage="FillFrame" hAlign="Center">
+				<reportElement x="238" y="19" width="61" height="67" uuid="1b43945f-8489-4a5d-b3e7-201279f0d3ec"/>
+				<imageExpression><![CDATA[$P{imagemLogo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="137" y="137" width="269" height="20" uuid="63d4949a-e3cd-41b8-aaf1-7a28de56d005"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sector]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="137" y="86" width="269" height="31" uuid="7c17180f-6bff-4105-9c2c-07ef798e695e"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPUBLICA DE MOÇAMBIQUE ]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="19" splitType="Stretch">
+			<rectangle radius="5">
+				<reportElement x="0" y="1" width="554" height="16" backcolor="#CCCCCC" uuid="d2bbb3d6-58c4-42ff-a6a0-bc97ba9239be"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineStyle="Solid" lineColor="#CCCCCC"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="1" y="4" width="136" height="13" uuid="86bc12af-1c67-495b-b221-4bba9e260f20"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Código]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="138" y="1" width="268" height="13" uuid="50ec8754-d3e1-4264-a8d8-11506191a539"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Designação]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="358" y="4" width="196" height="13" uuid="59950ede-7d60-4e2f-bfef-86f9e859fa1e"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Departamento]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="13" splitType="Stretch">
+			<rectangle>
+				<reportElement x="1" y="2" width="555" height="11" backcolor="#FFFFFF" uuid="aaa2e6f6-2201-4b9f-89c4-c416faeee3e8"/>
+				<graphicElement>
+					<pen lineColor="#FFFFFF"/>
+				</graphicElement>
+			</rectangle>
+			<textField>
+				<reportElement x="138" y="2" width="220" height="11" uuid="8621516a-a412-404a-b2ca-4db0765fa68b"/>
+				<textElement>
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{designacao}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="358" y="2" width="196" height="11" uuid="35249b6a-577f-40e4-a178-77b0b943df24"/>
+				<textElement>
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{departamento.designacao}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="0" width="136" height="13" uuid="beb9bdd1-b4c6-4b4e-92bc-28cbb3c86056"/>
+				<textElement>
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codigo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="68" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="50" width="238" height="10" uuid="afbf652f-e1e1-4e50-8329-5be626499d06"/>
+				<textElement>
+					<font fontName="SansSerif" size="6"/>
+				</textElement>
+				<text><![CDATA[Contactos: Telefone: +258848996037, email : ecampus@uem.mz]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="60" width="226" height="8" uuid="818fcfaf-9d59-4e6f-86d3-a90335309765"/>
+				<textElement>
+					<font fontName="SansSerif" size="6"/>
+				</textElement>
+				<text><![CDATA[Produzido por UEM(eCampus.uem.mz)]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="533" y="50" width="21" height="18" uuid="37843778-ee5f-41e9-aac9-38675c84b6c4"/>
+				<textElement>
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="25" splitType="Stretch"/>
+	</summary>
+</jasperReport>

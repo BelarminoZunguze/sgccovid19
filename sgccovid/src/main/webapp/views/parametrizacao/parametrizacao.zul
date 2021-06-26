@@ -57,6 +57,30 @@
               </x:a>
                 </x:div>
               </x:div>
+              
+              <x:div class="col-6 col-sm-4 col-lg-2" >
+               <x:div class="card">
+                  <x:a href="#" onClick="@command('openCategoria')" class="button btn-secondary">
+              	<div class="text-muted mb-4">Categoria</div>
+              </x:a>
+                </x:div>
+              </x:div>
+              
+              <x:div class="col-6 col-sm-4 col-lg-2">
+               <x:div class="card">
+                  <x:a href="#" onClick="@command('openClassificacao')" class="button btn-secondary">
+              	<div class="text-muted mb-4">Classificação</div>
+              </x:a>
+                </x:div>
+              </x:div>
+              
+              <x:div class="col-6 col-sm-4 col-lg-2">
+               <x:div class="card">
+                  <x:a href="#" onClick="@command('openLocalIsolamento')" class="button btn-secondary">
+              	<div class="text-muted mb-4">Local de Isolamento</div>
+              </x:a>
+                </x:div>
+              </x:div>
                                  
            </x:div>
            </div>						

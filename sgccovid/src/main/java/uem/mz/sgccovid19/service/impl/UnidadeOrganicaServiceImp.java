@@ -29,5 +29,12 @@ public class UnidadeOrganicaServiceImp extends GenericServiceImpl<UnidadeOrganic
 		return uniOrgDao.buscarUnidadePorInst(inst);
 	}
 	
+	
+	@Override
+	public List<UnidadeOrganica> buscarUnidadePorId(Long userId){
+		// TODO Auto-generated method stub
+		return uniOrgDao.buscarUnidadePorId(userId);
+	}
+	
 
 }

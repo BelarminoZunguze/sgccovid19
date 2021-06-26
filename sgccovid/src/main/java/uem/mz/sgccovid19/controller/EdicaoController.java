@@ -1,31 +1,51 @@
 package uem.mz.sgccovid19.controller;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.zkoss.spring.SpringUtil;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
+import org.zkoss.zk.ui.event.ForwardEvent;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zk.ui.util.GenericForwardComposer;
 import org.zkoss.zul.Combobox;
 import org.zkoss.zul.Datebox;
 import org.zkoss.zul.Div;
+import org.zkoss.zul.ListModel;
 import org.zkoss.zul.ListModelList;
+import org.zkoss.zul.Listbox;
+import org.zkoss.zul.Listitem;
 import org.zkoss.zul.Radio;
 import org.zkoss.zul.Textbox;
 import org.zkoss.zul.Window;
 
+import uem.mz.sgccovid19.entity.Classificacao;
+import uem.mz.sgccovid19.entity.Departamento;
 import uem.mz.sgccovid19.entity.Distrito;
 import uem.mz.sgccovid19.entity.Ficha;
+import uem.mz.sgccovid19.entity.FichaContactoDirecto;
+import uem.mz.sgccovid19.entity.FichaSector;
+import uem.mz.sgccovid19.entity.LocalIsolamento;
 import uem.mz.sgccovid19.entity.Provincia;
+import uem.mz.sgccovid19.entity.Sector;
 import uem.mz.sgccovid19.entity.TipoUtente;
 import uem.mz.sgccovid19.entity.UnidadeOrganica;
 import uem.mz.sgccovid19.entity.Utente;
 import uem.mz.sgccovid19.entity.administracao.User;
+import uem.mz.sgccovid19.service.ClassificacaoService;
+import uem.mz.sgccovid19.service.DepartamentoService;
 import uem.mz.sgccovid19.service.DistritoService;
+import uem.mz.sgccovid19.service.FichaContactoService;
+import uem.mz.sgccovid19.service.FichaSectorService;
+import uem.mz.sgccovid19.service.FichaService;
+import uem.mz.sgccovid19.service.LocalIsolamentoService;
 import uem.mz.sgccovid19.service.ProvinciaService;
+import uem.mz.sgccovid19.service.SectorService;
 import uem.mz.sgccovid19.service.TipoUtenteService;
 import uem.mz.sgccovid19.service.UnidadeOrganicaService;
 import uem.mz.sgccovid19.service.UtenteService;
@@ -69,6 +89,16 @@ public class EdicaoController extends GenericForwardComposer{
 	private List<UnidadeOrganica> uniOrgList;
 	private ListModelList<UnidadeOrganica> uniOrgModel;
 	
+	private DepartamentoService departamentoService;
+	private List<Departamento> departList;
+	private ListModelList<Departamento> departModel;
+	
+	private SectorService sectorService;
+	private List<Sector> sectortList;
+	private ListModelList<Sector> sectorModel;
+	private ListModelList<Sector> sectorEscolhidoModel;
+	
+	
 	
 	private Combobox cbxTipoUtente;
 	private Combobox cbxNacionalidade;
@@ -80,11 +110,7 @@ public class EdicaoController extends GenericForwardComposer{
 	private Combobox cbxLocalIsolamento;
 	private Combobox cbxProvIsolamento;
 	private Combobox cbxDistrIsolamento;
-	private Combobox cbxDepartamentoDentro;
-	private Combobox cbxSectorDentro;
 	private Combobox cbxUnidadeFora;
-	private Combobox cbxDepartamentoFora;
-	private Combobox cbxSectorFora;
 	
 	private Textbox txtNome;
 	private Textbox txtEmail;
@@ -121,6 +147,46 @@ public class EdicaoController extends GenericForwardComposer{
 	
 	private Provincia provincia;
 	
+	private Listbox lbxDepartamentoSectores;
+	private Listbox lbxSectoresEscolhidos;
+	
+	private Listbox lbxSectoresFora;
+	private Listbox lbxSectoresForaEscolhidos;
+	
+	private List<Sector> listSector = new ArrayList<Sector>();
+	private Set<Sector> setSector = new HashSet<Sector>();
+	
+	private List<Sector> listSector2 = new ArrayList<Sector>();
+	private List<Sector> sectortList2;
+	
+	
+	private Sector sec;
+	
+	private Div div_espacos_dentro;
+	private Div div_espacos_fora;
+	
+	
+	private FichaContactoDirecto fichContacto;
+	
+	private FichaService fichaService;
+	
+	private FichaContactoService fichaContactoService;
+	
+	private FichaSectorService fichaSectorService;
+	private List<Sector> sectoresList;
+	private List<FichaSector> fichaSecList;
+	private ListModelList<Sector> sectoresModel;
+	
+	private ClassificacaoService classificacaoService;
+	private List<Classificacao> classList;
+	private ListModelList<Classificacao> classModel;
+	
+	private LocalIsolamentoService localService;
+	private List<LocalIsolamento> localList;
+	private ListModelList<LocalIsolamento> localModel;
+	
+	
+	
 	
 	@Override
 	public void doBeforeComposeChildren(Component comp) throws Exception {
@@ -141,9 +207,26 @@ public class EdicaoController extends GenericForwardComposer{
 		
 		unidadeOrganicaService = (UnidadeOrganicaService) SpringUtil.getBean("unidadeOrganicaService");
 		
+		departamentoService = (DepartamentoService) SpringUtil.getBean("departamentoService");
+		
+		sectorService = (SectorService) SpringUtil.getBean("sectorService");
+		
+		
 		ficha = (Ficha) Executions.getCurrent().getArg().get("ficha");
 		
 		utente = (Utente) Executions.getCurrent().getArg().get("utente");
+		
+		fichaSectorService = (FichaSectorService) SpringUtil.getBean("fichaSectorService");
+		
+		fichContacto = (FichaContactoDirecto) Executions.getCurrent().getArg().get("fichContacto");
+		
+		fichaContactoService = (FichaContactoService) SpringUtil.getBean("fichaContactoService");
+		
+		fichaService = (FichaService) SpringUtil.getBean("fichaService");
+		
+		classificacaoService = (ClassificacaoService) SpringUtil.getBean("classificacaoService");
+		
+		localService = (LocalIsolamentoService) SpringUtil.getBean("localService");
 		
 		
 		}
@@ -158,7 +241,13 @@ public class EdicaoController extends GenericForwardComposer{
 		buscarProvincia();
 		buscarDistrito();
 		buscarUnidadeOrganica();
+		buscarProvinciaIsolamento();
 		buscarDistritoIsolamento();
+		
+		buscarUnidadeOrganicaFora();
+		buscarLocal();
+		buscarSector();
+		buscarClassificacao();
 		preencherTela();
 		
 	}
@@ -174,6 +263,12 @@ public class EdicaoController extends GenericForwardComposer{
 		distritoModel = new ListModelList<Distrito>(distritoList);
 		cbxDistrito.setModel(distritoModel);
 		
+	}
+	
+	public void buscarProvinciaIsolamento() {
+		provinciaList = provinciaService.buscarProvincia();
+		provinciaModel = new ListModelList<Provincia>(provinciaList);
+		cbxProvIsolamento.setModel(provinciaModel);
 	}
 	
 	public void buscarDistritoIsolamento() {
@@ -211,6 +306,381 @@ public class EdicaoController extends GenericForwardComposer{
 	  	  uniOrgModel = new ListModelList<UnidadeOrganica>(uniOrgList);
 	  	  cbxUnidade.setModel(uniOrgModel);    	  
 	}
+	
+	public void buscarClassificacao() {
+		classList = classificacaoService.buscarClassificacao();
+		classModel = new ListModelList<Classificacao>(classList);
+		cbxClassificacao.setModel(classModel);
+	}
+	
+	private void buscarLocal(){
+		localList = localService.buscarLocalIsolamento();
+		localModel = new ListModelList<LocalIsolamento>(localList);
+		cbxLocalIsolamento.setModel(localModel);
+	}
+	
+	
+	public void buscarSector() {
+		List<Sector> sectoresProvisorios = new ArrayList<Sector>();
+		  sectortList = new ArrayList<Sector>();
+		  
+		  departList = departamentoService.buscarDepartamentoPorUnidade((UnidadeOrganica)user.getUnidade());
+		  
+		  for(int i=0;i<departList.size();i++) {
+			  sectoresProvisorios = sectorService.buscarSectorPorDepartamento((Departamento)departList.get(i));
+			  sectortList.addAll(sectoresProvisorios);
+			
+		  }
+		  
+		  
+		  sectorModel = new ListModelList<Sector>(sectortList);
+		  sectorModel.setMultiple(true);
+		  lbxDepartamentoSectores.setModel(sectorModel);
+		  
+	}
+	
+	
+	
+	private void buscarUnidadeOrganicaFora(){    	  
+	  	  uniOrgList = unidadeOrganicaService.buscarUnidadeOrganica();
+	  	  uniOrgModel = new ListModelList<UnidadeOrganica>(uniOrgList);
+	  	  cbxUnidadeFora.setModel(uniOrgModel);    	  
+	}
+	
+	public void onSelect$cbxUnidadeFora() {
+		  
+		  List<Sector> sectoresProvisorios = new ArrayList<Sector>();
+		  sectortList2 = new ArrayList<Sector>();
+		  
+		  departList = departamentoService.buscarDepartamentoPorUnidade((UnidadeOrganica)cbxUnidadeFora.getSelectedItem().getValue());
+		  
+		  for(int i=0;i<departList.size();i++) {
+			  sectoresProvisorios = sectorService.buscarSectorPorDepartamento((Departamento)departList.get(i));
+			  sectortList2.addAll(sectoresProvisorios);
+			
+		  }
+		  
+		  
+		  sectorModel = new ListModelList<Sector>(sectortList2);
+		  sectorModel.setMultiple(true);
+		  lbxSectoresFora.setModel(sectorModel);
+		 
+		
+	}
+	
+		public void listaSectoresEscolhidos() {
+			
+			sectorEscolhidoModel = new ListModelList<Sector>(listSector);
+			sectorEscolhidoModel.setMultiple(true);
+			lbxSectoresEscolhidos.setModel(sectorEscolhidoModel);
+			
+		}
+		
+		public void onClick$chooseAll(){
+			
+			
+			
+			
+			ListModel<Sector> listSec =  lbxDepartamentoSectores.getModel();
+			
+			
+			
+			ListModelList<Sector> lmsector = new ListModelList<Sector>((Collection<? extends Sector>) listSec);
+			
+			for (Sector s: lmsector){
+				
+				listSector.add(s);
+				setSector.add(s);
+				sectortList.remove(s);
+	
+			}
+			
+			sectorEscolhidoModel = new ListModelList<Sector>(listSector);
+			sectorEscolhidoModel.setMultiple(true);
+			lbxSectoresEscolhidos.setModel(sectorEscolhidoModel);
+			
+			sectorModel = new ListModelList<Sector>(sectortList);
+			sectorModel.setMultiple(true);
+			lbxDepartamentoSectores.setModel(sectorModel);
+			
+			
+			
+			
+		}
+	
+		public void onClick$chooseBtn(){
+			
+		
+	
+			Set<Listitem> listSelectItens = lbxDepartamentoSectores.getSelectedItems();
+			
+			
+				
+			for(final Listitem li: listSelectItens){
+				 Sector secEscolhido = (Sector)li.getValue();
+				 
+				 listSector.add(secEscolhido);
+				 sectortList.remove(secEscolhido);
+				 
+				 
+			}
+			sectorModel = new ListModelList<Sector>(sectortList);
+			sectorModel.setMultiple(true);
+			lbxDepartamentoSectores.setModel(sectorModel);
+	
+			listaSectoresEscolhidos();
+			
+			
+		}
+		
+		public void onClick$removeBtn(){
+			
+			
+			Set<Listitem> listSelectItens = lbxSectoresEscolhidos.getSelectedItems();
+	
+			
+				
+			for(final Listitem li: listSelectItens){
+				
+				 Sector secEscolhido = (Sector)li.getValue();
+				 
+				 sectortList.add(secEscolhido);
+				 listSector.remove(secEscolhido);
+				 
+			}
+			
+			sectorEscolhidoModel = new ListModelList<Sector>(listSector);
+			sectorEscolhidoModel.setMultiple(true);
+			lbxSectoresEscolhidos.setModel(sectorEscolhidoModel);
+			
+			sectorModel = new ListModelList<Sector>(sectortList);
+			sectorModel.setMultiple(true);
+			lbxDepartamentoSectores.setModel(sectorModel);
+			lbxDepartamentoSectores.clearSelection();
+			
+			
+			
+		}
+	
+		public void onClick$removeAll(){
+			
+			
+				
+				
+			ListModel<Sector> listSec =  lbxSectoresEscolhidos.getModel();
+			
+			ListModelList<Sector> lmsector = new ListModelList<Sector>((Collection<? extends Sector>) listSec);
+			
+			for (Sector s: lmsector){
+				
+				sectortList.add(s);
+				listSector.remove(s);
+				setSector.remove(s);
+				
+	
+			}
+			
+			sectorEscolhidoModel = new ListModelList<Sector>(listSector);
+			sectorEscolhidoModel.setMultiple(true);
+			lbxSectoresEscolhidos.setModel(sectorEscolhidoModel);
+			
+			sectorModel = new ListModelList<Sector>(sectortList);
+			sectorModel.setMultiple(true);
+			lbxDepartamentoSectores.setModel(sectorModel);
+			
+			
+				
+				
+			
+			}
+		
+		public void onClickRemoverSectores(ForwardEvent e){
+			
+			
+			
+			Sector secEscolhido = (Sector) e.getData();
+			
+			 sectortList.add(secEscolhido);
+			 listSector.remove(secEscolhido);
+			 
+		
+		
+			sectorEscolhidoModel = new ListModelList<Sector>(listSector);
+			sectorEscolhidoModel.setMultiple(true);
+			lbxSectoresEscolhidos.setModel(sectorEscolhidoModel);
+			
+			sectorModel = new ListModelList<Sector>(sectortList);
+			sectorModel.setMultiple(true);
+			lbxDepartamentoSectores.setModel(sectorModel);
+			lbxDepartamentoSectores.clearSelection();
+		
+		}
+		
+		
+		public void onClick$chooseAll2(){
+		
+			ListModel<Sector> listSec =  lbxSectoresFora.getModel();
+			
+			
+			ListModelList<Sector> lmsector = new ListModelList<Sector>((Collection<? extends Sector>) listSec);
+			
+			for (Sector s: lmsector){
+				
+				listSector2.add(s);
+				setSector.add(s);
+				sectortList2.remove(s);
+	
+			}
+			
+			sectorEscolhidoModel = new ListModelList<Sector>(listSector2);
+			sectorEscolhidoModel.setMultiple(true);
+			lbxSectoresForaEscolhidos.setModel(sectorEscolhidoModel);
+			
+			sectorModel = new ListModelList<Sector>(sectortList2);
+			sectorModel.setMultiple(true);
+			lbxSectoresFora.setModel(sectorModel);
+			
+			
+			
+			
+		}
+	
+		public void onClick$chooseBtn2(){
+			
+			
+			Set<Listitem> listSelectItens = lbxSectoresFora.getSelectedItems();
+			
+			
+				
+			for(final Listitem li: listSelectItens){
+				 Sector secEscolhido = (Sector)li.getValue();
+				 
+				 	listSector2.add(secEscolhido);
+				    sectortList2.remove(secEscolhido);
+				 
+				 
+			}
+			sectorModel = new ListModelList<Sector>(sectortList2);
+			sectorModel.setMultiple(true);
+			lbxSectoresFora.setModel(sectorModel);
+	
+			sectorEscolhidoModel = new ListModelList<Sector>(listSector2);
+			sectorEscolhidoModel.setMultiple(true);
+			lbxSectoresForaEscolhidos.setModel(sectorEscolhidoModel);
+			
+			
+		}
+		
+		public void onClick$removeBtn2(){
+			
+				Set<Listitem> listSelectItens = lbxSectoresForaEscolhidos.getSelectedItems();
+	
+			
+				
+			for(final Listitem li: listSelectItens){
+				
+				 Sector secEscolhido = (Sector)li.getValue();
+				 
+				 	sectortList2.add(secEscolhido);
+				 	listSector2.remove(secEscolhido);
+				 
+			}
+			
+			sectorEscolhidoModel = new ListModelList<Sector>(listSector2);
+			sectorEscolhidoModel.setMultiple(true);
+			lbxSectoresForaEscolhidos.setModel(sectorEscolhidoModel);
+			
+			sectorModel = new ListModelList<Sector>(sectortList2);
+			sectorModel.setMultiple(true);
+			lbxSectoresFora.setModel(sectorModel);
+			lbxSectoresFora.clearSelection();
+			
+			
+			
+		}
+	
+		public void onClick$removeAll2(){
+			
+				
+			ListModel<Sector> listSec =  lbxSectoresForaEscolhidos.getModel();
+			
+			ListModelList<Sector> lmsector = new ListModelList<Sector>((Collection<? extends Sector>) listSec);
+			
+			for (Sector s: lmsector){
+				
+				sectortList2.add(s);
+				listSector2.remove(s);
+				setSector.remove(s);
+				
+	
+			}
+			
+			sectorEscolhidoModel = new ListModelList<Sector>(listSector2);
+			sectorEscolhidoModel.setMultiple(true);
+			lbxSectoresForaEscolhidos.setModel(sectorEscolhidoModel);
+			
+			sectorModel = new ListModelList<Sector>(sectortList2);
+			sectorModel.setMultiple(true);
+			lbxSectoresFora.setModel(sectorModel);
+			
+			
+				
+				
+			
+			}
+		
+		public void onClickRemoverSectores2(ForwardEvent e){
+			
+			
+			Sector secEscolhido = (Sector) e.getData();
+			
+				sectortList2.add(secEscolhido);
+				listSector2.remove(secEscolhido);
+			 
+		
+		
+			sectorEscolhidoModel = new ListModelList<Sector>(listSector2);
+			sectorEscolhidoModel.setMultiple(true);
+			lbxSectoresForaEscolhidos.setModel(sectorEscolhidoModel);
+			
+			sectorModel = new ListModelList<Sector>(sectortList2);
+			sectorModel.setMultiple(true);
+			lbxSectoresFora.setModel(sectorModel);
+			lbxSectoresFora.clearSelection();
+		
+		}
+		
+		public void onCheck$rdb_sim_dentro() {
+			div_espacos_dentro.setVisible(true);
+			
+		}
+		
+		public void onCheck$rdb_nao_dentro() {
+			
+			div_espacos_dentro.setVisible(false);
+			
+		}
+		
+		
+		public void onCheck$rdb_sim_fora() {
+			div_espacos_fora.setVisible(true);
+			
+		}
+		
+		public void onCheck$rdb_nao_fora() {
+			div_espacos_fora.setVisible(false);
+			
+		}
+		
+
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	public void preencherTela() {
 		//Dados do Utente
@@ -260,27 +730,79 @@ public class EdicaoController extends GenericForwardComposer{
 			txt_outras.setValue(ficha.getOutrasInformacoes());
 		} else {rdb_nao_isolamento.setChecked(true);}
 		
-		//seguimento de contactos
+		
+		//Seguimento de contactos na unidade
 		
 		if(ficha.getFichaContacto()!=null) {
 			
+			fichaSecList = fichaSectorService.buscarFichaSectorPorFicha(ficha);
+			String unidadeUser = utente.getUnidade().getDesignacao();
+			
+			
 			if(ficha.getFichaContacto().isTeveContactoDentro()==true) {
 				rdb_sim_dentro.setChecked(true);
-				cbxDepartamentoDentro.setValue(ficha.getFichaContacto().getDepartamentoDentro().getDesignacao());
-				cbxSectorDentro.setValue(ficha.getFichaContacto().getSectorDentro().getDesignacao());
-				txtOutrosDentro.setValue(ficha.getFichaContacto().getOutrosEspacosDentro());
+				
+				List<Sector> sectoresDentro = new ArrayList<Sector>();
+				
+				
+				for(int i=0;i<fichaSecList.size();i++) {
+					
+					String unidadeSector = fichaSecList.get(i).getSector().getDepartamento().getUnidade_organica().getDesignacao();
+					
+					if(unidadeSector.equals(unidadeUser)) {
+						sectoresDentro.add(fichaSecList.get(i).getSector());
+						
+					}
+					
+				}
+				
+				
+				ListModelList<Sector >sectoresModelDentro = new ListModelList<Sector>(sectoresDentro);
+				sectoresModelDentro.setMultiple(true);
+				lbxSectoresEscolhidos.setModel(sectoresModelDentro);
+				
+				
+				if(ficha.getFichaContacto().getOutrosEspacosDentro()!=null) {
+					
+					txtOutrosDentro.setValue(ficha.getFichaContacto().getOutrosEspacosDentro());
+				}
+				
 			} else {rdb_nao_dentro.setChecked(true);}
 			
 			
 			if(ficha.getFichaContacto().isTeveContactoFora()==true) {
 				rdb_sim_fora.setChecked(true);
-				cbxUnidadeFora.setValue(ficha.getFichaContacto().getUnidadeFora().getDesignacao());
-				cbxDepartamentoFora.setValue(ficha.getFichaContacto().getDepartamentoFora().getDesignacao());
-				cbxSectorFora.setValue(ficha.getFichaContacto().getSectorFora().getDesignacao());
-				txtoutrosFora.setValue(ficha.getFichaContacto().getOutrosEspacosFora());
+				
+				
+				sectoresList = new ArrayList<Sector>();
+				
+				
+				
+				for(int i=0;i<fichaSecList.size();i++) {
+					
+					String unidadeSector = fichaSecList.get(i).getSector().getDepartamento().getUnidade_organica().getDesignacao();
+					
+					if(unidadeSector.equals(unidadeUser)==false) {
+						sectoresList.add(fichaSecList.get(i).getSector());
+					}
+					
+				}
+				sectoresModel = new ListModelList<Sector>(sectoresList);
+				sectoresModel.setMultiple(true);
+				lbxSectoresForaEscolhidos.setModel(sectoresModel);
+				
+				
+				
+				
+				if(ficha.getFichaContacto().getOutrosEspacosFora()!=null) {
+					
+					txtoutrosFora.setValue(ficha.getFichaContacto().getOutrosEspacosFora());
+					
+				}
 			} else {rdb_nao_fora.setChecked(true);}
 			
-		}
+		} 
+		
 		
 		
 		
@@ -318,7 +840,163 @@ public class EdicaoController extends GenericForwardComposer{
 	    utenteService.update(utente);
 	    
 	    
-	    //ut.gravarDadosUtente(utente);
+	    //Gravar informações sobre o caso
+	    
+	    if(cbxClassificacao.getSelectedItem().getValue()!=null) {
+	    	ficha.setClassificacao((Classificacao)(cbxClassificacao.getSelectedItem().getValue()));
+	    }
+	    
+    	if(dtb_dataTeste.getValue()!=null) {
+    		ficha.setDataTeste(dtb_dataTeste.getValue());
+    	}
+    	if(dtb_dataNotificacao.getValue()!=null) {
+    		ficha.setDataNotificacao(dtb_dataNotificacao.getValue());
+    	}
+    	
+    	
+    	if(rdb_sim.isSelected()) {
+    		ficha.setViajou(true);
+    		if(txt_proveniencia.getValue()!=null) {
+    			ficha.setProveniencia(txt_proveniencia.getValue());
+    		}
+    		if(txt_pontoEntrada.getValue()!=null) {
+    			ficha.setPontoEntrada(txt_pontoEntrada.getValue());
+    		}
+    		
+    		
+    		if(rdb_sim_detectado.isSelected()) {
+    		   ficha.setDetectadoNoPontoEntrada(true);
+    		} else {ficha.setDetectadoNoPontoEntrada(false);}
+    		
+    		if(dtb_dataEntrada.getValue()!=null) {
+    			ficha.setDataEntradaNoPais(dtb_dataEntrada.getValue());
+    		}
+    		
+    		
+    		if(txt_MeioTransporte.getValue()!=null) {
+    			ficha.setMeioTransporte(txt_MeioTransporte.getValue());
+    		}
+    		
+    		
+    	} else {ficha.setViajou(false);}
+    	
+    	ficha.setUserUpdated(user.getId());
+    	
+    	//gravar residencia do caso
+    	
+    	if(rdb_sim_isolamento.isSelected()) {
+    		ficha.setEmIsolamento(true);
+    		
+    		
+    		ficha.setLocal_isolamento((String)(cbxLocalIsolamento.getSelectedItem()==null ? null : cbxLocalIsolamento.getSelectedItem().getLabel()));
+			 
+    		ficha.setDistrito_isolamento((Distrito)(cbxDistrIsolamento.getSelectedItem()==null ? null : cbxDistrIsolamento.getSelectedItem().getValue()));
+    		
+    		
+    		
+    	}else {ficha.setEmIsolamento(false);}
+    	
+    	if(dtb_dataInformou.getValue()!=null) {
+    		ficha.setDataQueInformoUnidade(dtb_dataInformou.getValue());
+    	}
+    	if(dtb_dataUltima.getValue()!=null) {
+    		ficha.setDataUltimaVezNaUnidade(dtb_dataUltima.getValue());
+    	}
+    	
+    	
+    	if(txt_outras.getValue()!=null) {
+    		ficha.setOutrasInformacoes(txt_outras.getValue());
+    	}
+    	
+    	//gravar contactos na unidade
+    	
+    	if(rdb_sim_dentro.isSelected() || rdb_sim_fora.isSelected()) {
+    		
+    	fichaSecList = fichaSectorService.buscarFichaSectorPorFicha(ficha);
+		List<Sector> listaSectoresPorFicha = new ArrayList<Sector>();
+		
+		for(int i=0;i<fichaSecList.size();i++) {
+			listaSectoresPorFicha.add(fichaSecList.get(i).getSector());
+		}
+   		 
+   		 if(ficha.getFichaContacto()==null) {
+   			 fichContacto = new FichaContactoDirecto(); 
+   		 }
+   		 
+   		
+   		 if(rdb_sim_dentro.isSelected()) {
+   			 
+   			 Sector novoSector = new Sector();
+   			  
+   			 for(int i=0; i<listSector.size();i++) {
+   				   
+   				  novoSector = listSector.get(i);
+   				  
+   				  if(listaSectoresPorFicha.contains(novoSector)==false) {
+   					  FichaSector fichSec = new FichaSector();
+     				  fichSec.setFicha(ficha);
+     				  fichSec.setSector(novoSector);
+     				  fichSec.setUserCreated(user.getId());
+     				  fichSec.setUserUpdated(user.getId());
+     				  fichaSectorService.saveOrUpdate(fichSec);
+   					  
+   				  }
+   				  
+   			 }
+   			 
+   			 fichContacto.setTeveContactoDentro(true);
+   			 
+   			 if(txtOutrosDentro.getText()!=null) {
+
+   				 fichContacto.setOutrosEspacosDentro(txtOutrosDentro.getValue());
+   				 
+   			 }
+   			 
+   		 }
+   		 
+   		 
+   		 
+   		 if(rdb_sim_fora.isSelected()) {
+   			 
+   			 Sector novoSector = new Sector();
+   			 
+   			  
+   			 for(int i=0; i<listSector2.size();i++) {
+   				  if(listaSectoresPorFicha.contains(novoSector)==false) {
+   					  novoSector = listSector2.get(i);
+     				  FichaSector fichSec = new FichaSector();
+     				  fichSec.setFicha(ficha);
+     				  fichSec.setSector(novoSector);
+     				  fichSec.setUserCreated(user.getId());
+     				  fichSec.setUserUpdated(user.getId());
+     				  fichaSectorService.saveOrUpdate(fichSec);
+   					  
+   				  }
+   				  
+   			 }
+   			 
+   			  
+   			 fichContacto.setTeveContactoFora(true);
+   			
+   			 
+   			 if(txtoutrosFora.getValue()!=null) {
+   				 
+   				 fichContacto.setOutrosEspacosFora(txtoutrosFora.getValue());
+   			 }
+   			 
+   		 }
+   		 
+   		 fichContacto.setUserUpdated(user.getId());
+   		 
+   		 fichaContactoService.update(fichContacto);
+   		 
+   		 ficha.setFichaContacto(fichContacto);
+    	
+    	
+		
+	}
+    	
+    	fichaService.update(ficha);
 	    
 	    cli.Msg("Dados Actualizados com Sucesso!", win); 
 		
@@ -328,11 +1006,9 @@ public class EdicaoController extends GenericForwardComposer{
 		target.getChildren().clear();
 		Executions.createComponents("views/ficha_investigacao/ficha_investigacao.zul", target, map);
 		
-		
-	}
    
     
-     
+   }  
     
 
 }

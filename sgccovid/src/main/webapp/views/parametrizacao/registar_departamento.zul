@@ -96,6 +96,34 @@
 	            <div class="row">	
 	            	<x:div class="col-12">
                 <x:div class="card">
+                
+                 <separator/>
+                 
+                 
+				                
+					
+					
+              
+                 
+	                <div class="col-md-6 col-lg-4">
+		              <div class="form-group">
+							<label class="form-label">Unidade Orgânica</label>
+							<combobox id="cbx_unidade"  placeholder="Seleccione a Unidade" readonly="true" 
+							width="100%">
+		                 	    <template name="model">
+		                 		   <comboitem label="${each.designacao}"></comboitem>
+		                 	     </template>
+		                 </combobox>		
+						</div>
+					</div>
+					
+					<div class="col-md-12 col-lg-12">
+                     	<div align="right" >
+                     		<button iconSclass="fe fe-search" zclass="btn btn-secondary" width="110px" id="btn_pesquisar" >Pesquisar</button>
+                     	</div>
+                     </div>
+					
+				<separator/>
                                 
                 <listbox id="lbxDep" mold="paging" rows="10" checkmark="true"
 					pageSize="10" multiple="false">
@@ -104,7 +132,6 @@
 						<listheader align="left" width="14%" sort="auto(codigo)" >Código</listheader>
 						<listheader align="left" width="" sort="auto(sigla)" >Designação</listheader>
 						<listheader align="left" width="15%" sort="auto(unidade_organica.designacao)" >Unidade Orgânica</listheader>
-						<listheader align="center" width="15%" sort="auto(provincia.designacao)" >Província</listheader>
 						<listheader align="center" width="6%" ></listheader>
 
 					</listhead>
@@ -116,7 +143,6 @@
 								<listcell label="${each.codigo}" ></listcell> 
 								<listcell label="${each.designacao}" ></listcell> 
 								<listcell label="${each.unidade_organica.designacao}" ></listcell> 
-								<listcell label="${each.provincia.designacao}" ></listcell> 
 								<listcell label="" > 
 									<x:a class="icon"  forward="onClick=onClickEditar_Departamento(${each})">
                               			<x:i class="fe fe-edit"></x:i>

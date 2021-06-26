@@ -153,6 +153,39 @@ public class OrganogramaVM extends AbstractVM{
 		
 	}
 	
+	@Command
+	public void openCategoria() {
+
+		final HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("target", target);
+		target.getChildren().clear();
+		Executions.createComponents("views/parametrizacao/categoria.zul", target, map);
+
+		
+	}
+	
+	@Command
+	public void openClassificacao() {
+
+		final HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("target", target);
+		target.getChildren().clear();
+		Executions.createComponents("views/parametrizacao/classificacao.zul", target, map);
+
+		
+	}
+	
+	@Command
+	public void openLocalIsolamento() {
+
+		final HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("target", target);
+		target.getChildren().clear();
+		Executions.createComponents("views/parametrizacao/local_isolamento.zul", target, map);
+
+		
+	}
+	
 	
 
 }

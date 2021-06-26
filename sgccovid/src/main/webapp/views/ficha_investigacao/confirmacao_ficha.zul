@@ -339,6 +339,8 @@
 										                	                
 										                    					                     
 				</div>
+				
+				
 			     
           </div>
     			                
@@ -396,6 +398,7 @@
 										                    					                     
 								     </div>
 								     
+								  <div id="div_labels_isolamento">
 								     <div class="row">
 					                    				
 					                    				<div class="col-md-3 col-lg-3">
@@ -435,37 +438,7 @@
 										                    					                     
 								     </div>
 								     
-								     
-					          </div>  
-			                </div>
-			                
-			      <div class="card">
-			      
-	   <div class="row">
-				<div class="col-md-11">
-				  <div zclass="box-header" style="background-color:#bbb; ">
-						<separator orient="vertical" spacing="8px" />
-						<h:label class="box-title" 
-							style="font-family:Arial;color:black;text-align:left; font-weight:bold;">
-							SEGUIMENTO DE CONTACTOS NA UNIDADE
-						</h:label>
-								
-					 </div>
-			    </div>
-			    
-			    <div class="col-md-1" >
-			      <div>
-			     	<button style="background:rgb(51, 153, 122);color:white" iconSclass="fe fe fe-edit" zclass="btn btn-secondary" height="34px" forward="onClick=onClickEditarDados">Editar</button>
-				  </div>  
-			    </div>
-			
-			</div>  
-			              					                	
-		           
-			
-			     <div class="card-body">
-            		                
-            		                <div class="row">
+								     <div class="row">
 					                    				
 					                    				<div class="col-md-3 col-lg-3">
 										                   <label class="form-label">Última vez que esteve na unidade: </label>
@@ -474,7 +447,12 @@
 										                <div class="col-md-3 col-lg-3">
 										                     <label id="label_data_ultima"></label>
 										                </div>	
-										                
+										                                
+										                    					                     
+								     </div>
+								     
+								     <div class="row">
+					                    				
 										                <div class="col-md-3 col-lg-3">
 										                   <label class="form-label">Data em que informou à unidade:</label>
 										                </div>
@@ -485,148 +463,105 @@
 										                    					                     
 								     </div>
 								     
-								     <separator/>
-								     <separator/>
+								   </div>  
 								     
-								 <div id="div_Contactodentro">    
-								     <div class="row" style="background-color: #bbb">
-								      
-								           <div class="col-md-3 col-lg-3">
-										       <label class="form-label">Dentro da Unidade  </label>
-										    </div>
-									   
-								     </div>
-								     
-								     <separator/>
-								     
-								     <div class="row">
-					                    				
-					                    				<div class="col-md-3 col-lg-3">
-										                   <label class="form-label">Departamento:  </label>
-										                </div>
-										                
-										                <div class="col-md-3 col-lg-3">
-										                       <label id="label_deparamento"></label>
-										                </div>
-										                
-										                <div class="col-md-3 col-lg-3">
-										                       <label id="label_departamento_dentro"></label>
-										                </div>	                
-										                    					                     
-								     </div>
-								     
-								     <div class="row">
-					                    				
-					                    				<div class="col-md-3 col-lg-3">
-										                   <label class="form-label">Sector:  </label>
-										                </div>
-										                
-										                <div class="col-md-3 col-lg-3">
-										                       <label id="label_sector"></label>
-										                </div>
-										                
-										                <div class="col-md-3 col-lg-3">
-										                       <label id="label_sector_dentro"></label>
-										                </div>	                
-										                    					                     
-								     </div>
-								     
-								     <div class="row">
-					                    				
-					                    				<div class="col-md-3 col-lg-3">
-										                   <label class="form-label">Outros espaços: </label>
-										                </div>
-										                
-										                
-										                <div class="col-md-3 col-lg-3">
-										                       <label id="label_outros"></label>
-										                </div>	
-										                
-										                <div class="col-md-3 col-lg-3">
-										                       <label id="label_outros_espacos"></label>
-										                </div>	                
-										                    					                     
-								     </div>
+					          </div>  
+			                </div>
+			                
+			   <div class="card" id="div_card_contactos">
+			      
+				   <div class="row">
+							<div class="col-md-11">
+							  <div zclass="box-header" style="background-color:#bbb; ">
+									<separator orient="vertical" spacing="8px" />
+									<h:label class="box-title" 
+										style="font-family:Arial;color:black;text-align:left; font-weight:bold;">
+										SEGUIMENTO DE CONTACTOS NA UNIDADE
+									</h:label>
+											
 								 </div>
+						    </div>
+						    
+						    <div class="col-md-1" >
+						      <div>
+						     	<button style="background:rgb(51, 153, 122);color:white" iconSclass="fe fe fe-edit" zclass="btn btn-secondary" height="34px" forward="onClick=onClickEditarDados">Editar</button>
+							  </div>  
+						    </div>
+						
+						</div>  
+			              					                	
+		           
+			
+			     <div class="card-body">
+            		                
+            		                
+								     <separator/>
 								     
-								     <separator/>
-								     <separator/>
-							<div id="div_ContactoFora">
-								     <div class="row" style="background-color: #bbb">
-								       
-								           <div class="col-md-3 col-lg-3">
-										       <label class="form-label">Fora da Unidade  </label>
-										    </div>
+					<div class="row">
+							
+							<div zclass="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="div_espacos_dentro" visible="false">
+								<div class="row" style="background-color: #bbb; padding:3px;" width="95%">
+								  <label class="form-label">Espaços com os quais teve contacto Dentro da Unidade:</label>
+								</div>
+								
+								<separator/>
+								<div class="row">
+									<div class="form-group">
+										<listbox width="95%" id="lbxSectoresDentro">
 										
-								     </div>
-								     <separator/>
+											<listhead>
+		   									   <listheader label=""></listheader>
+		   									</listhead>
+	   									  	<template name="model">
+	           									<listitem>
+	           									  <listcell label="${each.departamento.designacao} - ${each.designacao}"/>
+	                							</listitem>
+	                						</template>
+										
+										</listbox>
+									</div>
+								</div>
+								
+								<div class="row">
+								  <label id="label_outros_espacos_dentro"></label>
+								</div>
+								
+								
+							</div>
+							
+							<div zclass="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="div_espacos_fora" visible="false">
+								<div class="row" style="background-color: #bbb; padding:3px;" width="95%">
+								  <label class="form-label">Espaços com os quais teve contacto Fora da Unidade:</label>
+								</div>
+								
+								<separator/>
+								<div class="row">
+									<div class="form-group">
+										<listbox width="95%" id="lbxSectoresFora">
+										
+											<listhead>
+		   									   <listheader label=""></listheader>
+		   									</listhead>
+	   									  	<template name="model">
+	           									<listitem>
+	           									  <listcell label="${each.departamento.designacao} - ${each.designacao}"/>
+	                							</listitem>
+	                						</template>
+										
+										</listbox>
+									</div>
+								</div>
+								
+								<div class="row">
+								  <label id="label_outros_espacos_fora"></label>
+								</div>
+								
+							</div>
+						
+						</div>
 								     
-								     <div class="row">
-					                    				
-					                    				<div class="col-md-3 col-lg-3">
-										                   <label class="form-label">Unidade Orgância:  </label>
-										                </div>
-										                
-										                <div class="col-md-3 col-lg-3">
-										                       <label id="label_unidade_contacto"></label>
-										                </div>
-										                
-										                <div class="col-md-3 col-lg-6">
-										                       <label id="label_unidade_fora"></label>
-										                </div>	                
-										                    					                     
-								     </div>
-								     
-								     <div class="row">
-					                    				
-					                    				<div class="col-md-3 col-lg-3">
-										                   <label class="form-label">Departamento:  </label>
-										                </div>
-										                
-										                <div class="col-md-3 col-lg-3">
-										                       <label id="label_deparamento2"></label>
-										                </div>
-										                
-										                <div class="col-md-3 col-lg-3">
-										                       <label id="label_departamento_fora"></label>
-										                </div>	                
-										                    					                     
-								     </div>
-								     
-								     <div class="row">
-					                    				
-					                    				<div class="col-md-3 col-lg-3">
-										                   <label class="form-label">Sector:  </label>
-										                </div>
-										                
-										                <div class="col-md-3 col-lg-3">
-										                       <label id="label_sector2"></label>
-										                </div>
-										                
-										                <div class="col-md-3 col-lg-3">
-										                       <label id="label_sector_fora"></label>
-										                </div>	                
-										                    					                     
-								     </div>
-								     
-								     <div class="row">
-					                    				
-					                    				<div class="col-md-3 col-lg-3">
-										                   <label class="form-label">Outros espaços: </label>
-										                </div>
-										                
-										                
-										                <div class="col-md-3 col-lg-3">
-										                       <label id="label_outros2"></label>
-										                </div>	
-										                
-										                <div class="col-md-3 col-lg-3">
-										                       <label id="label_outros_espacos2"></label>
-										                </div>	                
-										                    					                     
-								     </div>
-								     
-						</div>     
+								 
+							     
 								     
 					          </div>  
 			                </div>

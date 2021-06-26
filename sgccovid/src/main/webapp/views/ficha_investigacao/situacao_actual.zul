@@ -43,6 +43,16 @@
                    </combobox>		
 				</div>
 				
+				<div class="form-group">
+			       <label class="form-label"> Data de alteração do quadro clínico:  </label>
+			
+					<div >
+						<datebox id="dtb_data_quadro_clinico"  format="dd/MM/yyyy" width="100%"
+						constraint="no empty, no future: Insira uma data válida!"/>
+					</div>
+			
+			    </div>
+				
 			</div>
 			
 			<div class="row">

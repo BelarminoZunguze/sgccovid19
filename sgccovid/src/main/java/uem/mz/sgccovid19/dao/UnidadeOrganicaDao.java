@@ -10,5 +10,7 @@ public interface UnidadeOrganicaDao extends GenericDao<UnidadeOrganica>{
 	public List<UnidadeOrganica> buscarUnidadeOrganica();
 	
 	public List<UnidadeOrganica> buscarUnidadePorInst(Instituicao inst);
+	
+	public List<UnidadeOrganica> buscarUnidadePorId(Long userId);
 
 }

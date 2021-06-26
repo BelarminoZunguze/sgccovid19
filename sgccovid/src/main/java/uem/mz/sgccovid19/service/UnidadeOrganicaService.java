@@ -9,5 +9,6 @@ public interface UnidadeOrganicaService extends GenericService<UnidadeOrganica>{
 	
 	public List<UnidadeOrganica> buscarUnidadeOrganica();
 	public List<UnidadeOrganica> buscarUnidadePorInst(Instituicao inst);
+	public List<UnidadeOrganica> buscarUnidadePorId(Long userId);
 
 }

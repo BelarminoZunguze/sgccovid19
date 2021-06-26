@@ -219,7 +219,7 @@ public class ContactosUnidadeController extends GenericForwardComposer{
     			 if(txtOutrosDentro.getValue()!=null) {
 
     				 fichContacto.setOutrosEspacosDentro(txtOutrosDentro.getValue());
-    			 }
+    			 }else {fichContacto.setOutrosEspacosDentro(null);}
     			 
     		 } else {fichContacto.setTeveContactoDentro(false);}
     		 
@@ -236,7 +236,7 @@ public class ContactosUnidadeController extends GenericForwardComposer{
     			 if(txtoutrosFora.getValue()!=null) {
     				 
     				 fichContacto.setOutrosEspacosFora(txtoutrosFora.getValue());
-    			 }
+    			 }else {fichContacto.setOutrosEspacosFora(null);}
     			 
     		 } else {fichContacto.setTeveContactoFora(false);}
     		 

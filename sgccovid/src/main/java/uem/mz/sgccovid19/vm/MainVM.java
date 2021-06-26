@@ -121,6 +121,17 @@ public class MainVM extends PagVM {
 	}
 	
 	@Command
+	public void openAlterarDados() {
+
+		final HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("target", target);
+		target.getChildren().clear();
+		Executions.createComponents(
+				"views/administracao/alterar_dados.zul", target, map);
+
+	}
+	
+	@Command
 	public void openOrganograma() {
 
 		final HashMap<String, Object> map = new HashMap<String, Object>();

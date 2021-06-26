@@ -69,15 +69,17 @@ public class ParametrizacaoVM extends AbstractVM{
 		Selectors.wireComponents(view, this, false);
 		
 		user = (User) Executions.getCurrent().getDesktop().getSession().getAttribute("utilizadorAutenticado");
+		//User loggeduser = userService.getUser(authentication.getName());
 		
 		
-		if(user.getId()==1) {
+		if(user.getRoles().toString().equals("[Admin]")) {
+			
 			numero = buscarFichas();
 		} else {
 			numeroUnidade = buscarFichasUnidade();
 		}
 		
-		if(user.getId()==1) {
+		if(user.getRoles().toString().equals("[Admin]")) {
 			numeroMonitoria = buscarFichasMonitoria();
 		} else {
 			numeroMonUnidade = buscarFichasMonitoriaUnidade();

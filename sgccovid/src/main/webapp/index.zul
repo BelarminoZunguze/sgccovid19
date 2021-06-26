@@ -83,18 +83,10 @@
                     </x:span>
                   </x:a>
                   <x:div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                    <x:a class="dropdown-item" href="#">
+                    <x:a class="dropdown-item" href="#" onClick="@command('openAlterarDados')">
                       <x:i class="dropdown-icon fe fe-user"></x:i> Perfil
                     </x:a>
-                    <x:a class="dropdown-item" href="#">
-                      <x:i class="dropdown-icon fe fe-settings"></x:i> Definições
-                    </x:a>
-                    <x:a class="dropdown-item" href="#">
-                      <x:i class="dropdown-icon fe fe-mail"></x:i> Caixa de Entrada
-                    </x:a>
-                    <x:a class="dropdown-item" href="#">
-                      <x:i class="dropdown-icon fe fe-send"></x:i> Enviar Mensagem
-                    </x:a>
+                    
                     <x:div class="dropdown-divider"></x:div>
                     <x:a class="dropdown-item" href="#">
                       <x:i class="dropdown-icon fe fe-help-circle"></x:i> Precisa de ajuda?
