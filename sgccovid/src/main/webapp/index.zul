@@ -79,7 +79,7 @@
                     <x:span class="avatar" style="background-image: url(images/moz.png)"></x:span>
                     <x:span class="ml-2 d-none d-lg-block">
                       <x:span class="text-default">${vm.loggeduser.nome }</x:span>
-                      <x:small class="text-muted d-block mt-1">${vm.loggeduser.roles }</x:small>
+                      <x:small class="text-muted d-block mt-1">${vm.legenda }</x:small>
                     </x:span>
                   </x:a>
                   <x:div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">

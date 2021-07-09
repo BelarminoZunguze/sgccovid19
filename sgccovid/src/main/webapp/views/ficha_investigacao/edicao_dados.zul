@@ -36,7 +36,8 @@
 								
 										<div >
 											<div>
-											  <textbox id="txtNome" zclass="form-control" width="90%" > </textbox>
+											  <textbox id="txtNome" zclass="form-control" width="90%" 
+											  constraint="no empty: Este campo não pode ser nulo!"> </textbox>
 									        </div>
 										</div>
 								
@@ -48,7 +49,8 @@
 										<div >
 											<combobox id="cbxNacionalidade"
 												readonly="true" placeholder="Selecione a Nacionalidade" width="90%"
-												autocomplete="true">
+												autocomplete="true"
+												constraint="no empty: Selecione a Nacionalidade!">
 												    <comboitem label="Moçambicana" value="Moçambicana"></comboitem>
 													<comboitem label="Outra"></comboitem>
 											</combobox>
@@ -74,7 +76,8 @@
 								
 										<div >
 											<div>
-											  <textbox id="txtContacto" zclass="form-control" width="90%" > </textbox>
+											  <textbox id="txtContacto" zclass="form-control" width="90%" 
+											  constraint="/[0-9]+/: Por favor, insira um número válido!"> </textbox>
 									        </div>
 										</div>
 								
@@ -87,7 +90,8 @@
 										<div >
 											<combobox id="cbxGenero"
 												readonly="true" placeholder="Selecione o Sexo" width="90%"
-												autocomplete="true">
+												autocomplete="true"
+												constraint="no empty: Selecione o Sexo!">
 												
 													<comboitem label="Masculino" value="Masculino"></comboitem>
 													<comboitem label="Feminino" value="Feminino"></comboitem>
@@ -101,7 +105,8 @@
 								       <label class="form-label"> Data de Nascimento:  </label>
 								
 										<div >
-											<datebox id="dtb_dataNascimento"  format="dd/MM/yyyy" width="90%"/>
+											<datebox id="dtb_dataNascimento"  format="dd/MM/yyyy" width="90%"
+											constraint="no future, no empty: Insira uma data válida!"/>
 										</div>
 								
 								    </div>
@@ -118,7 +123,8 @@
 										<div >
 											<combobox id="cbxTipoUtente"
 												readonly="true" placeholder="Selecione a Categoria" width="90%"
-												autocomplete="true">
+												autocomplete="true"
+												constraint="no empty: Selecione a Categoria!">
 												
 												<template name="model">
 													<comboitem
@@ -154,7 +160,8 @@
 										<div >
 											<combobox id="cbxProvincia"
 												readonly="true" placeholder="Selecione a Província" width="90%"
-												autocomplete="true">
+												autocomplete="true"
+												constraint="no empty: Selecione a Província!">
 												<template name="model">
 													<comboitem
 														label="${each.designacao}">
@@ -171,7 +178,8 @@
 										<div >
 											<combobox id="cbxDistrito"
 												readonly="true" placeholder="Selecione a Província" width="90%"
-												autocomplete="true">
+												autocomplete="true"
+												constraint="no empty: Selecione o distrito!">
 												<template name="model">
 													<comboitem
 														label="${each.designacao}">
@@ -187,7 +195,8 @@
 								
 										<div >
 											<div>
-											  <textbox id="txtEndereco" zclass="form-control" width="90%" > </textbox>
+											  <textbox id="txtEndereco" zclass="form-control" width="90%" 
+											  constraint="no empty: Este campo não pode ser vazio!"> </textbox>
 									        </div>
 										</div>
 								
@@ -265,7 +274,8 @@
 										<div >
 											<combobox id="cbxClassificacao"
 												readonly="true" placeholder="Selecione a classificação" width="90%"
-												autocomplete="true">
+												autocomplete="true"
+												constraint="no empty: Este campo não pode ser vazio!">
 												
 												<template name="model">
 													<comboitem
@@ -283,7 +293,8 @@
 								       <label class="form-label"> Data do Teste:  </label>
 								
 										<div >
-											<datebox id="dtb_dataTeste"  format="dd/MM/yyyy" width="90%"/>
+											<datebox id="dtb_dataTeste"  format="dd/MM/yyyy" width="90%"
+											constraint="no future: Insira uma data válida!"/>
 										</div>
 								
 								    </div>
@@ -292,7 +303,8 @@
 								       <label class="form-label"> Data da Notificação:  </label>
 								
 										<div >
-											<datebox id="dtb_dataNotificacao"  format="dd/MM/yyyy" width="90%"/>
+											<datebox id="dtb_dataNotificacao"  format="dd/MM/yyyy" width="90%"
+											constraint="no future, no empty: Insira uma data válida!"/>
 										</div>
 								
 								    </div>	
@@ -363,7 +375,8 @@
 								   <div class="form-group"> 
 									 <label class="form-label">Data de Entrada no Pais:  </label>
 									 <div >
-											<datebox id="dtb_dataEntrada"  format="dd/MM/yyyy" width="90%"/>
+											<datebox id="dtb_dataEntrada"  format="dd/MM/yyyy" width="90%"
+											constraint="no future: Insira uma data válida!"/>
 										</div>
 								   </div>
 									

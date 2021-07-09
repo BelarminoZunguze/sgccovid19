@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -91,7 +92,7 @@ public class Ficha extends IdEntity{
 	@JoinColumn (name = "classificacao_id")
 	private Classificacao classificacao;
 	
-	@ManyToOne
+	@ManyToOne(cascade = {CascadeType.ALL})
 	@JoinColumn (name = "ficha_contacto_directo_id")
 	private FichaContactoDirecto fichaContacto;
 	

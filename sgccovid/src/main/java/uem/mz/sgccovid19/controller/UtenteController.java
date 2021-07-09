@@ -200,6 +200,7 @@ public class UtenteController extends GenericForwardComposer{
 	   utente.setNacionalidade((String)cbxNacionalidade.getSelectedItem().getValue());
 	   utente.setTipo_utente((TipoUtente)(cbxTipoUtente.getSelectedItem().getValue()));
 	   
+	   cbxProvincia.getValue();
 	 
 	   if(cbxDistrito.getSelectedItem().getValue()!=null) {
 		   utente.setDistrito((Distrito)(cbxDistrito.getSelectedItem().getValue()));  

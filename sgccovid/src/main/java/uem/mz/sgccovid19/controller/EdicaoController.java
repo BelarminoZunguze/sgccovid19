@@ -157,7 +157,7 @@ public class EdicaoController extends GenericForwardComposer{
 	private Set<Sector> setSector = new HashSet<Sector>();
 	
 	private List<Sector> listSector2 = new ArrayList<Sector>();
-	private List<Sector> sectortList2;
+	private List<Sector> sectortList2 = new ArrayList<Sector>();
 	
 	
 	private Sector sec;
@@ -319,6 +319,12 @@ public class EdicaoController extends GenericForwardComposer{
 		cbxLocalIsolamento.setModel(localModel);
 	}
 	
+	public void onCheck$rdb_sim_isolamento() {
+		cbxLocalIsolamento.setConstraint("no empty: Selecione o Local de Isolamento!");
+		cbxProvIsolamento.setConstraint("no empty: Selecione a Província de Isolamento!");
+		cbxDistrIsolamento.setConstraint("no empty: Selecione o Distrito de Isolamento!");
+	}
+	
 	
 	public void buscarSector() {
 		List<Sector> sectoresProvisorios = new ArrayList<Sector>();
@@ -410,8 +416,6 @@ public class EdicaoController extends GenericForwardComposer{
 	
 		public void onClick$chooseBtn(){
 			
-		
-	
 			Set<Listitem> listSelectItens = lbxDepartamentoSectores.getSelectedItems();
 			
 			
@@ -419,8 +423,12 @@ public class EdicaoController extends GenericForwardComposer{
 			for(final Listitem li: listSelectItens){
 				 Sector secEscolhido = (Sector)li.getValue();
 				 
-				 listSector.add(secEscolhido);
-				 sectortList.remove(secEscolhido);
+				 if(listSector.contains(secEscolhido)==false) {
+					 listSector.add(secEscolhido);
+					 sectortList.remove(secEscolhido);
+				 }
+				 
+				 
 				 
 				 
 			}
@@ -428,7 +436,9 @@ public class EdicaoController extends GenericForwardComposer{
 			sectorModel.setMultiple(true);
 			lbxDepartamentoSectores.setModel(sectorModel);
 	
-			listaSectoresEscolhidos();
+			sectorEscolhidoModel = new ListModelList<Sector>(listSector);
+			sectorEscolhidoModel.setMultiple(true);
+			lbxSectoresEscolhidos.setModel(sectorEscolhidoModel);
 			
 			
 		}
@@ -691,7 +701,10 @@ public class EdicaoController extends GenericForwardComposer{
 		txtEmail.setValue(ficha.getUtente().getEmail());
 		txtContacto.setValue(ficha.getUtente().getContacto());
 		cbxGenero.setValue(ficha.getUtente().getGenero());
-		dtb_dataNascimento.setValue(ficha.getUtente().getDataNascimento());
+		if(ficha.getUtente().getDataNascimento()!=null) {
+			dtb_dataNascimento.setValue(ficha.getUtente().getDataNascimento());
+		}
+		
 		cbxTipoUtente.setValue(ficha.getUtente().getTipo_utente().getDesignacao());
 		cbxUnidade.setValue(ficha.getUtente().getUnidade().getDesignacao());
 		cbxProvincia.setValue(ficha.getUtente().getDistrito().getProvincia().getDesignacao());
@@ -701,8 +714,14 @@ public class EdicaoController extends GenericForwardComposer{
 		//Informações sobre o caso
 		
 		cbxClassificacao.setValue(ficha.getClassificacao().getNome());
-		dtb_dataTeste.setValue(ficha.getDataTeste());
-		dtb_dataNotificacao.setValue(ficha.getDataNotificacao());
+		if(ficha.getDataTeste()!=null) {
+			dtb_dataTeste.setValue(ficha.getDataTeste());
+		}
+		
+		if(ficha.getDataNotificacao()!=null) {
+			dtb_dataNotificacao.setValue(ficha.getDataNotificacao());
+		}
+		
 		
 		if(ficha.isViajou()==true) {
 			rdb_sim.setChecked(true);
@@ -713,7 +732,10 @@ public class EdicaoController extends GenericForwardComposer{
 				rdb_sim_detectado.setChecked(true);
 			} else {rdb_nao_detectado.setChecked(true);}
 			
-			dtb_dataEntrada.setValue(ficha.getDataEntradaNoPais());
+			if(ficha.getDataEntradaNoPais()!=null) {
+				dtb_dataEntrada.setValue(ficha.getDataEntradaNoPais());
+			}
+			
 			txt_MeioTransporte.setValue(ficha.getMeioTransporte());
 			
 		} else {rdb_nao.setChecked(true);}
@@ -722,9 +744,18 @@ public class EdicaoController extends GenericForwardComposer{
 		
 		if(ficha.isEmIsolamento()==true) {
 			rdb_sim_isolamento.setChecked(true);
-			cbxLocalIsolamento.setValue(ficha.getLocal_isolamento());
-			cbxProvIsolamento.setValue(ficha.getDistrito_isolamento().getProvincia().getDesignacao());
-			cbxDistrIsolamento.setValue(ficha.getDistrito_isolamento().getDesignacao());
+			
+			if(ficha.getLocal_isolamento()!=null) {
+				cbxLocalIsolamento.setValue(ficha.getLocal_isolamento());
+			}
+			
+			
+			if(ficha.getDistrito_isolamento()!=null) {
+				cbxProvIsolamento.setValue(ficha.getDistrito_isolamento().getProvincia().getDesignacao());
+				cbxDistrIsolamento.setValue(ficha.getDistrito_isolamento().getDesignacao());
+							
+			}
+			
 			dtb_dataInformou.setValue(ficha.getDataUltimaVezNaUnidade());
 			dtb_dataUltima.setValue(ficha.getDataUltimaVezNaUnidade());
 			txt_outras.setValue(ficha.getOutrasInformacoes());
@@ -761,6 +792,18 @@ public class EdicaoController extends GenericForwardComposer{
 				sectoresModelDentro.setMultiple(true);
 				lbxSectoresEscolhidos.setModel(sectoresModelDentro);
 				
+				ListModel<Sector> listSecJaExistentes =  lbxSectoresEscolhidos.getModel();
+				
+				
+				ListModelList<Sector> lmsectorJa = new ListModelList<Sector>((Collection<? extends Sector>) listSecJaExistentes);
+				
+				for (Sector secJa: lmsectorJa){
+					
+					listSector.add(secJa);
+					
+		
+				}
+				
 				
 				if(ficha.getFichaContacto().getOutrosEspacosDentro()!=null) {
 					
@@ -768,6 +811,7 @@ public class EdicaoController extends GenericForwardComposer{
 				}
 				
 			} else {rdb_nao_dentro.setChecked(true);}
+			
 			
 			
 			if(ficha.getFichaContacto().isTeveContactoFora()==true) {
@@ -913,12 +957,12 @@ public class EdicaoController extends GenericForwardComposer{
     	if(rdb_sim_dentro.isSelected() || rdb_sim_fora.isSelected()) {
     		
     	fichaSecList = fichaSectorService.buscarFichaSectorPorFicha(ficha);
-		List<Sector> listaSectoresPorFicha = new ArrayList<Sector>();
 		
-		for(int i=0;i<fichaSecList.size();i++) {
-			listaSectoresPorFicha.add(fichaSecList.get(i).getSector());
+		for(int i=0; i<fichaSecList.size();i++) {
+			fichaSectorService.delete(fichaSecList.get(i));
 		}
-   		 
+		
+		 
    		 if(ficha.getFichaContacto()==null) {
    			 fichContacto = new FichaContactoDirecto(); 
    		 }
@@ -931,17 +975,14 @@ public class EdicaoController extends GenericForwardComposer{
    			 for(int i=0; i<listSector.size();i++) {
    				   
    				  novoSector = listSector.get(i);
-   				  
-   				  if(listaSectoresPorFicha.contains(novoSector)==false) {
+   				
    					  FichaSector fichSec = new FichaSector();
      				  fichSec.setFicha(ficha);
      				  fichSec.setSector(novoSector);
      				  fichSec.setUserCreated(user.getId());
      				  fichSec.setUserUpdated(user.getId());
      				  fichaSectorService.saveOrUpdate(fichSec);
-   					  
-   				  }
-   				  
+   					
    			 }
    			 
    			 fichContacto.setTeveContactoDentro(true);
@@ -952,26 +993,39 @@ public class EdicaoController extends GenericForwardComposer{
    				 
    			 }
    			 
-   		 }
+   		 } else {fichContacto.setTeveContactoDentro(false);}
    		 
    		 
    		 
    		 if(rdb_sim_fora.isSelected()) {
    			 
+   			ListModel<Sector> listSecFora =  lbxSectoresForaEscolhidos.getModel();
+			
+			
+			ListModelList<Sector> lmsector = new ListModelList<Sector>((Collection<? extends Sector>) listSecFora);
+			
+			List<Sector> sectoresFinaisFora = new ArrayList<Sector>();
+			
+			for (Sector sec: lmsector){
+				
+				sectoresFinaisFora.add(sec);
+				
+	
+			}
+   			 
    			 Sector novoSector = new Sector();
    			 
    			  
-   			 for(int i=0; i<listSector2.size();i++) {
-   				  if(listaSectoresPorFicha.contains(novoSector)==false) {
-   					  novoSector = listSector2.get(i);
+   			 for(int i=0; i<sectoresFinaisFora.size();i++) {
+   				  
+   					  novoSector = sectoresFinaisFora.get(i);
      				  FichaSector fichSec = new FichaSector();
      				  fichSec.setFicha(ficha);
      				  fichSec.setSector(novoSector);
      				  fichSec.setUserCreated(user.getId());
      				  fichSec.setUserUpdated(user.getId());
      				  fichaSectorService.saveOrUpdate(fichSec);
-   					  
-   				  }
+   				
    				  
    			 }
    			 
@@ -984,15 +1038,34 @@ public class EdicaoController extends GenericForwardComposer{
    				 fichContacto.setOutrosEspacosFora(txtoutrosFora.getValue());
    			 }
    			 
-   		 }
+   		 } else {fichContacto.setTeveContactoFora(false);}
    		 
    		 fichContacto.setUserUpdated(user.getId());
    		 
-   		 fichaContactoService.update(fichContacto);
+   		 fichaContactoService.saveOrUpdate(fichContacto);
    		 
    		 ficha.setFichaContacto(fichContacto);
     	
     	
+		
+	} else {
+		
+		if(ficha.getFichaContacto()!=null) {
+			
+			ficha.setFichaContacto(null);
+			 
+			List<FichaSector> SecApagar = fichaSectorService.buscarFichaSectorPorFicha(ficha);
+			 
+			 if(SecApagar.isEmpty()==false) {
+				 
+				 for(int i=0;i<SecApagar.size();i++) {
+					 FichaSector apagar = SecApagar.get(i);
+					 fichaSectorService.delete(apagar); 
+				 }
+				 
+			 }
+			 
+		}
 		
 	}
     	

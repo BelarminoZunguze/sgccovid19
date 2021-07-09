@@ -70,6 +70,8 @@ public class MainVM extends PagVM {
 	private String morePage;
 	
 	private List<String> links;
+	
+	private String legenda;
 
 	@AfterCompose
 	public void initSetup(@ContextParam(ContextType.VIEW) Component view)
@@ -105,8 +107,23 @@ public class MainVM extends PagVM {
 		loggeduser = userService.getUser(authentication.getName());
 		Executions.getCurrent().getDesktop().getSession()
 				.setAttribute("utilizadorAutenticado", loggeduser);
-			
-
+		
+		legenda="";
+		
+		if(loggeduser.getRoles().toString().equals("[Admin]")) {
+			legenda="[Administrador do Sistema]";
+		
+		}
+		
+		if(loggeduser.getRoles().toString().equals("[Ponto focal da unidade]")) {
+			legenda="[Ponto focal - "+loggeduser.getUnidade().getSigla()+"]";
+		
+		}
+		
+		if(loggeduser.getRoles().toString().equals("[Director da Unidade]")) {
+			legenda="[Director - "+loggeduser.getUnidade().getSigla()+"]";
+		
+		}
 	}
 	
 		
@@ -634,4 +651,18 @@ public class MainVM extends PagVM {
 	public void setMorePage(String morePage) {
 		this.morePage = morePage;
 	}
+
+
+
+	public String getLegenda() {
+		return legenda;
+	}
+
+
+
+	public void setLegenda(String legenda) {
+		this.legenda = legenda;
+	}
+	
+	
 }

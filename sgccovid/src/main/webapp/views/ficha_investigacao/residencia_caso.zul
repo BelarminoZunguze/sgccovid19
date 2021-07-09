@@ -121,9 +121,9 @@
 												<div class="form-group" id="div_isolamento" visible="false">
 												
 													<div class="form-group">
-														<label class="form-label">
-															Local de Isolamento:
-														</label>
+														<label style="font-weight:bold;font-size:11pt">Local de Isolamento:  </label> 
+						        						<label style="font-weight:bold;color:red">*</label>
+														
 
 														<div>
 															<combobox id="cbxLocalIsolamento" readonly="true"
@@ -138,9 +138,9 @@
 
 													</div>
 													<div class="form-group">
-														<label class=" form-label">
-															Província de isolamento:
-														</label>
+														<label style="font-weight:bold;font-size:11pt">Província de isolamento: </label> 
+						        						<label style="font-weight:bold;color:red">*</label>
+														
 
 														<div>
 															<combobox id="cbxProvIsolamento" readonly="true"
@@ -156,10 +156,9 @@
 													</div>
 													
 													<div class="form-group">
-														<label class=" form-label">
-															Distrito de isolamento:
-														</label>
-
+														<label style="font-weight:bold;font-size:11pt">Distrito de isolamento: </label> 
+						        						<label style="font-weight:bold;color:red">*</label>
+														
 														<div>
 															<combobox id="cbxDistrIsolamento" readonly="true"
 																placeholder="Selecione o Distrito de isolamento" width="90%"

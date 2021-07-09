@@ -192,18 +192,22 @@ public class DetalhesController extends GenericForwardComposer{
 		label_Nacionalidade.setValue(ficha.getUtente().getNacionalidade());
 		label_Sexo.setValue(ficha.getUtente().getGenero());
 		
-		  
-		Date dataNasc = ficha.getUtente().getDataNascimento();
+		if(ficha.getUtente().getDataNascimento()!=null) {
+			  
+			Date dataNasc = ficha.getUtente().getDataNascimento();
+			
+			  Calendar c = Calendar.getInstance();
+			  c.setTime(dataNasc);
+			  int year = c.get(Calendar.YEAR);
+			  int anoActual = Calendar.getInstance().get(Calendar.YEAR);
+			  int idade = anoActual - year;
+			  
+			  
+			
+			 label_idade.setValue(""+idade+" anos");
+			
+		}  
 		
-		  Calendar c = Calendar.getInstance();
-		  c.setTime(dataNasc);
-		  int year = c.get(Calendar.YEAR);
-		  int anoActual = Calendar.getInstance().get(Calendar.YEAR);
-		  int idade = anoActual - year;
-		  
-		  
-		
-		label_idade.setValue(""+idade+" anos");
 		  
 		  
 		label_contacto.setValue(ficha.getUtente().getContacto());
@@ -392,6 +396,12 @@ public class DetalhesController extends GenericForwardComposer{
    		map.put("target", target);
    		map.put("ficha", ficha);
    		map.put("utente", utente);
+   		
+   		if(ficha.getFichaContacto()!=null) {
+			FichaContactoDirecto fichContacto = ficha.getFichaContacto();
+			map.put("fichContacto", fichContacto);
+		}
+   		
    		target.getChildren().clear();
    		Executions.createComponents("views/ficha_investigacao/edicao_dados.zul", target, map);
 		

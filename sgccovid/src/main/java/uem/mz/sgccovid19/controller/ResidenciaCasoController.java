@@ -160,6 +160,9 @@ public class ResidenciaCasoController extends GenericForwardComposer{
 	public void onCheck$rdb_sim_isolamento() {
 		div_isolamento.setVisible(true);
 		div_datas.setVisible(true);
+		cbxLocalIsolamento.setConstraint("no empty: Selecione o Local de Isolamento!");
+		cbxProvIsolamento.setConstraint("no empty: Selecione a Província de Isolamento!");
+		cbxDistrIsolamento.setConstraint("no empty: Selecione o Distrito de Isolamento!");
 	}
 	
 	public void onCheck$rdb_nao_isolamento() {
@@ -191,6 +194,8 @@ public class ResidenciaCasoController extends GenericForwardComposer{
     		
     		ficha.setLocal_isolamento((String)(cbxLocalIsolamento.getSelectedItem()==null ? null : cbxLocalIsolamento.getSelectedItem().getLabel()));
 			 
+    		cbxProvIsolamento.getValue();
+    		
     		ficha.setDistrito_isolamento((Distrito)(cbxDistrIsolamento.getSelectedItem()==null ? null : cbxDistrIsolamento.getSelectedItem().getValue()));
     		
     		

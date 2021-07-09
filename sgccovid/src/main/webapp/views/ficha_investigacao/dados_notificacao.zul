@@ -135,11 +135,12 @@
 						    </div>
 						    
 						    <div class="form-group">
-						       <label class="form-label"> Data da Notificação:  </label>
-						
+						    	<label style="font-weight:bold;font-size:11pt">Data da Notificação:  </label> 
+						        <label style="font-weight:bold;color:red">*</label>
+						       
 								<div >
 									<datebox id="dtb_dataNotificacao"  format="dd/MM/yyyy" width="90%"
-									constraint="no future: Insira uma data válida!"/>
+									constraint="no future, no empty: Insira uma data válida!"/>
 								</div>
 						
 						    </div>

@@ -126,7 +126,7 @@
 		              </div>
 		              <div class="text-center">
 			              <separator orient="vertical" spacing="12px" />
-			               <x:i class="fa fa-envelope"> helpdesk@ciuem.mz</x:i>
+			               <x:i class="fa fa-envelope"> info@ciuem.mz</x:i>
 			               <separator orient="vertical" spacing="12px" />
 			               <x:i class="fa fa-mobile fa-lg"> </x:i>
 			               <label style="font-family:times new roman;font-size:11pt">

@@ -81,6 +81,7 @@ public class FichaController extends GenericForwardComposer{
 	private FichaService fichaService;
 	private List<Ficha> fichaList;
 	private List<Ficha> pesquisaList;
+	public List<Ficha> filtroList = new ArrayList<Ficha>();
 	
 	private ListModelList<Ficha> fichaModel;
 	
@@ -191,6 +192,7 @@ public class FichaController extends GenericForwardComposer{
 		}
 		
 		total_resultados.setValue("Total de Resultados: "+fichaList.size());
+		filtroList.addAll(fichaList);
 		fichaList.clear();
 	}
 	
@@ -254,6 +256,8 @@ public class FichaController extends GenericForwardComposer{
 		lbxFichas.setModel(fichaModel);
 		total_resultados.setValue("Total de Resultados: "+pesquisaList.size());
 		
+		filtroList.clear();
+		filtroList.addAll(pesquisaList);
 		pesquisaList.clear();
 		
 		txt_nrFicha.setValue(null);
@@ -289,7 +293,6 @@ public class FichaController extends GenericForwardComposer{
 	
 	
 	public void onClick$btn_nova_ficha() {
-		
 		
 		final HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("target", target);
@@ -359,51 +362,15 @@ public class FichaController extends GenericForwardComposer{
 	
 	public void onClick$btn_imprimir() throws JRException{
 			
-		if(txt_nrFicha.getValue()!=null) {
-			numeroFicha = txt_nrFicha.getValue();
-		}
 		
 		
-		if(user.getRoles().toString().equals("[Admin]")) {
-			if(cbx_unidade.getSelectedItem()!=null) {
-				uniorg = cbx_unidade.getSelectedItem().getValue();
-			}
-		} else {uniorg=user.getUnidade();}
-		
-		
-		if(cbx_classificacao.getSelectedItem()!=null) {
-			classific = cbx_classificacao.getSelectedItem().getValue();
-		}
-		
-		if(cbx_genero.getSelectedItem()!=null) {
-			genero = cbx_genero.getSelectedItem().getValue();
-		}
-		
-		if(cbxTipoUtente.getSelectedItem()!=null) {
-			tipoUte = cbxTipoUtente.getSelectedItem().getValue();
-		}
-		
-		if(dtb_dataInicio.getValue()!=null && dtb_Fim.getValue()!=null) {
-			
-			dataInicio = dtb_dataInicio.getValue();
-			dataFim = dtb_Fim.getValue();
-			
-		}
-		
-		if(cbx_situacao.getSelectedItem()!=null) {
-			estado  = cbx_situacao.getSelectedItem().getValue();
-		}
-		
-		fichaList = fichaService.buscarFichas(numeroFicha, uniorg, genero, classific, tipoUte, dataInicio, dataFim, estado);
-		
-		
-		if (fichaList.isEmpty()) {			
+		if (filtroList.isEmpty()) {			
 			Clients.showNotification("Informação Vazia", "info", win, "middle_center", 3000);
 		} else {
 
 			MasterRep mas = new MasterRep();
 			Map<String, Object> map = new HashMap<String, Object>();
-			int total = fichaList.size();
+			int total = filtroList.size();
 			
 			String titiloUnidade="";
 			if(user.getRoles().toString().equals("[Admin]")){
@@ -421,10 +388,9 @@ public class FichaController extends GenericForwardComposer{
 			map.put("total", total);
 			String realPath = ex.getDesktop().getWebApp().getRealPath("/reports/");
 			map.put("SUBREPORT_DIR", realPath);
-			mas.imprimir("/reports/Admin.jrxml", fichaList, map, win);
+			mas.imprimir("/reports/Admin.jrxml", filtroList, map, win);
 		}
 		
-		fichaList.clear();
 		
 		
 	}

@@ -177,11 +177,12 @@
 												
 						<listheader width="6%" >Nr. Ficha</listheader>
 						<listheader width="11%">Data de Submissão</listheader>
+						<listheader width="11%">Data de Notificação</listheader>
 						<listheader width="11%">Classificação</listheader>
 						<listheader width="11%">Categoria</listheader>
 						<listheader width="16%">Situação Actual</listheader>
 						<listheader if="${sec:isAnyGranted('PESQUISAR_UNIDADE')}">Unidade Orgânica</listheader>
-						<listheader width="12%">Detalhes</listheader>
+						<listheader width="10%">Detalhes</listheader>
 						
 						
 					</listhead>
@@ -192,6 +193,7 @@
 								
 								<listcell label="${each.numeroFicha}"></listcell>
 								<listcell label="${each.created}"></listcell>
+								<listcell label="${each.dataNotificacao}"></listcell>
 								<listcell label="${each.classificacao.nome}"></listcell>
 								<listcell label="${each.utente.tipo_utente.designacao}"></listcell>
 								<listcell label="${each.estado}">

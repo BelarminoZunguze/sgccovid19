@@ -163,7 +163,7 @@
 						
 								<div >
 									<datebox id="dtb_dataNascimento"  format="dd/MM/yyyy" width="90%"
-									constraint="no future: Insira uma data válida!"/>
+									constraint="no future, no empty: Insira uma data válida!"/>
 								</div>
 						
 						    </div>

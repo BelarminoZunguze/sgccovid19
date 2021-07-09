@@ -145,9 +145,17 @@ public class DadosNotificacaoController extends GenericForwardComposer{
     	if(ficha==null) {
     		ficha = new Ficha();
     		fichaList = fichaService.buscarFichasPorUnidade(user.getUnidade());
-    		int numero = fichaList.size();
-    		numero+=1;
-    		ficha.setNumeroFicha("F"+user.getUnidade().getId()+""+numero);
+    		
+    		if(fichaList.isEmpty()==false) {
+    			Ficha ultima = fichaList.get(0);
+    			String numero=ultima.getNumeroFicha();
+    			int numFinal=Integer.parseInt(numero.substring(1));
+    			numFinal+=1;
+    			ficha.setNumeroFicha("F"+numFinal);
+    			
+    		} else {ficha.setNumeroFicha("F"+user.getUnidade().getId()+"1");}
+    		
+    		
     	}
     	
     	ficha.setClassificacao((Classificacao)(cbxClassificacao.getSelectedItem().getValue()));

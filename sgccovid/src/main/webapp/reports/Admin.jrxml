@@ -80,7 +80,7 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="106" splitType="Stretch">
+		<band height="122" splitType="Stretch">
 			<image>
 				<reportElement x="242" y="0" width="70" height="59" uuid="b40adbaf-c0e6-475b-8d62-3f67f063e660"/>
 				<imageExpression><![CDATA[$P{imagemLogo}]]></imageExpression>
@@ -99,10 +99,17 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$P{titiloUnidade}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="5" y="102" width="550" height="20" uuid="fc931362-6ff8-4e10-a4a6-138e4eb9f6ae"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LISTA DAS FICHAS DE INVESTIGAÇÃO]]></text>
+			</staticText>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="17" splitType="Stretch"/>
+		<band splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
 		<band splitType="Stretch"/>

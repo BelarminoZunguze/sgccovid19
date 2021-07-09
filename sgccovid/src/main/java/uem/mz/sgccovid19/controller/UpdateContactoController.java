@@ -309,20 +309,20 @@ public class UpdateContactoController extends GenericForwardComposer{
     		 
     		 fichaService.saveOrUpdate(ficha);
     		 
-    		final HashMap<String, Object> map = new HashMap<String, Object>();
+    		
+    		 
+    		 
+    		 
+    		 
+		 }
+		 
+		 	final HashMap<String, Object> map = new HashMap<String, Object>();
 	 		map.put("target", target);
 	 		map.put("ficha", ficha);
 	 		map.put("utente", utente);
 	 		map.put("fichContacto", fichContacto);
 	 		target.getChildren().clear();
 	 		Executions.createComponents("views/ficha_investigacao/confirmacao_ficha.zul", target, map);
-		 
-		 
-    		 
-    		 
-    		 
-    		 
-		 }
 		 
 		 
 		 
