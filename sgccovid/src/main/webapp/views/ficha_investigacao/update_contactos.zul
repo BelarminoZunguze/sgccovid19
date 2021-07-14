@@ -78,12 +78,7 @@
    								</listbox>
                              </div>
                               		 
-                        		 <vbox spacing="20px" width="24px" >
-       								<h:a style="cursor:pointer; padding-left:25%" id="chooseAll"  ><h:span class="fa fa-arrow-circle-o-right"/></h:a>
-       								<h:a style="cursor:pointer; padding-left:25%" id="chooseBtn"  ><h:span class="fe fe-arrow-right-circle"/></h:a>
-       								<h:a style="cursor:pointer; padding-left:25%" id="removeBtn"  ><h:span class="fe fe-arrow-left-circle"/></h:a>
-      								<h:a style="cursor:pointer; padding-left:25%" id="removeAll" disabled="true" ><h:span class="fa fa-arrow-circle-o-left"/></h:a>
-   								</vbox>
+                        		 
     								
     						<div hflex="1" vflex="true" >
     							<listbox id="lbxSectoresEscolhidos" emptyMessage="Sem dados registados" checkmark="true" multiple="true"   rows="8">
@@ -233,12 +228,7 @@
                 						</template>
    								</listbox>
                               		 </div>
-                              		 <vbox spacing="20px" width="24px" >
-        								<h:a style="cursor:pointer; padding-left:25%" id="chooseAll2"  ><h:span class="fa fa-arrow-circle-o-right"/></h:a>
-        								<h:a style="cursor:pointer; padding-left:25%" id="chooseBtn2"  ><h:span class="fe fe-arrow-right-circle"/></h:a>
-        								<h:a style="cursor:pointer; padding-left:25%" id="removeBtn2"  ><h:span class="fe fe-arrow-left-circle"/></h:a>
-       									<h:a style="cursor:pointer; padding-left:25%" id="removeAll2" disabled="true" ><h:span class="fa fa-arrow-circle-o-left"/></h:a>
-    								</vbox>
+                              		 
     								<div hflex="1" vflex="true" >
     							<listbox id="lbxSectoresForaEscolhidos" emptyMessage="Sem dados registados" checkmark="true" multiple="true"   rows="8">
     								 <listhead>

@@ -37,6 +37,7 @@ import uem.mz.sgccovid19.entity.TipoUtente;
 import uem.mz.sgccovid19.entity.UnidadeOrganica;
 import uem.mz.sgccovid19.entity.Utente;
 import uem.mz.sgccovid19.entity.administracao.User;
+import uem.mz.sgccovid19.entity.administracao.UserRole;
 import uem.mz.sgccovid19.service.ClassificacaoService;
 import uem.mz.sgccovid19.service.DepartamentoService;
 import uem.mz.sgccovid19.service.DistritoService;
@@ -382,56 +383,32 @@ public class EdicaoController extends GenericForwardComposer{
 			
 		}
 		
-		public void onClick$chooseAll(){
-			
-			
-			
-			
-			ListModel<Sector> listSec =  lbxDepartamentoSectores.getModel();
-			
-			
-			
-			ListModelList<Sector> lmsector = new ListModelList<Sector>((Collection<? extends Sector>) listSec);
-			
-			for (Sector s: lmsector){
-				
-				listSector.add(s);
-				setSector.add(s);
-				sectortList.remove(s);
+		
 	
-			}
-			
-			sectorEscolhidoModel = new ListModelList<Sector>(listSector);
-			sectorEscolhidoModel.setMultiple(true);
-			lbxSectoresEscolhidos.setModel(sectorEscolhidoModel);
-			
-			sectorModel = new ListModelList<Sector>(sectortList);
-			sectorModel.setMultiple(true);
-			lbxDepartamentoSectores.setModel(sectorModel);
+		public void onSelect$lbxDepartamentoSectores(){
 			
 			
+		   Sector secEscolhido = (Sector) lbxDepartamentoSectores.getSelectedItem().getValue();
 			
-			
-		}
-	
-		public void onClick$chooseBtn(){
-			
-			Set<Listitem> listSelectItens = lbxDepartamentoSectores.getSelectedItems();
-			
-			
+		   boolean contem = false;
+		   
+			for(int i=0; i<listSector.size();i++) {
 				
-			for(final Listitem li: listSelectItens){
-				 Sector secEscolhido = (Sector)li.getValue();
+				if(secEscolhido.getId()==listSector.get(i).getId()) {
+					contem = true;
+				}
+			} 
+		   
+			
+			 if(contem) {
+				 sectortList.remove(secEscolhido);
 				 
-				 if(listSector.contains(secEscolhido)==false) {
-					 listSector.add(secEscolhido);
-					 sectortList.remove(secEscolhido);
-				 }
+			 } else {
+				 listSector.add(secEscolhido);
+				 sectortList.remove(secEscolhido);
+			 }
 				 
-				 
-				 
-				 
-			}
+			
 			sectorModel = new ListModelList<Sector>(sectortList);
 			sectorModel.setMultiple(true);
 			lbxDepartamentoSectores.setModel(sectorModel);
@@ -439,71 +416,12 @@ public class EdicaoController extends GenericForwardComposer{
 			sectorEscolhidoModel = new ListModelList<Sector>(listSector);
 			sectorEscolhidoModel.setMultiple(true);
 			lbxSectoresEscolhidos.setModel(sectorEscolhidoModel);
+			
 			
 			
 		}
 		
-		public void onClick$removeBtn(){
 			
-			
-			Set<Listitem> listSelectItens = lbxSectoresEscolhidos.getSelectedItems();
-	
-			
-				
-			for(final Listitem li: listSelectItens){
-				
-				 Sector secEscolhido = (Sector)li.getValue();
-				 
-				 sectortList.add(secEscolhido);
-				 listSector.remove(secEscolhido);
-				 
-			}
-			
-			sectorEscolhidoModel = new ListModelList<Sector>(listSector);
-			sectorEscolhidoModel.setMultiple(true);
-			lbxSectoresEscolhidos.setModel(sectorEscolhidoModel);
-			
-			sectorModel = new ListModelList<Sector>(sectortList);
-			sectorModel.setMultiple(true);
-			lbxDepartamentoSectores.setModel(sectorModel);
-			lbxDepartamentoSectores.clearSelection();
-			
-			
-			
-		}
-	
-		public void onClick$removeAll(){
-			
-			
-				
-				
-			ListModel<Sector> listSec =  lbxSectoresEscolhidos.getModel();
-			
-			ListModelList<Sector> lmsector = new ListModelList<Sector>((Collection<? extends Sector>) listSec);
-			
-			for (Sector s: lmsector){
-				
-				sectortList.add(s);
-				listSector.remove(s);
-				setSector.remove(s);
-				
-	
-			}
-			
-			sectorEscolhidoModel = new ListModelList<Sector>(listSector);
-			sectorEscolhidoModel.setMultiple(true);
-			lbxSectoresEscolhidos.setModel(sectorEscolhidoModel);
-			
-			sectorModel = new ListModelList<Sector>(sectortList);
-			sectorModel.setMultiple(true);
-			lbxDepartamentoSectores.setModel(sectorModel);
-			
-			
-				
-				
-			
-			}
-		
 		public void onClickRemoverSectores(ForwardEvent e){
 			
 			
@@ -527,49 +445,17 @@ public class EdicaoController extends GenericForwardComposer{
 		}
 		
 		
-		public void onClick$chooseAll2(){
 		
-			ListModel<Sector> listSec =  lbxSectoresFora.getModel();
-			
-			
-			ListModelList<Sector> lmsector = new ListModelList<Sector>((Collection<? extends Sector>) listSec);
-			
-			for (Sector s: lmsector){
-				
-				listSector2.add(s);
-				setSector.add(s);
-				sectortList2.remove(s);
 	
-			}
-			
-			sectorEscolhidoModel = new ListModelList<Sector>(listSector2);
-			sectorEscolhidoModel.setMultiple(true);
-			lbxSectoresForaEscolhidos.setModel(sectorEscolhidoModel);
-			
-			sectorModel = new ListModelList<Sector>(sectortList2);
-			sectorModel.setMultiple(true);
-			lbxSectoresFora.setModel(sectorModel);
+		public void onSelect$lbxSectoresFora(){
 			
 			
 			
-			
-		}
-	
-		public void onClick$chooseBtn2(){
-			
-			
-			Set<Listitem> listSelectItens = lbxSectoresFora.getSelectedItems();
-			
-			
-				
-			for(final Listitem li: listSelectItens){
-				 Sector secEscolhido = (Sector)li.getValue();
+			Sector secEscolhido = (Sector) lbxSectoresFora.getSelectedItem().getValue();
 				 
-				 	listSector2.add(secEscolhido);
-				    sectortList2.remove(secEscolhido);
+		 	listSector2.add(secEscolhido);
+		    sectortList2.remove(secEscolhido);
 				 
-				 
-			}
 			sectorModel = new ListModelList<Sector>(sectortList2);
 			sectorModel.setMultiple(true);
 			lbxSectoresFora.setModel(sectorModel);
@@ -581,63 +467,7 @@ public class EdicaoController extends GenericForwardComposer{
 			
 		}
 		
-		public void onClick$removeBtn2(){
-			
-				Set<Listitem> listSelectItens = lbxSectoresForaEscolhidos.getSelectedItems();
-	
-			
-				
-			for(final Listitem li: listSelectItens){
-				
-				 Sector secEscolhido = (Sector)li.getValue();
-				 
-				 	sectortList2.add(secEscolhido);
-				 	listSector2.remove(secEscolhido);
-				 
-			}
-			
-			sectorEscolhidoModel = new ListModelList<Sector>(listSector2);
-			sectorEscolhidoModel.setMultiple(true);
-			lbxSectoresForaEscolhidos.setModel(sectorEscolhidoModel);
-			
-			sectorModel = new ListModelList<Sector>(sectortList2);
-			sectorModel.setMultiple(true);
-			lbxSectoresFora.setModel(sectorModel);
-			lbxSectoresFora.clearSelection();
-			
-			
-			
-		}
-	
-		public void onClick$removeAll2(){
-			
-				
-			ListModel<Sector> listSec =  lbxSectoresForaEscolhidos.getModel();
-			
-			ListModelList<Sector> lmsector = new ListModelList<Sector>((Collection<? extends Sector>) listSec);
-			
-			for (Sector s: lmsector){
-				
-				sectortList2.add(s);
-				listSector2.remove(s);
-				setSector.remove(s);
-				
-	
-			}
-			
-			sectorEscolhidoModel = new ListModelList<Sector>(listSector2);
-			sectorEscolhidoModel.setMultiple(true);
-			lbxSectoresForaEscolhidos.setModel(sectorEscolhidoModel);
-			
-			sectorModel = new ListModelList<Sector>(sectortList2);
-			sectorModel.setMultiple(true);
-			lbxSectoresFora.setModel(sectorModel);
-			
-			
-				
-				
-			
-			}
+		
 		
 		public void onClickRemoverSectores2(ForwardEvent e){
 			
@@ -834,6 +664,18 @@ public class EdicaoController extends GenericForwardComposer{
 				sectoresModel = new ListModelList<Sector>(sectoresList);
 				sectoresModel.setMultiple(true);
 				lbxSectoresForaEscolhidos.setModel(sectoresModel);
+				
+				ListModel<Sector> listSecJaExistentesFora =  lbxSectoresForaEscolhidos.getModel();
+				
+				
+				ListModelList<Sector> lmsectorJaFora = new ListModelList<Sector>((Collection<? extends Sector>) listSecJaExistentesFora);
+				
+				for (Sector secJaFora: lmsectorJaFora){
+					
+					listSector2.add(secJaFora);
+					
+		
+				}
 				
 				
 				
